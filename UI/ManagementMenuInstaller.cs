@@ -68,8 +68,8 @@ namespace Rookie100.UI
                 label.fontSize = Mathf.Min(label.fontSize, 15f);
                 label.overflowMode = TextOverflowModes.Ellipsis;
                 label.textWrappingMode = TextWrappingModes.NoWrap;
-                label.SetText("百天助手");
-                label.text = "百天助手";
+                label.SetText(Lang.T("百天助手"));
+                label.text = Lang.T("百天助手");
 
                 RectTransform labelRect = label.rectTransform();
                 if (labelRect != null)
@@ -104,7 +104,7 @@ namespace Rookie100.UI
             }
 
             ToolTip toolTip = button.GetComponent<ToolTip>() ?? button.gameObject.AddComponent<ToolTip>();
-            toolTip.SetSimpleTooltip("新手百天助手：从入门到太空的分阶段课程（大叔追云彩《活过100天》系列）");
+            toolTip.SetSimpleTooltip(Lang.T("新手百天助手：从入门到太空的分阶段课程（大叔追云彩《活过100天》系列）"));
 
             button.onClick += () =>
             {

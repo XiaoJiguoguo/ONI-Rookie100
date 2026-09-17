@@ -62,6 +62,7 @@ namespace Rookie100.UI
                 ClampToScreen(target);
                 LayoutStore.Save(new LayoutStore.WindowLayout
                 {
+                    Version = LayoutVersion,
                     X = target.anchoredPosition.x,
                     Y = target.anchoredPosition.y,
                     Width = target.rect.width,
@@ -103,11 +104,14 @@ namespace Rookie100.UI
             rectTransform.anchoredPosition = clamped - anchorOffset;
         }
 
+        /// <summary>当前布局版本：布局改版时递增，使旧尺寸/位置记忆作废。</summary>
+        public const int LayoutVersion = 2;
+
         /// <summary>启动时恢复上次窗口位置/尺寸。</summary>
         public static bool TryApplyLayout(RectTransform rectTransform, Vector2 defaultSize)
         {
             var layout = LayoutStore.Load();
-            if (layout == null || rectTransform == null)
+            if (layout == null || layout.Version != LayoutVersion || rectTransform == null)
             {
                 return false;
             }

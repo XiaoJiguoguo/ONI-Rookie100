@@ -11,6 +11,7 @@ namespace Rookie100.UI
 
         public class WindowLayout
         {
+            public int Version { get; set; }
             public float X { get; set; }
             public float Y { get; set; }
             public float Width { get; set; }
