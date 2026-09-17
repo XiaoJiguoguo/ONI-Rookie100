@@ -1,4 +1,4 @@
-﻿# Rookie100 构建脚本
+# Rookie100 构建脚本
 # 编译即部署：csproj 的 Release 输出直接写入缺氧 Dev 模组目录，无需拷贝步骤。
 # 用法:
 #   .\build.ps1          编译并部署

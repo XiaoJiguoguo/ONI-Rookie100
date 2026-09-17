@@ -1,4 +1,4 @@
-﻿# 实时监视缺氧日志（Player.log），过滤本模组与错误信息
+# 实时监视缺氧日志（Player.log），过滤本模组与错误信息
 # 用法: .\watch-log.ps1        （Ctrl+C 停止）
 #       .\watch-log.ps1 -All   显示全部日志行
 

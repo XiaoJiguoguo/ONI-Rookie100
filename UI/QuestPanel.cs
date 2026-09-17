@@ -243,9 +243,9 @@ namespace Rookie100.UI
                 windowRect.sizeDelta = new Vector2(940f, 640f);
             }
 
-            // 标题栏（可拖拽，酒红色与游戏 HUD 一致）
+            // 标题栏（可拖拽，酒红色与游戏 HUD 一致；顶部 2px 红线 + 高 28 对齐 StorageNetwork）
             GameObject header = CreateBox("Header", window.transform, HeaderBg);
-            SetTopStretch(header.GetComponent<RectTransform>(), 6f, 6f, 6f, 30f);
+            SetTopStretch(header.GetComponent<RectTransform>(), 2f, 2f, 2f, 28f);
             header.AddComponent<WindowDrag>().Configure(windowRect);
 
             headerTitle = CreateText("Title", header.transform, "缺氧新手百天 · 任务指引", 14,
@@ -287,7 +287,7 @@ namespace Rookie100.UI
 
             // 主内容区（浅色，内缩露出红色描边）
             GameObject content = CreateBox("Content", window.transform, ContentBg);
-            SetStretch(content.GetComponent<RectTransform>(), 2f, 2f, 2f, 38f);
+            SetStretch(content.GetComponent<RectTransform>(), 2f, 2f, 2f, 34f);
             HorizontalLayoutGroup columns = content.AddComponent<HorizontalLayoutGroup>();
             columns.padding = new RectOffset(4, 4, 4, 4);
             columns.spacing = 4f;
@@ -451,20 +451,61 @@ namespace Rookie100.UI
             var style = StyleOf(status);
             bool selected = quest.Id == selectedQuestId;
 
-            GameObject row = MakeFoldoutHeader(
-                $"Quest_{quest.Id}",
-                treeContent,
-                $"  {style.Glyph} #{quest.Order:d2} {quest.Title}",
-                () => SelectQuest(quest.Id),
-                RowColorOf(status, selected),
-                RowHover,
-                11,
-                FontStyles.Normal,
-                false);
-            row.AddComponent<LayoutElement>().preferredHeight = 25f;
-            TextMeshProUGUI label = row.GetComponentInChildren<TextMeshProUGUI>();
+            // 行 = 背景 KImage + 水平布局（建筑图标 | 状态徽章+标题 | 迷你进度条）
+            GameObject rowObject = new GameObject($"Quest_{quest.Id}");
+            rowObject.transform.SetParent(treeContent, false);
+            rowObject.AddComponent<RectTransform>();
+            KImage bg = rowObject.AddComponent<KImage>();
+            bg.type = Image.Type.Sliced;
+            bg.colorStyleSetting = CreateColorStyle(RowColorOf(status, selected), RowHover,
+                RowColorOf(status, selected) * 0.85f);
+            bg.ColorState = KImage.ColorSelector.Inactive;
+
+            HorizontalLayoutGroup layout = rowObject.AddComponent<HorizontalLayoutGroup>();
+            layout.padding = new RectOffset(3, 3, 0, 0);
+            layout.spacing = 4f;
+            layout.childControlWidth = true;
+            layout.childControlHeight = true;
+            layout.childForceExpandWidth = false;
+            layout.childForceExpandHeight = true;
+            layout.childAlignment = TextAnchor.MiddleLeft;
+
+            // 建筑图标（目标建筑原版 Sprite，找不到则用奖励元素图标）
+            GameObject iconObject = new GameObject("Icon");
+            iconObject.transform.SetParent(rowObject.transform, false);
+            iconObject.AddComponent<RectTransform>();
+            LayoutElement iconLayout = iconObject.AddComponent<LayoutElement>();
+            iconLayout.preferredWidth = 22f;
+            iconLayout.preferredHeight = 22f;
+            iconLayout.flexibleWidth = 0f;
+            Image icon = iconObject.AddComponent<Image>();
+            icon.preserveAspect = true;
+            icon.raycastTarget = false;
+            Sprite sprite = ResolveQuestIcon(quest, out Color tint);
+            if (sprite != null)
+            {
+                icon.sprite = sprite;
+                icon.color = tint;
+            }
+            else
+            {
+                icon.enabled = false;
+            }
+
+            TextMeshProUGUI label = CreateText("Label", rowObject.transform,
+                $"{style.Glyph} #{quest.Order:d2} {quest.Title}", 11, TextAlignmentOptions.MidlineLeft);
             label.color = selected ? HeadingText : style.Color;
             label.overflowMode = TextOverflowModes.Ellipsis;
+            label.gameObject.AddComponent<LayoutElement>().flexibleWidth = 1f;
+
+            KButton button = rowObject.AddComponent<KButton>();
+            button.bgImage = bg;
+            button.additionalKImages = new KImage[0];
+            button.soundPlayer = new ButtonSoundPlayer();
+            string questId = quest.Id;
+            button.onClick += () => SelectQuest(questId);
+
+            rowObject.AddComponent<LayoutElement>().preferredHeight = 25f;
 
             // 迷你进度条（进行中任务的右侧展示）
             var total = quest.Objectives.Count;
@@ -473,9 +514,84 @@ namespace Rookie100.UI
                 int met = quest.Objectives.Count(o => QuestStore.IsObjectiveMet(o, currentCounts));
                 float fraction = total > 0 ? (float)met / total : 0f;
                 Image bar = CreateMiniBar(label.rectTransform, fraction);
-                bar.rectTransform.anchoredPosition = new Vector2(-24f, 0f);
-                bar.rectTransform.sizeDelta = new Vector2(56f, 5f);
+                bar.rectTransform.anchoredPosition = new Vector2(-10f, 0f);
+                bar.rectTransform.sizeDelta = new Vector2(52f, 5f);
             }
+        }
+
+        /// <summary>任务图标：优先目标建筑 Sprite，其次奖励元素 Sprite。</summary>
+        private static Sprite ResolveQuestIcon(QuestDef quest, out Color tint)
+        {
+            if (quest.Objectives != null)
+            {
+                foreach (var objective in quest.Objectives)
+                {
+                    Sprite sprite = TryResolveSprite(objective.Tag, out tint);
+                    if (sprite != null)
+                    {
+                        return sprite;
+                    }
+                }
+            }
+
+            if (quest.Rewards != null)
+            {
+                foreach (var reward in quest.Rewards)
+                {
+                    Sprite sprite = TryResolveSprite(reward.Element, out tint);
+                    if (sprite != null)
+                    {
+                        return sprite;
+                    }
+                }
+            }
+
+            tint = Color.white;
+            return null;
+        }
+
+        private static readonly HashSet<string> spriteDiagnosed = new HashSet<string>();
+
+        /// <summary>
+        /// 精灵解析链：Assets.GetSprite（UI/元素图标） → Def.GetUISprite（建筑 UI 白模图标+着色）。
+        /// Def 命中的白模必须应用返回的第二项 Color 才能显示游戏内正常颜色。
+        /// 每个 key 只诊断一次（写日志），便于确认解析命中率。
+        /// </summary>
+        private static Sprite TryResolveSprite(string key, out Color tint)
+        {
+            tint = Color.white;
+            if (string.IsNullOrEmpty(key))
+            {
+                return null;
+            }
+
+            Sprite sprite = Assets.GetSprite(key);
+            string source = sprite != null ? "Assets" : null;
+            if (sprite == null)
+            {
+                try
+                {
+                    var pair = Def.GetUISprite(key);
+                    if (pair != null && pair.first != null)
+                    {
+                        sprite = pair.first;
+                        tint = pair.second;
+                        source = "Def";
+                    }
+                }
+                catch
+                {
+                    // Def.GetUISprite 不可用时忽略
+                }
+            }
+
+            if (!spriteDiagnosed.Contains(key))
+            {
+                spriteDiagnosed.Add(key);
+                ModLogger.Log($"图标解析: {key} -> {(sprite != null ? source + " 命中" : "全部未命中")}");
+            }
+
+            return sprite;
         }
 
         private void RefreshDetail()
@@ -493,9 +609,8 @@ namespace Rookie100.UI
             var style = StyleOf(status);
             var phase = QuestStore.Phases.FirstOrDefault(p => p.Id == quest.Phase);
 
-            // 标题区
-            CreateSectionTitle($"#{quest.Order:d2}  {quest.Title}", HeadingText, 16);
-            CreateBodyText(phase != null ? phase.Title : quest.Phase, MutedText);
+            // 标题区（大图标 + 标题/阶段）
+            CreateDetailHeader(quest, style, phase);
 
             // 任务说明
             CreateSectionTitle("📋 任务说明", HeadingText);
@@ -653,6 +768,68 @@ namespace Rookie100.UI
 
         // ---- UI 工具 ----
 
+        /// <summary>详情顶部：大建筑图标 + 标题 + 阶段。</summary>
+        private void CreateDetailHeader(QuestDef quest, StatusStyle style, QuestPhaseDef phase)
+        {
+            GameObject headRow = new GameObject("DetailHeader");
+            headRow.transform.SetParent(detailContent, false);
+            headRow.AddComponent<RectTransform>();
+            HorizontalLayoutGroup layout = headRow.AddComponent<HorizontalLayoutGroup>();
+            layout.spacing = 10f;
+            layout.padding = new RectOffset(2, 2, 2, 2);
+            layout.childControlWidth = true;
+            layout.childControlHeight = true;
+            layout.childForceExpandWidth = false;
+            layout.childForceExpandHeight = true;
+            layout.childAlignment = TextAnchor.MiddleLeft;
+            headRow.AddComponent<LayoutElement>().preferredHeight = 50f;
+
+            // 大图标（44px）
+            GameObject iconObject = new GameObject("BigIcon");
+            iconObject.transform.SetParent(headRow.transform, false);
+            iconObject.AddComponent<RectTransform>();
+            LayoutElement iconLayout = iconObject.AddComponent<LayoutElement>();
+            iconLayout.preferredWidth = 44f;
+            iconLayout.preferredHeight = 44f;
+            iconLayout.flexibleWidth = 0f;
+            Image icon = iconObject.AddComponent<Image>();
+            icon.preserveAspect = true;
+            icon.raycastTarget = false;
+            Sprite sprite = ResolveQuestIcon(quest, out Color tint);
+            if (sprite != null)
+            {
+                icon.sprite = sprite;
+                icon.color = tint;
+            }
+            else
+            {
+                icon.enabled = false;
+            }
+
+            // 标题列
+            GameObject textColumn = new GameObject("TitleColumn");
+            textColumn.transform.SetParent(headRow.transform, false);
+            textColumn.AddComponent<RectTransform>();
+            VerticalLayoutGroup columnLayout = textColumn.AddComponent<VerticalLayoutGroup>();
+            columnLayout.spacing = 0f;
+            columnLayout.childControlWidth = true;
+            columnLayout.childControlHeight = true;
+            columnLayout.childForceExpandWidth = true;
+            columnLayout.childForceExpandHeight = false;
+            textColumn.AddComponent<LayoutElement>().flexibleWidth = 1f;
+
+            TextMeshProUGUI title = CreateText("QuestTitle", textColumn.transform,
+                $"{style.Glyph} #{quest.Order:d2}  {quest.Title}", 16, TextAlignmentOptions.MidlineLeft);
+            title.fontStyle = FontStyles.Bold;
+            title.color = HeadingText;
+            title.gameObject.AddComponent<LayoutElement>().preferredHeight = 28f;
+
+            TextMeshProUGUI phaseText = CreateText("PhaseLine", textColumn.transform,
+                phase != null ? phase.Title : quest.Phase, 12, TextAlignmentOptions.MidlineLeft);
+            phaseText.color = MutedText;
+            phaseText.gameObject.AddComponent<LayoutElement>().preferredHeight = 18f;
+        }
+
         private void CreateSectionTitle(string text, Color color, int size = 13)
         {
             GameObject go = new GameObject("SectionTitle");
@@ -721,10 +898,11 @@ namespace Rookie100.UI
             Image icon = iconObject.AddComponent<Image>();
             icon.preserveAspect = true;
             icon.raycastTarget = false;
-            Sprite sprite = Assets.GetSprite(spriteKey);
+            Sprite sprite = TryResolveSprite(spriteKey, out Color tint);
             if (sprite != null)
             {
                 icon.sprite = sprite;
+                icon.color = tint;
             }
             else
             {
