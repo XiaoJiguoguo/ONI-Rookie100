@@ -23,6 +23,27 @@ namespace Rookie100.Content
             contentPath = path;
         }
 
+        /// <summary>
+        /// 元素 id 别名纠正：奖励/图标取的是元素 SimHashes id（也是 CarePackageInfo 投放 id）。
+        /// U59 实测煤的元素 id 是 Carbon（Coal 只是它的 oreTag），
+        /// 用 "Coal" 走 Def.GetUISprite/CarePackageInfo 会报 Missing prefab 且投放失败。
+        /// 数据层（quests.json）已修正，此表作为历史存档/手误的防御兜底。
+        /// </summary>
+        private static readonly Dictionary<string, string> elementIdAliases = new Dictionary<string, string>
+        {
+            { "Coal", "Carbon" },
+        };
+
+        public static string CanonicalElementId(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return id;
+            }
+
+            return elementIdAliases.TryGetValue(id, out string canonical) ? canonical : id;
+        }
+
         public static void Load()
         {
             var jsonPath = contentPath == null ? null : Path.Combine(contentPath, "quests.json");
@@ -254,7 +275,7 @@ namespace Rookie100.Content
         public static string GetObjectiveStatusText(QuestObjectiveDef objective, Dictionary<string, int> counts)
         {
             counts.TryGetValue(objective.Tag, out int count);
-            string label = string.IsNullOrEmpty(objective.Label) ? objective.Tag : objective.Label;
+            string label = string.IsNullOrEmpty(objective.LabelDisp) ? objective.Tag : objective.LabelDisp;
             return $"{label} {Math.Min(count, objective.Count)}/{objective.Count}";
         }
     }

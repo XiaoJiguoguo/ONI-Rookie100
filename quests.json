@@ -1,25 +1,33 @@
 {
-    "Version":  2,
+    "Version":  4,
     "Phases":  [
                    {
                        "Title":  "阶段一 · 活下来",
                        "Id":  "early",
-                       "Desc":  "厕所→氧气→电网→食物，先站稳脚跟"
+                       "Desc":  "厕所→氧气→电网→食物，先站稳脚跟",
+                       "TitleEn":  "Phase 1 - Survive",
+                       "DescEn":  "Toilet to oxygen to power grid to food - get a foothold first"
                    },
                    {
                        "Title":  "阶段二 · 工业化",
                        "Id":  "mid",
-                       "Desc":  "科研→炼钢→精炼→冷却→士气，工业起飞"
+                       "Desc":  "科研→炼钢→精炼→冷却→士气，工业起飞",
+                       "TitleEn":  "Phase 2 - Industrialize",
+                       "DescEn":  "Research, steel, refining, cooling, morale - industrial takeoff"
                    },
                    {
                        "Title":  "阶段三 · 深度开发",
                        "Id":  "late",
-                       "Desc":  "养殖→泉→火山→火箭，点满科技树"
+                       "Desc":  "养殖→泉→火山→火箭，点满科技树",
+                       "TitleEn":  "Phase 3 - Deep Development",
+                       "DescEn":  "Ranching, geysers, volcanos, rockets - finish the tech tree"
                    },
                    {
                        "Title":  "阶段四 · 太空拓展",
                        "Id":  "space",
-                       "Desc":  "开拓星系，飞向太空，最终毕业"
+                       "Desc":  "开拓星系，飞向太空，最终毕业",
+                       "TitleEn":  "Phase 4 - Space Expansion",
+                       "DescEn":  "Colonize other worlds, reach space, graduate"
                    }
                ],
     "Quests":  [
@@ -37,14 +45,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "Outhouse",
                                               "Count":  1,
-                                              "Label":  "户外厕所"
+                                              "Label":  "户外厕所",
+                                              "LabelEn":  "Outhouse"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Sand",
                                            "Amount":  1000,
-                                           "Label":  "沙子 1000kg"
+                                           "Label":  "沙子 1000kg",
+                                           "LabelEn":  "Sand 1000kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1JP7N6oEsW",
@@ -57,7 +67,19 @@
                                         "15:41 游戏界面与操作",
                                         "19:15 游戏开局",
                                         "21:43 前两周期任务——造公告厕所"
-                                    ]
+                                    ],
+                       "TitleEn":  "Public Toilet",
+                       "DescEn":  "Build an outhouse to handle duplicant bathroom needs",
+                       "SegmentsEn":  [
+                                          "0:00 Intro - long-term run plan",
+                                          "0:36 Game version and updates",
+                                          "5:13 Mod introduction",
+                                          "7:48 Game settings",
+                                          "10:00 How to pick duplicants",
+                                          "15:41 UI and controls",
+                                          "19:15 Starting the game",
+                                          "21:43 First 2 cycles - building the outhouse"
+                                      ]
                    },
                    {
                        "Id":  "q02",
@@ -75,7 +97,8 @@
                                        {
                                            "Element":  "Dirt",
                                            "Amount":  500,
-                                           "Label":  "泥土 500kg"
+                                           "Label":  "泥土 500kg",
+                                           "LabelEn":  "Dirt 500kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1F4jR6wEDG",
@@ -90,7 +113,21 @@
                                         "15:32 洗手盆设置",
                                         "16:31 电路连接问题",
                                         "18:49 食物中毒问题"
-                                    ]
+                                    ],
+                       "TitleEn":  "Core Mechanics: Basics Throughout the Game",
+                       "DescEn":  "Get familiar with the UI, controls and core mechanics",
+                       "SegmentsEn":  [
+                                          "0:00 Errata from last episode",
+                                          "2:52 Recruiting and assignment",
+                                          "3:50 Off-topic questions won\u0027t be answered",
+                                          "4:56 Camera markers and transfers",
+                                          "6:59 Floor planning and digging",
+                                          "7:48 Hand pump and early CO2 handling",
+                                          "10:14 Quest list and priority tweaks",
+                                          "15:32 Setting up wash basins",
+                                          "16:31 Circuit connection issues",
+                                          "18:49 Food poisoning issues"
+                                      ]
                    },
                    {
                        "Id":  "q03",
@@ -106,14 +143,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "MineralDeoxidizer",
                                               "Count":  1,
-                                              "Label":  "氧气扩散器"
+                                              "Label":  "氧气扩散器",
+                                              "LabelEn":  "Oxygen Diffuser"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Algae",
                                            "Amount":  1500,
-                                           "Label":  "藻类 1500kg"
+                                           "Label":  "藻类 1500kg",
+                                           "LabelEn":  "Algae 1500kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1mn7Y6UEMp",
@@ -130,7 +169,23 @@
                                         "14:15 初期学会挖野外食物",
                                         "15:30 遇到菌泥怎么办",
                                         "16:50 通行主干道预留宽度"
-                                    ]
+                                    ],
+                       "TitleEn":  "Early Oxygen Diffusion and CO2 Control",
+                       "DescEn":  "Build an oxygen diffuser to stabilize early oxygen supply",
+                       "SegmentsEn":  [
+                                          "0:00 On enabling proximity",
+                                          "3:22 About the tech tree",
+                                          "4:48 Reading info cards",
+                                          "5:58 How to restrict diets",
+                                          "7:08 About yellow alerts",
+                                          "8:15 Reading the gas overlay",
+                                          "10:20 Early oxygen and CO2 handling",
+                                          "11:06 Basic number crunching",
+                                          "12:06 Printing Pod recruiting tips",
+                                          "14:15 Digging wild food early",
+                                          "15:30 Dealing with slime",
+                                          "16:50 Reserve width for main corridors"
+                                      ]
                    },
                    {
                        "Id":  "q04",
@@ -148,7 +203,8 @@
                                        {
                                            "Element":  "Copper",
                                            "Amount":  300,
-                                           "Label":  "精炼铜 300kg"
+                                           "Label":  "精炼铜 300kg",
+                                           "LabelEn":  "Refined Copper 300kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV19a7V6zE64",
@@ -170,7 +226,28 @@
                                         "21:05 需不需要保护区",
                                         "21:28 需不需要淋浴间",
                                         "23:03 如何增加日程排班"
-                                    ]
+                                    ],
+                       "TitleEn":  "Starting Tier-2 Research: Pipes and Circuits 101",
+                       "DescEn":  "Start tier-2 research and learn pipes and circuits",
+                       "SegmentsEn":  [
+                                          "0:00 About base layout",
+                                          "1:16 Building barracks",
+                                          "1:40 Building the tier-2 research station",
+                                          "2:55 Room requirements",
+                                          "4:07 Mind the shine bugs",
+                                          "5:36 Skill point tips",
+                                          "8:00 Digging tiers",
+                                          "8:50 Digging without ladders",
+                                          "9:08 Mopping water for research",
+                                          "11:18 Researching the bathroom trio",
+                                          "12:50 Understanding pipes",
+                                          "16:08 Respec",
+                                          "17:06 Reading circuit load",
+                                          "20:30 What water sieves do",
+                                          "21:05 Do you need a reserve area",
+                                          "21:28 Do you need showers",
+                                          "23:03 Adding schedule shifts"
+                                      ]
                    },
                    {
                        "Id":  "q05",
@@ -186,14 +263,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "FlushToilet",
                                               "Count":  1,
-                                              "Label":  "冲水厕所"
+                                              "Label":  "冲水厕所",
+                                              "LabelEn":  "Flush Toilet"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Sand",
                                            "Amount":  2000,
-                                           "Label":  "沙子 2000kg"
+                                           "Label":  "沙子 2000kg",
+                                           "LabelEn":  "Sand 2000kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1kg7p61EzN",
@@ -209,7 +288,30 @@
                                         "19:40 构成餐厅的条件",
                                         "20:48 禁用饮水机",
                                         "21:52 斜角造砖"
-                                    ]
+                                    ],
+                       "TitleEn":  "The Simple Bathroom Loop, Made Easy",
+                       "DescEn":  "Build a flush toilet and complete the bathroom loop",
+                       "SegmentsEn":  [
+                                          "0:00 Errata from last episode",
+                                          "1:26 Flush toilet in detail",
+                                          "3:15 The bathroom loop",
+                                          "10:00 Completing the bathroom loop",
+                                          "12:18 Bathroom tips",
+                                          "13:43 Deconstruction details",
+                                          "14:26 Light and cell checks",
+                                          "18:32 Getting an operator",
+                                          "19:40 Mess hall requirements",
+                                          "20:48 Disabling water coolers",
+                                          "21:52 Diagonal tile building"
+                                      ],
+                       "Layout":  [
+                                      "推荐布局 · 卫生间循环",
+                                      "",
+                                      "上排: [冲水厕所] [洗手盆]",
+                                      "       |污水        ^净水",
+                                      "       v            |",
+                                      "      [净水器]------+  (自循环,免供水)"
+                                  ]
                    },
                    {
                        "Id":  "q06",
@@ -225,14 +327,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "PlanterBox",
                                               "Count":  1,
-                                              "Label":  "种植箱"
+                                              "Label":  "种植箱",
+                                              "LabelEn":  "Planter Box"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Dirt",
                                            "Amount":  1500,
-                                           "Label":  "泥土 1500kg"
+                                           "Label":  "泥土 1500kg",
+                                           "LabelEn":  "Dirt 1500kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1EETw6WE2w",
@@ -249,7 +353,23 @@
                                         "10:31 建造种植箱开始种植米虱木",
                                         "13:35 解锁通知器",
                                         "15:25 如何使用通知器"
-                                    ]
+                                    ],
+                       "TitleEn":  "Choosing the Farm Site",
+                       "DescEn":  "Place the first planter boxes and pick the farming area",
+                       "SegmentsEn":  [
+                                          "0:00 Skill order",
+                                          "1:05 Farm site selection",
+                                          "2:33 Tidying the water pool",
+                                          "3:48 Ration boxes",
+                                          "4:48 Eardrum rupture and pressure",
+                                          "7:07 Centralizing food",
+                                          "7:33 Off-gassing pressure",
+                                          "8:05 Sweeping debris?",
+                                          "9:13 Digging outside for seeds and food",
+                                          "10:31 Planter boxes and mealwood",
+                                          "13:35 Unlocking notifications",
+                                          "15:25 Using notifications"
+                                      ]
                    },
                    {
                        "Id":  "q07",
@@ -265,14 +385,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "PowerTransformer",
                                               "Count":  1,
-                                              "Label":  "变压器"
+                                              "Label":  "变压器",
+                                              "LabelEn":  "Power Transformer"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Copper",
                                            "Amount":  1000,
-                                           "Label":  "精炼铜 1000kg"
+                                           "Label":  "精炼铜 1000kg",
+                                           "LabelEn":  "Refined Copper 1000kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1hjTq6kEa9",
@@ -292,7 +414,26 @@
                                         "17:15 变压器铺液体",
                                         "19:58 继续往上挖",
                                         "20:31 造好冰箱"
-                                    ]
+                                    ],
+                       "TitleEn":  "Circuit Groups: Never Overload Again",
+                       "DescEn":  "Group circuits with a power transformer so they never overload",
+                       "SegmentsEn":  [
+                                          "0:00 More dupes, more oxygen",
+                                          "1:07 Scale up farming",
+                                          "2:49 Moving ration boxes",
+                                          "3:18 Liquid bottler",
+                                          "4:26 Current circuit problems",
+                                          "7:32 Coal generator",
+                                          "9:15 Why water under generators",
+                                          "9:45 Smart battery thresholds",
+                                          "10:14 Liquid vents",
+                                          "11:45 Liquid pump",
+                                          "12:42 Why no one delivers coal",
+                                          "14:06 Circuit grouping",
+                                          "17:15 Transformer cooling liquid",
+                                          "19:58 Keep digging upward",
+                                          "20:31 Build a fridge"
+                                      ]
                    },
                    {
                        "Id":  "q08",
@@ -308,14 +449,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "FarmTile",
                                               "Count":  1,
-                                              "Label":  "农场砖"
+                                              "Label":  "农场砖",
+                                              "LabelEn":  "Farm Tile"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Phosphorite",
                                            "Amount":  500,
-                                           "Label":  "磷矿石 500kg"
+                                           "Label":  "磷矿石 500kg",
+                                           "LabelEn":  "Phosphorite 500kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1YETE6tEUq",
@@ -335,7 +478,26 @@
                                         "15:40 如何应对菌泥破坏水门",
                                         "17:09 箱子的仅限清扫",
                                         "18:30 如何控制箱子不搬运"
-                                    ]
+                                    ],
+                       "TitleEn":  "Planting Thimble Reed and Transitioning Food",
+                       "DescEn":  "Grow thimble reed on farm tiles",
+                       "SegmentsEn":  [
+                                          "0:05 Best oxygen source",
+                                          "0:35 What atmo suits do",
+                                          "0:48 Getting reed fiber",
+                                          "2:25 Are liquid locks bugs",
+                                          "4:04 Temporary oxygen outdoors",
+                                          "4:25 Draining liquid locks",
+                                          "6:35 Dig out the swamp biome",
+                                          "8:28 Fiber sources",
+                                          "9:58 Planting thimble reed",
+                                          "10:37 Why transition food",
+                                          "12:17 Why no metal refinery yet",
+                                          "13:13 Making a one-cell liquid lock",
+                                          "15:40 Slime breaking locks",
+                                          "17:09 Sweep-only containers",
+                                          "18:30 Stopping container hauling"
+                                      ]
                    },
                    {
                        "Id":  "q09",
@@ -351,14 +513,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "Electrolyzer",
                                               "Count":  1,
-                                              "Label":  "电解器"
+                                              "Label":  "电解器",
+                                              "LabelEn":  "Electrolyzer"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Algae",
                                            "Amount":  2000,
-                                           "Label":  "藻类 2000kg"
+                                           "Label":  "藻类 2000kg",
+                                           "LabelEn":  "Algae 2000kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1UwT463E7X",
@@ -372,7 +536,28 @@
                                         "21:03 建造气压服存放柜",
                                         "21:25 基地内怎么造排气口",
                                         "23:03 高压制氧防崩关键"
-                                    ]
+                                    ],
+                       "TitleEn":  "High-Pressure Oxygen: Build and Start",
+                       "DescEn":  "Build the electrolyzer high-pressure oxygen module",
+                       "SegmentsEn":  [
+                                          "0:15 Atmo suit checkpoint",
+                                          "0:58 Slimelung effects",
+                                          "1:48 Handling slimelung germs",
+                                          "3:20 Why the checkpoint blocks",
+                                          "4:08 Building high-pressure oxygen",
+                                          "19:40 Add generators and batteries",
+                                          "21:03 Suit docks",
+                                          "21:25 Vents inside the base",
+                                          "23:03 High-pressure anti-break keys"
+                                      ],
+                       "Layout":  [
+                                      "推荐布局 · 高压制氧",
+                                      "",
+                                      "中: [电解器] 浸少量水(防超压)",
+                                      "上: [气泵]抽氢气 -> 氢气管道",
+                                      "下: [气泵]抽氧气 -> 基地通风口",
+                                      "要点: 气口不串联,三块关键砖"
+                                  ]
                    },
                    {
                        "Id":  "q10",
@@ -388,14 +573,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "GasPump",
                                               "Count":  1,
-                                              "Label":  "气泵"
+                                              "Label":  "气泵",
+                                              "LabelEn":  "Gas Pump"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Aluminum",
                                            "Amount":  500,
-                                           "Label":  "铝 500kg"
+                                           "Label":  "铝 500kg",
+                                           "LabelEn":  "Aluminum 500kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV14vMP65EsL",
@@ -413,7 +600,24 @@
                                         "14:08 气压服充气与耗电",
                                         "16:14 普通制氧堵管",
                                         "17:28 挖铀矿"
-                                    ]
+                                    ],
+                       "TitleEn":  "Standard Oxygen Is Fine Too, Easy to Fix",
+                       "DescEn":  "Build standard oxygen: electrolyzer paired with a gas pump",
+                       "SegmentsEn":  [
+                                          "0:05 Errata from last episode",
+                                          "1:02 Building standard oxygen",
+                                          "3:50 Never chain green/yellow/white ports",
+                                          "4:20 Handling excess hydrogen",
+                                          "5:35 Three key tiles",
+                                          "6:45 Key hydrogen piping",
+                                          "8:39 Hydrogen/oxygen separation",
+                                          "10:40 Waiting to print pips",
+                                          "11:46 Why excess hydrogen",
+                                          "12:42 Keep the module sealed",
+                                          "14:08 Suit refill and power",
+                                          "16:14 Pipe clogs",
+                                          "17:28 Digging uranium"
+                                      ]
                    },
                    {
                        "Id":  "q11",
@@ -429,14 +633,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "MetalRefinery",
                                               "Count":  1,
-                                              "Label":  "金属精炼厂"
+                                              "Label":  "金属精炼厂",
+                                              "LabelEn":  "Metal Refinery"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Copper",
                                            "Amount":  1500,
-                                           "Label":  "精炼铜 1500kg"
+                                           "Label":  "精炼铜 1500kg",
+                                           "LabelEn":  "Refined Copper 1500kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1RsT16ME6U",
@@ -453,7 +659,23 @@
                                         "20:17 打印树鼠",
                                         "21:35 污染水整理",
                                         "21:49 野生壁虎剪毛"
-                                    ]
+                                    ],
+                       "TitleEn":  "Metal Refining",
+                       "DescEn":  "Build a metal refinery and start refining metal",
+                       "SegmentsEn":  [
+                                          "0:05 Errata",
+                                          "3:38 Cleaning polluted oxygen",
+                                          "6:24 Key timing: 5 skill points",
+                                          "7:10 Digging the ice biome",
+                                          "9:28 Refinery piping",
+                                          "12:04 Refinery coolant in detail",
+                                          "17:19 Coolant heat exchange loop",
+                                          "18:47 Replanting mushrooms",
+                                          "19:36 Temporary cooling",
+                                          "20:17 Printing pips",
+                                          "21:35 Tidy polluted water",
+                                          "21:49 Shearing wild dreckos"
+                                      ]
                    },
                    {
                        "Id":  "q12",
@@ -469,14 +691,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "StorageLocker",
                                               "Count":  1,
-                                              "Label":  "储物箱"
+                                              "Label":  "储物箱",
+                                              "LabelEn":  "Storage Bin"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "BleachStone",
                                            "Amount":  200,
-                                           "Label":  "漂白石 200kg"
+                                           "Label":  "漂白石 200kg",
+                                           "LabelEn":  "Bleach Stone 200kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV12jT962EPF",
@@ -496,7 +720,26 @@
                                         "17:00 保鲜自动化逻辑",
                                         "19:40 各处添加清扫器",
                                         "21:33 如何查看暗泉类型"
-                                    ]
+                                    ],
+                       "TitleEn":  "Radiation Sanitizing and Food Preservation",
+                       "DescEn":  "Build storage bins and learn food preservation",
+                       "SegmentsEn":  [
+                                          "0:45 Algae terrarium usage",
+                                          "1:28 Reading pressure buildup",
+                                          "3:20 Over-chilled refinery water",
+                                          "4:01 Can\u0027t do tier-3 research",
+                                          "5:08 Rework radiation sanitizing",
+                                          "6:04 Renovating the bathroom",
+                                          "7:51 Respec researcher",
+                                          "8:45 Building food preservation",
+                                          "9:27 How radiation sanitizes",
+                                          "10:54 Airlock preservation",
+                                          "13:27 Auto-sweepers in kitchen",
+                                          "14:18 How leftovers form",
+                                          "17:00 Preservation automation",
+                                          "19:40 Add sweepers everywhere",
+                                          "21:33 Identifying buried geysers"
+                                      ]
                    },
                    {
                        "Id":  "q13",
@@ -512,14 +755,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "MethaneGenerator",
                                               "Count":  1,
-                                              "Label":  "天然气发电机"
+                                              "Label":  "天然气发电机",
+                                              "LabelEn":  "Natural Gas Generator"
                                           }
                                       ],
                        "Rewards":  [
                                        {
-                                           "Element":  "Coal",
+                                           "Element":  "Carbon",
                                            "Amount":  2000,
-                                           "Label":  "煤炭 2000kg"
+                                           "Label":  "煤炭 2000kg",
+                                           "LabelEn":  "Coal 2000kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV15xMb6tEM9",
@@ -536,7 +781,23 @@
                                         "18:25 树鼠开始种植芦苇",
                                         "21:00 发现低温泥浆泉",
                                         "21:48 种植野生芦苇的产量与作用"
-                                    ]
+                                    ],
+                       "TitleEn":  "Natural Gas Power and Pip Planting",
+                       "DescEn":  "Build a natural gas generator for new energy",
+                       "SegmentsEn":  [
+                                          "0:05 Errata",
+                                          "2:40 Pick reed farm site first",
+                                          "4:43 Taming natural gas geyser",
+                                          "9:12 Power priority tuning",
+                                          "11:02 Managing CO2",
+                                          "12:25 Digging reed farm",
+                                          "14:23 Airlock dirt creation",
+                                          "15:11 Blueprint placeholders",
+                                          "16:11 Pip planting rules",
+                                          "18:25 Pips plant reeds",
+                                          "21:00 Finding cool slush geyser",
+                                          "21:48 Wild reed yields and uses"
+                                      ]
                    },
                    {
                        "Id":  "q14",
@@ -552,14 +813,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "Tile",
                                               "Count":  20,
-                                              "Label":  "瓷砖墙"
+                                              "Label":  "瓷砖墙",
+                                              "LabelEn":  "Tile"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Obsidian",
                                            "Amount":  1000,
-                                           "Label":  "黑曜石 1000kg"
+                                           "Label":  "黑曜石 1000kg",
+                                           "LabelEn":  "Obsidian 1000kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1dVMV6JEVe",
@@ -578,7 +841,25 @@
                                         "18:40 如何构造两格水门",
                                         "20:36 封闭基地其他出入口",
                                         "21:28 启用检查站"
-                                    ]
+                                    ],
+                       "TitleEn":  "Early-Game Recap: Sealing the Base",
+                       "DescEn":  "Seal the base with tiles (at least 20)",
+                       "SegmentsEn":  [
+                                          "0:04 Current state check",
+                                          "3:25 Surviving without a geyser",
+                                          "4:56 Hydrogen power when short",
+                                          "6:25 Pipe priority",
+                                          "8:26 Ice tempshift plates",
+                                          "9:08 Insulating the perimeter",
+                                          "10:42 Gas canister emptier",
+                                          "11:49 Pipe priority revisited",
+                                          "13:58 Tidying the base",
+                                          "15:14 Shine bug sanitizing",
+                                          "16:47 Atmo suit delivery",
+                                          "18:40 Two-cell liquid lock",
+                                          "20:36 Sealing other exits",
+                                          "21:28 Enable checkpoints"
+                                      ]
                    },
                    {
                        "Id":  "q15",
@@ -596,7 +877,8 @@
                                        {
                                            "Element":  "Steel",
                                            "Amount":  200,
-                                           "Label":  "钢 200kg"
+                                           "Label":  "钢 200kg",
+                                           "LabelEn":  "Steel 200kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1FJMH6EEjr",
@@ -619,7 +901,29 @@
                                         "19:05 精炼碳注意事项",
                                         "19:38 化石与钢转化比例",
                                         "20:09 炼钢热量"
-                                    ]
+                                    ],
+                       "TitleEn":  "Tier-3 Research and Steel Preparation",
+                       "DescEn":  "Start tier-3 research and prepare for steel",
+                       "SegmentsEn":  [
+                                          "0:04 Finding geysers matters",
+                                          "2:50 Building tier-3 research",
+                                          "4:52 Radiation sources",
+                                          "6:22 Radbolt direction setup",
+                                          "7:41 Blocking radiation",
+                                          "9:52 Gathering field steel materials",
+                                          "10:16 Suited digging",
+                                          "11:19 Planting wheezeworts",
+                                          "12:45 Reaching the oil biome",
+                                          "14:00 Tier-4 research station",
+                                          "14:25 Geyser analysis data banks",
+                                          "15:00 Taming water geysers",
+                                          "15:32 Digging fossils",
+                                          "16:59 Suit training",
+                                          "17:45 Hauling steel materials",
+                                          "19:05 Refined carbon tips",
+                                          "19:38 Fossil to steel ratio",
+                                          "20:09 Steelmaking heat"
+                                      ]
                    },
                    {
                        "Id":  "q16",
@@ -635,14 +939,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "LiquidConditioner",
                                               "Count":  1,
-                                              "Label":  "液温调节器"
+                                              "Label":  "液温调节器",
+                                              "LabelEn":  "Thermo Regulator"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Steel",
                                            "Amount":  500,
-                                           "Label":  "钢 500kg"
+                                           "Label":  "钢 500kg",
+                                           "LabelEn":  "Steel 500kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1baNJ6DEUx",
@@ -659,7 +965,23 @@
                                         "13:23 建造存储砖",
                                         "15:29 冷却模块原理",
                                         "16:18 冷却模块建造以及注意事项"
-                                    ]
+                                    ],
+                       "TitleEn":  "The Big Hurdle: Field Steel and Cooling Module",
+                       "DescEn":  "Field steelmaking: set up a liquid-cooling module (thermo regulator)",
+                       "SegmentsEn":  [
+                                          "0:04 Geyser analysis drops banks",
+                                          "2:20 Pre-steel checklist",
+                                          "3:20 Geyser vent locations",
+                                          "4:02 Diamonds and oil biome",
+                                          "4:50 Sieve polluted water",
+                                          "6:18 Empty refinery stock",
+                                          "7:20 Steel coolant tips",
+                                          "11:08 Adjust mushroom farm",
+                                          "12:11 Tier-4 research skills",
+                                          "13:23 Storage tiles",
+                                          "15:29 Cooling module theory",
+                                          "16:18 Cooling module build and tips"
+                                      ]
                    },
                    {
                        "Id":  "q17",
@@ -675,14 +997,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "OilRefinery",
                                               "Count":  1,
-                                              "Label":  "原油精炼厂"
+                                              "Label":  "原油精炼厂",
+                                              "LabelEn":  "Oil Refinery"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Steel",
                                            "Amount":  300,
-                                           "Label":  "钢 300kg"
+                                           "Label":  "钢 300kg",
+                                           "LabelEn":  "Steel 300kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV135N36cEg7",
@@ -702,7 +1026,26 @@
                                         "17:51 复习管道优先级",
                                         "18:40 保护电厂有电",
                                         "20:05 强制相变炼油"
-                                    ]
+                                    ],
+                       "TitleEn":  "Crude Oil Refining and Forced State Change",
+                       "DescEn":  "Build an oil refinery and learn forced state change",
+                       "SegmentsEn":  [
+                                          "0:04 Errata",
+                                          "2:50 Pick refinery area",
+                                          "3:04 Oil refinery workflow",
+                                          "5:18 Double liquid lock vacuum",
+                                          "7:33 Vacuum the module",
+                                          "10:03 Heavi-watt wire",
+                                          "11:30 Pump crude oil",
+                                          "13:04 Reservoir control",
+                                          "14:16 Gas-eating lock",
+                                          "15:30 Craft seals at workshop",
+                                          "16:00 Petroleum generator",
+                                          "17:25 Pump filters crude only",
+                                          "17:51 Pipe priority review",
+                                          "18:40 Protect power supply",
+                                          "20:05 Forced state change refining"
+                                      ]
                    },
                    {
                        "Id":  "q18",
@@ -718,14 +1061,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "SteamTurbine",
                                               "Count":  1,
-                                              "Label":  "蒸汽机"
+                                              "Label":  "蒸汽机",
+                                              "LabelEn":  "Steam Turbine"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Glass",
                                            "Amount":  1200,
-                                           "Label":  "玻璃 1200kg"
+                                           "Label":  "玻璃 1200kg",
+                                           "LabelEn":  "Glass 1200kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1iTNm6rERB",
@@ -734,7 +1079,15 @@
                                         "1:40 抄文档不要抄视频",
                                         "2:31 建造炼钢模块",
                                         "18:45 开始炼钢"
-                                    ]
+                                    ],
+                       "TitleEn":  "Detailed Steel Module Build Walkthrough",
+                       "DescEn":  "Complete the steel module: reclaim heat with a steam turbine",
+                       "SegmentsEn":  [
+                                          "0:10 Beginner pitfalls",
+                                          "1:40 Follow the docs, not the video",
+                                          "2:31 Building the steel module",
+                                          "18:45 Start steelmaking"
+                                      ]
                    },
                    {
                        "Id":  "q19",
@@ -752,7 +1105,8 @@
                                        {
                                            "Element":  "Aluminum",
                                            "Amount":  500,
-                                           "Label":  "铝 500kg"
+                                           "Label":  "铝 500kg",
+                                           "LabelEn":  "Aluminum 500kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1K9Nt6BEZf",
@@ -770,7 +1124,24 @@
                                         "13:44 石脑油门",
                                         "14:39 整合更多野水",
                                         "15:11 蘑菇种植整合完毕"
-                                    ]
+                                    ],
+                       "TitleEn":  "Refining Temperature Control; Consolidating Farms",
+                       "DescEn":  "Refining temperature control and consolidating the farm area",
+                       "SegmentsEn":  [
+                                          "0:10 Beginner content ends",
+                                          "0:40 Liquid cooling loop",
+                                          "2:40 Enclosing the power plant",
+                                          "3:20 Liquid blocking mechanics",
+                                          "4:25 Fill coolant",
+                                          "6:30 Reservoir automation",
+                                          "7:29 Power control chips",
+                                          "8:58 Farm consolidation",
+                                          "11:32 Getting liquid naphtha",
+                                          "12:35 Power plant fault",
+                                          "13:44 Naphtha lock",
+                                          "14:39 Tap more wild water",
+                                          "15:11 Mushroom farm integrated"
+                                      ]
                    },
                    {
                        "Id":  "q20",
@@ -788,7 +1159,8 @@
                                        {
                                            "Element":  "Phosphorite",
                                            "Amount":  500,
-                                           "Label":  "磷矿石 500kg"
+                                           "Label":  "磷矿石 500kg",
+                                           "LabelEn":  "Phosphorite 500kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1VkKV6CEjQ",
@@ -806,7 +1178,24 @@
                                         "18:56 毛刺花需要光照",
                                         "20:00 拆除米虱木种植区",
                                         "21:35 小人失禁怎么处理"
-                                    ]
+                                    ],
+                       "TitleEn":  "Eat Forever? If You Have Water, Grow Bristle Blossom",
+                       "DescEn":  "Eat forever? With water available, grow bristle blossom first",
+                       "SegmentsEn":  [
+                                          "0:10 Why bristle blossom",
+                                          "2:35 Upgrading to berry sludge",
+                                          "4:20 CO2 atmosphere farm",
+                                          "5:27 Heating cool polluted water",
+                                          "6:38 Best two-cell liquid lock",
+                                          "7:51 Sieve water irrigation",
+                                          "9:44 Standalone cooling module",
+                                          "14:23 Wrong heavi-watt wiring",
+                                          "15:37 Aquatuner pipe bursts",
+                                          "17:55 Cooling transformers",
+                                          "18:56 Bristle needs light",
+                                          "20:00 Remove mealwood farm",
+                                          "21:35 Handle accidents"
+                                      ]
                    },
                    {
                        "Id":  "q21",
@@ -822,14 +1211,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "DiningTable",
                                               "Count":  1,
-                                              "Label":  "餐桌"
+                                              "Label":  "餐桌",
+                                              "LabelEn":  "Mess Table"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Steel",
                                            "Amount":  300,
-                                           "Label":  "钢 300kg"
+                                           "Label":  "钢 300kg",
+                                           "LabelEn":  "Steel 300kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1ysNR6GE4H",
@@ -848,7 +1239,25 @@
                                         "16:20 检查站氧气瓶",
                                         "17:19 重做天然气发电",
                                         "17:54 挖开冷污水池"
-                                    ]
+                                    ],
+                       "TitleEn":  "Mid-Game Essential: Morale Upgrade",
+                       "DescEn":  "Morale upgrade: build mess tables in the dining room",
+                       "SegmentsEn":  [
+                                          "0:20 Save state check",
+                                          "2:43 Oxygen myths",
+                                          "5:33 Dig out drecko ranch",
+                                          "6:21 Sweep base debris",
+                                          "7:51 Build a lab",
+                                          "8:30 Rec room decor",
+                                          "9:10 Rec building power",
+                                          "10:28 Heavi-watt overload",
+                                          "12:50 Rail food to kitchen",
+                                          "13:42 Upgrade barracks",
+                                          "15:54 Itchy toes",
+                                          "16:20 Checkpoint oxygen bottles",
+                                          "17:19 Redo natural gas power",
+                                          "17:54 Open cool slush pool"
+                                      ]
                    },
                    {
                        "Id":  "q22",
@@ -866,7 +1275,8 @@
                                        {
                                            "Element":  "Ice",
                                            "Amount":  2000,
-                                           "Label":  "冰 2000kg"
+                                           "Label":  "冰 2000kg",
+                                           "LabelEn":  "Ice 2000kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1fcKk6PEBH",
@@ -882,7 +1292,22 @@
                                         "17:31 电路分组",
                                         "18:41 开始控温",
                                         "19:07 设置水源检测通知"
-                                    ]
+                                    ],
+                       "TitleEn":  "Nature Reserve and Base Cooling",
+                       "DescEn":  "Plan a nature reserve and cool down the base",
+                       "SegmentsEn":  [
+                                          "0:34 Current morale breakdown",
+                                          "1:50 Build nature reserve",
+                                          "6:13 Dirt tiles still insulate",
+                                          "6:44 Pip planting",
+                                          "7:24 Route dupes through reserve",
+                                          "8:50 Renovate kitchen",
+                                          "11:10 Base cooling module",
+                                          "16:50 Fill coolant",
+                                          "17:31 Circuit grouping",
+                                          "18:41 Start temperature control",
+                                          "19:07 Water source notifications"
+                                      ]
                    },
                    {
                        "Id":  "q23",
@@ -898,9 +1323,10 @@
                                       ],
                        "Rewards":  [
                                        {
-                                           "Element":  "Coal",
+                                           "Element":  "Carbon",
                                            "Amount":  2000,
-                                           "Label":  "煤炭 2000kg"
+                                           "Label":  "煤炭 2000kg",
+                                           "LabelEn":  "Coal 2000kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1bUKp68E3H",
@@ -914,7 +1340,20 @@
                                         "5:20 减少毛刺花种植",
                                         "6:18 储油石开发",
                                         "9:45 拉水管拉油管"
-                                    ]
+                                    ],
+                       "TitleEn":  "Fast Oil Reservoir Development",
+                       "DescEn":  "Fast oil reservoir development",
+                       "SegmentsEn":  [
+                                          "0:14 Raise decor",
+                                          "0:42 Circuit grouping",
+                                          "2:07 Weave clothing",
+                                          "3:18 Plant buddy buds",
+                                          "4:28 Plastic usage",
+                                          "5:00 Transit tubes",
+                                          "5:20 Reduce bristle blossom",
+                                          "6:18 Oil reservoir development",
+                                          "9:45 Run water and oil pipes"
+                                      ]
                    },
                    {
                        "Id":  "q24",
@@ -930,14 +1369,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "ShearingStation",
                                               "Count":  1,
-                                              "Label":  "剪毛站"
+                                              "Label":  "剪毛站",
+                                              "LabelEn":  "Shearing Station"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Phosphorite",
                                            "Amount":  1000,
-                                           "Label":  "磷矿石 1000kg"
+                                           "Label":  "磷矿石 1000kg",
+                                           "LabelEn":  "Phosphorite 1000kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1mxKh67EEc",
@@ -948,7 +1389,17 @@
                                         "5:02 建造壁虎养殖",
                                         "13:58 冷污调谐",
                                         "14:48 孵化壁虎蛋"
-                                    ]
+                                    ],
+                       "TitleEn":  "Drecko Ranching",
+                       "DescEn":  "Drecko ranching: build a shearing station",
+                       "SegmentsEn":  [
+                                          "0:28 Dig the oil biome",
+                                          "1:15 Build the power plant",
+                                          "3:47 Oil well natural gas power",
+                                          "5:02 Build drecko ranch",
+                                          "13:58 Tune cool polluted water",
+                                          "14:48 Hatch drecko eggs"
+                                      ]
                    },
                    {
                        "Id":  "q25",
@@ -964,14 +1415,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "GasReservoir",
                                               "Count":  1,
-                                              "Label":  "储气库"
+                                              "Label":  "储气库",
+                                              "LabelEn":  "Gas Reservoir"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Aluminum",
                                            "Amount":  1000,
-                                           "Label":  "铝 1000kg"
+                                           "Label":  "铝 1000kg",
+                                           "LabelEn":  "Aluminum 1000kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1Mug46EE2d",
@@ -987,7 +1440,22 @@
                                         "8:40 氢气装罐",
                                         "11:20 贴像素屏",
                                         "12:30 主星探图结束"
-                                    ]
+                                    ],
+                       "TitleEn":  "Taming Water Geysers; Storing Oxygen",
+                       "DescEn":  "Tame water geysers and store oxygen in gas reservoirs",
+                       "SegmentsEn":  [
+                                          "0:28 Wait for dreckos",
+                                          "0:58 Ice biome water",
+                                          "1:50 Dig uranium",
+                                          "2:11 Open cool steam vent",
+                                          "2:56 Dig upward passage",
+                                          "4:17 Find polluted water geyser",
+                                          "6:05 Build solo spacefarer nosecone",
+                                          "7:08 Fill oxygen tanks",
+                                          "8:40 Bottle hydrogen",
+                                          "11:20 Place pixel pack",
+                                          "12:30 Home asteroid mapped"
+                                      ]
                    },
                    {
                        "Id":  "q26",
@@ -1003,14 +1471,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "AutoMiner",
                                               "Count":  1,
-                                              "Label":  "自动挖掘机"
+                                              "Label":  "自动挖掘机",
+                                              "LabelEn":  "Auto-Miner"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Steel",
                                            "Amount":  800,
-                                           "Label":  "钢 800kg"
+                                           "Label":  "钢 800kg",
+                                           "LabelEn":  "Steel 800kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV122ge6NEPg",
@@ -1023,7 +1493,19 @@
                                         "9:07 挖到地表",
                                         "10:23 直通顶部",
                                         "10:45 挖掉浮土整理场地"
-                                    ]
+                                    ],
+                       "TitleEn":  "Classic Metal Volcano Taming",
+                       "DescEn":  "Metal volcano taming: place an auto-miner",
+                       "SegmentsEn":  [
+                                          "0:40 Extend transit tubes up",
+                                          "2:00 Dig aluminum volcano tiles",
+                                          "2:23 Metal volcano module",
+                                          "5:23 Volcano taming keys",
+                                          "8:49 More steel for rockets",
+                                          "9:07 Reach the surface",
+                                          "10:23 Straight to the top",
+                                          "10:45 Clear regolith"
+                                      ]
                    },
                    {
                        "Id":  "q27",
@@ -1039,14 +1521,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "LaunchPad",
                                               "Count":  1,
-                                              "Label":  "火箭平台"
+                                              "Label":  "火箭平台",
+                                              "LabelEn":  "Rocket Platform"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Copper",
                                            "Amount":  2000,
-                                           "Label":  "精炼铜 2000kg"
+                                           "Label":  "精炼铜 2000kg",
+                                           "LabelEn":  "Refined Copper 2000kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1kbg96EEDu",
@@ -1064,7 +1548,24 @@
                                         "12:20 发射前注意事项",
                                         "13:56 发射后的关键操作",
                                         "15:13 调整优先级设置"
-                                    ]
+                                    ],
+                       "TitleEn":  "First Rockets and Data Banks",
+                       "DescEn":  "First rocket class: start with the rocket platform",
+                       "SegmentsEn":  [
+                                          "0:08 Four rocket classes",
+                                          "0:30 How to build rockets",
+                                          "1:44 Data bank rockets",
+                                          "2:44 Interior design",
+                                          "3:30 Design pitfalls",
+                                          "5:05 Data bank schedule",
+                                          "5:20 Crew requirements",
+                                          "5:56 Load water and gas",
+                                          "9:35 Haul oxygen aboard",
+                                          "10:01 Haul food aboard",
+                                          "12:20 Pre-launch checklist",
+                                          "13:56 Post-launch moves",
+                                          "15:13 Adjust priorities"
+                                      ]
                    },
                    {
                        "Id":  "q28",
@@ -1082,7 +1583,8 @@
                                        {
                                            "Element":  "Glass",
                                            "Amount":  800,
-                                           "Label":  "玻璃 800kg"
+                                           "Label":  "玻璃 800kg",
+                                           "LabelEn":  "Glass 800kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1w33B6zEFd",
@@ -1096,7 +1598,20 @@
                                         "11:05 准备食物",
                                         "13:10 出发探图",
                                         "13:33 发光虫养殖模块建造"
-                                    ]
+                                    ],
+                       "TitleEn":  "Scouting Rockets and Shine Bug Ranching",
+                       "DescEn":  "Scouting rockets and shine bug ranching",
+                       "SegmentsEn":  [
+                                          "0:10 Data banks done",
+                                          "2:00 Refit scouting rocket",
+                                          "2:35 Fuel/oxidizer ratio",
+                                          "5:33 Scout interior refit",
+                                          "9:25 Extend range",
+                                          "10:13 Cabin cooling",
+                                          "11:05 Prepare food",
+                                          "13:10 Launch scouting",
+                                          "13:33 Shine bug ranch module"
+                                      ]
                    },
                    {
                        "Id":  "q29",
@@ -1112,14 +1627,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "GourmetCookingStation",
                                               "Count":  1,
-                                              "Label":  "燃气灶"
+                                              "Label":  "燃气灶",
+                                              "LabelEn":  "Gas Range"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Steel",
                                            "Amount":  500,
-                                           "Label":  "钢 500kg"
+                                           "Label":  "钢 500kg",
+                                           "LabelEn":  "Steel 500kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1sP346yEb7",
@@ -1137,7 +1654,24 @@
                                         "10:22 孵化发光虫卵",
                                         "11:14 氧石精炼炉制备氧石",
                                         "12:50 注意火箭剩余燃料"
-                                    ]
+                                    ],
+                       "TitleEn":  "What? You Don\u0027t Eat Berry Sludge?",
+                       "DescEn":  "Make berry sludge: build a gas range",
+                       "SegmentsEn":  [
+                                          "0:18 About meteor showers",
+                                          "1:16 Plant sleet wheat",
+                                          "1:41 Mixed gas leaks",
+                                          "2:31 Semi-auto regolith handling",
+                                          "2:52 Wheat farm piping",
+                                          "4:40 Turn rocket around",
+                                          "6:13 Coolant usage",
+                                          "7:52 Hydroponic tile bug",
+                                          "8:44 Turbine heat leaks",
+                                          "9:30 Craft plywood",
+                                          "10:22 Hatch shine bug eggs",
+                                          "11:14 Oxylite refinery",
+                                          "12:50 Monitor rocket fuel"
+                                      ]
                    },
                    {
                        "Id":  "q30",
@@ -1153,14 +1687,16 @@
                                               "Type":  "buildingBuilt",
                                               "Tag":  "BunkerDoor",
                                               "Count":  1,
-                                              "Label":  "防爆门"
+                                              "Label":  "防爆门",
+                                              "LabelEn":  "Bunker Door"
                                           }
                                       ],
                        "Rewards":  [
                                        {
                                            "Element":  "Steel",
                                            "Amount":  1000,
-                                           "Label":  "钢 1000kg"
+                                           "Label":  "钢 1000kg",
+                                           "LabelEn":  "Steel 1000kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1F6GP61Ey6",
@@ -1175,7 +1711,21 @@
                                         "15:26 探图火箭回归",
                                         "17:40 形成宴会厅",
                                         "19:53 预警自动化设置"
-                                    ]
+                                    ],
+                       "TitleEn":  "Struggling with Meteors? Watch This",
+                       "DescEn":  "Meteor defense: bunker doors protecting the surface",
+                       "SegmentsEn":  [
+                                          "0:15 Why turbines skip grids",
+                                          "1:14 Meteor mechanics",
+                                          "4:18 Meteor timing",
+                                          "5:46 Build assemblers and turrets",
+                                          "7:15 Craft fertilizer",
+                                          "9:48 Set up turrets",
+                                          "12:18 Alert methods",
+                                          "15:26 Scout rocket returns",
+                                          "17:40 Great hall",
+                                          "19:53 Alert automation"
+                                      ]
                    },
                    {
                        "Id":  "q31",
@@ -1193,7 +1743,8 @@
                                        {
                                            "Element":  "Aluminum",
                                            "Amount":  1000,
-                                           "Label":  "铝 1000kg"
+                                           "Label":  "铝 1000kg",
+                                           "LabelEn":  "Aluminum 1000kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1eE3o62ErU",
@@ -1208,7 +1759,21 @@
                                         "10:03 检查舱外各项设置",
                                         "10:31 三人分配工作",
                                         "11:36 三人优先级设置"
-                                    ]
+                                    ],
+                       "TitleEn":  "Building the Expansion Rocket",
+                       "DescEn":  "Build an expansion rocket",
+                       "SegmentsEn":  [
+                                          "0:10 Turret alert automation",
+                                          "0:38 Build expansion rocket",
+                                          "1:53 Key points",
+                                          "3:21 Interior design",
+                                          "6:07 Must-bring supplies",
+                                          "7:23 Wheat farm loaders",
+                                          "9:45 Check supplies",
+                                          "10:03 Check exterior",
+                                          "10:31 Three-person split",
+                                          "11:36 Crew priorities"
+                                      ]
                    },
                    {
                        "Id":  "q32",
@@ -1226,7 +1791,8 @@
                                        {
                                            "Element":  "Abyssalite",
                                            "Amount":  1000,
-                                           "Label":  "深渊晶石 1000kg"
+                                           "Label":  "深渊晶石 1000kg",
+                                           "LabelEn":  "Abyssalite 1000kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1KWuP61E6w",
@@ -1241,7 +1807,21 @@
                                         "11:53 建造灯喙鱼养殖鱼池",
                                         "13:28 探图寻找盐水泉",
                                         "14:17 将盐水抽到鱼池"
-                                    ]
+                                    ],
+                       "TitleEn":  "Rocket Landing and Colonizing",
+                       "DescEn":  "Rocket landing and colonizing",
+                       "SegmentsEn":  [
+                                          "0:20 Deploy landing",
+                                          "1:36 Landing details",
+                                          "2:28 Build rooms after landing",
+                                          "5:35 Dig down to explore",
+                                          "8:36 Pump brine",
+                                          "9:26 Scout returns home",
+                                          "10:58 Haul supplies back",
+                                          "11:53 Gulp fish pond",
+                                          "13:28 Scout for salt water",
+                                          "14:17 Pump salt water to pond"
+                                      ]
                    },
                    {
                        "Id":  "q33",
@@ -1259,7 +1839,8 @@
                                        {
                                            "Element":  "Dirt",
                                            "Amount":  2000,
-                                           "Label":  "泥土 2000kg"
+                                           "Label":  "泥土 2000kg",
+                                           "LabelEn":  "Dirt 2000kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1fpMy6yE6V",
@@ -1273,7 +1854,20 @@
                                         "10:55 灯喙鱼入池",
                                         "11:35 胶乳制作",
                                         "13:10 制作泳衣"
-                                    ]
+                                    ],
+                       "TitleEn":  "Fish into the Pond; Trees in the Base",
+                       "DescEn":  "Fish into the pond and plant trees in the base",
+                       "SegmentsEn":  [
+                                          "0:27 Salt water geyser found",
+                                          "2:11 Enclose the big pit",
+                                          "3:12 Finish the fish pond",
+                                          "3:40 A bug",
+                                          "5:48 Move tier-3 station",
+                                          "7:51 Plant sticky palm tree",
+                                          "10:55 Gulp fish in pond",
+                                          "11:35 Make latex",
+                                          "13:10 Craft swimsuits"
+                                      ]
                    },
                    {
                        "Id":  "q34",
@@ -1291,7 +1885,8 @@
                                        {
                                            "Element":  "Steel",
                                            "Amount":  2000,
-                                           "Label":  "钢 2000kg"
+                                           "Label":  "钢 2000kg",
+                                           "LabelEn":  "Steel 2000kg"
                                        }
                                    ],
                        "VideoUrl":  "https://www.bilibili.com/video/BV1Q6u86fE7C",
@@ -1301,7 +1896,16 @@
                                         "12:20 树鼠养殖模块",
                                         "16:47 N代同堂自动化演示",
                                         "23:02 瀑布怎么造"
-                                    ]
+                                    ],
+                       "TitleEn":  "The Final Nuggets - Wrap Up",
+                       "DescEn":  "Final nuggets: graduate!",
+                       "SegmentsEn":  [
+                                          "0:16 Slickster ranch module",
+                                          "11:04 Adjust drecko range",
+                                          "12:20 Pip ranch module",
+                                          "16:47 Multi-generation automation demo",
+                                          "23:02 How to make waterfalls"
+                                      ]
                    }
                ]
 }

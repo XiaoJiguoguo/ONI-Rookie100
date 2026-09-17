@@ -6,7 +6,7 @@
     <RootNamespace>Rookie100</RootNamespace>
     <LangVersion>9.0</LangVersion>
     <Nullable>disable</Nullable>
-    <Version>0.1.0</Version>
+    <Version>0.4.0</Version>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <GenerateDependencyFile>false</GenerateDependencyFile>
     <!-- 游戏安装路径：优先用环境变量 ONI_GAME_PATH，其次命令行 /p:GamePath=...，最后默认 Steam 库路径 -->

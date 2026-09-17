@@ -21,6 +21,7 @@ namespace Rookie100
                 // 内容与 UI 初始化
                 Content.QuestStore.SetContentPath(mod.ContentPath);
                 UI.LayoutStore.SetContentPath(mod.ContentPath);
+                UI.Lang.Load();
                 Content.QuestStore.Load();
 
                 // 应用所有 [HarmonyPatch] 注解补丁

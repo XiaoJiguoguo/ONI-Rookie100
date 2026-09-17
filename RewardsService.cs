@@ -32,15 +32,17 @@ namespace Rookie100
 
         private static void DeliverOne(QuestRewardDef reward, Vector3 spawnPosition)
         {
+            // 元素 id 纠正（Coal 是 oreTag，真实元素 id 为 Carbon；错误 id 会静默投放失败）
+            string elementId = QuestStore.CanonicalElementId(reward.Element);
             try
             {
                 // 游戏原生补给包：在指定位置生成对应物资的包裹
-                var info = new CarePackageInfo(reward.Element, reward.Amount, () => true, null);
+                var info = new CarePackageInfo(elementId, reward.Amount, () => true, null);
                 GameObject delivered = info.Deliver(spawnPosition);
 
                 if (delivered == null)
                 {
-                    ModLogger.Warn($"奖励投放失败: {reward.Element} x{reward.Amount}");
+                    ModLogger.Warn($"奖励投放失败: {elementId} x{reward.Amount}");
                     return;
                 }
 
@@ -58,7 +60,7 @@ namespace Rookie100
             }
             catch (Exception e)
             {
-                ModLogger.Error($"奖励投放异常 {reward.Element}", e);
+                ModLogger.Error($"奖励投放异常 {elementId}", e);
             }
         }
 
