@@ -1,0 +1,1307 @@
+{
+    "Version":  2,
+    "Phases":  [
+                   {
+                       "Title":  "阶段一 · 活下来",
+                       "Id":  "early",
+                       "Desc":  "厕所→氧气→电网→食物，先站稳脚跟"
+                   },
+                   {
+                       "Title":  "阶段二 · 工业化",
+                       "Id":  "mid",
+                       "Desc":  "科研→炼钢→精炼→冷却→士气，工业起飞"
+                   },
+                   {
+                       "Title":  "阶段三 · 深度开发",
+                       "Id":  "late",
+                       "Desc":  "养殖→泉→火山→火箭，点满科技树"
+                   },
+                   {
+                       "Title":  "阶段四 · 太空拓展",
+                       "Id":  "space",
+                       "Desc":  "开拓星系，飞向太空，最终毕业"
+                   }
+               ],
+    "Quests":  [
+                   {
+                       "Id":  "q01",
+                       "Phase":  "early",
+                       "Order":  1,
+                       "Title":  "公共厕所",
+                       "Description":  "建造户外厕所，解决复制人的如厕需求",
+                       "Requires":  [
+
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "Outhouse",
+                                              "Count":  1,
+                                              "Label":  "户外厕所"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Sand",
+                                           "Amount":  1000,
+                                           "Label":  "沙子 1000kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1JP7N6oEsW",
+                       "Segments":  [
+                                        "0:00 前言，长期档计划",
+                                        "0:36 游戏版本与更新",
+                                        "5:13 模组介绍",
+                                        "7:48 游戏设置",
+                                        "10:00 如何选人",
+                                        "15:41 游戏界面与操作",
+                                        "19:15 游戏开局",
+                                        "21:43 前两周期任务——造公告厕所"
+                                    ]
+                   },
+                   {
+                       "Id":  "q02",
+                       "Phase":  "early",
+                       "Order":  2,
+                       "Title":  "入坑必学，贯穿游戏前后的基础操作与机制",
+                       "Description":  "熟悉游戏界面、操作与基础机制",
+                       "Requires":  [
+                                        "q01"
+                                    ],
+                       "Objectives":  [
+
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Dirt",
+                                           "Amount":  500,
+                                           "Label":  "泥土 500kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1F4jR6wEDG",
+                       "Segments":  [
+                                        "0:00 上一期补充说明",
+                                        "2:52 招人分配",
+                                        "3:50 无关问题不回复",
+                                        "4:56 镜头标记与转移操作",
+                                        "6:59 楼层规划与挖掘",
+                                        "7:48 手压泵打水与初期二氧化碳处理",
+                                        "10:14 学会看任务清单与优先级调整",
+                                        "15:32 洗手盆设置",
+                                        "16:31 电路连接问题",
+                                        "18:49 食物中毒问题"
+                                    ]
+                   },
+                   {
+                       "Id":  "q03",
+                       "Phase":  "early",
+                       "Order":  3,
+                       "Title":  "前期氧气扩散与二氧化碳治理",
+                       "Description":  "建造氧气扩散器，稳定前期氧气",
+                       "Requires":  [
+                                        "q02"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "MineralDeoxidizer",
+                                              "Count":  1,
+                                              "Label":  "氧气扩散器"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Algae",
+                                           "Amount":  1500,
+                                           "Label":  "藻类 1500kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1mn7Y6UEMp",
+                       "Segments":  [
+                                        "0:00 关于是否启用临近性",
+                                        "3:22 关于科技树",
+                                        "4:48 学会看信息卡",
+                                        "5:58 如何限制饮食",
+                                        "7:08 关于黄色警报",
+                                        "8:15 学会看气体概览",
+                                        "10:20 初期如何制氧和处理二氧化碳",
+                                        "11:06 学会一些基本的数据计算",
+                                        "12:06 打印舱招人注意事项",
+                                        "14:15 初期学会挖野外食物",
+                                        "15:30 遇到菌泥怎么办",
+                                        "16:50 通行主干道预留宽度"
+                                    ]
+                   },
+                   {
+                       "Id":  "q04",
+                       "Phase":  "early",
+                       "Order":  4,
+                       "Title":  "二级科研开始 管道与电路的初步了解",
+                       "Description":  "开启二级科研，了解管道与电路",
+                       "Requires":  [
+                                        "q03"
+                                    ],
+                       "Objectives":  [
+
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Copper",
+                                           "Amount":  300,
+                                           "Label":  "精炼铜 300kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV19a7V6zE64",
+                       "Segments":  [
+                                        "0:00 关于基地布局",
+                                        "1:16 建造宿舍",
+                                        "1:40 建造二级科研站台",
+                                        "2:55 构成房间的要求",
+                                        "4:07 注意发光虫的影响",
+                                        "5:36 点技能该注意什么",
+                                        "8:00 挖掘等级对应的挖掘对象",
+                                        "8:50 如何不搭梯子挖掘",
+                                        "9:08 如何擦水供应研究",
+                                        "11:18 研究卫生间三件套",
+                                        "12:50 游戏管道怎么理解",
+                                        "16:08 如何洗点",
+                                        "17:06 电路负载怎么看",
+                                        "20:30 净水器有什么用",
+                                        "21:05 需不需要保护区",
+                                        "21:28 需不需要淋浴间",
+                                        "23:03 如何增加日程排班"
+                                    ]
+                   },
+                   {
+                       "Id":  "q05",
+                       "Phase":  "early",
+                       "Order":  5,
+                       "Title":  "轻松搞定巨简单的卫生间循环",
+                       "Description":  "建造冲水厕所，组成卫生间循环",
+                       "Requires":  [
+                                        "q04"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "FlushToilet",
+                                              "Count":  1,
+                                              "Label":  "冲水厕所"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Sand",
+                                           "Amount":  2000,
+                                           "Label":  "沙子 2000kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1kg7p61EzN",
+                       "Segments":  [
+                                        "0:00 针对上一期的补充",
+                                        "1:26 详解抽水马桶",
+                                        "3:15 卫生间循环的构成",
+                                        "10:00 完善整个卫生间循环",
+                                        "12:18 卫生间注意事项",
+                                        "13:43 关于拆除操作的细节",
+                                        "14:26 关于光照与判定格",
+                                        "18:32 招到操作员",
+                                        "19:40 构成餐厅的条件",
+                                        "20:48 禁用饮水机",
+                                        "21:52 斜角造砖"
+                                    ]
+                   },
+                   {
+                       "Id":  "q06",
+                       "Phase":  "early",
+                       "Order":  6,
+                       "Title":  "种植区选址",
+                       "Description":  "放下第一批种植箱，选定种植区",
+                       "Requires":  [
+                                        "q05"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "PlanterBox",
+                                              "Count":  1,
+                                              "Label":  "种植箱"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Dirt",
+                                           "Amount":  1500,
+                                           "Label":  "泥土 1500kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1EETw6WE2w",
+                       "Segments":  [
+                                        "0:00 点技能的顺序",
+                                        "1:05 种植区选址注意事项",
+                                        "2:33 整理水池",
+                                        "3:48 建造口粮箱的作用",
+                                        "4:48 鼓膜破裂的原因以及怎么看压力",
+                                        "7:07 将食物集中于口粮箱",
+                                        "7:33 挥发物的超压值",
+                                        "8:05 需不需要整理碎片",
+                                        "9:13 挖掘基地外围收集种子与食物",
+                                        "10:31 建造种植箱开始种植米虱木",
+                                        "13:35 解锁通知器",
+                                        "15:25 如何使用通知器"
+                                    ]
+                   },
+                   {
+                       "Id":  "q07",
+                       "Phase":  "early",
+                       "Order":  7,
+                       "Title":  "学会电路分组 永不过载",
+                       "Description":  "用变压器给电路分组，永不过载",
+                       "Requires":  [
+                                        "q06"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "PowerTransformer",
+                                              "Count":  1,
+                                              "Label":  "变压器"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Copper",
+                                           "Amount":  1000,
+                                           "Label":  "精炼铜 1000kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1hjTq6kEa9",
+                       "Segments":  [
+                                        "0:00 人数增多要增加氧气扩散器",
+                                        "1:07 人数增多要增加种植数量",
+                                        "2:49 转移口粮箱",
+                                        "3:18 建造液体装桶器",
+                                        "4:26 当前电路问题",
+                                        "7:32 建造煤炭发电机",
+                                        "9:15 发电机为什么要铺水",
+                                        "9:45 智能电池的阈值",
+                                        "10:14 液体排倒器怎么用",
+                                        "11:45 建造液泵",
+                                        "12:42 为什么没人给发电机送煤炭",
+                                        "14:06 电路分组",
+                                        "17:15 变压器铺液体",
+                                        "19:58 继续往上挖",
+                                        "20:31 造好冰箱"
+                                    ]
+                   },
+                   {
+                       "Id":  "q08",
+                       "Phase":  "early",
+                       "Order":  8,
+                       "Title":  "种植顶针芦苇并学会食物过渡",
+                       "Description":  "用农场砖种植顶针芦苇",
+                       "Requires":  [
+                                        "q07"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "FarmTile",
+                                              "Count":  1,
+                                              "Label":  "农场砖"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Phosphorite",
+                                           "Amount":  500,
+                                           "Label":  "磷矿石 500kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1YETE6tEUq",
+                       "Segments":  [
+                                        "0:05 制氧首选",
+                                        "0:35 气压服有什么用",
+                                        "0:48 芦苇纤维怎么获取",
+                                        "2:25 水门是不是bug",
+                                        "4:04 野外如何临时供氧",
+                                        "4:25 怎么倒出水门",
+                                        "6:35 挖开湿地生态区",
+                                        "8:28 纤维的来源",
+                                        "9:58 种植顶针芦苇",
+                                        "10:37 为什么要做食物过渡",
+                                        "12:17 为什么还不造金属精炼器",
+                                        "13:13 如果构造一格水门",
+                                        "15:40 如何应对菌泥破坏水门",
+                                        "17:09 箱子的仅限清扫",
+                                        "18:30 如何控制箱子不搬运"
+                                    ]
+                   },
+                   {
+                       "Id":  "q09",
+                       "Phase":  "early",
+                       "Order":  9,
+                       "Title":  "高压制氧从建造到启动 稳定防崩必学",
+                       "Description":  "建造电解水制氧模块（高压）",
+                       "Requires":  [
+                                        "q08"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "Electrolyzer",
+                                              "Count":  1,
+                                              "Label":  "电解器"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Algae",
+                                           "Amount":  2000,
+                                           "Label":  "藻类 2000kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1UwT463E7X",
+                       "Segments":  [
+                                        "0:15 建造气压服检查站",
+                                        "0:58 粘液肺病有什么影响",
+                                        "1:48 绿菌怎么处理",
+                                        "3:20 为什么检查站出不去",
+                                        "4:08 开始建造高压制氧",
+                                        "19:40 补齐发电机和电池",
+                                        "21:03 建造气压服存放柜",
+                                        "21:25 基地内怎么造排气口",
+                                        "23:03 高压制氧防崩关键"
+                                    ]
+                   },
+                   {
+                       "Id":  "q10",
+                       "Phase":  "early",
+                       "Order":  10,
+                       "Title":  "普通制氧也不赖 崩了随意修",
+                       "Description":  "建造常规制氧：电解器配套气泵",
+                       "Requires":  [
+                                        "q09"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "GasPump",
+                                              "Count":  1,
+                                              "Label":  "气泵"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Aluminum",
+                                           "Amount":  500,
+                                           "Label":  "铝 500kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV14vMP65EsL",
+                       "Segments":  [
+                                        "0:05 针对上期补充说明",
+                                        "1:02 开始建造普通制氧",
+                                        "3:50 绿黄白口不得串联",
+                                        "4:20 普通制氧多余氢气的处理",
+                                        "5:35 三块关键砖",
+                                        "6:45 重要的氢气管道连接",
+                                        "8:39 氢氧分离的原理",
+                                        "10:40 等待打印小树鼠",
+                                        "11:46 为什么会有多余的氢气",
+                                        "12:42 制氧模块不要外接",
+                                        "14:08 气压服充气与耗电",
+                                        "16:14 普通制氧堵管",
+                                        "17:28 挖铀矿"
+                                    ]
+                   },
+                   {
+                       "Id":  "q11",
+                       "Phase":  "early",
+                       "Order":  11,
+                       "Title":  "金属精炼",
+                       "Description":  "建造金属精炼厂，开始精炼金属",
+                       "Requires":  [
+                                        "q10"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "MetalRefinery",
+                                              "Count":  1,
+                                              "Label":  "金属精炼厂"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Copper",
+                                           "Amount":  1500,
+                                           "Label":  "精炼铜 1500kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1RsT16ME6U",
+                       "Segments":  [
+                                        "0:05 针对上期补充说明",
+                                        "3:38 净化污染氧",
+                                        "6:24 重要时间节点5技能点",
+                                        "7:10 挖开冰原",
+                                        "9:28 精炼器管道连接",
+                                        "12:04 精炼器冷却剂详解",
+                                        "17:19 冷却剂换热回流",
+                                        "18:47 补种蘑菇",
+                                        "19:36 临时降温怎么做",
+                                        "20:17 打印树鼠",
+                                        "21:35 污染水整理",
+                                        "21:49 野生壁虎剪毛"
+                                    ]
+                   },
+                   {
+                       "Id":  "q12",
+                       "Phase":  "early",
+                       "Order":  12,
+                       "Title":  "辐射杀菌与食物保鲜",
+                       "Description":  "建储物箱处理物资，学会食物保鲜",
+                       "Requires":  [
+                                        "q11"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "StorageLocker",
+                                              "Count":  1,
+                                              "Label":  "储物箱"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "BleachStone",
+                                           "Amount":  200,
+                                           "Label":  "漂白石 200kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV12jT962EPF",
+                       "Segments":  [
+                                        "0:45 如何使用藻类箱",
+                                        "1:28 压力升高怎么看",
+                                        "3:20 精炼水过冷",
+                                        "4:01 三级科研做不了",
+                                        "5:08 修改辐射杀菌",
+                                        "6:04 改造卫生间",
+                                        "7:51 研究员洗点",
+                                        "8:45 开始建造食物保鲜",
+                                        "9:27 辐射如何杀菌",
+                                        "10:54 气闸保鲜机制",
+                                        "13:27 厨房餐厅加装清扫器",
+                                        "14:18 剩饭是怎么产生的",
+                                        "17:00 保鲜自动化逻辑",
+                                        "19:40 各处添加清扫器",
+                                        "21:33 如何查看暗泉类型"
+                                    ]
+                   },
+                   {
+                       "Id":  "q13",
+                       "Phase":  "early",
+                       "Order":  13,
+                       "Title":  "天然气发电 树鼠种植",
+                       "Description":  "建造天然气发电机，开发新能源",
+                       "Requires":  [
+                                        "q12"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "MethaneGenerator",
+                                              "Count":  1,
+                                              "Label":  "天然气发电机"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Coal",
+                                           "Amount":  2000,
+                                           "Label":  "煤炭 2000kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV15xMb6tEM9",
+                       "Segments":  [
+                                        "0:05 上期问题补充说明",
+                                        "2:40 种植芦苇前选好场地",
+                                        "4:43 天然气喷孔开发",
+                                        "9:12 如何调控发电优先级",
+                                        "11:02 治理二氧化碳",
+                                        "12:25 芦苇种植场地挖掘",
+                                        "14:23 气闸造土",
+                                        "15:11 蓝图占位",
+                                        "16:11 树鼠种植规则",
+                                        "18:25 树鼠开始种植芦苇",
+                                        "21:00 发现低温泥浆泉",
+                                        "21:48 种植野生芦苇的产量与作用"
+                                    ]
+                   },
+                   {
+                       "Id":  "q14",
+                       "Phase":  "early",
+                       "Order":  14,
+                       "Title":  "游戏前期总结 基地围挡",
+                       "Description":  "用瓷砖把基地围挡起来（至少 20 块）",
+                       "Requires":  [
+                                        "q13"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "Tile",
+                                              "Count":  20,
+                                              "Label":  "瓷砖墙"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Obsidian",
+                                           "Amount":  1000,
+                                           "Label":  "黑曜石 1000kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1dVMV6JEVe",
+                       "Segments":  [
+                                        "0:04 目前状态检视",
+                                        "3:25 不用水泉也能顶一段时间",
+                                        "4:56 电不够用氢电",
+                                        "6:25 管道优先级",
+                                        "8:26 冰变温板怎么用",
+                                        "9:08 基地外围隔热",
+                                        "10:42 气罐抽出器",
+                                        "11:49 进一步解释管道优先级",
+                                        "13:58 基地整理",
+                                        "15:14 发光虫杀菌",
+                                        "16:47 气压服运送",
+                                        "18:40 如何构造两格水门",
+                                        "20:36 封闭基地其他出入口",
+                                        "21:28 启用检查站"
+                                    ]
+                   },
+                   {
+                       "Id":  "q15",
+                       "Phase":  "mid",
+                       "Order":  15,
+                       "Title":  "三级科研 炼钢准备",
+                       "Description":  "开启三级科研，为炼钢做准备",
+                       "Requires":  [
+                                        "q14"
+                                    ],
+                       "Objectives":  [
+
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Steel",
+                                           "Amount":  200,
+                                           "Label":  "钢 200kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1FJMH6EEjr",
+                       "Segments":  [
+                                        "0:04 找水泉很重要",
+                                        "2:50 建造三级科研",
+                                        "4:52 辐射来源",
+                                        "6:22 粒子行进方向设置",
+                                        "7:41 如何阻挡辐射",
+                                        "9:52 开始准备野外炼钢材料",
+                                        "10:16 穿上气压服加挖掘属性",
+                                        "11:19 种植冰息萝卜",
+                                        "12:45 挖到原油区",
+                                        "14:00 造出四级科研站台",
+                                        "14:25 分析水泉获得磁盘",
+                                        "15:00 液体水泉怎么开发",
+                                        "15:32 挖化石",
+                                        "16:59 太空服训练有什么用",
+                                        "17:45 搬运炼钢原料",
+                                        "19:05 精炼碳注意事项",
+                                        "19:38 化石与钢转化比例",
+                                        "20:09 炼钢热量"
+                                    ]
+                   },
+                   {
+                       "Id":  "q16",
+                       "Phase":  "mid",
+                       "Order":  16,
+                       "Title":  "跨过这道坎 野外炼钢和冷却模块",
+                       "Description":  "野外炼钢：搭起冷却模块（液温调节器）",
+                       "Requires":  [
+                                        "q15"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "LiquidConditioner",
+                                              "Count":  1,
+                                              "Label":  "液温调节器"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Steel",
+                                           "Amount":  500,
+                                           "Label":  "钢 500kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1baNJ6DEUx",
+                       "Segments":  [
+                                        "0:04 分析间歇泉掉出磁盘",
+                                        "2:20 炼钢前的注意事项",
+                                        "3:20 间歇泉喷口位置",
+                                        "4:02 挖钻石以及原油区注意事项",
+                                        "4:50 净化污染水",
+                                        "6:18 精炼器清空库存",
+                                        "7:20 炼钢冷却剂注意事项",
+                                        "11:08 修改蘑菇种植",
+                                        "12:11 四级科研技能",
+                                        "13:23 建造存储砖",
+                                        "15:29 冷却模块原理",
+                                        "16:18 冷却模块建造以及注意事项"
+                                    ]
+                   },
+                   {
+                       "Id":  "q17",
+                       "Phase":  "mid",
+                       "Order":  17,
+                       "Title":  "原油精炼 强制相变",
+                       "Description":  "建造原油精炼厂，学会强制相变",
+                       "Requires":  [
+                                        "q16"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "OilRefinery",
+                                              "Count":  1,
+                                              "Label":  "原油精炼厂"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Steel",
+                                           "Amount":  300,
+                                           "Label":  "钢 300kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV135N36cEg7",
+                       "Segments":  [
+                                        "0:04 上期问题补充说明",
+                                        "2:50 确定炼油区域",
+                                        "3:04 原油精炼工业流程",
+                                        "5:18 双油门真空隔热怎么做",
+                                        "7:33 模块抽真空",
+                                        "10:03 建造高负荷导线",
+                                        "11:30 建造液泵抽原油",
+                                        "13:04 储液库控制精炼器",
+                                        "14:16 吃气门怎么造",
+                                        "15:30 工作台制作密封圈",
+                                        "16:00 建造石油发电机",
+                                        "17:25 液泵只抽原油",
+                                        "17:51 复习管道优先级",
+                                        "18:40 保护电厂有电",
+                                        "20:05 强制相变炼油"
+                                    ]
+                   },
+                   {
+                       "Id":  "q18",
+                       "Phase":  "mid",
+                       "Order":  18,
+                       "Title":  "超详细炼钢模块建造过程",
+                       "Description":  "建成炼钢模块：蒸汽机回收废热",
+                       "Requires":  [
+                                        "q17"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "SteamTurbine",
+                                              "Count":  1,
+                                              "Label":  "蒸汽机"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Glass",
+                                           "Amount":  1200,
+                                           "Label":  "玻璃 1200kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1iTNm6rERB",
+                       "Segments":  [
+                                        "0:10 萌新可能遇到的问题",
+                                        "1:40 抄文档不要抄视频",
+                                        "2:31 建造炼钢模块",
+                                        "18:45 开始炼钢"
+                                    ]
+                   },
+                   {
+                       "Id":  "q19",
+                       "Phase":  "mid",
+                       "Order":  19,
+                       "Title":  "炼油控温 整合种植区",
+                       "Description":  "炼油控温，整合种植区",
+                       "Requires":  [
+                                        "q18"
+                                    ],
+                       "Objectives":  [
+
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Aluminum",
+                                           "Amount":  500,
+                                           "Label":  "铝 500kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1K9Nt6BEZf",
+                       "Segments":  [
+                                        "0:10 新手内容结束",
+                                        "0:40 液冷循环建造",
+                                        "2:40 围挡形成电厂",
+                                        "3:20 液体阻挡机制",
+                                        "4:25 灌液冷冷却剂",
+                                        "6:30 储液库自动化",
+                                        "7:29 电控站制作芯片",
+                                        "8:58 种植区整合",
+                                        "11:32 获取液态石脑油",
+                                        "12:35 电厂合闸问题",
+                                        "13:44 石脑油门",
+                                        "14:39 整合更多野水",
+                                        "15:11 蘑菇种植整合完毕"
+                                    ]
+                   },
+                   {
+                       "Id":  "q20",
+                       "Phase":  "mid",
+                       "Order":  20,
+                       "Title":  "吃什么永生？有水先上刺花",
+                       "Description":  "吃什么永生？有水先上刺花",
+                       "Requires":  [
+                                        "q19"
+                                    ],
+                       "Objectives":  [
+
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Phosphorite",
+                                           "Amount":  500,
+                                           "Label":  "磷矿石 500kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1VkKV6CEjQ",
+                       "Segments":  [
+                                        "0:10 为什么种毛刺花",
+                                        "2:35 刺花升级为浆果糕",
+                                        "4:20 种植区充二氧化碳",
+                                        "5:27 冷污升温",
+                                        "6:38 性价比最高的二格油门",
+                                        "7:51 污水净化灌溉刺花",
+                                        "9:44 单独造一个冷却模块",
+                                        "14:23 粗线连接的错误方式",
+                                        "15:37 为什么液冷机绿口爆管",
+                                        "17:55 变压器降温",
+                                        "18:56 毛刺花需要光照",
+                                        "20:00 拆除米虱木种植区",
+                                        "21:35 小人失禁怎么处理"
+                                    ]
+                   },
+                   {
+                       "Id":  "q21",
+                       "Phase":  "mid",
+                       "Order":  21,
+                       "Title":  "中期必做的事 士气升档",
+                       "Description":  "士气升档：建造食堂餐桌",
+                       "Requires":  [
+                                        "q20"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "DiningTable",
+                                              "Count":  1,
+                                              "Label":  "餐桌"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Steel",
+                                           "Amount":  300,
+                                           "Label":  "钢 300kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1ysNR6GE4H",
+                       "Segments":  [
+                                        "0:20 当前存档状态",
+                                        "2:43 制氧的误区",
+                                        "5:33 挖开壁虎养殖区",
+                                        "6:21 清理基地内部碎片",
+                                        "7:51 构建实验室",
+                                        "8:30 娱乐室装修",
+                                        "9:10 娱乐建筑接电",
+                                        "10:28 粗线过载的问题",
+                                        "12:50 用轨道食物送厨房",
+                                        "13:42 升级宿舍",
+                                        "15:54 痒痒的脚趾",
+                                        "16:20 检查站氧气瓶",
+                                        "17:19 重做天然气发电",
+                                        "17:54 挖开冷污水池"
+                                    ]
+                   },
+                   {
+                       "Id":  "q22",
+                       "Phase":  "mid",
+                       "Order":  22,
+                       "Title":  "自然保护区与基地冷却",
+                       "Description":  "规划自然保护区，给基地降温",
+                       "Requires":  [
+                                        "q21"
+                                    ],
+                       "Objectives":  [
+
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Ice",
+                                           "Amount":  2000,
+                                           "Label":  "冰 2000kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1fcKk6PEBH",
+                       "Segments":  [
+                                        "0:34 目前小人士气构成",
+                                        "1:50 构造自然保护区",
+                                        "6:13 毫克土块依然隔热",
+                                        "6:44 树鼠种植",
+                                        "7:24 让小人路过保护区",
+                                        "8:50 改造厨房",
+                                        "11:10 建造基地冷却模块",
+                                        "16:50 灌入冷却剂",
+                                        "17:31 电路分组",
+                                        "18:41 开始控温",
+                                        "19:07 设置水源检测通知"
+                                    ]
+                   },
+                   {
+                       "Id":  "q23",
+                       "Phase":  "mid",
+                       "Order":  23,
+                       "Title":  "储油石快速开发",
+                       "Description":  "储油石快速开发",
+                       "Requires":  [
+                                        "q22"
+                                    ],
+                       "Objectives":  [
+
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Coal",
+                                           "Amount":  2000,
+                                           "Label":  "煤炭 2000kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1bUKp68E3H",
+                       "Segments":  [
+                                        "0:14 提升室内装饰度",
+                                        "0:42 电路分组",
+                                        "2:07 纺织机织衣服",
+                                        "3:18 种植同伴芽",
+                                        "4:28 塑料的消耗",
+                                        "5:00 建造运载管道",
+                                        "5:20 减少毛刺花种植",
+                                        "6:18 储油石开发",
+                                        "9:45 拉水管拉油管"
+                                    ]
+                   },
+                   {
+                       "Id":  "q24",
+                       "Phase":  "late",
+                       "Order":  24,
+                       "Title":  "壁虎养殖",
+                       "Description":  "壁虎养殖：建剪毛站",
+                       "Requires":  [
+                                        "q23"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "ShearingStation",
+                                              "Count":  1,
+                                              "Label":  "剪毛站"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Phosphorite",
+                                           "Amount":  1000,
+                                           "Label":  "磷矿石 1000kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1mxKh67EEc",
+                       "Segments":  [
+                                        "0:28 挖原油区",
+                                        "1:15 做电厂",
+                                        "3:47 油井天然气发电",
+                                        "5:02 建造壁虎养殖",
+                                        "13:58 冷污调谐",
+                                        "14:48 孵化壁虎蛋"
+                                    ]
+                   },
+                   {
+                       "Id":  "q25",
+                       "Phase":  "late",
+                       "Order":  25,
+                       "Title":  "开水泉 存氧气",
+                       "Description":  "开水泉，建储气库存氧气",
+                       "Requires":  [
+                                        "q24"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "GasReservoir",
+                                              "Count":  1,
+                                              "Label":  "储气库"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Aluminum",
+                                           "Amount":  1000,
+                                           "Label":  "铝 1000kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1Mug46EE2d",
+                       "Segments":  [
+                                        "0:28 等壁虎成型",
+                                        "0:58 冰原抽水",
+                                        "1:50 挖铀矿",
+                                        "2:11 挖开低温蒸汽喷孔",
+                                        "2:56 挖开向上的通道",
+                                        "4:17 发现污水泉",
+                                        "6:05 建造单人前锥",
+                                        "7:08 氧气灌入气罐货舱",
+                                        "8:40 氢气装罐",
+                                        "11:20 贴像素屏",
+                                        "12:30 主星探图结束"
+                                    ]
+                   },
+                   {
+                       "Id":  "q26",
+                       "Phase":  "late",
+                       "Order":  26,
+                       "Title":  "典型金属火山开发",
+                       "Description":  "金属火山开发：放自动挖掘机",
+                       "Requires":  [
+                                        "q25"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "AutoMiner",
+                                              "Count":  1,
+                                              "Label":  "自动挖掘机"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Steel",
+                                           "Amount":  800,
+                                           "Label":  "钢 800kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV122ge6NEPg",
+                       "Segments":  [
+                                        "0:40 向上拉运载管道",
+                                        "2:00 挖开铝火山土块",
+                                        "2:23 建造金属火山开发模块",
+                                        "5:23 金属火山开发重点事项",
+                                        "8:49 继续炼钢为火箭准备",
+                                        "9:07 挖到地表",
+                                        "10:23 直通顶部",
+                                        "10:45 挖掉浮土整理场地"
+                                    ]
+                   },
+                   {
+                       "Id":  "q27",
+                       "Phase":  "late",
+                       "Order":  27,
+                       "Title":  "第一类火箭 数据磁盘",
+                       "Description":  "建造第一类火箭：从火箭平台起步",
+                       "Requires":  [
+                                        "q26"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "LaunchPad",
+                                              "Count":  1,
+                                              "Label":  "火箭平台"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Copper",
+                                           "Amount":  2000,
+                                           "Label":  "精炼铜 2000kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1kbg96EEDu",
+                       "Segments":  [
+                                        "0:08 四大类火箭",
+                                        "0:30 火箭怎么造",
+                                        "1:44 如何搭建磁盘火箭",
+                                        "2:44 舱内设计",
+                                        "3:30 设计误区",
+                                        "5:05 设置搓磁盘日程排班",
+                                        "5:20 人员要求",
+                                        "5:56 灌水灌气",
+                                        "9:35 搬运氧气进舱",
+                                        "10:01 搬运食物进舱",
+                                        "12:20 发射前注意事项",
+                                        "13:56 发射后的关键操作",
+                                        "15:13 调整优先级设置"
+                                    ]
+                   },
+                   {
+                       "Id":  "q28",
+                       "Phase":  "late",
+                       "Order":  28,
+                       "Title":  "探图火箭 光虫养殖",
+                       "Description":  "探图火箭与光虫养殖",
+                       "Requires":  [
+                                        "q27"
+                                    ],
+                       "Objectives":  [
+
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Glass",
+                                           "Amount":  800,
+                                           "Label":  "玻璃 800kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1w33B6zEFd",
+                       "Segments":  [
+                                        "0:10 搓磁盘结束",
+                                        "2:00 改造探图火箭",
+                                        "2:35 氧化剂与燃料配比",
+                                        "5:33 探图火箭舱内改造",
+                                        "9:25 增加火箭续航",
+                                        "10:13 舱内降温",
+                                        "11:05 准备食物",
+                                        "13:10 出发探图",
+                                        "13:33 发光虫养殖模块建造"
+                                    ]
+                   },
+                   {
+                       "Id":  "q29",
+                       "Phase":  "late",
+                       "Order":  29,
+                       "Title":  "什么？你不吃浆果糕？",
+                       "Description":  "做浆果糕：建造燃气灶",
+                       "Requires":  [
+                                        "q28"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "GourmetCookingStation",
+                                              "Count":  1,
+                                              "Label":  "燃气灶"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Steel",
+                                           "Amount":  500,
+                                           "Label":  "钢 500kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1sP346yEb7",
+                       "Segments":  [
+                                        "0:18 关于流星雨",
+                                        "1:16 种植冰霜小麦",
+                                        "1:41 抽到杂气",
+                                        "2:31 半自动处理结块流星雨",
+                                        "2:52 小麦种植盘管",
+                                        "4:40 火箭调转方向",
+                                        "6:13 冷却剂的使用",
+                                        "7:52 液培砖的bug",
+                                        "8:44 蒸汽机漏温处理",
+                                        "9:30 制作胶合板",
+                                        "10:22 孵化发光虫卵",
+                                        "11:14 氧石精炼炉制备氧石",
+                                        "12:50 注意火箭剩余燃料"
+                                    ]
+                   },
+                   {
+                       "Id":  "q30",
+                       "Phase":  "late",
+                       "Order":  30,
+                       "Title":  "还不会打流星？且看过来",
+                       "Description":  "打流星：铺防爆门保护地表",
+                       "Requires":  [
+                                        "q29"
+                                    ],
+                       "Objectives":  [
+                                          {
+                                              "Type":  "buildingBuilt",
+                                              "Tag":  "BunkerDoor",
+                                              "Count":  1,
+                                              "Label":  "防爆门"
+                                          }
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Steel",
+                                           "Amount":  1000,
+                                           "Label":  "钢 1000kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1F6GP61Ey6",
+                       "Segments":  [
+                                        "0:15 为何蒸汽机不接外部电路",
+                                        "1:14 关于流星雨刷新机制",
+                                        "4:18 流星抵达的时间点",
+                                        "5:46 建造组装机和炮台",
+                                        "7:15 制作肥料",
+                                        "9:48 架设炮台",
+                                        "12:18 预警方式",
+                                        "15:26 探图火箭回归",
+                                        "17:40 形成宴会厅",
+                                        "19:53 预警自动化设置"
+                                    ]
+                   },
+                   {
+                       "Id":  "q31",
+                       "Phase":  "space",
+                       "Order":  31,
+                       "Title":  "开拓型火箭的建造",
+                       "Description":  "建造开拓型火箭",
+                       "Requires":  [
+                                        "q30"
+                                    ],
+                       "Objectives":  [
+
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Aluminum",
+                                           "Amount":  1000,
+                                           "Label":  "铝 1000kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1eE3o62ErU",
+                       "Segments":  [
+                                        "0:10 炮台预警自动化修改",
+                                        "0:38 建造开拓型火箭",
+                                        "1:53 重要事项",
+                                        "3:21 舱内设计",
+                                        "6:07 外出开拓必带的资源",
+                                        "7:23 小麦种植添加装载器",
+                                        "9:45 检查舱内资源是否带齐",
+                                        "10:03 检查舱外各项设置",
+                                        "10:31 三人分配工作",
+                                        "11:36 三人优先级设置"
+                                    ]
+                   },
+                   {
+                       "Id":  "q32",
+                       "Phase":  "space",
+                       "Order":  32,
+                       "Title":  "火箭着陆与星球开拓",
+                       "Description":  "火箭着陆与星球开拓",
+                       "Requires":  [
+                                        "q31"
+                                    ],
+                       "Objectives":  [
+
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Abyssalite",
+                                           "Amount":  1000,
+                                           "Label":  "深渊晶石 1000kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1KWuP61E6w",
+                       "Segments":  [
+                                        "0:20 如何部署登陆",
+                                        "1:36 登陆细节",
+                                        "2:28 落地后造房间",
+                                        "5:35 往下挖探开地图",
+                                        "8:36 造液泵抽污染浓盐水",
+                                        "9:26 探图火箭回到主星",
+                                        "10:58 搬运物资完毕返回",
+                                        "11:53 建造灯喙鱼养殖鱼池",
+                                        "13:28 探图寻找盐水泉",
+                                        "14:17 将盐水抽到鱼池"
+                                    ]
+                   },
+                   {
+                       "Id":  "q33",
+                       "Phase":  "space",
+                       "Order":  33,
+                       "Title":  "观赏鱼入池 基地里种树",
+                       "Description":  "观赏鱼入池，基地里种树",
+                       "Requires":  [
+                                        "q32"
+                                    ],
+                       "Objectives":  [
+
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Dirt",
+                                           "Amount":  2000,
+                                           "Label":  "泥土 2000kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1fpMy6yE6V",
+                       "Segments":  [
+                                        "0:27 探图找到盐水泉",
+                                        "2:11 围挡大水坑",
+                                        "3:12 完善养殖大水池",
+                                        "3:40 一个bug",
+                                        "5:48 转移三级科研站台",
+                                        "7:51 种植粘胶棕榈",
+                                        "10:55 灯喙鱼入池",
+                                        "11:35 胶乳制作",
+                                        "13:10 制作泳衣"
+                                    ]
+                   },
+                   {
+                       "Id":  "q34",
+                       "Phase":  "space",
+                       "Order":  34,
+                       "Title":  "最终的干货，完结",
+                       "Description":  "最终干货：毕业！",
+                       "Requires":  [
+                                        "q33"
+                                    ],
+                       "Objectives":  [
+
+                                      ],
+                       "Rewards":  [
+                                       {
+                                           "Element":  "Steel",
+                                           "Amount":  2000,
+                                           "Label":  "钢 2000kg"
+                                       }
+                                   ],
+                       "VideoUrl":  "https://www.bilibili.com/video/BV1Q6u86fE7C",
+                       "Segments":  [
+                                        "0:16 彩斑鱿养殖模块",
+                                        "11:04 调整壁虎散养区",
+                                        "12:20 树鼠养殖模块",
+                                        "16:47 N代同堂自动化演示",
+                                        "23:02 瀑布怎么造"
+                                    ]
+                   }
+               ]
+}
