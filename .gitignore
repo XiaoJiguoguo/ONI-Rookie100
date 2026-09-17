@@ -3,3 +3,4 @@ obj/
 _releases/
 *.user
 .vs/
+quest_progress.json
