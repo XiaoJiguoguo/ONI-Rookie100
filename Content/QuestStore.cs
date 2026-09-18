@@ -8,15 +8,45 @@ namespace Rookie100.Content
 {
     /// <summary>
     /// 任务仓库：加载 quests.json，维护任务链与领取状态。
-    /// 领取状态持久化到模组目录 quest_progress.json（claimed 列表）。
+    /// 进度持久化到模组目录 quest_progress.json，**按存档（殖民地）分档案存储**：
+    /// 每个存档有独立的 claimed/accepted 集合，载入殖民地时激活对应档案，
+    /// 所有读写只作用于当前激活档案，实现多存档进度隔离。
     /// 其他状态（锁定/进行中/待领取）由前置与目标计数实时推导。
     /// </summary>
     public static class QuestStore
     {
         private static string contentPath;
         private static QuestContent content = new QuestContent();
-        private static readonly HashSet<string> claimedIds = new HashSet<string>();
-        private static readonly HashSet<string> acceptedIds = new HashSet<string>();
+
+        // ---- 按存档隔离的进度档案 ----
+
+        /// <summary>单个存档（殖民地）的进度档案。</summary>
+        private class ColonyProgress
+        {
+            public List<string> Claimed { get; set; } = new List<string>();
+            public List<string> Accepted { get; set; } = new List<string>();
+        }
+
+        /// <summary>quest_progress.json 顶层结构（v3：多档案注册表）。</summary>
+        private class ProgressRegistry
+        {
+            public int Version { get; set; } = 3;
+            public string Active { get; set; }
+            public Dictionary<string, ColonyProgress> Profiles { get; set; } = new Dictionary<string, ColonyProgress>();
+        }
+
+        private static ProgressRegistry registry = new ProgressRegistry();
+
+        /// <summary>当前激活的存档档案（未进入殖民地时为 null，读写动作不落盘）。</summary>
+        private static ColonyProgress active;
+
+        private static string activeKey;
+
+        /// <summary>
+        /// 旧版单文件进度（升级前所有存档共享的那一份）：
+        /// 载入第一个殖民地时归并进该存档的档案，完成一次性迁移。
+        /// </summary>
+        private static ColonyProgress pendingLegacyMigration;
 
         public static void SetContentPath(string path)
         {
@@ -70,21 +100,17 @@ namespace Rookie100.Content
             LoadProgress();
         }
 
-        // ---- 进度持久化（claimed + accepted） ----
+        // ---- 进度持久化（按存档分档案） ----
 
         private static string ProgressPath =>
             contentPath == null ? null : Path.Combine(contentPath, "quest_progress.json");
 
-        private class ProgressFile
-        {
-            public List<string> Claimed { get; set; } = new List<string>();
-            public List<string> Accepted { get; set; } = new List<string>();
-        }
-
         private static void LoadProgress()
         {
-            claimedIds.Clear();
-            acceptedIds.Clear();
+            registry = new ProgressRegistry();
+            pendingLegacyMigration = null;
+            active = null;
+            activeKey = null;
             try
             {
                 var path = ProgressPath;
@@ -94,29 +120,29 @@ namespace Rookie100.Content
                 }
 
                 string raw = File.ReadAllText(path);
-                // 新版格式 {"Claimed":[...],"Accepted":[...]}
-                var progress = JsonConvert.DeserializeObject<ProgressFile>(raw);
-                if (progress != null)
-                {
-                    foreach (var id in progress.Claimed ?? new List<string>())
-                    {
-                        claimedIds.Add(id);
-                    }
 
-                    foreach (var id in progress.Accepted ?? new List<string>())
-                    {
-                        acceptedIds.Add(id);
-                    }
-                }
-                else
+                // v3：多档案注册表（本版本格式）
+                var parsed = JsonConvert.DeserializeObject<ProgressRegistry>(raw);
+                if (parsed != null && parsed.Profiles != null && parsed.Profiles.Count > 0)
                 {
-                    // 旧版格式（纯列表）视为 claimed
-                    var list = JsonConvert.DeserializeObject<List<string>>(raw);
-                    foreach (var id in list ?? new List<string>())
-                    {
-                        claimedIds.Add(id);
-                    }
+                    registry = parsed;
+                    ModLogger.Log($"进度注册表加载: {registry.Profiles.Count} 个存档档案");
+                    return;
                 }
+
+                // 旧版：单份平铺进度（所有存档共享）→ 待首个殖民地激活时迁移
+                var legacy = JsonConvert.DeserializeObject<ColonyProgress>(raw);
+                if (legacy == null)
+                {
+                    // 更旧的纯列表格式视为 claimed
+                    legacy = new ColonyProgress
+                    {
+                        Claimed = JsonConvert.DeserializeObject<List<string>>(raw) ?? new List<string>()
+                    };
+                }
+
+                pendingLegacyMigration = legacy;
+                ModLogger.Log("检测到旧版单存档进度文件，将在载入第一个殖民地时迁移");
             }
             catch (Exception e)
             {
@@ -134,12 +160,8 @@ namespace Rookie100.Content
                     return;
                 }
 
-                var progress = new ProgressFile
-                {
-                    Claimed = claimedIds.OrderBy(x => x).ToList(),
-                    Accepted = acceptedIds.OrderBy(x => x).ToList()
-                };
-                File.WriteAllText(path, JsonConvert.SerializeObject(progress, Formatting.Indented));
+                registry.Active = activeKey;
+                File.WriteAllText(path, JsonConvert.SerializeObject(registry, Formatting.Indented));
             }
             catch (Exception e)
             {
@@ -147,45 +169,124 @@ namespace Rookie100.Content
             }
         }
 
+        /// <summary>
+        /// 载入殖民地时调用：按存档 key 激活专属进度档案。
+        /// 新存档（key 不在注册表中）= 全新进度；旧版单份进度在此一次性迁移进首个激活的档案。
+        /// </summary>
+        public static void ActivateColony(string colonyKey)
+        {
+            if (string.IsNullOrEmpty(colonyKey))
+            {
+                ModLogger.Warn("存档 key 为空，退回 'default_colony'（同名殖民地可能共享进度）");
+                colonyKey = "default_colony";
+            }
+
+            if (activeKey == colonyKey && active != null)
+            {
+                ModLogger.Log($"任务进度档案已激活（同档重载）: {colonyKey}（已领取 {active.Claimed.Count}）");
+                return;
+            }
+
+            if (!registry.Profiles.TryGetValue(colonyKey, out ColonyProgress profile))
+            {
+                // 新存档：初始化全新进度
+                profile = new ColonyProgress();
+                registry.Profiles[colonyKey] = profile;
+                ModLogger.Log($"任务进度档案: 新存档 {colonyKey}，初始化全新进度");
+            }
+            else
+            {
+                ModLogger.Log($"任务进度档案: 载入存档 {colonyKey}（已领取 {profile.Claimed.Count}）");
+            }
+
+            // 旧版共享进度迁移：仅归并给第一个激活的存档档案
+            if (pendingLegacyMigration != null)
+            {
+                if (profile.Claimed.Count == 0 && profile.Accepted.Count == 0)
+                {
+                    profile.Claimed.AddRange(pendingLegacyMigration.Claimed);
+                    profile.Accepted.AddRange(pendingLegacyMigration.Accepted);
+                    ModLogger.Log($"旧版进度已迁移至存档 {colonyKey}: 已领取 {profile.Claimed.Count}");
+                }
+
+                pendingLegacyMigration = null;
+            }
+
+            active = profile;
+            activeKey = colonyKey;
+            SaveProgress();
+        }
+
+        /// <summary>当前存档 key（未激活时为空）。</summary>
+        public static string ActiveColonyKey => activeKey;
+
+        private static ColonyProgress EnsureActive()
+        {
+            if (active == null)
+            {
+                // 未进入殖民地（主菜单等）：空档案兜底，不落盘
+                active = new ColonyProgress();
+                activeKey = "";
+            }
+
+            return active;
+        }
+
+        // ---- 进度读写（仅作用于当前激活档案） ----
+
         public static bool IsClaimed(string questId)
         {
-            return questId != null && claimedIds.Contains(questId);
+            if (questId == null || active == null)
+            {
+                return false;
+            }
+
+            return active.Claimed.Contains(questId);
         }
 
         public static void MarkClaimed(string questId)
         {
-            if (questId == null || !claimedIds.Add(questId))
+            if (questId == null || active == null || active.Claimed.Contains(questId))
             {
                 return;
             }
 
+            active.Claimed.Add(questId);
             SaveProgress();
         }
 
         public static bool IsAccepted(string questId)
         {
-            return questId != null && acceptedIds.Contains(questId);
+            if (questId == null || active == null)
+            {
+                return false;
+            }
+
+            return active.Accepted.Contains(questId);
         }
 
         /// <summary>接取任务（Available → Accepted）。</summary>
         public static bool AcceptQuest(string questId)
         {
-            if (questId == null || IsClaimed(questId) || !acceptedIds.Add(questId))
+            var profile = EnsureActive();
+            if (questId == null || profile.Claimed.Contains(questId) || profile.Accepted.Contains(questId))
             {
                 return false;
             }
 
+            profile.Accepted.Add(questId);
             SaveProgress();
-            ModLogger.Log($"任务已接取: {questId}");
+            ModLogger.Log($"任务已接取: {questId}（存档 {activeKey}）");
             return true;
         }
 
         public static void ResetAll()
         {
-            claimedIds.Clear();
-            acceptedIds.Clear();
+            var profile = EnsureActive();
+            profile.Claimed.Clear();
+            profile.Accepted.Clear();
             SaveProgress();
-            ModLogger.Log("全部任务进度已重置");
+            ModLogger.Log($"全部任务进度已重置（存档 {activeKey}）");
         }
 
         // ---- 查询 ----
@@ -205,7 +306,7 @@ namespace Rookie100.Content
 
         public static List<QuestDef> OrderedQuests => content.Quests.OrderBy(q => q.Order).ToList();
 
-        public static int ClaimedCount => claimedIds.Count;
+        public static int ClaimedCount => active == null ? 0 : active.Claimed.Count;
 
         // ---- 状态机 ----
 

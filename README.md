@@ -11,7 +11,7 @@
 - **建筑引导卡**：任务目标建筑的大图标 + 解锁所需的科技链（研究状态/研究点需求）+ 一键打开研究面板
 - **视频章节定位**：每个任务附带对应视频的分段索引，点击直达 B 站对应时刻
 - **材料侧栏**：所选任务建筑的材料清单（按建筑类别解析可用元素）与推荐布局示意
-- **进度持久化**：`quest_progress.json` 存于模组目录，跨启动/跨存档保留，可一键重置
+- **进度按存档隔离**：`quest_progress.json` 多档案注册表（v3），每个殖民地独立进度（claimed/accepted），切换存档互不干扰；旧版共享进度自动迁移到首个载入的存档
 - **语言跟随**：界面语言自动跟随游戏本体（中文/英文），无手动开关
 - **视觉原生**：浅色官方主题面板 + 红色官方描边 + `web_box`/`web_button` 官方精灵 + 拖拽位置记忆
 
@@ -58,7 +58,9 @@ mod.yaml / mod_info.yaml    模组元数据（静态 ID / 标题 / 双语文案�
 ### 核心数据流
 
 ```
-quests.json ─加载→ QuestStore（状态机：claimed/accepted + 前置链推导）
+quests.json ─加载→ QuestStore（状态机 + 按存档进度档案）
+                                │
+Game.OnSpawn ─激活档案→ ActivateColony(saveFolder)（每存档独立 claimed/accepted）
                                 │
 QuestScanner.CountAllBuildings()┤（每 2s）
                                 ▼
@@ -92,6 +94,7 @@ RewardsService → CarePackageInfo.Deliver（打印舱补给包）→ MarkClaime
 7. **研究面板打开路径**：反射循环误命中属性 getter 造成假成功 → 实锤公开方法 `ManagementMenu.OpenResearch()` 直调。
 8. **网络与发布**：git HTTPS 直连 GitHub 在本机被掐断 → 走 `gh` + Git Data API（blobs→tree→commit→ref）通道；安全策略不允许直改 main → 固定采用"新分支 + Pull Request"工作流。
 9. **PowerShell 编码**：PS 5.1 + GBK 会毁中文脚本 → 脚本一律纯 ASCII（必要时 UTF8 BOM）。
+10. **多存档进度混淆**：进度原为模组级单文件、所有存档共享 → 改为按存档（`SaveLoader.saveFolder`）分档案的 v3 注册表，载入殖民地时激活对应档案，读写真只作用于当前档案，旧数据一次性迁移。
 
 ## 分支管理策略（GitHub Flow）
 
@@ -102,7 +105,8 @@ RewardsService → CarePackageInfo.Deliver（打印舱补给包）→ MarkClaime
 
 ## 版本历史
 
-- **v0.4.0**（当前）：游戏原生精灵徽章（emoji 豆腐块清零）、Coal→Carbon 奖励修复、面板实时刷新、语言跟随、双语文案与免责声明
+- **v0.5.0**（当前）：任务进度**按存档隔离**（每殖民地独立档案 + 旧数据自动迁移）
+- **v0.4.0**：游戏原生精灵徽章（emoji 豆腐块清零）、Coal→Carbon 奖励修复、面板实时刷新、语言跟随、双语文案与免责声明
 - **v0.3.x**：官方级 UI 升级（红色描边窗口、建筑图标+着色、资料卡化详情区）、建筑引导模态窗
 - **v0.1–v0.2**：垂直切片（4 任务全链路验证）→ 34 任务内容包与四阶段主线
 

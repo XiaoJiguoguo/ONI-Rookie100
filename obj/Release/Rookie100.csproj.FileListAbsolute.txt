@@ -1,0 +1,13 @@
+C:\Users\Administrator\Downloads\OX_Mod\obj\Release\Rookie100.csproj.AssemblyReference.cache
+C:\Users\Administrator\Downloads\OX_Mod\obj\Release\Rookie100.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Downloads\OX_Mod\obj\Release\Rookie100.AssemblyInfoInputs.cache
+C:\Users\Administrator\Downloads\OX_Mod\obj\Release\Rookie100.AssemblyInfo.cs
+C:\Users\Administrator\Downloads\OX_Mod\obj\Release\Rookie100.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Klei\OxygenNotIncluded\mods\Dev\Rookie100\mod.yaml
+C:\Users\Administrator\Documents\Klei\OxygenNotIncluded\mods\Dev\Rookie100\mod_info.yaml
+C:\Users\Administrator\Documents\Klei\OxygenNotIncluded\mods\Dev\Rookie100\Rookie100.dll
+C:\Users\Administrator\Documents\Klei\OxygenNotIncluded\mods\Dev\Rookie100\Rookie100.pdb
+C:\Users\Administrator\Downloads\OX_Mod\obj\Release\Rookie100.dll
+C:\Users\Administrator\Downloads\OX_Mod\obj\Release\Rookie100.pdb
+C:\Users\Administrator\Documents\Klei\OxygenNotIncluded\mods\Dev\Rookie100\quests.json
+C:\Users\Administrator\Downloads\OX_Mod\obj\Release\Rookie100.sourcelink.json

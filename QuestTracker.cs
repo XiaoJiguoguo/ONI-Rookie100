@@ -48,6 +48,16 @@ namespace Rookie100
             base.OnCleanUp();
         }
 
+        /// <summary>
+        /// 载入新殖民地（含同会话换档）时调用：
+        /// 清除上一存档的"已通知"标记与计时，保证每个存档独立计算达成通知。
+        /// </summary>
+        public void ResetForNewColony()
+        {
+            notifiedCompleted.Clear();
+            checkTimer = 0f;
+        }
+
         private void Update()
         {
             checkTimer += Time.deltaTime;

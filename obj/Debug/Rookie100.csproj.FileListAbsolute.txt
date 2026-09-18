@@ -1,0 +1,13 @@
+C:\Users\Administrator\Downloads\OX_Mod\bin\Debug\mod.yaml
+C:\Users\Administrator\Downloads\OX_Mod\bin\Debug\mod_info.yaml
+C:\Users\Administrator\Downloads\OX_Mod\bin\Debug\quests.json
+C:\Users\Administrator\Downloads\OX_Mod\bin\Debug\Rookie100.dll
+C:\Users\Administrator\Downloads\OX_Mod\bin\Debug\Rookie100.pdb
+C:\Users\Administrator\Downloads\OX_Mod\obj\Debug\Rookie100.csproj.AssemblyReference.cache
+C:\Users\Administrator\Downloads\OX_Mod\obj\Debug\Rookie100.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Downloads\OX_Mod\obj\Debug\Rookie100.AssemblyInfoInputs.cache
+C:\Users\Administrator\Downloads\OX_Mod\obj\Debug\Rookie100.AssemblyInfo.cs
+C:\Users\Administrator\Downloads\OX_Mod\obj\Debug\Rookie100.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Downloads\OX_Mod\obj\Debug\Rookie100.sourcelink.json
+C:\Users\Administrator\Downloads\OX_Mod\obj\Debug\Rookie100.dll
+C:\Users\Administrator\Downloads\OX_Mod\obj\Debug\Rookie100.pdb
