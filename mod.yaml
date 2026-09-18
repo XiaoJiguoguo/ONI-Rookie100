@@ -1,46 +1,23 @@
-staticID: ox.rookie100
-title: "Rookie100 百天任务指引 | Rookie 100-Day Quest Guide"
-description: |-
-  ============== 中文 / Chinese ==============
+title: 任务系统 (Rookie 100-Day Quest Guide)
+description: |
+  【中文】一款面向新手玩家的免费教学辅助模组。
+  【English】A free educational helper mod for new players.
 
-  一、开发初衷、设计理念与功能特性
-  初衷：本模组是一款面向新手玩家的免费教学辅助模组。它将 B 站 UP 主「大叔追云彩」《缺氧新手活过100天》系列视频的分阶段教学骨架，固化为一套游戏内可执行的任务树——玩家无需反复切出游戏看视频，照面板指引建造、研究、推进即可边玩边学，逐步掌握从开荒到太空的完整流程。
-  设计理念：① 教学即游戏：任务采用「接取→按目标建造→全部达成→打印舱实物奖励」闭环，完成感与游戏乐趣合一；② 渐进式推进：34 个任务按 6 个阶段顺序解锁（前一任务领取奖励后解锁下一任务），难度曲线贴合原视频节奏；③ 轻量无侵入：不修改游戏机制与平衡，仅做建筑目标检测与少量补给包奖励投放，任务进度按存档独立存储（每个殖民地拥有独立档案），可一键重置；④ 视觉原生：界面布局、配色与全部图标均使用游戏原生 UI 资源，界面语言自动跟随游戏本体（中文/英文）。
-  功能特性（v0.4.0）：阶段任务树与状态徽章（锁定/可接取/已接取/进行中/可领取/已领取）；目标实时检测与迷你进度条；打印舱补给包奖励；建筑引导卡（大图标、解锁科技链、一键打开研究面板）；B 站视频分段一键跳转；侧栏建造材料清单与推荐布局示意；进度按存档独立持久化与一键重置。规划中：随阶段切换的生态主题背景、更多建筑布局图、任务内容扩充。
-
-  二、使用的开源项目与第三方组件
-  · Harmony 2.4.2（运行时补丁库 pardeike/Harmony，MIT 许可）——模组加载与补丁依赖；
-  · Newtonsoft.Json 7.0.1（JamesNK/Newtonsoft.Json，MIT 许可）——任务内容（quests.json）解析；
-  · Microsoft.NETFramework.ReferenceAssemblies 1.0.3（Microsoft，MIT 许可）——仅编译期引用，不随模组分发；
-  · .NET SDK 工具链（MIT 许可）——仅用于编译，不随模组分发；
-  · Unity 与《缺氧》本体程序集（Klei 专有）——仅编译期引用运行环境 API，不包含、不重新分发任何游戏资源。
-  致谢：界面布局与配色风格参考了社区模组 StorageNetwork（作者 pether-pg）的设计，未使用其素材与代码，折叠行、薄按钮等为自行实现的通用交互模式；感谢 Harmony 社区与缺氧 modding 社区的大量公开教程。
-
-  三、免责声明
-  1. 本模组为免费、非商业性质的教学辅助项目，与 Klei Entertainment 及其关联方无任何关联，亦未获其背书。
-  2. 兼容性范围：基于 Windows/Steam 版《缺氧》U59（build 744825）开发与验证；游戏后续更新可能导致部分功能异常，请等待对应版本更新。DLC（Spaced Out! 等）组合未做完整验证。
-  3. 使用风险：本模组不修改存档核心数据（进度仅写入模组目录下的 quest_progress.json），奖励投放使用游戏原生「补给包」机制；但任何第三方模组都存在未知冲突风险，建议重要存档提前备份。
-  4. 责任界定：使用者基于自愿安装与使用；因使用本模组直接或间接造成的任何损失，作者不承担任何责任。
-  5. 内容来源：视频章节仅对《缺氧新手活过100天》系列做提纲式引用（时间戳与小标题），不含任何影像、音频或逐字稿，相关权利完全归原作者所有。若权利方认为存在侵权，请通过创意工坊评论区或 GitHub Issues 联系，作者将在第一时间移除相关内容。
-
-  ============== English ==============
-
-  1. Origin, Design Philosophy & Features
-  Origin: Rookie 100-Day Quest Guide is a free, non-commercial educational companion mod. It turns the staged teaching outline of Bilibili creator "Uncle Chasing Clouds" (Survive-100-Days in Oxygen Not Included, a 34-episode series) into an executable in-game quest tree, so new players can learn by playing without constantly alt-tabbing to videos.
-  Design philosophy: ① Learning through play: every quest runs a loop of "accept → build to objectives → all objectives met → care-package reward at the Printing Pod". ② Progressive pacing: 34 quests unlock sequentially across 6 phases (claiming a quest's reward unlocks the next), mirroring the original video's difficulty curve. ③ Lightweight and non-invasive: no game mechanics or balance are modified; the mod only detects building objectives and delivers care-package rewards, with per-save progress profiles and a one-click reset. ④ Native visuals: layout, palette and all icons use the game's own UI assets, and the interface language follows the game locale (Chinese/English).
-  Features (v0.4.0): phased quest tree with status badges (locked/available/accepted/in progress/ready-to-claim/claimed); live objective detection with mini progress bars; Printing Pod care-package rewards; building guide cards (large icon, required tech chain, one-click research screen); one-click jump to video chapters on Bilibili; sidebar with construction material lists and suggested layout; persistent per-save, resettable progress. Planned: phase-based ecological background themes, more building layouts, expanded quest content.
-
-  2. Open-Source Projects & Third-Party Components
-  · Harmony 2.4.2 (pardeike/Harmony, MIT) — runtime patching library used for mod loading;
-  · Newtonsoft.Json 7.0.1 (JamesNK/Newtonsoft.Json, MIT) — quest data (quests.json) parsing;
-  · Microsoft.NETFramework.ReferenceAssemblies 1.0.3 (Microsoft, MIT) — compile-time reference only, not redistributed;
-  · .NET SDK toolchain (MIT) — build tooling only, not redistributed;
-  · Unity and Oxygen Not Included game assemblies (proprietary, Klei) — compile-time references only; no game assets are included or redistributed.
-  Credits: the UI layout and color scheme were inspired by the community mod StorageNetwork by pether-pg; no assets or code from it are reused. Foldout rows and thin buttons are our own implementation of common UI patterns. Thanks to the Harmony and ONI modding communities for their public tutorials.
-
-  3. Disclaimer
-  1. This mod is a free, non-commercial educational project with no affiliation with, or endorsement by, Klei Entertainment.
-  2. Compatibility: developed and verified on the Windows/Steam build of Oxygen Not Included U59 (build 744825). Future game updates may break some features; please wait for a matching update. DLC combinations (e.g. Spaced Out!) have not been fully tested.
-  3. Usage risk: the mod does not alter core save data (progress is written only to quest_progress.json inside the mod folder) and rewards use the game's native care-package system; however, any third-party mod carries unknown conflict risks — back up important saves first.
-  4. Liability: the mod is installed and used voluntarily; the author assumes no liability for any loss or damage arising directly or indirectly from its use.
-  5. Content source: the video chapter list only references the Survive-100-Days series in outline form (timestamps and short headings); no footage, audio or transcripts are reproduced, and all rights remain with the original creator. If any rights holder considers this an infringement, please contact the author via Workshop comments or GitHub Issues and the related content will be removed immediately.
+version: 0.4.0
+author: Rookie100
+support: steam
+tags:
+  - ui
+  - language
+  - newfeatures
+  - tutorial
+supported_content:
+  - basegame
+  - expansion1
+  - dlc2
+  - cosmetic1
+unsupported_content:
+  - dlc3
+  - dlc4
+dependencies:
+  - harmony
