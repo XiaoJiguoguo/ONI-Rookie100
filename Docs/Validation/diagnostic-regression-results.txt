@@ -1,0 +1,36 @@
+PASS: Unwired is actionable without duplicate unpowered diagnosis
+PASS: Wired but unpowered
+PASS: Input shortage
+PASS: Independent power and input issues coexist
+PASS: Other unmet conditions are not guessed as pressure
+PASS: Basic checks passing is not diagnosed as running
+PASS: Absent evidence is incomplete
+PASS: Known problem preserved alongside incomplete evidence
+PASS: 162 state combinations preserve evidence boundaries
+PASS: No selection tool
+PASS: Nothing selected
+PASS: Inactive selected object
+PASS: Blueprint excluded
+PASS: Wrong building excluded
+PASS: Completed diffuser produces scoped snapshot
+PASS: Inputs checked even when inactive
+PASS: Repeated check reads fresh state
+PASS: Changing selection reads new building
+PASS: Missing component does not claim health
+PASS: Read failure contained with warning
+PASS: Native overpressure explains where to check
+PASS: Other unmet flags do not imply pressure
+PASS: Manual disable not mislabelled power shortage
+PASS: Automation disable explains control port
+PASS: Absent automation flag is unknown not disabled
+PASS: Local algae shortage distinguished from global depletion
+PASS: Algae action includes delivery and permissions
+PASS: Broken building diagnosis
+PASS: Independent faults all shown
+PASS: Known stop condition overrides stale active flag in diagnosis
+PASS: Running with unavailable health keeps uncertainty
+PASS: Missing pressure status item is unknown
+PASS: Pressure item without expected component not trusted
+PASS: Every diagnosis has an English translation
+PASS: English diagnosis includes cause and action
+TOTAL: 35 passed

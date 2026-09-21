@@ -1,22 +1,5 @@
 # Rookie100 百天任务指引（Oxygen Not Included 模组）
 
-## 当前开发快照：Phase 4B 测试版
-
-已累计加入 SaveGame 原生进度存储、建筑扫描缓存、扩散器诊断、卫生设施可用性、14 项折叠教学指南、指定科技定位与复制人状态卡。**新增 UI 尚待实机验证，不是已验证的稳定发布。** 程序集版本暂仍为 0.5.0，请用提交记录区分开发快照。
-
-当前进度由 `RookieProgressTracker`（schema 1）持久化，旧 JSON 仅保留兼容导入，不再写回；扫描使用缓存与失效通知。新增课程正文暂为中文，其他标题/按钮/状态卡支持中英文。
-
-- [开发状态与后续更新](Docs/DEVELOPMENT.md)
-- [验证记录及手工测试](Docs/VALIDATION.md)
-- [14 项课程完整设计](Docs/Design/DESIGN.md)
-- [交互浏览稿](Docs/Design/index.html)：下载仓库后在浏览器打开，GitHub 文件页只显示源文件。
-
-仅编译检查使用 `.\scripts\build-check.ps1 -GamePath '你的游戏安装目录'`，需要 .NET SDK 8+ 和自行安装的游戏，输出到 `artifacts/check/`，不会部署。旧 `build.ps1` 会写入 Dev 模组目录，不用于仅编译检查。仓库不分发 Klei 游戏 DLL、玩家存档或原始日志。
-
-**以下是 v0.5.0 历史说明，存档架构、扫描方式和“当前版本”等描述已过时；以以上链接中的开发状态为准。**
-
----
-
 > A free, non-commercial educational quest-guide mod for *Oxygen Not Included* (ONI). It turns the staged teaching outline of Bilibili creator **「大叔追云彩」(*Uncle Chasing Clouds*)** — *《缺氧新手活过100天》(Survive 100 Days in ONI)*, a 34-episode series — into an executable in-game quest tree, so new players learn the full beginner-to-space progression by playing, without alt-tabbing to videos.
 
 ## 功能特性

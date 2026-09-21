@@ -1,0 +1,2 @@
+PASS: 156 content assertions; 14 embedded guides, valid flow/layout data, all building IDs found in installed game, only approved teaching fields changed.
+NOT RUN: Unity UI rendering, portraits, research camera focus, live minion updates and in-game save/load.

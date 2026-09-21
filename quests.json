@@ -35,18 +35,25 @@
                        "Id":  "q01",
                        "Phase":  "early",
                        "Order":  1,
-                       "Title":  "公共厕所",
-                       "Description":  "建造户外厕所，解决复制人的如厕需求",
+                       "Title":  "建立可用的厕所与洗手设施",
+                       "Description":  "户外厕所需要泥土，洗手盆需要用水。准备可取用的水源或已有瓶装水；推荐用手压泵取水并由复制人运送。验收至少一座可用的户外厕所和洗手盆，无需有人正在使用。洗手盆应放在离开厕所的路线上并设置正确方向：通路、门权限和实际如厕后洗手尚未自动核验，请亲自观察。已领取的记录保留。",
                        "Requires":  [
 
                                     ],
                        "Objectives":  [
                                           {
-                                              "Type":  "buildingBuilt",
+                                              "Type":  "buildingReady",
                                               "Tag":  "Outhouse",
                                               "Count":  1,
-                                              "Label":  "户外厕所",
-                                              "LabelEn":  "Outhouse"
+                                              "Label":  "可用的户外厕所",
+                                              "LabelEn":  "Ready Outhouse"
+                                          },
+                                          {
+                                              "Type":  "buildingReady",
+                                              "Tag":  "WashBasin",
+                                              "Count":  1,
+                                              "Label":  "可用的洗手盆",
+                                              "LabelEn":  "Ready Wash Basin"
                                           }
                                       ],
                        "Rewards":  [
@@ -68,8 +75,8 @@
                                         "19:15 游戏开局",
                                         "21:43 前两周期任务——造公告厕所"
                                     ],
-                       "TitleEn":  "Public Toilet",
-                       "DescEn":  "Build an outhouse to handle duplicant bathroom needs",
+                       "TitleEn":  "Prepare Usable Toilet and Handwashing Facilities",
+                       "DescEn":  "Outhouses need dirt; wash basins need water. Provide an accessible water source or existing bottled water; a pitcher pump is the recommended collection route, with duplicants delivering it. Have at least one ready outhouse and wash basin; nobody needs to be using them at claim time. Place the wash basin on the exit route and set its direction. Access, door permissions and actual handwashing after toilet use are not automatically verified: observe them yourself. Previously claimed progress is preserved.",
                        "SegmentsEn":  [
                                           "0:00 Intro - long-term run plan",
                                           "0:36 Game version and updates",
@@ -85,8 +92,8 @@
                        "Id":  "q02",
                        "Phase":  "early",
                        "Order":  2,
-                       "Title":  "入坑必学，贯穿游戏前后的基础操作与机制",
-                       "Description":  "熟悉游戏界面、操作与基础机制",
+                       "Title":  "看懂界面与工作安排",
+                       "Description":  "从建筑状态开始，检查资源、通路与工作安排。本项仍是阅读任务，领取奖励不代表已完成实际操作练习。",
                        "Requires":  [
                                         "q01"
                                     ],
@@ -114,8 +121,8 @@
                                         "16:31 电路连接问题",
                                         "18:49 食物中毒问题"
                                     ],
-                       "TitleEn":  "Core Mechanics: Basics Throughout the Game",
-                       "DescEn":  "Get familiar with the UI, controls and core mechanics",
+                       "TitleEn":  "Understand the interface and work priorities",
+                       "DescEn":  "Read building status, resources, access and work priorities. This is a reading task; its reward does not certify a completed practical exercise.",
                        "SegmentsEn":  [
                                           "0:00 Errata from last episode",
                                           "2:52 Recruiting and assignment",
@@ -134,7 +141,7 @@
                        "Phase":  "early",
                        "Order":  3,
                        "Title":  "前期氧气扩散与二氧化碳治理",
-                       "Description":  "建造氧气扩散器，稳定前期氧气",
+                       "Description":  "建造氧气扩散器并使至少一台运行；领奖时仍需运行。当前运行不代表殖民地氧气已充足。",
                        "Requires":  [
                                         "q02"
                                     ],
@@ -145,6 +152,13 @@
                                               "Count":  1,
                                               "Label":  "氧气扩散器",
                                               "LabelEn":  "Oxygen Diffuser"
+                                          },
+                                          {
+                                              "Type":  "buildingOperating",
+                                              "Tag":  "MineralDeoxidizer",
+                                              "Count":  1,
+                                              "Label":  "正在运行的氧气扩散器",
+                                              "LabelEn":  "Running Oxygen Diffuser"
                                           }
                                       ],
                        "Rewards":  [
@@ -171,7 +185,7 @@
                                         "16:50 通行主干道预留宽度"
                                     ],
                        "TitleEn":  "Early Oxygen Diffusion and CO2 Control",
-                       "DescEn":  "Build an oxygen diffuser to stabilize early oxygen supply",
+                       "DescEn":  "Build an oxygen diffuser and have at least one running when claiming. Running does not establish that the colony has enough oxygen.",
                        "SegmentsEn":  [
                                           "0:00 On enabling proximity",
                                           "3:22 About the tech tree",
@@ -191,8 +205,8 @@
                        "Id":  "q04",
                        "Phase":  "early",
                        "Order":  4,
-                       "Title":  "二级科研开始 管道与电路的初步了解",
-                       "Description":  "开启二级科研，了解管道与电路",
+                       "Title":  "科研解锁与管线准备",
+                       "Description":  "从“查看准备”中的设施反查科技并定位研究；解锁只是允许建造，使用还需要资源和连接。本项仍是阅读任务。",
                        "Requires":  [
                                         "q03"
                                     ],
@@ -227,8 +241,8 @@
                                         "21:28 需不需要淋浴间",
                                         "23:03 如何增加日程排班"
                                     ],
-                       "TitleEn":  "Starting Tier-2 Research: Pipes and Circuits 101",
-                       "DescEn":  "Start tier-2 research and learn pipes and circuits",
+                       "TitleEn":  "Research unlocks and pipe preparation",
+                       "DescEn":  "Use the preparation guide to locate research for the next facilities. Unlocking a technology does not prove that a building works. This remains a reading task.",
                        "SegmentsEn":  [
                                           "0:00 About base layout",
                                           "1:16 Building barracks",
@@ -253,8 +267,8 @@
                        "Id":  "q05",
                        "Phase":  "early",
                        "Order":  5,
-                       "Title":  "轻松搞定巨简单的卫生间循环",
-                       "Description":  "建造冲水厕所，组成卫生间循环",
+                       "Title":  "管道卫生设施与回用",
+                       "Description":  "先建冲水厕所，再检查供水、排水、洗手、维护与回用方案。当前领奖只检查厕所建成，不代表卫生间循环已经运行或消毒。",
                        "Requires":  [
                                         "q04"
                                     ],
@@ -289,8 +303,8 @@
                                         "20:48 禁用饮水机",
                                         "21:52 斜角造砖"
                                     ],
-                       "TitleEn":  "The Simple Bathroom Loop, Made Easy",
-                       "DescEn":  "Build a flush toilet and complete the bathroom loop",
+                       "TitleEn":  "Plumbed sanitation: supply, drainage and reuse",
+                       "DescEn":  "Begin with a lavatory, then check water supply, drainage, washing, maintenance and any reuse route. The current reward checks construction of the lavatory; it does not certify a working or disinfected loop.",
                        "SegmentsEn":  [
                                           "0:00 Errata from last episode",
                                           "1:26 Flush toilet in detail",
@@ -317,8 +331,8 @@
                        "Id":  "q06",
                        "Phase":  "early",
                        "Order":  6,
-                       "Title":  "种植区选址",
-                       "Description":  "放下第一批种植箱，选定种植区",
+                       "Title":  "选址并启动第一种作物",
+                       "Description":  "为所选作物检查种子、容器、环境、供给和通路。当前领奖只检查种植箱建成，是否种下并正常生长需要观察植物状态。",
                        "Requires":  [
                                         "q05"
                                     ],
@@ -354,8 +368,8 @@
                                         "13:35 解锁通知器",
                                         "15:25 如何使用通知器"
                                     ],
-                       "TitleEn":  "Choosing the Farm Site",
-                       "DescEn":  "Place the first planter boxes and pick the farming area",
+                       "TitleEn":  "Choose a site and start a crop",
+                       "DescEn":  "Inspect seed, container, environment, supplies and access for your chosen crop. The current reward checks planter construction; inspect the living plant to confirm growth.",
                        "SegmentsEn":  [
                                           "0:00 Skill order",
                                           "1:05 Farm site selection",
@@ -375,8 +389,8 @@
                        "Id":  "q07",
                        "Phase":  "early",
                        "Order":  7,
-                       "Title":  "学会电路分组 永不过载",
-                       "Description":  "用变压器给电路分组，永不过载",
+                       "Title":  "建立并检查一条供电分路",
+                       "Description":  "用变压器组织分路，再检查电线容量、连接及负荷。当前领奖只检查变压器建成，不能据此保证永不过载。",
                        "Requires":  [
                                         "q06"
                                     ],
@@ -415,8 +429,8 @@
                                         "19:58 继续往上挖",
                                         "20:31 造好冰箱"
                                     ],
-                       "TitleEn":  "Circuit Groups: Never Overload Again",
-                       "DescEn":  "Group circuits with a power transformer so they never overload",
+                       "TitleEn":  "Build and inspect a power branch",
+                       "DescEn":  "Use a transformer to organise a branch, then inspect its wires, capacity and loads. The current reward checks transformer construction; this alone cannot guarantee freedom from overload.",
                        "SegmentsEn":  [
                                           "0:00 More dupes, more oxygen",
                                           "1:07 Scale up farming",
@@ -439,8 +453,8 @@
                        "Id":  "q08",
                        "Phase":  "early",
                        "Order":  8,
-                       "Title":  "种植顶针芦苇并学会食物过渡",
-                       "Description":  "用农场砖种植顶针芦苇",
+                       "Title":  "分开验收芦苇种植与食物过渡",
+                       "Description":  "顶针芦苇产出纤维，不是食物。分别检查作物条件与独立的食物来源；当前领奖只检查农场砖建成，不代表已经种植或食物充足。",
                        "Requires":  [
                                         "q07"
                                     ],
@@ -479,8 +493,8 @@
                                         "17:09 箱子的仅限清扫",
                                         "18:30 如何控制箱子不搬运"
                                     ],
-                       "TitleEn":  "Planting Thimble Reed and Transitioning Food",
-                       "DescEn":  "Grow thimble reed on farm tiles",
+                       "TitleEn":  "Separate reed cultivation from food production",
+                       "DescEn":  "Reeds produce fibre, not food. Check the crop and the separate food supply. The current reward checks farm tiles; it does not certify planting or food sufficiency.",
                        "SegmentsEn":  [
                                           "0:05 Best oxygen source",
                                           "0:35 What atmo suits do",
@@ -503,8 +517,8 @@
                        "Id":  "q09",
                        "Phase":  "early",
                        "Order":  9,
-                       "Title":  "高压制氧从建造到启动 稳定防崩必学",
-                       "Description":  "建造电解水制氧模块（高压）",
+                       "Title":  "从基本电解制氧开始",
+                       "Description":  "先检查电解器的供水、供电、工作条件及两种气体的去向。当前领奖只检查电解器建成，不代表高压模块或持续供氧已验证。",
                        "Requires":  [
                                         "q08"
                                     ],
@@ -537,8 +551,8 @@
                                         "21:25 基地内怎么造排气口",
                                         "23:03 高压制氧防崩关键"
                                     ],
-                       "TitleEn":  "High-Pressure Oxygen: Build and Start",
-                       "DescEn":  "Build the electrolyzer high-pressure oxygen module",
+                       "TitleEn":  "Start with basic electrolyzer oxygen production",
+                       "DescEn":  "Check water, power, operating conditions and the destination of each gas. The current reward checks electrolyzer construction; it does not validate a high-pressure design or sustained oxygen supply.",
                        "SegmentsEn":  [
                                           "0:15 Atmo suit checkpoint",
                                           "0:58 Slimelung effects",
@@ -563,8 +577,8 @@
                        "Id":  "q10",
                        "Phase":  "early",
                        "Order":  10,
-                       "Title":  "普通制氧也不赖 崩了随意修",
-                       "Description":  "建造常规制氧：电解器配套气泵",
+                       "Title":  "把气体送到正确位置",
+                       "Description":  "沿气源、气泵、管道和出口逐段检查。气泵不会自动只吸目标气体；当前领奖只检查气泵建成，完整输送路线需实际观察。",
                        "Requires":  [
                                         "q09"
                                     ],
@@ -601,8 +615,8 @@
                                         "16:14 普通制氧堵管",
                                         "17:28 挖铀矿"
                                     ],
-                       "TitleEn":  "Standard Oxygen Is Fine Too, Easy to Fix",
-                       "DescEn":  "Build standard oxygen: electrolyzer paired with a gas pump",
+                       "TitleEn":  "Send gas to the right destination",
+                       "DescEn":  "Check gas source, powered pumping, pipes and outlets. A pump does not automatically filter gases. The current reward checks pump construction; verify the complete route yourself.",
                        "SegmentsEn":  [
                                           "0:05 Errata from last episode",
                                           "1:02 Building standard oxygen",
@@ -623,8 +637,8 @@
                        "Id":  "q11",
                        "Phase":  "early",
                        "Order":  11,
-                       "Title":  "金属精炼",
-                       "Description":  "建造金属精炼厂，开始精炼金属",
+                       "Title":  "完成一次可解释的金属精炼",
+                       "Description":  "检查原料、电力、工作通路、冷却介质和输出热量。当前领奖只检查精炼厂建成；请观察一次实际生产及后续热量处理。",
                        "Requires":  [
                                         "q10"
                                     ],
@@ -660,8 +674,8 @@
                                         "21:35 污染水整理",
                                         "21:49 野生壁虎剪毛"
                                     ],
-                       "TitleEn":  "Metal Refining",
-                       "DescEn":  "Build a metal refinery and start refining metal",
+                       "TitleEn":  "Understand a metal refining cycle",
+                       "DescEn":  "Check ore, power, work access, coolant and the heated output. The current reward checks refinery construction; observe an actual production cycle and heat handling.",
                        "SegmentsEn":  [
                                           "0:05 Errata",
                                           "3:38 Cleaning polluted oxygen",
@@ -681,8 +695,8 @@
                        "Id":  "q12",
                        "Phase":  "early",
                        "Order":  12,
-                       "Title":  "辐射杀菌与食物保鲜",
-                       "Description":  "建储物箱处理物资，学会食物保鲜",
+                       "Title":  "区分搬运、保鲜与病菌处理",
+                       "Description":  "普通储物箱不等于保鲜或杀菌设备。选定食物或物资后比较处理前后的状态；当前领奖只检查储物箱建成。",
                        "Requires":  [
                                         "q11"
                                     ],
@@ -721,8 +735,8 @@
                                         "19:40 各处添加清扫器",
                                         "21:33 如何查看暗泉类型"
                                     ],
-                       "TitleEn":  "Radiation Sanitizing and Food Preservation",
-                       "DescEn":  "Build storage bins and learn food preservation",
+                       "TitleEn":  "Distinguish storage, preservation and germs",
+                       "DescEn":  "A storage bin alone does not preserve food or remove germs. Inspect the chosen food or material before and after treatment. The current reward only checks storage construction.",
                        "SegmentsEn":  [
                                           "0:45 Algae terrarium usage",
                                           "1:28 Reading pressure buildup",
@@ -745,8 +759,8 @@
                        "Id":  "q13",
                        "Phase":  "early",
                        "Order":  13,
-                       "Title":  "天然气发电 树鼠种植",
-                       "Description":  "建造天然气发电机，开发新能源",
+                       "Title":  "启动天然气发电并分离种植主题",
+                       "Description":  "分别检查天然气输送、发电、电路和排放去向。种植有独立条件，不与发电混为一条链；当前领奖只检查发电机建成。",
                        "Requires":  [
                                         "q12"
                                     ],
@@ -782,8 +796,8 @@
                                         "21:00 发现低温泥浆泉",
                                         "21:48 种植野生芦苇的产量与作用"
                                     ],
-                       "TitleEn":  "Natural Gas Power and Pip Planting",
-                       "DescEn":  "Build a natural gas generator for new energy",
+                       "TitleEn":  "Natural gas power and a separate planting goal",
+                       "DescEn":  "Inspect fuel delivery, generator operation, electrical connection and waste outputs. Planting has its own requirements. The current reward checks generator construction only.",
                        "SegmentsEn":  [
                                           "0:05 Errata",
                                           "2:40 Pick reed farm site first",
@@ -803,8 +817,8 @@
                        "Id":  "q14",
                        "Phase":  "early",
                        "Order":  14,
-                       "Title":  "游戏前期总结 基地围挡",
-                       "Description":  "用瓷砖把基地围挡起来（至少 20 块）",
+                       "Title":  "明确基地边界与出入口",
+                       "Description":  "先明确隔离目标，再检查整个边界、缺口、出入口与供给。当前领奖只统计瓷砖数量，不代表气密、隔热或无泄漏已验证。",
                        "Requires":  [
                                         "q13"
                                     ],
@@ -842,8 +856,8 @@
                                         "20:36 封闭基地其他出入口",
                                         "21:28 启用检查站"
                                     ],
-                       "TitleEn":  "Early-Game Recap: Sealing the Base",
-                       "DescEn":  "Seal the base with tiles (at least 20)",
+                       "TitleEn":  "Define the base boundary and its entrances",
+                       "DescEn":  "Choose an isolation goal and inspect the entire boundary, openings and supply routes. The current reward counts tiles; it does not certify a sealed or thermally isolated room.",
                        "SegmentsEn":  [
                                           "0:04 Current state check",
                                           "3:25 Surviving without a geyser",

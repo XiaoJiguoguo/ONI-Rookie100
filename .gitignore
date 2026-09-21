@@ -4,3 +4,9 @@ _releases/
 *.user
 .vs/
 quest_progress.json
+artifacts/
+*.log
+*.sav
+*.dll
+*.pdb
+quest_progress*.json

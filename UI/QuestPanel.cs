@@ -17,7 +17,7 @@ namespace Rookie100.UI
     /// 右栏：任务详情（接取按钮 / 目标图标计数 / 奖励图标 / 领取按钮 / 视频章节）
     /// 状态机：锁定 → 可接取 →（接取）→ 已接取 → 进行中 → 可领取 → 已领取。
     /// </summary>
-    public sealed class QuestPanel : KScreen
+    public sealed partial class QuestPanel : KScreen
     {
         private static QuestPanel instance;
 
@@ -93,13 +93,13 @@ namespace Rookie100.UI
             }
 
             liveRefreshTimer = 0f;
+            RefreshColonistCards();
             var counts = QuestScanner.CountAllBuildings();
             string signature = CountsSignature(counts);
             if (!string.Equals(signature, lastCountsSignature, StringComparison.Ordinal))
             {
                 lastCountsSignature = signature;
-                currentCounts = counts;
-                RefreshAll();
+                RefreshAll(counts);
             }
         }
 
@@ -108,7 +108,14 @@ namespace Rookie100.UI
         {
             var keys = new List<string>(counts.Keys);
             keys.Sort(StringComparer.Ordinal);
-            return string.Join(",", keys.Select(k => k + "=" + counts[k]));
+            string signature = string.Join(",", keys.Select(k => k + "=" + counts[k]));
+            if (counts is QuestBuildingSnapshot snapshot)
+            {
+                signature += ";operating:" + string.Join(",", snapshot.Operating.OrderBy(p => p.Key).Select(p => p.Key + "=" + p.Value));
+                signature += ";ready:" + string.Join(",", snapshot.Ready.OrderBy(p => p.Key).Select(p => p.Key + "=" + p.Value));
+                signature += ";sanitation:" + string.Join(",", snapshot.SanitationIssues.OrderBy(p => p.Key).Select(p => p.Key + "=" + string.Join("/", p.Value.OrderBy(v => v))));
+            }
+            return signature;
         }
 
         public static void Show()
@@ -163,8 +170,6 @@ namespace Rookie100.UI
             QuestPanel panel = root.AddComponent<QuestPanel>();
             panel.activateOnSpawn = false;
             panel.ConsumeMouseScroll = true;
-            QuestTracker.QuestCompleted += OnQuestEvent;
-            QuestTracker.QuestClaimed += OnQuestEvent;
             try
             {
                 panel.BuildWindow(root.transform);
@@ -176,8 +181,27 @@ namespace Rookie100.UI
                 throw;
             }
 
+            // Static callbacks must have exactly one subscription across panel recreation.
+            QuestTracker.QuestCompleted -= OnQuestEvent;
+            QuestTracker.QuestClaimed -= OnQuestEvent;
+            QuestTracker.QuestCompleted += OnQuestEvent;
+            QuestTracker.QuestClaimed += OnQuestEvent;
             root.SetActive(false);
             return panel;
+        }
+
+        protected override void OnCleanUp()
+        {
+            if (ReferenceEquals(instance, this))
+            {
+                QuestTracker.QuestCompleted -= OnQuestEvent;
+                QuestTracker.QuestClaimed -= OnQuestEvent;
+                instance = null;
+            }
+            currentCounts = null;
+            colonistCards.Clear();
+            colonistContent = null;
+            base.OnCleanUp();
         }
 
         private static void OnQuestEvent(QuestDef quest)
@@ -507,9 +531,10 @@ namespace Rookie100.UI
         private void SelectDefaultQuest()
         {
             var ordered = QuestStore.OrderedQuests;
+            var counts = QuestScanner.CountAllBuildings();
             var preferred = ordered.FirstOrDefault(q =>
             {
-                var status = QuestStore.GetStatus(q);
+                var status = QuestStore.GetStatus(q, counts);
                 return status == QuestStatus.Completed ||
                        status == QuestStatus.InProgress ||
                        status == QuestStatus.Accepted ||
@@ -520,9 +545,9 @@ namespace Rookie100.UI
 
         // ---- 刷新 ----
 
-        private void RefreshAll()
+        private void RefreshAll(Dictionary<string, int> counts = null)
         {
-            currentCounts = QuestScanner.CountAllBuildings();
+            currentCounts = counts ?? QuestScanner.CountAllBuildings();
             lastCountsSignature = CountsSignature(currentCounts);
             if (headerTitle != null)
             {
@@ -734,6 +759,7 @@ namespace Rookie100.UI
 
         private void RefreshDetail()
         {
+            colonistCards.Clear();
             ClearChildren(detailContent);
             ClearChildren(sidebarContent);
 
@@ -778,6 +804,8 @@ namespace Rookie100.UI
                     guideLayout.preferredHeight = 22f;
                     guideLayout.flexibleWidth = 0f;
                     guideButton.AddComponent<ToolTip>().SetSimpleTooltip(Lang.T("查看建筑大图标与解锁所需科技"));
+                    if (objective.Type == "buildingReady")
+                        CreateBodyText(Rookie100.Diagnostics.SanitationReadiness.Explain(objective.Tag, currentCounts), MutedText);
                 }
             }
             else
@@ -834,6 +862,9 @@ namespace Rookie100.UI
                     CreateIconTextLine(StatusIcons.Claimed, Lang.T("任务已完成，继续下一个任务！"), PositiveText);
                     break;
             }
+
+            BuildCourseGuide(quest);
+            BuildColonistCards();
 
             // 视频参考章节
             CreateSpacer(4f);
@@ -1108,7 +1139,7 @@ namespace Rookie100.UI
 
         private void BuildSidebar(QuestDef quest)
         {
-            bool hasMaterials = quest.Objectives.Any(o => o.Type == "buildingBuilt" && !string.IsNullOrEmpty(o.Tag));
+            bool hasMaterials = quest.Objectives.Any(o => (o.Type == "buildingBuilt" || o.Type == "buildingReady") && !string.IsNullOrEmpty(o.Tag));
 
             // 知识任务（无建造目标）：整栏隐藏，详情区恢复全宽
             if (sidebarPanel != null)
@@ -1175,7 +1206,7 @@ namespace Rookie100.UI
 
             foreach (var objective in quest.Objectives)
             {
-                if (string.IsNullOrEmpty(objective.Tag) || objective.Type != "buildingBuilt")
+                if (string.IsNullOrEmpty(objective.Tag) || (objective.Type != "buildingBuilt" && objective.Type != "buildingReady"))
                 {
                     continue;
                 }
@@ -1526,6 +1557,41 @@ namespace Rookie100.UI
             nameText.color = HeadingText;
             nameText.gameObject.AddComponent<LayoutElement>().minHeight = 20f;
 
+            if (objective.Tag == Rookie100.Diagnostics.DiffuserDiagnostic.PrefabName)
+            {
+                TextMeshProUGUI diagnosticText = null;
+                ScrollRect diagnosticScroll = null;
+                GameObject diagnosticButton = MakeThinButton("InspectDiffuser", parent,
+                    Lang.T("检查选中的氧气扩散器"), () =>
+                    {
+                        diagnosticText.text = Rookie100.Diagnostics.DiffuserDiagnostic.InspectSelected();
+                        diagnosticScroll.verticalNormalizedPosition = 1f;
+                        LayoutRebuilder.MarkLayoutForRebuild(parent as RectTransform);
+                    }, BlueBtn, BlueBtnHover);
+                diagnosticButton.AddComponent<LayoutElement>().preferredHeight = 30f;
+                diagnosticButton.GetComponentInChildren<TextMeshProUGUI>().color = WhiteText;
+                CreateText("DiffuserDiagnosisHeading", parent, Lang.T("诊断结果（可上下滚动）"), 12,
+                    TextAlignmentOptions.Left).gameObject.AddComponent<LayoutElement>().minHeight = 18f;
+                GameObject diagnosticArea = CreateBox("DiffuserDiagnosisArea", parent, ContentBg);
+                diagnosticArea.AddComponent<LayoutElement>().preferredHeight = 200f;
+                diagnosticArea.AddComponent<RectMask2D>();
+                diagnosticScroll = diagnosticArea.AddComponent<ScrollRect>();
+                diagnosticScroll.viewport = diagnosticArea.GetComponent<RectTransform>();
+                diagnosticScroll.horizontal = false;
+                diagnosticScroll.movementType = ScrollRect.MovementType.Clamped;
+                diagnosticScroll.scrollSensitivity = 25f;
+                diagnosticText = CreateText("DiffuserDiagnosis", diagnosticArea.transform,
+                    Lang.T(Rookie100.Diagnostics.DiffuserDiagnostic.SelectionHint), 12, TextAlignmentOptions.Left);
+                RectTransform diagnosticContent = diagnosticText.GetComponent<RectTransform>();
+                diagnosticContent.anchorMin = new Vector2(0f, 1f);
+                diagnosticContent.anchorMax = new Vector2(1f, 1f);
+                diagnosticContent.pivot = new Vector2(0.5f, 1f);
+                diagnosticContent.offsetMin = new Vector2(6f, 0f);
+                diagnosticContent.offsetMax = new Vector2(-6f, 0f);
+                diagnosticText.gameObject.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+                diagnosticScroll.content = diagnosticContent;
+            }
+
             GameObject chainTitleRow = CreateIconTitleIn(parent, StatusIcons.GuideTech,
                 Lang.T("解锁该建筑所需的研究（点击查看详情）："), MutedText, 12);
             chainTitleRow.AddComponent<LayoutElement>().minHeight = 18f;
@@ -1610,9 +1676,9 @@ namespace Rookie100.UI
 
             // 打开游戏研究面板；若所需研究站未建造，先弹提醒指明建筑
             GameObject researchButton = MakeThinButton("OpenResearch", parent,
-                Lang.T("打开研究面板"), () =>
+                (Lang.English ? "Locate research: " : "定位研究：") + tech.DisplayName, () =>
                 {
-                    var missing = GetMissingResearchBuildings(tech.TechRef, QuestScanner.CountAllBuildings());
+                    var missing = GetMissingResearchBuildings(tech.TechRef, QuestScanner.CountAllBuildings(forceRefresh: true));
                     if (missing.Count > 0)
                     {
                         QuestTracker.Notify(Lang.T("研究「") + tech.DisplayName + Lang.T("」需要先建造研究站：") +
@@ -1620,7 +1686,7 @@ namespace Rookie100.UI
                     }
 
                     CloseGuideModal();
-                    TryOpenResearchScreen();
+                    TryOpenResearchScreen(tech.Id);
                 },
                 BlueBtn, BlueBtnHover, 12, FontStyles.Bold);
             researchButton.AddComponent<LayoutElement>().preferredHeight = 28f;
@@ -1702,7 +1768,7 @@ namespace Rookie100.UI
         /// 打开游戏研究面板：直接调用 ManagementMenu.OpenResearch()
         /// （H 段诊断实锤的公开方法；此前反射循环误命中属性 getter 导致假成功）。
         /// </summary>
-        private static void TryOpenResearchScreen()
+        private void TryOpenResearchScreen(string techId = null)
         {
             try
             {
@@ -1710,15 +1776,18 @@ namespace Rookie100.UI
                 if (menu == null)
                 {
                     ModLogger.Warn("研究面板打开失败：ManagementMenu.Instance 为空");
+                    QuestTracker.Notify(CT("研究界面暂不可用，请进入殖民地后重试。", "Research is unavailable. Try again in a loaded colony."), NotificationType.Bad);
                     return;
                 }
 
-                menu.OpenResearch();
-                ModLogger.Log("研究面板打开成功（ManagementMenu.OpenResearch）");
+                menu.OpenResearch(techId);
+                Close();
+                ModLogger.Log("研究跳转请求: " + (techId ?? "研究总览"));
             }
             catch (Exception e)
             {
                 ModLogger.Warn("研究面板打开失败: " + e.Message);
+                QuestTracker.Notify(CT("研究跳转失败，请从游戏研究按钮打开。", "Could not open research. Use the game's research button."), NotificationType.Bad);
             }
         }
 
@@ -2288,7 +2357,8 @@ namespace Rookie100.UI
                 {
                     if (QuestTracker.Instance != null)
                     {
-                        QuestTracker.Instance.ClaimRewards(quest);
+                        if (!QuestTracker.Instance.ClaimRewards(quest))
+                            RefreshAll(QuestScanner.CountAllBuildings(forceRefresh: true));
                     }
                 },
                 PinkBtn, PinkBtnHover, 14, FontStyles.Bold);

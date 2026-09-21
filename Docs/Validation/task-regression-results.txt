@@ -1,0 +1,71 @@
+PASS: original counting and invalid object filtering
+PASS: caller mutation cannot corrupt cache
+PASS: nearby reads share one world scan
+PASS: forced validation sees removal immediately
+PASS: forced result updates shared snapshot
+PASS: reads within lifetime use snapshot
+PASS: snapshot expires at lifetime boundary
+PASS: colony reset prevents old counts leaking
+PASS: clock reversal invalidates snapshot
+PASS: force refresh works without clock advancement
+PASS: spawn notification does not scan inside callback
+PASS: spawn invalidates unexpired snapshot
+PASS: same-frame snapshot cannot hide deferred destruction next frame
+PASS: snapshot becomes reusable after post-event reconciliation
+PASS: repeated cleanup notifications only invalidate
+PASS: event burst coalesces into next demand scan
+PASS: unchanged world is reused until five-second fallback
+PASS: fallback catches changes with no notification
+PASS: colony reset also clears old invalidation frame
+TOTAL: 19 passed. Unity discovery and Harmony dispatch are test substitutes.
+PASS: q03 rewards, prerequisites and teaching content preserved
+PASS: q01 rewards, prerequisites and video content preserved
+PASS: all other quest behavior fields unchanged; teaching text verified separately
+PASS: q03 has built and running objectives
+PASS: built but idle is in progress
+PASS: idle cannot deliver reward
+PASS: unwired rejected even with stale active flag
+PASS: unpowered rejected even with stale active flag
+PASS: unmet operating conditions rejected
+PASS: live state refresh does not rescan world
+PASS: running label agrees with completed status
+PASS: stopping updates status and label inside cache lifetime
+PASS: previous snapshot does not mutate retroactively
+PASS: stop between display and click blocks reward
+PASS: any running diffuser qualifies without selection
+PASS: inactive object cannot qualify
+PASS: missing component fails closed
+PASS: removed building cannot claim against cached completion
+PASS: running building awards once
+PASS: repeat claim blocked
+PASS: claimed progress preserved when building stops or disappears
+PASS: built counts cannot substitute for operating evidence
+PASS: new colony has no old progress or operating cache
+RUNNING TOTAL: 23 passed (plus 19 scanner regression tests).
+PASS: toilet alone cannot claim q01
+PASS: missing basin explained
+PASS: built facilities without resources fail readiness
+PASS: separate dirt and water causes
+PASS: live readiness updated without extra discovery scan
+PASS: both ready qualify while no one is using them
+PASS: readiness status text matches completion
+PASS: ready never claims verified routing
+PASS: supplied basin needs no mandatory pump
+PASS: water lost after display blocks reward
+PASS: previous readiness snapshot stays immutable
+PASS: full wash basin requires cleaning
+PASS: early cleaning blocks toilet readiness
+PASS: full toilet cannot claim
+PASS: stale ready state with no uses left fails closed
+PASS: disabled facility not mistaken for water shortage
+PASS: missing state machine fails closed
+PASS: native read failure contained and cannot grant reward
+PASS: inactive basin excluded
+PASS: one ready basin suffices among multiple facilities
+PASS: removed basin cannot use stale completed snapshot
+PASS: ready facilities award once
+PASS: repeat q01 reward blocked
+PASS: claimed q01 retained after facility loss
+PASS: built-only dictionary cannot stand in for readiness
+PASS: colony reset drops sanitation references and progress
+SANITATION TOTAL: 26 passed

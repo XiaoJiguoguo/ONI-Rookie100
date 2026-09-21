@@ -24,8 +24,7 @@ namespace Rookie100
                 UI.Lang.Load();
                 Content.QuestStore.Load();
 
-                // 应用所有 [HarmonyPatch] 注解补丁
-                harmony.PatchAll(typeof(ModEntry).Assembly);
+                // 当前游戏的 base.OnLoad(harmony) 已应用本程序集的补丁。
                 ModLogger.Log("Harmony 补丁已全部应用");
             }
             catch (Exception e)
