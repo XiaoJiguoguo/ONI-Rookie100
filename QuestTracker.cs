@@ -834,8 +834,19 @@ namespace Rookie100
 
         private void CheckQuests()
         {
+            if (!QuestStore.IsProgressReady)
+            {
+                return;
+            }
+
+            var quests = QuestStore.OrderedQuests;
+            if (!quests.Any(q => QuestStore.IsAccepted(q.Id) && !QuestStore.IsClaimed(q.Id) && !notifiedCompleted.Contains(q.Id)))
+            {
+                return;
+            }
+
             var counts = QuestScanner.CountAllBuildings();
-            foreach (var quest in QuestStore.OrderedQuests)
+            foreach (var quest in quests)
             {
                 if (QuestStore.IsClaimed(quest.Id) || notifiedCompleted.Contains(quest.Id))
                 {
@@ -892,17 +903,17 @@ namespace Rookie100
         /// <summary>领取任务奖励：投放物资到打印舱旁，标记已领取。</summary>
         public bool ClaimRewards(QuestDef quest)
         {
-            if (quest == null || QuestStore.IsClaimed(quest.Id))
+            if (!QuestStore.IsProgressReady || quest == null || QuestStore.IsClaimed(quest.Id))
             {
                 return false;
             }
 
-            var counts = QuestScanner.CountAllBuildings();
+            var counts = QuestScanner.CountAllBuildings(forceRefresh: true);
             foreach (var objective in quest.Objectives)
             {
                 if (!QuestStore.IsObjectiveMet(objective, counts))
                 {
-                    ModLogger.Warn($"领取失败：目标未达成 ({quest.Id})");
+                    ModLogger.Warn($"领取失败：目标未达成 ({quest.Id}, {objective.Type}, {objective.Tag}, {QuestBuildingSnapshot.ObjectiveCount(objective, counts)}/{objective.Count})");
                     return false;
                 }
             }

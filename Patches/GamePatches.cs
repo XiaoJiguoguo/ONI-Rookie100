@@ -10,16 +10,47 @@ namespace Rookie100.Patches
     /// </summary>
     public static class GamePatches
     {
+        // Attach before deserialization, not at Game.OnSpawn where saved fields
+        // would already have missed their restore opportunity.
+        [HarmonyPatch(typeof(SaveGame), "OnPrefabInit")]
+        public static class SaveGame_OnPrefabInit_Patch
+        {
+            public static void Postfix(SaveGame __instance)
+            {
+                __instance.gameObject.AddOrGet<RookieProgressTracker>();
+            }
+        }
+
+        [HarmonyPatch(typeof(Game), "OnCleanUp")]
+        public static class Game_OnCleanUp_Patch
+        {
+            public static void Prefix()
+            {
+                QuestScanner.ResetCache();
+                Content.QuestStore.DeactivateColony();
+            }
+        }
+
         [HarmonyPatch(typeof(Game), "OnSpawn")]
         public static class Game_OnSpawn_Patch
         {
             public static void Postfix(Game __instance)
             {
+                QuestScanner.ResetCache();
                 var tracker = __instance.gameObject.AddOrGet<QuestTracker>();
                 tracker.ResetForNewColony();
 
-                string colonyKey = ResolveColonyKey();
-                Content.QuestStore.ActivateColony(colonyKey);
+                try
+                {
+                    string colonyKey = ResolveColonyKey();
+                    Content.QuestStore.ActivateColony(colonyKey);
+                }
+                catch (Exception e)
+                {
+                    Content.QuestStore.DeactivateColony();
+                    ModLogger.Error("Progress activation failed; quest writes and rewards are disabled. Legacy JSON was not modified.", e);
+                    return;
+                }
                 ModLogger.Log($"殖民地已生成，任务追踪器就位 (已领取 {Content.QuestStore.ClaimedCount}/{Content.QuestStore.Quests.Count})");
             }
         }
@@ -27,7 +58,7 @@ namespace Rookie100.Patches
         /// <summary>
         /// 解析当前存档的唯一标识（存档 key）。
         /// 候选链：SaveLoader(类型/实例).saveFolder 属性或字段 → 取路径末段。
-        /// 全部失败退回 'default_colony'（此时无法保证同名殖民地隔离，日志会警告）。
+        /// 全部失败返回 null；存在 legacy 档案时禁止猜测导入归属。
         /// 每次命中来源都会写日志（运行时证据）。
         /// </summary>
         private static string ResolveColonyKey()
