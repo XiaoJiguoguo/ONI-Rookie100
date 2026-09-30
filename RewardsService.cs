@@ -15,22 +15,24 @@ namespace Rookie100
         /// <summary>把任务的全部奖励投放到打印舱。</summary>
         public static bool Deliver(QuestDef quest)
         {
-            if (quest == null || quest.Rewards == null || quest.Rewards.Count == 0)
+            if (quest == null || string.IsNullOrEmpty(QuestStore.ActiveColonyKey)) return false;
+            if (QuestStore.HasReceivedReward(quest.Id)) return true;
+            if (quest.Rewards == null || quest.Rewards.Count == 0)
             {
-                ModLogger.Warn($"任务 {quest?.Id} 没有配置奖励");
                 return true; // 无奖励任务视为投放成功
             }
 
             Vector3 spawnPosition = ResolveSpawnPosition();
             foreach (var reward in quest.Rewards)
             {
-                DeliverOne(reward, spawnPosition);
+                if (!DeliverOne(reward, spawnPosition)) return false;
             }
 
+            QuestStore.MarkRewardReceived(quest.Id);
             return true;
         }
 
-        private static void DeliverOne(QuestRewardDef reward, Vector3 spawnPosition)
+        private static bool DeliverOne(QuestRewardDef reward, Vector3 spawnPosition)
         {
             // 元素 id 纠正（Coal 是 oreTag，真实元素 id 为 Carbon；错误 id 会静默投放失败）
             string elementId = QuestStore.CanonicalElementId(reward.Element);
@@ -43,24 +45,33 @@ namespace Rookie100
                 if (delivered == null)
                 {
                     ModLogger.Warn($"奖励投放失败: {elementId} x{reward.Amount}");
-                    return;
+                    return false;
                 }
 
-                // 弹出 + 音效反馈
-                PopFXManager.Instance.SpawnFX(
-                    PopFXManager.Instance.sprite_Plus,
-                    reward.Label,
-                    delivered.transform,
-                    new Vector3(0f, 0.5f, 0f),
-                    1.5f,
-                    false,
-                    false);
-                KMonoBehaviour.PlaySound(GlobalAssets.GetSound("SandboxTool_Spawner", false));
+                // Cosmetic feedback must not turn a successful delivery into a retry.
+                try
+                {
+                    PopFXManager.Instance.SpawnFX(
+                        PopFXManager.Instance.sprite_Plus,
+                        reward.LabelDisp,
+                        delivered.transform,
+                        new Vector3(0f, 0.5f, 0f),
+                        1.5f,
+                        false,
+                        false);
+                    KMonoBehaviour.PlaySound(GlobalAssets.GetSound("SandboxTool_Spawner", false));
+                }
+                catch (Exception feedbackError)
+                {
+                    ModLogger.Warn("奖励已投放，反馈效果失败: " + feedbackError.Message);
+                }
                 ModLogger.Log($"奖励投放: {reward.Label} → 打印舱");
+                return true;
             }
             catch (Exception e)
             {
                 ModLogger.Error($"奖励投放异常 {elementId}", e);
+                return false;
             }
         }
 

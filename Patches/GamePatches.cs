@@ -17,6 +17,7 @@ namespace Rookie100.Patches
             {
                 var tracker = __instance.gameObject.AddOrGet<QuestTracker>();
                 tracker.ResetForNewColony();
+                SanitationWitness.Clear();
 
                 string colonyKey = ResolveColonyKey();
                 Content.QuestStore.ActivateColony(colonyKey);
@@ -120,3 +121,4 @@ namespace Rookie100.Patches
         }
     }
 }
+

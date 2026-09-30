@@ -68,6 +68,7 @@ namespace Rookie100.Content
     public class QuestObjectiveDef
     {
         public string Type { get; set; }
+        public string Condition { get; set; }
         public string Tag { get; set; }
         public int Count { get; set; } = 1;
         /// <summary>UI 显示名（如"户外厕所"）。</summary>
@@ -108,3 +109,4 @@ namespace Rookie100.Content
         Claimed
     }
 }
+

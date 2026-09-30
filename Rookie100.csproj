@@ -50,6 +50,10 @@
       <HintPath>$(ManagedPath)\UnityEngine.UIModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>$(ManagedPath)\UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>$(ManagedPath)\Unity.TextMeshPro.dll</HintPath>
       <Private>false</Private>
@@ -74,6 +78,11 @@
     <None Include="mod.yaml" CopyToOutputDirectory="PreserveNewest" />
     <None Include="mod_info.yaml" CopyToOutputDirectory="PreserveNewest" />
     <None Include="quests.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\guide_dupe.png" LogicalName="Rookie100.Resources.guide_dupe.png" />
+    <EmbeddedResource Include="Resources\demo_walk.png" LogicalName="Rookie100.Resources.demo_walk.png" />
   </ItemGroup>
 
   <Target Name="CheckGameDlls" BeforeTargets="ResolveAssemblyReferences">

@@ -25,12 +25,15 @@ namespace Rookie100.Content
         {
             public List<string> Claimed { get; set; } = new List<string>();
             public List<string> Accepted { get; set; } = new List<string>();
+            // Physical rewards survive a learning-progress reset.
+            public List<string> Rewarded { get; set; } = new List<string>();
+            public List<int> SanitationTrials { get; set; } = new List<int>();
         }
 
         /// <summary>quest_progress.json 顶层结构（v3：多档案注册表）。</summary>
         private class ProgressRegistry
         {
-            public int Version { get; set; } = 3;
+            public int Version { get; set; } = 4;
             public string Active { get; set; }
             public Dictionary<string, ColonyProgress> Profiles { get; set; } = new Dictionary<string, ColonyProgress>();
         }
@@ -214,6 +217,12 @@ namespace Rookie100.Content
 
             active = profile;
             activeKey = colonyKey;
+            if (profile.Rewarded == null) profile.Rewarded = new List<string>();
+            foreach (string id in profile.Claimed)
+            {
+                if (!profile.Rewarded.Contains(id)) profile.Rewarded.Add(id);
+            }
+            registry.Version = 4;
             SaveProgress();
         }
 
@@ -265,6 +274,18 @@ namespace Rookie100.Content
             return active.Accepted.Contains(questId);
         }
 
+        public static bool HasReceivedReward(string questId)
+        {
+            return active != null && active.Rewarded != null && active.Rewarded.Contains(questId);
+        }
+
+        public static void MarkRewardReceived(string questId)
+        {
+            if (active == null || string.IsNullOrEmpty(questId) || HasReceivedReward(questId)) return;
+            active.Rewarded.Add(questId);
+            SaveProgress();
+        }
+
         /// <summary>接取任务（Available → Accepted）。</summary>
         public static bool AcceptQuest(string questId)
         {
@@ -285,6 +306,8 @@ namespace Rookie100.Content
             var profile = EnsureActive();
             profile.Claimed.Clear();
             profile.Accepted.Clear();
+            profile.SanitationTrials = new List<int>();
+            Rookie100.SanitationWitness.Clear();
             SaveProgress();
             ModLogger.Log($"全部任务进度已重置（存档 {activeKey}）");
         }
@@ -360,10 +383,24 @@ namespace Rookie100.Content
             return met > 0 ? QuestStatus.InProgress : QuestStatus.Accepted;
         }
 
+        public static bool HasSanitationTrial(int world) => active?.SanitationTrials?.Contains(world) == true;
+
+        public static void MarkSanitationTrial(int world)
+        {
+            if (active == null || string.IsNullOrEmpty(activeKey) || !IsAccepted("q01") || IsClaimed("q01")) return;
+            if (active.SanitationTrials == null) active.SanitationTrials = new List<int>();
+            if (active.SanitationTrials.Contains(world)) return;
+            active.SanitationTrials.Add(world);
+            SaveProgress();
+        }
+
         public static bool IsObjectiveMet(QuestObjectiveDef objective, Dictionary<string, int> counts)
         {
             switch (objective.Type)
             {
+                case "sanitation":
+                    counts.TryGetValue("sanitation:" + objective.Condition, out int satisfied);
+                    return satisfied >= objective.Count;
                 case "buildingBuilt":
                     counts.TryGetValue(objective.Tag, out int count);
                     return count >= objective.Count;
@@ -381,3 +418,4 @@ namespace Rookie100.Content
         }
     }
 }
+

@@ -21,3 +21,4 @@ else {
     Get-Content $log -Tail 50 -Wait |
         Select-String -Pattern "Rookie100|百天|Harmony|harmony|patch|Exception|ExceptionFromHarmony"
 }
+

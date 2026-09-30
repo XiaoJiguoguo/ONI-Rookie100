@@ -898,6 +898,11 @@ namespace Rookie100
             }
 
             var counts = QuestScanner.CountAllBuildings();
+            if (QuestStore.GetStatus(quest, counts) != QuestStatus.Completed)
+            {
+                ModLogger.Warn($"领取失败：任务尚不可领取 ({quest.Id})");
+                return false;
+            }
             foreach (var objective in quest.Objectives)
             {
                 if (!QuestStore.IsObjectiveMet(objective, counts))
@@ -907,6 +912,7 @@ namespace Rookie100
                 }
             }
 
+            bool hasNewMaterials = quest.Rewards.Count > 0 && !QuestStore.HasReceivedReward(quest.Id);
             bool delivered = RewardsService.Deliver(quest);
             if (!delivered)
             {
@@ -916,7 +922,9 @@ namespace Rookie100
             QuestStore.MarkClaimed(quest.Id);
             notifiedCompleted.Remove(quest.Id);
             ModLogger.Log($"任务奖励已领取: #{quest.Order:d2} {quest.Title}");
-            ShowNotification(Lang.T("已领取「") + quest.TitleDisp + Lang.T("」奖励！下一任务已解锁。"), NotificationType.Good);
+            ShowNotification(hasNewMaterials
+                ? Lang.T("已领取「") + quest.TitleDisp + Lang.T("」奖励！下一任务已解锁。")
+                : Lang.T("任务已完成：「") + quest.TitleDisp + Lang.T("」——下一任务已解锁。"), NotificationType.Good);
             QuestClaimed?.Invoke(quest);
             return true;
         }

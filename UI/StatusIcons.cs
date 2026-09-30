@@ -89,6 +89,9 @@ namespace Rookie100.UI
             layout.flexibleHeight = 0f;
 
             Image img = go.AddComponent<Image>();
+            // LayoutElement only controls size when a parent LayoutGroup manages this child.
+            // Icons placed manually in foldout buttons also need an explicit RectTransform size.
+            img.rectTransform.sizeDelta = new Vector2(size, size);
             img.preserveAspect = true;
             img.raycastTarget = false;
             Sprite sp = Get(spriteKey);

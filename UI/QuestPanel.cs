@@ -25,6 +25,17 @@ namespace Rookie100.UI
         private string selectedQuestId;
         private bool videoExpanded;
         private bool sidebarExpanded;
+        private bool demoExpanded;
+        private ToiletDemo currentDemo;
+        private DemoPlayback demoPlayback;
+        private readonly HashSet<string> expandedMaterialCategories = new HashSet<string>();
+        private readonly List<MaterialInventoryLine> materialInventoryLines = new List<MaterialInventoryLine>();
+        private sealed class MaterialInventoryLine
+        {
+            public Element Element;
+            public float Required;
+            public TextMeshProUGUI Label;
+        }
         private Dictionary<string, int> currentCounts;
         private TextMeshProUGUI headerTitle;
         private float liveRefreshTimer;
@@ -65,6 +76,10 @@ namespace Rookie100.UI
         private static readonly Color BlueText = new Color(0.20f, 0.28f, 0.45f, 1f);
         private static readonly Color BarBg = new Color(0.55f, 0.55f, 0.50f, 1f);
         private static readonly Color WhiteText = Color.white;
+        private const float FrameBorder = 6f;
+        private const float HeaderHeight = 38f;
+        private const float FooterHeight = 66f;
+        private const float SectionGap = 4f;
 
         // ---- 生命周期 ----
 
@@ -93,6 +108,7 @@ namespace Rookie100.UI
             }
 
             liveRefreshTimer = 0f;
+            RefreshMaterialInventory();
             var counts = QuestScanner.CountAllBuildings();
             string signature = CountsSignature(counts);
             if (!string.Equals(signature, lastCountsSignature, StringComparison.Ordinal))
@@ -208,6 +224,7 @@ namespace Rookie100.UI
 
         private void Close()
         {
+            if (currentDemo != null) currentDemo.Pause();
             if (IsActive())
             {
                 Deactivate();
@@ -296,21 +313,27 @@ namespace Rookie100.UI
             windowRect.anchorMax = new Vector2(0.5f, 0.5f);
             windowRect.pivot = new Vector2(0.5f, 0.5f);
             windowRect.anchoredPosition = Vector2.zero;
-            // 默认尺寸随屏幕缩放（小分辨率自动收缩，保持响应式）
-            float scale = Mathf.Min(1f, (Screen.width - 32f) / 960f, (Screen.height - 32f) / 640f);
-            var defaultSize = new Vector2(960f * scale, 640f * scale);
+            // Use the overlay canvas's UI units, not physical screen pixels (UI scaling differs).
+            RectTransform canvasRect = parent as RectTransform;
+            float canvasWidth = canvasRect != null && canvasRect.rect.width > 0f
+                ? canvasRect.rect.width : Screen.width;
+            float canvasHeight = canvasRect != null && canvasRect.rect.height > 0f
+                ? canvasRect.rect.height : Screen.height;
+            var defaultSize = new Vector2(Mathf.Min(1240f, Mathf.Max(320f, canvasWidth - 48f)),
+                Mathf.Min(760f, Mathf.Max(240f, canvasHeight - 48f)));
             windowRect.sizeDelta = defaultSize;
             if (!WindowDrag.TryApplyLayout(windowRect, defaultSize))
             {
                 windowRect.sizeDelta = defaultSize;
             }
 
-            // 标题栏（可拖拽，酒红色与游戏 HUD 一致；顶部 2px 红线 + 高 28 对齐 StorageNetwork）
+            // Give header, content and footer separate rectangles inside the wider red frame.
             GameObject header = CreateBox("Header", window.transform, HeaderBg);
-            SetTopStretch(header.GetComponent<RectTransform>(), 2f, 2f, 2f, 28f);
+            SetTopStretch(header.GetComponent<RectTransform>(), FrameBorder, FrameBorder,
+                FrameBorder, FrameBorder + HeaderHeight);
             header.AddComponent<WindowDrag>().Configure(windowRect);
 
-            headerTitle = CreateText("Title", header.transform, Lang.T("缺氧新手百天 · 任务指引"), 14,
+            headerTitle = CreateText("Title", header.transform, Lang.T("缺氧新手百天 · 任务指引"), 16,
                 TextAlignmentOptions.MidlineLeft);
             headerTitle.fontStyle = FontStyles.Bold;
             headerTitle.color = HeaderText;
@@ -319,7 +342,7 @@ namespace Rookie100.UI
             headerTitle.rectTransform().offsetMax = new Vector2(-150f, 0f);
 
             // 重置按钮
-            GameObject resetButton = MakeThinButton("ResetButton", header.transform, "⟲",
+            GameObject resetButton = MakeThinButton("ResetButton", header.transform, Lang.T("重置"),
                 () =>
                 {
                     QuestStore.ResetAll();
@@ -329,8 +352,8 @@ namespace Rookie100.UI
             resetRect.anchorMin = new Vector2(1f, 0.5f);
             resetRect.anchorMax = new Vector2(1f, 0.5f);
             resetRect.pivot = new Vector2(1f, 0.5f);
-            resetRect.anchoredPosition = new Vector2(-112f, 0f);
-            resetRect.sizeDelta = new Vector2(28f, 22f);
+            resetRect.anchoredPosition = new Vector2(-94f, 0f);
+            resetRect.sizeDelta = new Vector2(48f, 28f);
             resetButton.GetComponentInChildren<TextMeshProUGUI>().color = HeaderText;
             resetButton.AddComponent<ToolTip>().SetSimpleTooltip(Lang.T("重置全部任务进度（开始新一轮任务时使用）"));
 
@@ -341,15 +364,16 @@ namespace Rookie100.UI
             exitRect.anchorMin = new Vector2(1f, 0.5f);
             exitRect.anchorMax = new Vector2(1f, 0.5f);
             exitRect.pivot = new Vector2(1f, 0.5f);
-            exitRect.anchoredPosition = new Vector2(-56f, 0f);
-            exitRect.sizeDelta = new Vector2(52f, 22f);
+            exitRect.anchoredPosition = new Vector2(-10f, 0f);
+            exitRect.sizeDelta = new Vector2(72f, 28f);
             exitButton.GetComponentInChildren<TextMeshProUGUI>().color = HeaderText;
             exitButton.GetComponentInChildren<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
             exitButton.AddComponent<ToolTip>().SetSimpleTooltip(Lang.T("关闭面板（Esc）"));
 
             // 主内容区（浅色，内缩露出红色描边；底部预留叠甲声明栏高度）
             GameObject content = CreateBox("Content", window.transform, ContentBg);
-            SetStretch(content.GetComponent<RectTransform>(), 2f, 2f, 2f, 66f);
+            SetStretch(content.GetComponent<RectTransform>(), FrameBorder, FrameBorder,
+                FrameBorder + HeaderHeight + SectionGap, FrameBorder + FooterHeight + SectionGap);
             HorizontalLayoutGroup columns = content.AddComponent<HorizontalLayoutGroup>();
             columns.padding = new RectOffset(4, 4, 4, 4);
             columns.spacing = 4f;
@@ -361,14 +385,33 @@ namespace Rookie100.UI
             // 左栏：任务列表
             GameObject tree = CreateBox("Tree", content.transform, TreeBg);
             LayoutElement treeLayout = tree.AddComponent<LayoutElement>();
-            treeLayout.minWidth = 250f;
-            treeLayout.preferredWidth = 250f;
+            float treeWidth = Mathf.Min(300f, windowRect.sizeDelta.x * 0.27f);
+            treeLayout.minWidth = treeWidth;
+            treeLayout.preferredWidth = treeWidth;
             treeLayout.flexibleWidth = 0f;
+
+            // Persistent guide strip: outside the scrolling/rebuilt quest list.
+            GameObject guide = new GameObject("GuideCompanion");
+            guide.transform.SetParent(tree.transform, false);
+            RectTransform guideRect = guide.AddComponent<RectTransform>();
+            guideRect.anchorMin = new Vector2(0f, 1f);
+            guideRect.anchorMax = new Vector2(0f, 1f);
+            guideRect.pivot = new Vector2(0f, 1f);
+            guideRect.anchoredPosition = new Vector2(8f, -4f);
+            guideRect.sizeDelta = new Vector2(56f, 84f);
+            guide.AddComponent<RawImage>().raycastTarget = false;
+            guide.AddComponent<GuideCompanion>();
+
+            TextMeshProUGUI guideLabel = CreateText("GuideLabel", tree.transform,
+                "Rookie100\n" + Lang.T("一步一步，活过百天"), 12, TextAlignmentOptions.MidlineLeft);
+            guideLabel.color = HeadingText;
+            guideLabel.raycastTarget = false;
+            SetTopStretch(guideLabel.rectTransform(), 72f, 8f, 4f, 84f);
 
             GameObject treeViewport = new GameObject("TreeViewport");
             treeViewport.transform.SetParent(tree.transform, false);
             RectTransform treeViewportRect = treeViewport.AddComponent<RectTransform>();
-            SetStretch(treeViewportRect, 4f, 4f, 4f, 4f);
+            SetStretch(treeViewportRect, 4f, 4f, 92f, 4f);
             treeViewport.AddComponent<RectMask2D>();
 
             GameObject treeScrollObject = new GameObject("TreeContent");
@@ -402,7 +445,7 @@ namespace Rookie100.UI
             detailColumns.spacing = 4f;
             detailColumns.childControlWidth = true;
             detailColumns.childControlHeight = true;
-            detailColumns.childForceExpandWidth = true;
+            detailColumns.childForceExpandWidth = false;
             detailColumns.childForceExpandHeight = true;
 
             GameObject detailViewportObject = new GameObject("DetailViewport");
@@ -410,7 +453,7 @@ namespace Rookie100.UI
             detailViewportObject.AddComponent<RectTransform>();
             LayoutElement detailViewportLayout = detailViewportObject.AddComponent<LayoutElement>();
             detailViewportLayout.flexibleWidth = 1f;
-            detailViewportLayout.minWidth = 400f;
+            detailViewportLayout.minWidth = Mathf.Min(400f, windowRect.sizeDelta.x * 0.4f);
             detailViewportObject.AddComponent<RectMask2D>();
             RectTransform detailViewport = detailViewportObject.GetComponent<RectTransform>();
 
@@ -476,7 +519,8 @@ namespace Rookie100.UI
 
             // 底部叠甲声明栏（常驻可见，给官方/权利方看本意）
             GameObject disclaimer = CreateBox("Disclaimer", window.transform, ContentBg);
-            SetBottomStretch(disclaimer.GetComponent<RectTransform>(), 2f, 2f, 2f, 60f);
+            SetBottomStretch(disclaimer.GetComponent<RectTransform>(), FrameBorder, FrameBorder,
+                FrameBorder, FrameBorder + FooterHeight);
             VerticalLayoutGroup disclaimerLayout = disclaimer.AddComponent<VerticalLayoutGroup>();
             disclaimerLayout.padding = new RectOffset(8, 8, 4, 4);
             disclaimerLayout.spacing = 1f;
@@ -542,12 +586,32 @@ namespace Rookie100.UI
                 var quests = QuestStore.GetQuestsOfPhase(phase.Id);
                 int claimed = quests.Count(q => QuestStore.IsClaimed(q.Id));
                 bool expanded = expandedPhases.Contains(phase.Id);
-                string arrow = expanded ? "▼" : "▶";
+                bool previewPhase = phase.Id == "early";
+                Transform phaseParent = treeContent;
+                if (previewPhase)
+                {
+                    GameObject card = CreateBox("SurvivalPhaseBackground", treeContent,
+                        new Color(0.89f, 0.86f, 0.75f, 1f));
+                    card.GetComponent<Image>().raycastTarget = false;
+                    VerticalLayoutGroup phaseLayout = card.AddComponent<VerticalLayoutGroup>();
+                    phaseLayout.padding = new RectOffset(6, 6, 6, 6);
+                    phaseLayout.spacing = 3f;
+                    phaseLayout.childControlWidth = true;
+                    phaseLayout.childControlHeight = true;
+                    phaseLayout.childForceExpandWidth = true;
+                    phaseLayout.childForceExpandHeight = false;
+                    card.AddComponent<LayoutElement>().flexibleWidth = 1f;
+                    phaseParent = card.transform;
+                }
+                string foldText = Lang.T(expanded ? "收起" : "展开");
+                string phaseLabel = previewPhase
+                    ? $"{phase.TitleDisp}\n{Lang.T("已领取")} {claimed}/{quests.Count}   {foldText}"
+                    : $"{phase.TitleDisp} ({claimed}/{quests.Count}) {foldText}";
 
                 GameObject phaseHeader = MakeFoldoutHeader(
                     $"Phase_{phase.Id}",
-                    treeContent,
-                    $"{arrow} {phase.TitleDisp}  ({claimed}/{quests.Count})",
+                    phaseParent,
+                    phaseLabel,
                     () =>
                     {
                         if (!expandedPhases.Remove(phase.Id))
@@ -557,12 +621,19 @@ namespace Rookie100.UI
 
                         RefreshTree();
                     },
-                    RowBg,
-                    RowHover,
-                    12,
+                    previewPhase ? new Color(0.77f, 0.72f, 0.57f, 1f) : RowBg,
+                    previewPhase ? new Color(0.84f, 0.79f, 0.63f, 1f) : RowHover,
+                    previewPhase ? 14 : 12,
                     FontStyles.Bold,
                     true);
                 phaseHeader.AddComponent<LayoutElement>().preferredHeight = 26f;
+                if (previewPhase)
+                {
+                    phaseHeader.GetComponent<LayoutElement>().preferredHeight = 44f;
+                    phaseHeader.GetComponent<LayoutElement>().minHeight = 44f;
+                    phaseHeader.GetComponentInChildren<TextMeshProUGUI>().color = HeadingText;
+                    phaseHeader.AddComponent<ToolTip>().SetSimpleTooltip(phase.DescDisp);
+                }
 
                 if (!expanded)
                 {
@@ -571,12 +642,12 @@ namespace Rookie100.UI
 
                 foreach (var quest in quests)
                 {
-                    CreateQuestRow(quest);
+                    CreateQuestRow(quest, phaseParent);
                 }
             }
         }
 
-        private void CreateQuestRow(QuestDef quest)
+        private void CreateQuestRow(QuestDef quest, Transform parent)
         {
             var status = QuestStore.GetStatus(quest, currentCounts);
             var style = StyleOf(status);
@@ -584,7 +655,7 @@ namespace Rookie100.UI
 
             // 行 = 背景 KImage + 水平布局（建筑图标 | 状态徽章+标题 | 迷你进度条）
             GameObject rowObject = new GameObject($"Quest_{quest.Id}");
-            rowObject.transform.SetParent(treeContent, false);
+            rowObject.transform.SetParent(parent, false);
             rowObject.AddComponent<RectTransform>();
             KImage bg = rowObject.AddComponent<KImage>();
             bg.type = Image.Type.Sliced;
@@ -640,7 +711,8 @@ namespace Rookie100.UI
             string questId = quest.Id;
             button.onClick += () => SelectQuest(questId);
 
-            rowObject.AddComponent<LayoutElement>().preferredHeight = 25f;
+            rowObject.AddComponent<LayoutElement>().preferredHeight = quest.Phase == "early" ? 28f : 25f;
+            rowObject.AddComponent<ToolTip>().SetSimpleTooltip($"#{quest.Order:d2} {quest.TitleDisp}");
 
             // 迷你进度条（进行中任务的右侧展示）
             var total = quest.Objectives.Count;
@@ -734,6 +806,9 @@ namespace Rookie100.UI
 
         private void RefreshDetail()
         {
+            if (currentDemo != null) demoPlayback = currentDemo.Capture();
+            currentDemo = null;
+            materialInventoryLines.Clear();
             ClearChildren(detailContent);
             ClearChildren(sidebarContent);
 
@@ -750,10 +825,43 @@ namespace Rookie100.UI
 
             // 标题区（大图标 + 标题/阶段）
             CreateDetailHeader(quest, style, phase);
+            RectTransform detailRoot = detailContent;
+            Transform demoParent = null;
+            if (quest.Id == "q01" && demoExpanded)
+            {
+                var overview = new GameObject("OverviewAndDemo", typeof(RectTransform));
+                overview.transform.SetParent(detailRoot, false);
+                float available = windowRect.sizeDelta.x - Mathf.Min(300f, windowRect.sizeDelta.x * .27f)
+                    - (sidebarExpanded ? 240f : 120f) - 40f;
+                HorizontalOrVerticalLayoutGroup overviewLayout = available >= 680f
+                    ? (HorizontalOrVerticalLayoutGroup)overview.AddComponent<HorizontalLayoutGroup>()
+                    : overview.AddComponent<VerticalLayoutGroup>();
+                overviewLayout.spacing = 10f;
+                overviewLayout.childControlWidth = true;overviewLayout.childControlHeight = true;
+                overviewLayout.childForceExpandWidth = available < 680f;overviewLayout.childForceExpandHeight = false;
+                var info = new GameObject("TaskInfo", typeof(RectTransform), typeof(VerticalLayoutGroup), typeof(LayoutElement));
+                info.transform.SetParent(overview.transform, false);
+                var infoLayout = info.GetComponent<VerticalLayoutGroup>();
+                infoLayout.spacing = 6f;infoLayout.childControlWidth = true;infoLayout.childControlHeight = true;
+                infoLayout.childForceExpandWidth = true;infoLayout.childForceExpandHeight = false;
+                info.GetComponent<LayoutElement>().flexibleWidth = 1f;info.GetComponent<LayoutElement>().minWidth = 260f;
+                detailContent = info.GetComponent<RectTransform>();demoParent = overview.transform;
+            }
 
             // 任务说明
             CreateSectionTitle(StatusIcons.Brief, Lang.T("任务说明"), HeadingText);
             CreateBodyText(quest.DescDisp, BodyTextC);
+            if (quest.Id == "q01")
+            {
+                var demoToggle = MakeThinButton("DemoToggle", detailContent,
+                    Lang.T(demoExpanded ? "收起动画演示" : "动画演示"), () =>
+                    { demoExpanded = !demoExpanded; RefreshDetail(); }, BlueBtn, BlueBtnHover, 13, FontStyles.Bold);
+                demoToggle.GetComponentInChildren<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
+                demoToggle.GetComponentInChildren<TextMeshProUGUI>().color = WhiteText;
+                demoToggle.AddComponent<LayoutElement>().preferredHeight = 30f;
+                if (demoParent != null) CreateToiletDemo(demoParent);
+                CreateBodyText(Lang.English ? "Checks use the current asteroid. Trial: after accepting, one duplicant must finish using an outhouse and then wash in the same latrine within 120 game seconds. The trial is saved; other checks stay live." : "检查当前星球。接取后，让同一复制人在同一公共厕所如厕，再于 120 游戏秒内洗手。试运行会保存；其余条件实时检查。请检查出口路线和洗手方向。", MutedText);
+            }
 
             // 目标进度
             if (quest.Objectives.Count > 0)
@@ -766,7 +874,7 @@ namespace Rookie100.UI
                         QuestStore.GetObjectiveStatusText(objective, currentCounts),
                         met ? PositiveText : BlueText,
                         met ? StatusIcons.ObjectiveDone : StatusIcons.ObjectiveTodo);
-                    row.AddComponent<LayoutElement>().preferredHeight = 26f;
+                    row.AddComponent<LayoutElement>().preferredHeight = objective.Type == "sanitation" ? 38f : 26f;
 
                     // 建筑引导按钮：查看大图标与解锁所需的前置科技
                     QuestObjectiveDef guideObjective = objective;
@@ -783,15 +891,23 @@ namespace Rookie100.UI
             else
             {
                 CreateSectionTitle(StatusIcons.Objectives, Lang.T("任务目标"), HeadingText);
-                CreateIconTextLine(StatusIcons.Knowledge, Lang.T("知识任务：接取后即可领取奖励"), MutedText);
+                CreateIconTextLine(StatusIcons.Knowledge, Lang.T("知识任务：接取后确认完成，解锁下一任务"), MutedText);
             }
 
             // 奖励
             CreateSectionTitle(StatusIcons.Rewards, Lang.T("打印舱奖励"), HeadingText);
-            foreach (var reward in quest.Rewards)
+            if (quest.Rewards.Count == 0)
+            {
+                CreateIconTextLine(StatusIcons.Knowledge, Lang.T("无实物奖励，完成后解锁下一任务"), MutedText);
+            }
+            else if (QuestStore.HasReceivedReward(quest.Id))
+            {
+                CreateIconTextLine(StatusIcons.Claimed, Lang.T("本存档已发放奖励，重做任务不重复发放"), MutedText);
+            }
+            else foreach (var reward in quest.Rewards)
             {
                 GameObject row = CreateIconRow(reward.Element, reward.LabelDisp, WarningText, null);
-                row.AddComponent<LayoutElement>().preferredHeight = 26f;
+                row.AddComponent<LayoutElement>().preferredHeight = objective.Type == "sanitation" ? 38f : 26f;
             }
 
             CreateSpacer(4f);
@@ -835,6 +951,7 @@ namespace Rookie100.UI
                     break;
             }
 
+            detailContent = detailRoot;
             // 视频参考章节
             CreateSpacer(4f);
             CreateSectionTitle(StatusIcons.Video, Lang.T("视频讲解章节"), MutedText);
@@ -872,6 +989,42 @@ namespace Rookie100.UI
 
             // 材料与布局侧栏
             BuildSidebar(quest);
+        }
+
+        private void CreateToiletDemo(Transform parent)
+        {
+            var card = CreateBox("ToiletDemoCard", parent, new Color(.83f,.87f,.88f,1f));
+            var cardLayout = card.AddComponent<VerticalLayoutGroup>();
+            cardLayout.padding = new RectOffset(8,8,8,8);cardLayout.spacing = 5f;
+            cardLayout.childControlWidth = true;cardLayout.childControlHeight = true;
+            cardLayout.childForceExpandWidth = true;cardLayout.childForceExpandHeight = false;
+            var sizing = card.AddComponent<LayoutElement>();sizing.minWidth=320f;sizing.preferredWidth=370f;
+            var title = CreateText("DemoTitle", card.transform, Lang.T("厕所与洗手路线演示"), 13, TextAlignmentOptions.MidlineLeft);
+            title.fontStyle=FontStyles.Bold;title.gameObject.AddComponent<LayoutElement>().preferredHeight=24f;
+            var scene = CreateBox("DemoScene",card.transform,new Color(.91f,.93f,.92f,1f));
+            scene.AddComponent<LayoutElement>().preferredHeight=195f;
+            currentDemo=scene.AddComponent<ToiletDemo>();
+            Sprite toilet=TryResolveSprite("Outhouse",out Color toiletTint);
+            Sprite basin=TryResolveSprite("WashBasin",out Color basinTint);
+            Sprite pump=TryResolveSprite("LiquidPumpingStation",out Color pumpTint);
+            currentDemo.Initialize(toilet,toiletTint,basin,basinTint,pump,pumpTint,demoPlayback,title.font);
+            ToiletDemo demo=currentDemo;
+            var controls=new GameObject("DemoControls",typeof(RectTransform),typeof(HorizontalLayoutGroup));
+            controls.transform.SetParent(card.transform,false);
+            var group=controls.GetComponent<HorizontalLayoutGroup>();group.spacing=6f;
+            group.childControlWidth=true;group.childControlHeight=true;group.childForceExpandWidth=true;
+            controls.AddComponent<LayoutElement>().preferredHeight=28f;
+            var play=MakeThinButton("PlayPause",controls.transform,Lang.T(demo.IsPlaying?"暂停":"播放"),
+                ()=>demo.TogglePlay(),BlueBtn,BlueBtnHover,12);
+            var playLabel=play.GetComponentInChildren<TextMeshProUGUI>();playLabel.color=WhiteText;
+            playLabel.alignment=TextAlignmentOptions.Center;play.AddComponent<LayoutElement>().flexibleWidth=1f;
+            demo.PlaybackChanged=playing=> {if(playLabel!=null)playLabel.text=Lang.T(playing?"暂停":"播放");};
+            var replay=MakeThinButton("Replay",controls.transform,Lang.T("重播"),()=>demo.Replay(),BlueBtn,BlueBtnHover,12);
+            replay.AddComponent<LayoutElement>().flexibleWidth=1f;
+            replay.GetComponentInChildren<TextMeshProUGUI>().color=WhiteText;
+            replay.GetComponentInChildren<TextMeshProUGUI>().alignment=TextAlignmentOptions.Center;
+            var note=CreateText("DemoNote",card.transform,Lang.T("布局和动作示意，不会自动建造或完成任务"),10,TextAlignmentOptions.MidlineLeft);
+            note.gameObject.AddComponent<LayoutElement>().preferredHeight=30f;
         }
 
         // ---- 材料与布局侧栏 ----
@@ -1108,7 +1261,7 @@ namespace Rookie100.UI
 
         private void BuildSidebar(QuestDef quest)
         {
-            bool hasMaterials = quest.Objectives.Any(o => o.Type == "buildingBuilt" && !string.IsNullOrEmpty(o.Tag));
+            bool hasMaterials = quest.Objectives.Any(o => (o.Type == "buildingBuilt" || o.Type == "sanitation") && !string.IsNullOrEmpty(o.Tag));
 
             // 知识任务（无建造目标）：整栏隐藏，详情区恢复全宽
             if (sidebarPanel != null)
@@ -1125,46 +1278,27 @@ namespace Rookie100.UI
             LayoutElement panelLayout = sidebarPanel != null ? sidebarPanel.GetComponent<LayoutElement>() : null;
             if (panelLayout != null)
             {
-                float width = sidebarExpanded ? 240f : 30f;
+                // Keep a collapsed rail narrow; reserve enough space for the quest detail when expanded.
+                float width = sidebarExpanded
+                    ? Mathf.Min(260f, Mathf.Max(180f, windowRect.sizeDelta.x * 0.25f)) : 120f;
                 panelLayout.minWidth = width;
                 panelLayout.preferredWidth = width;
             }
 
             // 折叠头：30px 宽时只显示材料图标，展开态显示图标+完整标题
             GameObject toggleRow = MakeFoldoutHeader("SidebarToggle", sidebarContent,
-                sidebarExpanded ? Lang.T("建造材料　▼") : string.Empty, () =>
+                Lang.T(sidebarExpanded ? "收起材料" : "建造材料"), () =>
                 {
                     sidebarExpanded = !sidebarExpanded;
                     RefreshDetail();
                 },
-                RowBg, RowHover, 11, FontStyles.Bold, false);
+                RowBg, RowHover, 13, FontStyles.Bold, false);
             TextMeshProUGUI toggleLabelText = toggleRow.GetComponentInChildren<TextMeshProUGUI>();
             toggleLabelText.color = HeadingText;
             toggleLabelText.overflowMode = TextOverflowModes.Ellipsis;
 
-            // 材料图标：折叠态居中，展开态靠左
-            Image toggleIcon = StatusIcons.CreateIconImage("HeadIcon", toggleRow.transform,
-                StatusIcons.Materials, 15f);
-            toggleIcon.color = HeadingText;
-            RectTransform toggleIconRect = toggleIcon.rectTransform();
-            if (sidebarExpanded)
-            {
-                toggleIconRect.anchorMin = new Vector2(0f, 0.5f);
-                toggleIconRect.anchorMax = new Vector2(0f, 0.5f);
-                toggleIconRect.pivot = new Vector2(0f, 0.5f);
-                toggleIconRect.anchoredPosition = new Vector2(7f, 0f);
-                toggleLabelText.rectTransform().offsetMin = new Vector2(28f, 0f);
-            }
-            else
-            {
-                toggleIconRect.anchorMin = new Vector2(0.5f, 0.5f);
-                toggleIconRect.anchorMax = new Vector2(0.5f, 0.5f);
-                toggleIconRect.pivot = new Vector2(0.5f, 0.5f);
-                toggleIconRect.anchoredPosition = Vector2.zero;
-                toggleLabelText.alignment = TextAlignmentOptions.Center;
-            }
-
-            toggleRow.AddComponent<LayoutElement>().preferredHeight = 24f;
+            toggleLabelText.alignment = TextAlignmentOptions.Center;
+            toggleRow.AddComponent<LayoutElement>().preferredHeight = 30f;
             toggleRow.AddComponent<ToolTip>().SetSimpleTooltip(
                 sidebarExpanded ? Lang.T("收起建造材料清单") : Lang.T("展开建造材料清单"));
 
@@ -1173,9 +1307,13 @@ namespace Rookie100.UI
                 return;
             }
 
+            var stockNote = CreateBodyTextIn(sidebarContent,
+                Lang.T("当前世界可访问库存；实际建造仍受路线和资源占用影响"), MutedText, 10);
+            stockNote.gameObject.AddComponent<LayoutElement>().minHeight = 40f;
+
             foreach (var objective in quest.Objectives)
             {
-                if (string.IsNullOrEmpty(objective.Tag) || objective.Type != "buildingBuilt")
+                if (string.IsNullOrEmpty(objective.Tag) || (objective.Type != "buildingBuilt" && objective.Type != "sanitation"))
                 {
                     continue;
                 }
@@ -1203,7 +1341,8 @@ namespace Rookie100.UI
         private void BuildMaterialBlock(QuestObjectiveDef objective)
         {
             // 分组标题条：与"展开章节"相同的 RowBg 头条样式
-            string buildingName = string.IsNullOrEmpty(objective.LabelDisp) ? objective.Tag : objective.LabelDisp;
+            string buildingName = objective.Type == "sanitation" ? (Assets.GetBuildingDef(objective.Tag)?.Name ?? objective.Tag) :
+                (string.IsNullOrEmpty(objective.LabelDisp) ? objective.Tag : objective.LabelDisp);
             GameObject headRow = MakeFoldoutHeader("MaterialHead", sidebarContent,
                 $"▪ {buildingName}", () => { }, RowBg, RowHover, 12, FontStyles.Bold, false);
             headRow.GetComponentInChildren<TextMeshProUGUI>().color = BodyTextC;
@@ -1247,36 +1386,58 @@ namespace Rookie100.UI
                         ModLogger.Log($"[MatDiag] {objective.Tag} 类别[{cats[i]}] -> 匹配 {options.Count} 种：{string.Join(",", sample)}");
                     }
 
-                    string optionText;
-                    if (options.Count == 0)
+                    string categoryName = string.Join(" / ", cats[i].Split('&').Select(c =>
+                        StripLinkMarkup(LocalizeString("STRINGS.MISC.TAGS." + c.ToUpperInvariant()) ?? c)));
+                    TextMeshProUGUI requirement = CreateBodyTextIn(sidebarContent,
+                        categoryName + ": " + FormatMass(m), HeadingText, 12);
+                    requirement.gameObject.AddComponent<LayoutElement>().minHeight = 24f;
+                    var inventory = ReadCurrentInventory();
+                    var elements = options.OfType<Element>().OrderByDescending(e =>
+                        inventory != null && inventory.TryGetValue(e.tag, out float stock) ? stock : 0f).ToList();
+                    var known = elements.Where(e => (DiscoveredResources.Instance != null &&
+                        DiscoveredResources.Instance.IsDiscovered(e.tag)) ||
+                        (inventory != null && inventory.TryGetValue(e.tag, out float stock) && stock > 0f)).ToList();
+                    string sectionKey = objective.Tag + "|" + i;
+                    bool showAll = expandedMaterialCategories.Contains(sectionKey);
+                    var shown = showAll ? elements : known;
+                    if (shown.Count == 0)
                     {
-                        optionText = Lang.T("（材料目录未匹配到可用元素）");
+                        var none = CreateBodyTextIn(sidebarContent, Lang.T("尚无已发现的候选材料"), MutedText, 11);
+                        none.gameObject.AddComponent<LayoutElement>().minHeight = 24f;
                     }
-                    else
+                    foreach (var element in shown)
                     {
-                        var names = new List<string>();
-                        foreach (var el in options.Take(6))
-                        {
-                            names.Add(GetElementName(el));
-                        }
-
-                        optionText = string.Join("、", names);
-                        if (options.Count > 6)
-                        {
-                            optionText += Lang.T(" 等") + options.Count + Lang.T("种");
-                        }
+                        var row = new GameObject("Material_" + element.id, typeof(RectTransform), typeof(HorizontalLayoutGroup));
+                        row.transform.SetParent(sidebarContent, false);
+                        var group = row.GetComponent<HorizontalLayoutGroup>();
+                        group.spacing = 5f;group.childControlWidth = true;group.childControlHeight = true;
+                        group.childForceExpandWidth = false;group.childForceExpandHeight = false;
+                        group.childAlignment = TextAnchor.MiddleLeft;
+                        row.AddComponent<LayoutElement>().preferredHeight = 42f;
+                        var iconObject = new GameObject("Icon", typeof(RectTransform), typeof(Image), typeof(LayoutElement));
+                        iconObject.transform.SetParent(row.transform, false);
+                        var icon = iconObject.GetComponent<Image>();icon.raycastTarget = false;icon.preserveAspect = true;
+                        icon.sprite = TryResolveSprite(element.id.ToString(), out Color tint);icon.color = tint;
+                        icon.enabled = icon.sprite != null;
+                        var iconSize = iconObject.GetComponent<LayoutElement>();iconSize.preferredWidth = 20f;iconSize.preferredHeight = 20f;
+                        var label = CreateText("Inventory", row.transform, "", 11, TextAlignmentOptions.MidlineLeft);
+                        label.gameObject.AddComponent<LayoutElement>().flexibleWidth = 1f;
+                        label.gameObject.GetComponent<LayoutElement>().preferredHeight = 40f;
+                        var entry = new MaterialInventoryLine { Element = element, Required = m, Label = label };
+                        materialInventoryLines.Add(entry);UpdateMaterialLine(entry, inventory);
+                        string desc = GetElementDesc(element);
+                        if (!string.IsNullOrEmpty(desc)) row.AddComponent<ToolTip>().SetSimpleTooltip(desc);
                     }
-
-                    TextMeshProUGUI line = CreateBodyTextIn(sidebarContent,
-                        FormatMass(m) + Lang.T("　可用：") + optionText, MutedText, 11);
-                    line.gameObject.AddComponent<LayoutElement>().minHeight = 16f;
-
-                    // 获取方式：官方元素描述悬停提示
-                    string tooltip = BuildMaterialTooltip(options);
-                    if (!string.IsNullOrEmpty(tooltip))
+                    if (elements.Count > known.Count)
                     {
-                        line.raycastTarget = true;
-                        line.gameObject.AddComponent<ToolTip>().SetSimpleTooltip(tooltip);
+                        var more = MakeThinButton("OtherMaterials", sidebarContent,
+                            Lang.T(showAll ? "收起其他候选材料" : "其他候选材料"), () =>
+                            {
+                                if (!expandedMaterialCategories.Remove(sectionKey)) expandedMaterialCategories.Add(sectionKey);
+                                RefreshDetail();
+                            }, BlueBtn, BlueBtnHover, 11);
+                        more.AddComponent<LayoutElement>().preferredHeight = 26f;
+                        more.GetComponentInChildren<TextMeshProUGUI>().color = WhiteText;
                     }
                 }
             }
@@ -1284,6 +1445,35 @@ namespace Rookie100.UI
             {
                 ModLogger.Warn("材料块构建失败(" + objective.Tag + "): " + e);
             }
+        }
+
+        private static Dictionary<Tag, float> ReadCurrentInventory()
+        {
+            try
+            {
+                var world = ClusterManager.Instance != null ? ClusterManager.Instance.activeWorld : null;
+                return world != null && world.worldInventory != null
+                    ? world.worldInventory.GetAccessibleAmounts() : null;
+            }
+            catch (Exception e) { ModLogger.Warn("读取当前世界库存失败: " + e.Message); return null; }
+        }
+
+        private void RefreshMaterialInventory()
+        {
+            if (!sidebarExpanded || materialInventoryLines.Count == 0) return;
+            var inventory = ReadCurrentInventory();
+            foreach (var line in materialInventoryLines) if (line.Label != null) UpdateMaterialLine(line, inventory);
+        }
+
+        private static void UpdateMaterialLine(MaterialInventoryLine line, Dictionary<Tag, float> inventory)
+        {
+            float stock = 0f;
+            if (inventory != null) inventory.TryGetValue(line.Element.tag, out stock);
+            string status = inventory == null ? Lang.T("库存暂不可用") :
+                stock >= line.Required ? Lang.T("数量足够") : Lang.T("数量不足");
+            line.Label.text = GetElementName(line.Element) + "\n" +
+                (inventory == null ? status : FormatMass(stock) + " / " + FormatMass(line.Required) + "  " + status);
+            line.Label.color = inventory != null && stock >= line.Required ? PositiveText : MutedText;
         }
 
         /// <summary>材料获取方式提示：前 4 种可选材料的官方描述（来源/用途）。</summary>
@@ -1451,7 +1641,7 @@ namespace Rookie100.UI
             title.overflowMode = TextOverflowModes.Ellipsis;
             title.gameObject.AddComponent<LayoutElement>().flexibleWidth = 1f;
 
-            GameObject closeButton = MakeThinButton("GuideClose", titleRow.transform, "✕",
+            GameObject closeButton = MakeThinButton("GuideClose", titleRow.transform, Lang.T("关闭"),
                 CloseGuideModal, PinkBtn, PinkBtnHover, 12);
             LayoutElement closeLayout = closeButton.AddComponent<LayoutElement>();
             closeLayout.preferredWidth = 26f;
@@ -1517,7 +1707,8 @@ namespace Rookie100.UI
                 icon.enabled = false;
             }
 
-            string buildingName = string.IsNullOrEmpty(objective.LabelDisp) ? objective.Tag : objective.LabelDisp;
+            string buildingName = objective.Type == "sanitation" ? (Assets.GetBuildingDef(objective.Tag)?.Name ?? objective.Tag) :
+                (string.IsNullOrEmpty(objective.LabelDisp) ? objective.Tag : objective.LabelDisp);
             string nameLine = string.Equals(buildingName, objective.Tag, StringComparison.Ordinal)
                 ? buildingName
                 : $"{buildingName}（{objective.Tag}）";
@@ -2283,7 +2474,8 @@ namespace Rookie100.UI
         private void CreateClaimButton(QuestDef quest)
         {
             GameObject button = MakeThinButton("ClaimButton", detailContent,
-                Lang.T("领取奖励！"),
+                Lang.T(quest.Rewards.Count == 0 || QuestStore.HasReceivedReward(quest.Id)
+                    ? "完成任务" : "领取奖励！"),
                 () =>
                 {
                     if (QuestTracker.Instance != null)
@@ -2312,6 +2504,11 @@ namespace Rookie100.UI
 
         private void SelectQuest(string questId)
         {
+            if (questId != selectedQuestId)
+            {
+                demoExpanded = false;demoPlayback = null;
+                if (currentDemo != null) { currentDemo.Pause(); currentDemo = null; }
+            }
             selectedQuestId = questId;
             // 自动展开选中任务所在的阶段
             var quest = QuestStore.GetQuest(questId);
@@ -2613,12 +2810,22 @@ namespace Rookie100.UI
             var textObject = new GameObject(name);
             textObject.transform.SetParent(parent, false);
             TextMeshProUGUI textComponent = textObject.AddComponent<TextMeshProUGUI>();
-            textComponent.text = text;
+            textComponent.text = PlainUiText(text);
             textComponent.fontSize = size;
             textComponent.alignment = alignment;
             textComponent.color = BodyTextC;
             textComponent.raycastTarget = false;
             return textComponent;
+        }
+
+        private static string PlainUiText(string text)
+        {
+            // Use ordinary words for actions; avoid glyphs absent from the game's UI font.
+            return (text ?? string.Empty).Replace("⟲", Lang.T("重置"))
+                .Replace("✕", string.Empty)
+                .Replace("▶", string.Empty).Replace("▼", string.Empty)
+                .Replace("←", string.Empty).Replace("▪", string.Empty)
+                .Replace("→", " - ").Trim();
         }
 
         /// <summary>
@@ -2789,8 +2996,11 @@ namespace Rookie100.UI
         {
             for (int i = parent.childCount - 1; i >= 0; i--)
             {
+                parent.GetChild(i).gameObject.SetActive(false);
                 Destroy(parent.GetChild(i).gameObject);
             }
         }
     }
 }
+
+
