@@ -22,6 +22,7 @@ namespace Rookie100.Patches
                 string colonyKey = ResolveColonyKey();
                 Content.QuestStore.ActivateColony(colonyKey);
                 __instance.gameObject.AddOrGet<Monitoring.DuplicantMonitor>();
+                Debugging.DebugExporter.BeginSession();
                 ModLogger.Log($"殖民地已生成，任务追踪器就位 (已领取 {Content.QuestStore.ClaimedCount}/{Content.QuestStore.Quests.Count})");
             }
         }

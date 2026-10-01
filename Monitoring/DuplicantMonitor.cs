@@ -36,6 +36,7 @@ namespace Rookie100.Monitoring
                 Components.LiveMinionIdentities.OnRemove -= Remove;
                 subscribed = false;
             }
+            Debugging.DebugExporter.EndSession();
             if (sampling != null) StopCoroutine(sampling);
             if (hud != null) UnityEngine.Object.Destroy(hud);
             roster.Clear(); Changed = null;
@@ -64,6 +65,7 @@ namespace Rookie100.Monitoring
                     Publish();
                     if (!warned) { warned = true; ModLogger.Warn("复制人监测暂不可用: " + e.Message); }
                 }
+                Debugging.DebugExporter.Write();
                 yield return new WaitForSecondsRealtime(1f);
             }
         }
