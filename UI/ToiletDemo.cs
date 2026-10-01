@@ -12,7 +12,8 @@ namespace Rookie100.UI
         private DemoPlayback state = new DemoPlayback();
         private RectTransform actor;
         private RawImage actorImage;
-        private Image toilet, basin, pump;
+        private Image toilet, basin, pump, pumpBlueprint, basinBlueprint, toiletBlueprint;
+        private RectTransform roomHeader, roomOverlay, buildTrack, buildFill;
         private RectTransform water, carriedWater, roomTop, roomLeft, roomRight;
         private TextMeshProUGUI toiletLabel;
         private TextMeshProUGUI caption;
@@ -27,7 +28,10 @@ namespace Rookie100.UI
         public void Initialize(Sprite toiletSprite, Color toiletTint, Sprite basinSprite, Color basinTint,
             Sprite pumpSprite, Color pumpTint, DemoPlayback saved, TMP_FontAsset font)
         {
-            state = saved ?? new DemoPlayback();
+            state = saved?.Copy() ?? new DemoPlayback();
+            state.EndSeconds=24f;
+            roomOverlay=Box("RoomOverlay",transform,new Color(.38f,.74f,.51f,.19f));
+            Place(roomOverlay,.052f,.94f,35f,102f);
             var floor = Box("Floor", transform, new Color(.4f,.43f,.42f,1f));
             Place(floor, .04f, .96f, 28f, 7f);
             water = Box("WaterSource", transform, new Color(.25f,.65f,.85f,.8f));
@@ -38,9 +42,19 @@ namespace Rookie100.UI
             Place(roomLeft,.04f,.052f,35f,102f);
             roomRight = Box("RoomDoor", transform, new Color(.65f,.52f,.37f,.5f));
             Place(roomRight,.94f,.955f,35f,78f);
+            roomHeader=Box("WallAboveDoor",transform,new Color(.5f,.5f,.46f,1f));
+            Place(roomHeader,.94f,.955f,113f,24f);
             toilet = Building("Outhouse", toiletSprite, toiletTint, .22f);
             pump = Building("PitcherPump", pumpSprite, pumpTint, .22f);
             basin = Building("WashBasin", basinSprite, basinTint, .64f);
+            var blue=new Color(.28f,.68f,.91f,.65f);
+            pumpBlueprint=Building("PumpBlueprint",pumpSprite,blue,.22f);
+            basinBlueprint=Building("BasinBlueprint",basinSprite,blue,.64f);
+            toiletBlueprint=Building("ToiletBlueprint",toiletSprite,blue,.22f);
+            buildTrack=Box("ConstructionTrack",transform,new Color(.55f,.59f,.60f));
+            Place(buildTrack,.12f,.32f,132f,4f);
+            buildFill=Box("ConstructionProgress",transform,new Color(.24f,.65f,.85f));
+            Place(buildFill,.12f,.12f,132f,4f);
             toiletLabel = Label("ToiletLabel", L("户外厕所", "Outhouse"), font, 11);
             Place(toiletLabel.rectTransform, .02f, .43f, 5f, 20f);
             var basinLabel = Label("BasinLabel", L("洗手盆 / 朝出口", "Wash basin / toward exit"), font, 11);
@@ -67,7 +81,7 @@ namespace Rookie100.UI
                 {
                     if(stream==null)throw new FileNotFoundException("Demo atlas missing");
                     stream.CopyTo(bytes);atlas=new Texture2D(2,2,TextureFormat.RGBA32,false);
-                    if(!ImageConversion.LoadImage(atlas,bytes.ToArray(),true)||atlas.width!=2048||atlas.height!=960)
+                    if(!TextureLoader.LoadImage(atlas,bytes.ToArray(),true)||atlas.width!=2048||atlas.height!=960)
                         throw new InvalidDataException("Unexpected demo atlas");
                     atlas.filterMode=FilterMode.Bilinear;atlas.wrapMode=TextureWrapMode.Clamp;
                     actorImage.texture=atlas;
@@ -89,6 +103,7 @@ namespace Rookie100.UI
         }
         public void Replay() { state.Replay();lastTime=Time.unscaledTime;Render();PlaybackChanged?.Invoke(true); }
         public void Pause() { state.Pause();PlaybackChanged?.Invoke(false); }
+        public void SeekStep(int step) { state.Seconds=Mathf.Clamp(step,0,5)*4f;state.Pause();Render();PlaybackChanged?.Invoke(false); }
         private void OnEnable() { lastTime=Time.unscaledTime; }
         private void OnDisable() { Pause(); }
         private void Update()
@@ -106,29 +121,57 @@ namespace Rookie100.UI
         {
             if(caption==null)return;
             float t=state.Seconds;
-            toilet.enabled=t>=3f && toilet.sprite!=null;
-            pump.enabled=t<3f && pump.sprite!=null;basin.enabled=basin.sprite!=null;
-            water.gameObject.SetActive(t<3f);carriedWater.gameObject.SetActive(t>=1.5f&&t<3f);
-            roomTop.gameObject.SetActive(t>=4.5f);roomLeft.gameObject.SetActive(t>=4.5f);roomRight.gameObject.SetActive(t>=4.5f);
-            toiletLabel.text=t<3f?L("水池 / 手压泵","Water / pitcher pump"):L("户外厕所","Outhouse");
-            caption.text=t<1.5f?L("1. 在水池上方建手压泵，确保能取水。", "1. Place a pitcher pump above reachable water."):
-                t<3f?L("2. 复制人运水到洗手盆，补水后才能洗手。", "2. Deliver water to the wash basin."):
-                t<4.5f?L("3. 厕所补入泥土，清理后保持可用。", "3. Supply dirt and keep the outhouse usable."):
-                t<6f?L("4. 用墙和门围合，让原版识别为公共厕所。", "4. Enclose with walls and a door: a recognized latrine."):
-                t<7.5f?L("5. 路线连通；离开厕所时经过洗手盆。", "5. Connect the route; pass the basin when leaving."):
-                t<8.7f?L("6. 实际如厕后洗手，完成一次试运行。", "6. Complete a real toilet-then-wash trial."):
-                L("洗手后离开。六项检查全通过，才可领取奖励。", "Leave after washing. All six checks are required.");
-            float x=t<1.5f?.22f:t<3f?Mathf.Lerp(.22f,.64f,(t-1.5f)/1.5f):
-                t<6f?.22f:t<7.5f?Mathf.Lerp(.22f,.64f,(t-6f)/1.5f):t<8.7f?.64f:Mathf.Lerp(.64f,.9f,(t-8.7f)/1.3f);
+            pumpBlueprint.enabled=t<3f&&pumpBlueprint.sprite!=null;
+            pump.enabled=t>=3f&&t<8f&&pump.sprite!=null;
+            basinBlueprint.enabled=t>=4f&&t<5.5f&&basinBlueprint.sprite!=null;
+            basin.enabled=t>=5.5f&&basin.sprite!=null;
+            toiletBlueprint.enabled=t>=8f&&t<11f&&toiletBlueprint.sprite!=null;
+            toilet.enabled=t>=11f&&toilet.sprite!=null;
+            water.gameObject.SetActive(t<8f);
+            roomTop.gameObject.SetActive(t>=12f);roomLeft.gameObject.SetActive(t>=13f);
+            roomRight.gameObject.SetActive(t>=14f);roomHeader.gameObject.SetActive(t>=14f);
+            roomOverlay.gameObject.SetActive(t>=15f&&t<16f||t>=23f);
+            bool building=t>=1.5f&&t<3f||t>=4f&&t<5.5f||t>=9.5f&&t<11f;
+            float left=t>=4f&&t<5.5f?.54f:.12f;
+            Place(buildTrack,left,left+.2f,132f,4f);
+            Place(buildFill,left,left+.2f*Mathf.Clamp01((t-(t<4f?1.5f:t<8f?4f:9.5f))/1.5f),132f,4f);
+            buildTrack.gameObject.SetActive(building);buildFill.gameObject.SetActive(building);
+            carriedWater.gameObject.SetActive(t>=6.5f&&t<9.5f);
+            carriedWater.GetComponent<Image>().color=t<8f?new Color(.25f,.65f,.95f):new Color(.65f,.48f,.30f);
+            toiletLabel.text=t<8f?L("水池 / 手压泵","Water / pitcher pump"):L("户外厕所","Outhouse");
+            int step=Mathf.Min(5,Mathf.FloorToInt(t/4f));
+            caption.text=Lang.English ? new[]{
+                "1. Place a pump blueprint above reachable water; construct it.",
+                "2. Build the basin facing the exit; deliver water from the pump.",
+                "3. Place an outhouse blueprint; deliver material and supply dirt.",
+                "4. Enclose with walls and a door; inspect the latrine room overlay.",
+                "5. Keep the exit route through the basin; demonstrate toilet use.",
+                "6. Wash after toilet use, then leave; perform the trial in your colony."}[step] : new[]{
+                "1. 在可达水池上方放手压泵蓝图，复制人搬料施工。",
+                "2. 建洗手盆并朝向出口，从手压泵取水送到洗手盆。",
+                "3. 放户外厕所蓝图，搬料施工并补充泥土。",
+                "4. 用墙和门围合，在房间叠层检查公共厕所。",
+                "5. 出口路线经过洗手盆，演示复制人如厕。",
+                "6. 如厕后洗手再离开；实际试运行需在存档中完成。"}[step];
+            float x=t<1.5f?Mathf.Lerp(.08f,.22f,Ease(t/1.5f)):
+                t<3f?.22f:t<4f?Mathf.Lerp(.22f,.64f,Ease(t-3f)):
+                t<5.5f?.64f:t<6.5f?Mathf.Lerp(.64f,.22f,Ease(t-5.5f)):
+                t<8f?Mathf.Lerp(.22f,.64f,Ease((t-6.5f)/1.5f)):
+                t<9.5f?Mathf.Lerp(.64f,.22f,Ease((t-8f)/1.5f)):
+                t<18f?.22f:t<20f?Mathf.Lerp(.22f,.64f,Ease((t-18f)/2f)):
+                t<22f?.64f:Mathf.Lerp(.64f,.9f,Ease((t-22f)/2f));
             actor.anchorMin=actor.anchorMax=new Vector2(x,0f);
-            bool walking=(t>=1.5f&&t<3f)||(t>=6f&&t<7.5f)||(t>=8.7f&&t<10f);
-            int frame=walking?41+Mathf.FloorToInt(t*30f)%36:Mathf.FloorToInt(t*30f)%41;
+            actor.localScale=new Vector3((t>=5.5f&&t<6.5f)||(t>=8f&&t<9.5f)?-1f:1f,1f,1f);
+            actor.anchoredPosition=new Vector2(0f,35f+(building?Mathf.Sin(t*12f)*1.5f:0f));
+            bool walking=t<1.5f||t>=3f&&t<4f||t>=5.5f&&t<9.5f||t>=18f&&t<20f||t>=22f&&t<24f;
+            int frame=walking?41+Mathf.FloorToInt(t*24f)%36:Mathf.FloorToInt(t*24f)%41;
             if(frame!=lastFrame && atlas!=null)
             {
                 actorImage.uvRect=new Rect((frame%16)/16f,1f-(frame/16+1)/5f,1f/16f,1f/5f);
                 lastFrame=frame;
             }
         }
+        private static float Ease(float value) { value=Mathf.Clamp01(value);return value*value*(3f-2f*value); }
         private Image Building(string name,Sprite sprite,Color tint,float x)
         {
             var go=new GameObject(name,typeof(RectTransform),typeof(Image));go.transform.SetParent(transform,false);

@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "id": "c4_temperature",
+  "file": "c4_temperature.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "定位热源",
+      "en": "Locate heat sou..."
+    },
+    {
+      "start": 6,
+      "zh": "隔离生活区",
+      "en": "Isolate the liv..."
+    },
+    {
+      "start": 12,
+      "zh": "设计搬热回路",
+      "en": "Design a heat t..."
+    },
+    {
+      "start": 18,
+      "zh": "确定最终热量去向",
+      "en": "Choose the fina..."
+    },
+    {
+      "start": 24,
+      "zh": "观察变化",
+      "en": "Observe tempera..."
+    },
+    {
+      "start": 30,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "定位热源。",
+      "en": "Locate heat sources."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "隔离生活区。",
+      "en": "Isolate the living area."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "设计搬热回路。",
+      "en": "Design a heat transfer loop."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "确定最终热量去向。",
+      "en": "Choose the final heat sink."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "观察变化。",
+      "en": "Observe temperature changes."
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "heat",
+  "nativeProps": [
+    "InsulationTile",
+    "LiquidConditioner",
+    "SteamTurbine"
+  ]
+}

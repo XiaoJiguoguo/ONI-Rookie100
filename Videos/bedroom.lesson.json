@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "id": "q01_bedroom",
+  "file": "bedroom.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "预留与放置",
+      "en": "Plan and place"
+    },
+    {
+      "start": 6,
+      "zh": "取料与搬运",
+      "en": "Deliver material"
+    },
+    {
+      "start": 12,
+      "zh": "施工床铺",
+      "en": "Construct cots"
+    },
+    {
+      "start": 20,
+      "zh": "墙门围合",
+      "en": "Enclose room"
+    },
+    {
+      "start": 28,
+      "zh": "房间检查",
+      "en": "Check room"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 3,
+      "zh": "示例内部宽14格、净高3格，共42格；不包含外围墙砖。",
+      "en": "The example interior is 14 cells wide and 3 high: 42 cells, excluding boundary tiles."
+    },
+    {
+      "start": 3,
+      "end": 6,
+      "zh": "每张床铺占2×2格。3格净高是本示例布局，不是宿舍的固定要求。",
+      "en": "Each cot occupies 2 x 2 cells. The example height of 3 is not a fixed barracks requirement."
+    },
+    {
+      "start": 6,
+      "end": 7,
+      "zh": "复制人取用砂岩，作为本示例床铺的建造材料。",
+      "en": "A duplicant picks up sandstone for the example cots."
+    },
+    {
+      "start": 7,
+      "end": 11,
+      "zh": "将材料搬到床铺蓝图旁；通路不通时无法完成搬运。",
+      "en": "Carry material to the blueprint. Delivery requires a reachable route."
+    },
+    {
+      "start": 11,
+      "end": 12,
+      "zh": "放下材料，准备施工。",
+      "en": "Deliver the material and prepare to construct."
+    },
+    {
+      "start": 12,
+      "end": 17,
+      "zh": "复制人进行施工，进度完成后蓝图变成床铺。",
+      "en": "The duplicant constructs the cot. The completed blueprint becomes a cot."
+    },
+    {
+      "start": 17,
+      "end": 20,
+      "zh": "以同样方式补齐所需床铺；这里缩短展示重复施工。",
+      "en": "Repeat for the remaining cots. Repeated construction is condensed here."
+    },
+    {
+      "start": 20,
+      "end": 25,
+      "zh": "用普通砖围合宿舍并预留门洞；此处压缩展示墙砖施工过程。",
+      "en": "Enclose the barracks with tiles, leaving a doorway. Tile construction is condensed here."
+    },
+    {
+      "start": 25,
+      "end": 28,
+      "zh": "竖放手动气闸占1×2格；补齐门上方墙砖，封闭宿舍边界。",
+      "en": "A vertical manual airlock occupies 1 x 2 cells. Fill the tiles above it to enclose the room."
+    },
+    {
+      "start": 28,
+      "end": 32,
+      "zh": "房间叠层检查：内部12～64格、至少一张床铺、无工业机械。",
+      "en": "Check the room overlay: 12-64 interior cells, at least one bed, and no industrial machinery."
+    },
+    {
+      "start": 32,
+      "end": 36,
+      "zh": "示例42格满足面积要求；再检查床铺可达、分配和休息日程，任务以存档检测为准。",
+      "en": "The 42-cell example fits the size limit. Check cot access, assignments and sleep schedules; tasks use your colony."
+    }
+  ]
+}

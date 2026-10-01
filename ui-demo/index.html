@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>新手百天 · UI 设计演示</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="preview-label"><span>ROOKIE 100 / 界面设计演示</span><span>示例状态 · 不连接游戏</span></div>
+<main class="window">
+ <header class="window-head"><div class="brand-mark">100</div><div><h1>新手百天</h1><span>殖民地成长指南</span></div><div class="head-right"><span class="pause-badge">Ⅱ 暂停阅读 · 演示</span><button id="help" class="icon-button" aria-label="演示说明">?</button></div></header>
+ <nav id="chapters" aria-label="章节"></nav>
+ <div class="workspace">
+  <aside class="task-frame"><div class="frame-head"><h2>章节任务</h2><span id="chapter-progress"></span></div><div class="chapter-intro"><strong id="chapter-title"></strong><p id="chapter-outcome"></p><div class="progress-track"><i id="chapter-fill"></i></div></div><div class="filter"><button id="main-filter" class="active">主线任务</button><button id="all-filter">全部任务</button></div><div id="tasks"></div><div class="list-note">按能力推进，不以周期催促。<br>选做路线不会阻挡主线。</div></aside>
+  <section class="detail-frame"><div class="scene" id="scene"></div><div class="task-heading"><div class="eyebrow" id="task-meta"></div><h2 id="task-title"></h2><p id="task-purpose"></p></div><div class="detail-tabs" role="tablist"><button data-tab="overview" role="tab" class="active">当前目标</button><button data-tab="guide" role="tab">分步教学</button><button data-tab="checks" role="tab">完成检查</button></div><div id="task-content"></div><div class="task-action"><span id="action-note"></span><button id="primary" class="pink"></button></div></section>
+  <aside class="support-frame"><div class="frame-head"><h2>建造准备</h2><span>随任务更新</span></div><section class="support-card"><div class="card-title"><span class="square-icon">研</span><h3>前置建筑与研究</h3></div><div id="research"></div></section><section class="support-card"><div class="card-title"><span class="square-icon">料</span><h3>资源与材料</h3></div><div id="resources"></div></section><section class="crew-card"><svg class="crew-portrait" viewBox="0 0 48 52" role="img" aria-label="复制人示意头像"><path d="M9 51v-9q15-10 30 0v9" fill="#dfb757" stroke="#30343a" stroke-width="2"/><path d="M9 20q-2-14 16-14 17 0 15 16l-3 16q-15 11-26-3z" fill="#efd078" stroke="#30343a" stroke-width="2"/><path d="M8 24V14q1-12 17-10l13 5 3 14-8-6-7 2-7-4-5 9z" fill="#88634e" stroke="#30343a" stroke-width="2"/><path d="M18 27v4M30 27v4M20 36q5 4 9-1" fill="none" stroke="#30343a" stroke-width="2.5" stroke-linecap="round"/></svg><div><strong>米玛</strong><span>生命 100% · 压力 8%</span></div><button id="crew-details" class="small">详情</button></section><div class="support-note"><strong>先做下一步</strong><p>准备区告诉你缺什么；主区告诉你怎么做。详细介绍按需打开。</p></div></aside>
+ </div>
+ <footer><span><b>●</b> 示例殖民地 <i>·</i> 六章成长路线</span><span>原版风格 / 深色正文 / 分区阅读</span></footer>
+</main>
+<div id="toast" role="status" hidden><span></span><button aria-label="关闭消息">×</button></div>
+<dialog id="modal"><header><h2 id="modal-title"></h2><button id="modal-close" aria-label="关闭">×</button></header><div id="modal-content"></div><div class="modal-foot"><button id="modal-done" class="pink">知道了</button></div></dialog>
+<script src="app.js"></script>
+</body></html>

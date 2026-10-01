@@ -33,6 +33,7 @@ namespace Rookie100.Content
     /// </summary>
     public class QuestDef
     {
+        public Newtonsoft.Json.Linq.JObject Teaching { get; set; }
         public string Id { get; set; }
         public string Phase { get; set; }
         public int Order { get; set; }

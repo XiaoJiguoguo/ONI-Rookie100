@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "id": "q20",
+  "file": "q20.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "查看作物需求",
+      "en": "Read crop requi..."
+    },
+    {
+      "start": 6,
+      "zh": "核对水预算",
+      "en": "Check the water..."
+    },
+    {
+      "start": 12,
+      "zh": "准备光照和种植",
+      "en": "Prepare lightin..."
+    },
+    {
+      "start": 18,
+      "zh": "观察收获",
+      "en": "Observe a harvest"
+    },
+    {
+      "start": 24,
+      "zh": "选择加工方式",
+      "en": "Choose food pro..."
+    },
+    {
+      "start": 30,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "查看作物需求。",
+      "en": "Read crop requirements."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "核对水预算。",
+      "en": "Check the water budget."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "准备光照和种植。",
+      "en": "Prepare lighting and planting."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "观察收获。",
+      "en": "Observe a harvest."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "选择加工方式。",
+      "en": "Choose food processing."
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "farm",
+  "nativeProps": [
+    "HydroponicFarm",
+    "CeilingLight",
+    "CookingStation"
+  ]
+}

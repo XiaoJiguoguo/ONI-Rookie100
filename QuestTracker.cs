@@ -964,8 +964,8 @@ namespace Rookie100
                     null,
                     null,
                     true,
-                    false,
-                    false);
+                    true,
+                    true);
                 owner.AddOrGet<Notifier>().Add(notification, "Rookie100:" + (questId ?? "general"));
             }
             catch (Exception e)

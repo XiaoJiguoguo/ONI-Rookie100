@@ -10,6 +10,9 @@ namespace Rookie100.Curriculum
     public static class CurriculumCatalog
     {
         private static JObject catalog;
+        public static JObject Task(string id) => catalog?["tasks"]?.FirstOrDefault(t => (string)t["id"] == id)?.DeepClone() as JObject;
+        public static JArray Chapters => catalog?["chapters"]?.DeepClone() as JArray ?? new JArray();
+        public static JArray Tasks => catalog?["tasks"]?.DeepClone() as JArray ?? new JArray();
         public static JObject Summary => catalog == null ? null : new JObject {
             ["schemaVersion"] = 1, ["catalogVersion"] = catalog["catalogVersion"],
             ["chapterIds"] = new JArray(catalog["chapters"].Select(x => (string)x["id"])),
@@ -60,7 +63,7 @@ namespace Rookie100.Curriculum
             foreach (string next in (tasks[id]["prerequisites"] as JArray ?? new JArray()).Values<string>()) Visit(next, tasks, done, visiting);
             visiting.Remove(id); done.Add(id);
         }
-        public static JObject ObserveFacts(Dictionary<string,int> counts, int countsWorld, int activeWorld, DateTime? countsCapturedAt, DateTime now)
+        public static JObject ObserveFacts(Dictionary<string,int> counts, int countsWorld, int activeWorld, System.DateTime? countsCapturedAt, System.DateTime now)
         {
             var facts = new JObject();
             if (catalog == null) return facts;
@@ -74,7 +77,7 @@ namespace Rookie100.Curriculum
             // All unobserved fields are absent; readers must treat them as unknown, never zero/false.
             return facts;
         }
-        private static JObject Fact(int value, int world, DateTime time) => new JObject {
+        private static JObject Fact(int value, int world, System.DateTime time) => new JObject {
             ["value"] = value, ["world"] = world, ["capturedAt"] = time.ToUniversalTime().ToString("o"), ["source"] = "game" };
     }
 }

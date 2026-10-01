@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "id": "q17",
+  "file": "q17.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "核对配方与副产物",
+      "en": "Check recipes a..."
+    },
+    {
+      "start": 6,
+      "zh": "接原油",
+      "en": "Connect crude oil"
+    },
+    {
+      "start": 12,
+      "zh": "安排产物去向",
+      "en": "Provide product..."
+    },
+    {
+      "start": 18,
+      "zh": "隔离热区",
+      "en": "Isolate the hot..."
+    },
+    {
+      "start": 24,
+      "zh": "小批量试产",
+      "en": "Run a small batch"
+    },
+    {
+      "start": 30,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "核对配方与副产物。",
+      "en": "Check recipes and byproducts."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "接原油。",
+      "en": "Connect crude oil."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "安排产物去向。",
+      "en": "Provide product destinations."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "隔离热区。",
+      "en": "Isolate the hot area."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "小批量试产。",
+      "en": "Run a small batch."
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "heat",
+  "nativeProps": [
+    "OilRefinery",
+    "LiquidReservoir"
+  ]
+}

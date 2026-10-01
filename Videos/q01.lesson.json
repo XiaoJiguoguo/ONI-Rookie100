@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "id": "q01",
+  "file": "q01.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "规划出口",
+      "en": "Plan an exit"
+    },
+    {
+      "start": 6,
+      "zh": "茅房补泥土",
+      "en": "Supply dirt to ..."
+    },
+    {
+      "start": 12,
+      "zh": "洗手盆补水",
+      "en": "Supply clean wa..."
+    },
+    {
+      "start": 18,
+      "zh": "围合公共厕所",
+      "en": "Enclose the lat..."
+    },
+    {
+      "start": 24,
+      "zh": "观察如厕后洗手",
+      "en": "Observe toilet ..."
+    },
+    {
+      "start": 30,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "规划出口。",
+      "en": "Plan an exit."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "茅房补泥土。",
+      "en": "Supply dirt to the outhouse."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "洗手盆补水。",
+      "en": "Supply clean water to the basin."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "围合公共厕所：示例内部14×4＝56格，手压泵留在房间外，出口经过洗手盆。",
+      "en": "Enclose a 14 x 4 interior: 56 cells. Keep the pitcher pump outside and route the exit past the wash basin."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "观察同一复制人如厕后经过洗手盆；示意画面不能替代真实试运行。",
+      "en": "Observe the same duplicant using the toilet and then washing. The illustration does not replace an actual trial."
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "room",
+  "nativeProps": [
+    "LiquidPumpingStation",
+    "WashBasin",
+    "Outhouse"
+  ]
+}

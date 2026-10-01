@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "id": "q27",
+  "file": "q27.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "确认路线",
+      "en": "Confirm the roc..."
+    },
+    {
+      "start": 6,
+      "zh": "建发射设施与对…",
+      "en": "Build the platf..."
+    },
+    {
+      "start": 12,
+      "zh": "备燃料氧气食物",
+      "en": "Prepare fuel, o..."
+    },
+    {
+      "start": 18,
+      "zh": "检查清单",
+      "en": "Check the depar..."
+    },
+    {
+      "start": 24,
+      "zh": "短程试飞",
+      "en": "Perform a short..."
+    },
+    {
+      "start": 30,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "确认路线。",
+      "en": "Confirm the rocket route."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "建发射设施与对应模块。",
+      "en": "Build the platform and required modules."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "备燃料氧气食物。",
+      "en": "Prepare fuel, oxygen and food."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "检查清单。",
+      "en": "Check the departure list."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "短程试飞。",
+      "en": "Perform a short test flight."
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "rocket",
+  "nativeProps": [
+    "LaunchPad",
+    "CommandModule",
+    "SteamEngineCluster"
+  ]
+}

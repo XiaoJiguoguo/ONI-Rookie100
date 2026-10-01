@@ -47,7 +47,7 @@ namespace Rookie100
             string prefix = questId == "q01_bedroom" ? "Beds" : "Tables";
             string room = questId == "q01_bedroom" ? "Barracks" : "MessHall";
             if (questId != "q01_bedroom" && questId != "q01_dining") return null;
-            if (!Has("livingRoom:" + prefix + "Usable")) return H("facility", questId == "q01_bedroom" ? "先预留宿舍位置，让床铺建成、可用且可达；已做好的设施直接认可。" : "先预留餐厅位置，让用餐设施建成、可用且可达；需要研究时再按需解锁。", "Reserve the room and make its facilities built, usable and reachable. Existing working facilities count.");
+            if (!Has("livingRoom:" + prefix + "Usable")) return H("facility", questId == "q01_bedroom" ? "先预留宿舍位置，让床铺建成、可用且可达；已做好的设施直接认可。" : "餐桌未解锁时，先按上方前置提示建研究台、供电并完成食物制备研究；已解锁则直接建餐桌。已有餐桌时检查可用状态与通路。", questId == "q01_bedroom" ? "Reserve the bedroom and build usable, reachable beds. Existing facilities count." : "If tables are locked, follow the research prerequisites above: build and power a research station and complete Meal Preparation. Otherwise build tables; check usability and access for existing tables.");
             if (!Has("livingRoom:" + room)) return H("room", "设施已可用；打开原版房间叠层，按游戏提示补齐房间条件。", "Facilities work. Open the native room overlay and satisfy its remaining conditions.");
             return H("ready", "设施可用且房间识别通过；完成历史会保留，之后失效只提示修复。", "Facilities work and the room is recognized. Learning history remains if repairs are later needed.", 0f, true);
         }

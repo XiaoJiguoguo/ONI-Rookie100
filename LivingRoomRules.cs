@@ -17,8 +17,8 @@ namespace Rookie100
         public static Dictionary<string, int> Evaluate(IEnumerable<Facility> facilities, int world)
         {
             var local = facilities.Where(f => f != null && f.World == world).ToList();
-            var beds = local.Where(f => f.Kind == "Cot").ToList();
-            var tables = local.Where(f => f.Kind == "MessTable").ToList();
+            var beds = local.Where(f => f.Kind == "Bed").ToList();
+            var tables = local.Where(f => f.Kind == "DiningTable").ToList();
             return new Dictionary<string, int>
             {
                 ["livingRoom:BedsUsable"] = beds.Any(f => f.Usable && f.Reachable) ? 1 : 0,

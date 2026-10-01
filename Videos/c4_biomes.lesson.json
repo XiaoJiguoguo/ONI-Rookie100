@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "id": "c4_biomes",
+  "file": "c4_biomes.mp4",
+  "duration": 30,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "查看温度/气体…",
+      "en": "Inspect tempera..."
+    },
+    {
+      "start": 6,
+      "zh": "建立安全入口",
+      "en": "Establish a saf..."
+    },
+    {
+      "start": 12,
+      "zh": "小范围探索",
+      "en": "Explore a small..."
+    },
+    {
+      "start": 18,
+      "zh": "运回需要的资源",
+      "en": "Bring back the ..."
+    },
+    {
+      "start": 24,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "查看温度/气体/病菌。",
+      "en": "Inspect temperature, gas and germs."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "建立安全入口。",
+      "en": "Establish a safe entrance."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "小范围探索。",
+      "en": "Explore a small area."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "运回需要的资源。",
+      "en": "Bring back the required resources."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "explore",
+  "nativeProps": [
+    "Ladder",
+    "SuitLocker",
+    "SuitMarker"
+  ]
+}

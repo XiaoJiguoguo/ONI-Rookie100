@@ -56,26 +56,28 @@ namespace Rookie100
             {
                 if (building == null || building.GetMyWorldId() != world) continue;
                 string kind = building.GetComponent<KPrefabID>()?.PrefabTag.Name;
-                if (kind == "Cot" || kind == "MessTable")
+                if (kind == BedConfig.ID || kind == DiningTableConfig.ID)
                 {
+                    bool isBed = kind == BedConfig.ID;
                     var nativeRoom = Game.Instance?.roomProber?.GetRoomOfGameObject(building.gameObject);
-                    var work = building.GetComponent<Workable>();
+                    Workable work = isBed ? (Workable)building.GetComponent<Sleepable>() : building.GetComponent<MessStation>();
                     bool reachable = false;
                     if (work != null)
                         foreach (var minion in minions)
                             if (minion != null && minion.GetMyWorldId() == world &&
                                 minion.GetComponent<Navigator>()?.CanReach(work.GetCell(), work.GetOffsets()) == true)
                                 reachable = true;
-                    // Native RoomTypes members differ between game versions. Read the native
-                    // object, fail closed if unavailable; never reproduce room-size thresholds.
                     var roomTypes = Db.Get().RoomTypes;
-                    string member = kind == "Cot" ? "Barracks" : "MessHall";
-                    var type = roomTypes.GetType();
-                    object expected = type.GetField(member)?.GetValue(roomTypes) ?? type.GetProperty(member)?.GetValue(roomTypes, null);
+                    bool recognized = nativeRoom != null && (isBed
+                        ? nativeRoom.roomType == roomTypes.Barracks || nativeRoom.roomType == roomTypes.Bedroom || nativeRoom.roomType == roomTypes.PrivateBedroom
+                        : nativeRoom.roomType == roomTypes.MessHall || nativeRoom.roomType == roomTypes.GreatHall || nativeRoom.roomType == roomTypes.BanquetHall);
+                    // Passive beds/tables need not have Operational. Sleepable's
+                    // native implementation also explicitly allows that component to be absent.
+                    var operation = building.GetComponent<Operational>();
                     living.Add(new LivingRoomRules.Facility { Kind = kind, World = world,
-                        Usable = building.GetComponent<Operational>()?.IsOperational == true,
+                        Usable = work != null && (operation == null || operation.IsOperational),
                         Reachable = reachable,
-                        Recognized = expected != null && nativeRoom != null && object.ReferenceEquals(nativeRoom.roomType, expected) });
+                        Recognized = recognized });
                 }
                 if (kind != "Outhouse" && kind != "WashBasin" && kind != "LiquidPumpingStation") continue;
                 var facility = new SanitationRules.Facility { Kind = kind, World = world };

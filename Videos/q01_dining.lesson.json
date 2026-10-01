@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "id": "q01_dining",
+  "file": "q01_dining.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "准备研究台",
+      "en": "Prepare a resea..."
+    },
+    {
+      "start": 6,
+      "zh": "完成食物制备",
+      "en": "Research Meal P..."
+    },
+    {
+      "start": 12,
+      "zh": "建餐桌",
+      "en": "Construct mess ..."
+    },
+    {
+      "start": 18,
+      "zh": "围合",
+      "en": "Enclose the din..."
+    },
+    {
+      "start": 24,
+      "zh": "确认餐厅",
+      "en": "Verify the mess..."
+    },
+    {
+      "start": 30,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "准备研究台。",
+      "en": "Prepare a research station."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "先研究食物制备，解锁餐桌；研究台需要电力与泥土供应。",
+      "en": "Research Meal Preparation to unlock mess tables; supply power and dirt to the research station."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "建餐桌。",
+      "en": "Construct mess tables."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "围合餐厅：示例内部15×4＝60格，不计墙砖；再用房间叠层核对。",
+      "en": "Enclose a 15 x 4 interior: 60 cells, excluding boundary tiles. Then verify the room overlay."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "确认餐厅。",
+      "en": "Verify the mess hall."
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "research_room",
+  "nativeProps": [
+    "ResearchCenter",
+    "DiningTable"
+  ]
+}

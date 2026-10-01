@@ -23,3 +23,7 @@ python bridge/serve.py --snapshot "C:\ONI-Debug\rookie100-debug.json"
 ## 后续 DLL 验证
 
 校对 Harmony 生命周期、原版读数及任务判定接口；验证 DLL 完整编译、载入/离开/换档、暂停、复制人死亡/切星体、写入失败、游戏异常退出、中文原因准确性。再绑定 loading/running/paused 状态。当前版本提供数据链路草稿，不保证实机可用，不发布模组二进制。
+
+## 本机接入补充
+
+已在当前项目修复本机编译，并补齐 bridge/serve.py 与只读诊断页。运行 start-debug.ps1，安装方法与验证边界见 ../DEBUG_BRIDGE.md。原有环境变量仍可用；本地安装新增 debug_export.enabled 开关，默认写入模组目录的 debug_snapshot.json。新增 paused、cycle 字段及原版 DLC、出生星体事实，state 保留 loaded/disconnected。

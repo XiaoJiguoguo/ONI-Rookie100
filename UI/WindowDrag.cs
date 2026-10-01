@@ -105,7 +105,7 @@ namespace Rookie100.UI
         }
 
         /// <summary>当前布局版本：布局改版时递增，使旧尺寸/位置记忆作废。</summary>
-        public const int LayoutVersion = 3;
+        public const int LayoutVersion = 4;
 
         /// <summary>启动时恢复上次窗口位置/尺寸。</summary>
         public static bool TryApplyLayout(RectTransform rectTransform, Vector2 defaultSize)

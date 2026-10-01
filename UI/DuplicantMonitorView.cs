@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 using Rookie100.Monitoring;
 using TMPro;
 using UnityEngine;
@@ -13,8 +12,8 @@ namespace Rookie100.UI
         private DuplicantMonitor source;
         private TextMeshProUGUI title, values, fallback;
         private Transform portraitHost;
-        private CrewPortrait portrait;
-        private bool compact, collapsed;
+        private Image portrait;
+        private bool compact;
         private int portraitId = int.MinValue;
         private bool portraitWarned;
         private float retryPortraitAfter;
@@ -23,8 +22,14 @@ namespace Rookie100.UI
         public static GameObject CreateHud(Transform parent, DuplicantMonitor monitor)
         {
             var root = Box("Rookie100DuplicantHUD", parent);
-            var rect = root.GetComponent<RectTransform>(); rect.anchorMin = rect.anchorMax = rect.pivot = new Vector2(1f,1f);
-            rect.anchoredPosition = new Vector2(-12f,-112f); rect.sizeDelta = new Vector2(266f,184f);
+            var rect = root.GetComponent<RectTransform>(); rect.anchorMin = rect.anchorMax = new Vector2(.5f,1f); rect.pivot = new Vector2(.5f,.5f);
+            rect.anchoredPosition = new Vector2(0f,-110f); rect.sizeDelta = new Vector2(480f,44f);
+            var canvas = root.AddComponent<Canvas>();
+            canvas.overrideSorting = true;
+            var gameCanvas = parent.GetComponentInParent<Canvas>();
+            canvas.sortingOrder = (gameCanvas != null ? gameCanvas.sortingOrder : 0) + 1;
+            root.AddComponent<GraphicRaycaster>();
+            root.AddComponent<MonitorHudDrag>();
             var view = root.AddComponent<DuplicantMonitorView>();view.Initialize(monitor, true);
             return root;
         }
@@ -38,23 +43,30 @@ namespace Rookie100.UI
         private void Initialize(DuplicantMonitor monitor, bool small)
         {
             source = monitor; compact = small;
-            title = Text("Title",transform,15); Place(title.rectTransform,new Vector2(8f,-8f),new Vector2(small?154f:230f,26f));
-            if (small) Button("Fold",transform,Lang.English?"Fold":"展开 / 收起",new Vector2(-72f,-8f),new Vector2(64f,24f),()=>
+            title = Text("Title", transform, small ? 12 : 15);
+            Place(title.rectTransform, new Vector2(small ? 66f : 8f, -4f), new Vector2(small ? 334f : 230f, 24f));
+            if (small) title.raycastTarget = true;
+            var avatar = Box("Portrait", transform); portraitHost = avatar.transform;
+            Place(avatar.GetComponent<RectTransform>(), new Vector2(small ? 27f : 8f, small ? -5f : -40f), new Vector2(small ? 34f : 62f, small ? 34f : 66f));
+            portrait = avatar.GetComponent<Image>(); portrait.preserveAspect = true; portrait.raycastTarget = small;
+            fallback = Text("AvatarFallback", avatar.transform, 16); Stretch(fallback.rectTransform); fallback.alignment = TextAlignmentOptions.Center;
+            values = Text("Values", transform, small ? 11 : 13);
+            if (small)
             {
-                collapsed = !collapsed;values.gameObject.SetActive(!collapsed);portraitHost.gameObject.SetActive(!collapsed);
-                foreach (string child in new[] { "Previous", "Next", "Tasks" })
-                    transform.Find(child)?.gameObject.SetActive(!collapsed);
-                GetComponent<RectTransform>().sizeDelta = new Vector2(266f,collapsed?70f:184f);Refresh();
-            },true);
-            var avatar = Box("Portrait",transform);portraitHost=avatar.transform;
-            Place(avatar.GetComponent<RectTransform>(),new Vector2(8f,-40f),new Vector2(62f,66f));
-            fallback=Text("AvatarFallback",avatar.transform,20);Stretch(fallback.rectTransform);fallback.alignment=TextAlignmentOptions.Center;
-            values=Text("Values",transform,small?12:13);Place(values.rectTransform,new Vector2(78f,-40f),new Vector2(small?180f:450f,small?102f:132f));
-            Button("Previous",transform,Lang.English?"Prev":"上一个",new Vector2(8f,-(small?150f:174f)),new Vector2(64f,24f),()=>source?.Move(-1));
-            Button("Next",transform,Lang.English?"Next":"下一个",new Vector2(78f,-(small?150f:174f)),new Vector2(64f,24f),()=>source?.Move(1));
-            if(small)Button("Tasks",transform,Lang.English?"Details":"详览",new Vector2(150f,-150f),new Vector2(102f,24f),()=>QuestPanel.ShowMonitor());
-            if(small)Button("TaskEntry",transform,Lang.English?"Tasks":"任务",new Vector2(-64f,-40f),new Vector2(56f,24f),()=>QuestPanel.Toggle(),true);
-            if(source!=null)source.Changed+=Refresh;Refresh();
+                values.enableAutoSizing = true; values.fontSizeMin = 9f; values.fontSizeMax = 11f;
+                values.textWrappingMode = TextWrappingModes.NoWrap;
+                values.overflowMode = TextOverflowModes.Ellipsis;
+            }
+            Place(values.rectTransform, new Vector2(small ? 66f : 78f, small ? -22f : -40f), new Vector2(small ? 338f : 450f, small ? 19f : 132f));
+            Button("Previous", transform, small ? "<" : (Lang.English ? "Prev" : "上一个"), new Vector2(small ? 4f : 8f, small ? -9f : -174f), new Vector2(small ? 20f : 64f, 26f), () => source?.Move(-1));
+            Button("Next", transform, small ? ">" : (Lang.English ? "Next" : "下一个"), new Vector2(small ? 409f : 78f, small ? -9f : -174f), new Vector2(small ? 20f : 64f, 26f), () => source?.Move(1));
+            if (small)
+            {
+                Button("Details", transform, Lang.English ? "Info" : "详情", new Vector2(432f,-2f), new Vector2(44f,19f), () => QuestPanel.ShowMonitor());
+                Button("Reset", transform, Lang.English ? "Reset" : "复位", new Vector2(432f,-23f), new Vector2(44f,19f), () => GetComponent<MonitorHudDrag>().ResetPosition());
+            }
+            if (source != null) source.Changed += Refresh;
+            Refresh();
         }
         private void OnDestroy() { if(source!=null)source.Changed-=Refresh; }
         private static string Percent(float? x) => x.HasValue?Math.Round(x.Value)+"%":(Lang.English?"unknown":"未知");
@@ -65,9 +77,9 @@ namespace Rookie100.UI
             if(source==null || !source.Available)
             {
                 values.text=Lang.English?"Monitoring temporarily unavailable.":"复制人数据暂不可用，等待下一次读取。";
-                fallback.text="?";if(portrait!=null)portrait.gameObject.SetActive(false);portraitId=int.MinValue;return;
+                fallback.text="?";if(portrait!=null)portrait.enabled=false;portraitId=int.MinValue;return;
             }
-            if(row==null){values.text=Lang.English?"No living duplicants on this asteroid.":"当前星体没有可监测的存活复制人。";fallback.text="?";if(portrait!=null)portrait.gameObject.SetActive(false);portraitId=int.MinValue;return;}
+            if(row==null){values.text=Lang.English?"No living duplicants on this asteroid.":"当前星体没有可监测的存活复制人。";fallback.text="?";if(portrait!=null)portrait.enabled=false;portraitId=int.MinValue;return;}
             values.text=(row.Name??"")+"\n"+(Lang.English?"Health ":"生命 ")+Percent(row.Health)+"  "+(Lang.English?"Stress ":"压力 ")+Percent(row.Stress)+"\n"+(Lang.English?"Breath ":"呼吸 ")+Percent(row.Breath)+"\n"+(Lang.English?"Calories ":"热量 ")+(row.Calories.HasValue?Math.Round(row.Calories.Value)+" kcal":(Lang.English?"not applicable / unknown":"不适用 / 未知"));
             if(!compact)
             {
@@ -75,37 +87,45 @@ namespace Rookie100.UI
                 rect.anchorMin = new Vector2(0f,0f); rect.anchorMax = new Vector2(1f,1f);
                 rect.offsetMin = new Vector2(78f,38f); rect.offsetMax = new Vector2(-8f,-40f);
             }
+            if (compact)
+            {
+                title.text = (row.Name ?? "") + " · " + (Lang.English ? "Duplicants " : "复制人 ") + (source?.State.Count ?? 0);
+                values.text = (Lang.English ? "HP " : "生命 ") + Percent(row.Health) + "  " + (Lang.English ? "Stress " : "压力 ") + Percent(row.Stress) + "  " + (Lang.English ? "Breath " : "呼吸 ") + Percent(row.Breath) + "  " + (row.Calories.HasValue ? Math.Round(row.Calories.Value) + " kcal" : (Lang.English ? "unknown" : "未知"));
+            }
             if(!compact)values.text+="\n"+(Lang.English?"Current asteroid; shared read-only observations.":"当前星体 · 与游戏头像面板同步 · 只读监测");
-            if(!collapsed && portraitId!=row.Id && Time.unscaledTime >= retryPortraitAfter)BindPortrait(row);
+            if(portraitId!=row.Id && Time.unscaledTime >= retryPortraitAfter)BindPortrait(row);
         }
         private void BindPortrait(DuplicantReading row)
         {
-            retryPortraitAfter = Time.unscaledTime + 10f;
-            fallback.text=string.IsNullOrEmpty(row.Name)?"?":row.Name.Substring(0,1);
-            if(portrait!=null)portrait.gameObject.SetActive(false);
+            retryPortraitAfter = Time.unscaledTime + 3f;
+            fallback.text = string.IsNullOrEmpty(row.Name) ? "?" : row.Name.Substring(0,1);
+            portrait.enabled = false;
             try
             {
-                var identity=source.Resolve(row.Id);MinionAssignablesProxy proxy=null;
-                foreach(var item in Components.MinionAssignablesProxy.Items)
-                    if(item!=null&&item.GetTargetGameObject()==identity?.gameObject){proxy=item;break;}
-                if(proxy==null)return;
-                if(portrait==null)
-                {
-                    CrewPortrait template=null;
-                    foreach(var ui in Resources.FindObjectsOfTypeAll<AssignableSideScreenRow>())
-                    {
-                        var field=typeof(AssignableSideScreenRow).GetField("crewPortraitPrefab",BindingFlags.Instance|BindingFlags.Public|BindingFlags.NonPublic);
-                        template=field?.GetValue(ui) as CrewPortrait;if(template!=null)break;
-                    }
-                    if(template==null)return; // Initials remain visible until native UI assets are available.
-                    portrait=UnityEngine.Object.Instantiate(template,portraitHost,false);
-                    Stretch(portrait.GetComponent<RectTransform>());
-                    foreach(var graphic in portrait.GetComponentsInChildren<Graphic>(true))graphic.raycastTarget=false;
-                }
-                portrait.gameObject.SetActive(true);portrait.SetAlpha(1f);portrait.SetIdentityObject(proxy,false);
-                fallback.text="";portraitId=row.Id;retryPortraitAfter=0f;
+                var identity = source.Resolve(row.Id);
+                if (identity == null) return;
+                // Game-owned, personality-specific portrait sprite. No prefab cloning,
+                // animation atlases, or external portrait assets are required.
+                var personality = Db.Get().Personalities.Get(identity.personalityResourceId);
+                if (personality == null) personality = Db.Get().Personalities.GetPersonalityFromNameStringKey(identity.nameStringKey);
+                var sprite = personality?.GetMiniIcon();
+                if (sprite == null) return;
+                portrait.sprite = sprite; portrait.color = Color.white; portrait.enabled = true;
+                fallback.text = ""; portraitId = row.Id; retryPortraitAfter = 0f;
             }
-            catch(Exception e){if(!portraitWarned){portraitWarned=true;ModLogger.Warn("原版复制人头像暂不可用，显示姓名首字: "+e.Message);}}
+            catch (Exception e)
+            {
+                if (!portraitWarned) { portraitWarned = true; ModLogger.Warn("原版复制人头像读取失败: " + e.Message); }
+            }
+        }
+        public void LocateCurrent()
+        {
+            var row = source?.State.Current;
+            var identity = row == null ? null : source.Resolve(row.Id);
+            if (identity == null || identity.GetMyWorldId() != ClusterManager.Instance?.activeWorld?.id) return;
+            var selectable = identity.GetComponent<KSelectable>();
+            if (selectable != null && SelectTool.Instance != null)
+                SelectTool.Instance.SelectAndFocus(identity.transform.position, selectable);
         }
         private static GameObject Box(string name,Transform parent){var go=new GameObject(name,typeof(RectTransform),typeof(Image));go.transform.SetParent(parent,false);go.GetComponent<Image>().color=Background;return go;}
         private static TextMeshProUGUI Text(string name,Transform parent,int size){var go=new GameObject(name,typeof(RectTransform),typeof(TextMeshProUGUI));go.transform.SetParent(parent,false);var text=go.GetComponent<TextMeshProUGUI>();text.fontSize=size;text.color=Color.white;text.raycastTarget=false;text.alignment=TextAlignmentOptions.TopLeft;return text;}

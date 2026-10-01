@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "id": "q29",
+  "file": "q29.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "查看配方",
+      "en": "Read the recipe"
+    },
+    {
+      "start": 6,
+      "zh": "核对原料年产出",
+      "en": "Check sustainab..."
+    },
+    {
+      "start": 12,
+      "zh": "准备燃料与人员",
+      "en": "Prepare fuel an..."
+    },
+    {
+      "start": 18,
+      "zh": "小批量烹饪",
+      "en": "Cook a small batch"
+    },
+    {
+      "start": 24,
+      "zh": "安排储存",
+      "en": "Arrange food st..."
+    },
+    {
+      "start": 30,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "查看配方。",
+      "en": "Read the recipe."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "核对原料年产出。",
+      "en": "Check sustainable ingredient output."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "准备燃料与人员。",
+      "en": "Prepare fuel and a cook."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "小批量烹饪。",
+      "en": "Cook a small batch."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "安排储存。",
+      "en": "Arrange food storage."
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "food",
+  "nativeProps": [
+    "GourmetCookingStation",
+    "Refrigerator",
+    "GasReservoir"
+  ]
+}

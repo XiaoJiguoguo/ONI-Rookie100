@@ -20,6 +20,7 @@ namespace Rookie100
             {
                 // 内容与 UI 初始化
                 Content.QuestStore.SetContentPath(mod.ContentPath);
+                Debugging.DebugExporter.Initialize(mod.ContentPath);
                 UI.LayoutStore.SetContentPath(mod.ContentPath);
                 UI.Lang.Load();
                 Content.QuestStore.Load();
@@ -38,4 +39,3 @@ namespace Rookie100
         }
     }
 }
-

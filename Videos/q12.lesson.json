@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "id": "q12",
+  "file": "q12.mp4",
+  "duration": 30,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "区分病菌与腐败",
+      "en": "Distinguish ger..."
+    },
+    {
+      "start": 6,
+      "zh": "规划食物储存",
+      "en": "Plan food storage"
+    },
+    {
+      "start": 12,
+      "zh": "减少污染搬运",
+      "en": "Reduce contamin..."
+    },
+    {
+      "start": 18,
+      "zh": "核对温度与储存…",
+      "en": "Check temperatu..."
+    },
+    {
+      "start": 24,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "区分病菌与腐败。",
+      "en": "Distinguish germs from food spoilage."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "规划食物储存。",
+      "en": "Plan food storage."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "减少污染搬运。",
+      "en": "Reduce contaminated deliveries."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "核对温度与储存气体。",
+      "en": "Check temperature and storage atmosphere."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "storage",
+  "nativeProps": [
+    "RationBox",
+    "Refrigerator",
+    "StorageLocker"
+  ]
+}

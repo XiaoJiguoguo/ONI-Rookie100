@@ -4,3 +4,11 @@ _releases/
 *.user
 .vs/
 quest_progress.json
+.tools/
+upstream/
+source.zip
+dotnet-install.ps1
+debug_snapshot.json*
+debug_export.enabled
+artifacts/
+__pycache__/

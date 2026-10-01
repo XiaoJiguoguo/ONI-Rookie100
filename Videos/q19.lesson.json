@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "id": "q19",
+  "file": "q19.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "测温",
+      "en": "Measure tempera..."
+    },
+    {
+      "start": 6,
+      "zh": "隔离生产区",
+      "en": "Isolate production"
+    },
+    {
+      "start": 12,
+      "zh": "给种植区独立控温",
+      "en": "Give plants sep..."
+    },
+    {
+      "start": 18,
+      "zh": "检查供给",
+      "en": "Check resource ..."
+    },
+    {
+      "start": 24,
+      "zh": "逐段整合",
+      "en": "Integrate one s..."
+    },
+    {
+      "start": 30,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "测温。",
+      "en": "Measure temperature."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "隔离生产区。",
+      "en": "Isolate production."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "给种植区独立控温。",
+      "en": "Give plants separate temperature control."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "检查供给。",
+      "en": "Check resource supplies."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "逐段整合。",
+      "en": "Integrate one section at a time."
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "heat",
+  "nativeProps": [
+    "MetalRefinery",
+    "HydroponicFarm",
+    "LiquidConditioner"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "id": "c2_food_budget",
+  "file": "c2_food_budget.mp4",
+  "duration": 30,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "统计可食热量",
+      "en": "Count edible ca..."
+    },
+    {
+      "start": 6,
+      "zh": "比较产出与消耗",
+      "en": "Compare product..."
+    },
+    {
+      "start": 12,
+      "zh": "留收获间隔缓冲",
+      "en": "Buffer the harv..."
+    },
+    {
+      "start": 18,
+      "zh": "调整种植或食谱",
+      "en": "Adjust crops or..."
+    },
+    {
+      "start": 24,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "统计可食热量。",
+      "en": "Count edible calories."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "比较产出与消耗。",
+      "en": "Compare production and consumption."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "留收获间隔缓冲。",
+      "en": "Buffer the harvest interval."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "调整种植或食谱。",
+      "en": "Adjust crops or recipes."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "budget",
+  "nativeProps": [
+    "PlanterBox",
+    "RationBox",
+    "MicrobeMusher"
+  ]
+}

@@ -9,12 +9,13 @@
     <Version>0.5.0</Version>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <GenerateDependencyFile>false</GenerateDependencyFile>
+    <DefaultItemExcludes>$(DefaultItemExcludes);Tests\bin\**;Tests\obj\**;.tools\**</DefaultItemExcludes>
     <!-- 游戏安装路径：优先用环境变量 ONI_GAME_PATH，其次命令行 /p:GamePath=...，最后默认 Steam 库路径 -->
     <GamePath Condition="'$(GamePath)' == ''">$(ONI_GAME_PATH)</GamePath>
-    <GamePath Condition="'$(GamePath)' == ''">Y:\steam\steamapps\common\OxygenNotIncluded</GamePath>
+    <GamePath Condition="'$(GamePath)' == ''">C:\STEAM\steamapps\common\OxygenNotIncluded</GamePath>
     <ManagedPath>$(GamePath)\OxygenNotIncluded_Data\Managed</ManagedPath>
-    <!-- 编译即部署：输出直接进缺氧 Dev 模组目录 -->
-    <OutputPath Condition="'$(Configuration)' == 'Release'">$(UserProfile)\Documents\Klei\OxygenNotIncluded\mods\Dev\Rookie100\</OutputPath>
+    <!-- 构建产物留在项目内，部署前先验证。 -->
+    <OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -50,8 +51,8 @@
       <HintPath>$(ManagedPath)\UnityEngine.UIModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
-    <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>$(ManagedPath)\UnityEngine.ImageConversionModule.dll</HintPath>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>$(ManagedPath)\UnityEngine.VideoModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
@@ -80,6 +81,10 @@
     <None Include="mod_info.yaml" CopyToOutputDirectory="PreserveNewest" />
     <None Include="quests.json" CopyToOutputDirectory="PreserveNewest" />
     <None Update="Curriculum\catalog.v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Videos\*.mp4" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Videos\*-preview-zh.mp4" CopyToOutputDirectory="Never" />
+    <None Update="Videos\*.lesson.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Videos\lessons.index.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>

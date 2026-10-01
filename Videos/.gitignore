@@ -1,0 +1,4 @@
+# Local review frames and subtitle-burned previews; game movies remain tracked.
+*.png
+*.jpg
+*-preview-zh.mp4
