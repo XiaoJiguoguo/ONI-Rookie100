@@ -1,12 +1,12 @@
 {
-  "Version": 6,
+  "Version": 7,
   "Phases": [
     {
-      "Title": "阶段一 · 活下来",
+      "Title": "阶段一 · 安顿与生存",
       "Id": "early",
-      "Desc": "厕所→氧气→电网→食物，先站稳脚跟",
-      "TitleEn": "Phase 1 - Survive",
-      "DescEn": "Toilet to oxygen to power grid to food - get a foothold first"
+      "Desc": "先安顿卫生间、宿舍与餐厅，再逐步完善氧气、电力和食物",
+      "TitleEn": "Phase 1 - Settle and survive",
+      "DescEn": "Set up sanitation, sleeping and dining before expanding oxygen, power and food"
     },
     {
       "Title": "阶段二 · 工业化",
@@ -35,8 +35,8 @@
       "Id": "q01",
       "Phase": "early",
       "Order": 1,
-      "Title": "公共厕所",
-      "Description": "建成原版认可的公共厕所房间，并打通取水、补水、如厕和洗手流程。下方六项全部通过后才可领取奖励。",
+      "Title": "基础卫生间",
+      "Description": "先规划三个生活空间，当前优先解决卫生间。已有设施直接认可；按当前缺口检查泥土、供水、搬运、可达性、原版房间与真实试运行。",
       "Requires": [],
       "Objectives": [
         {
@@ -83,9 +83,9 @@
           "Type": "sanitation",
           "Condition": "Trial",
           "Count": 1,
-          "Label": "接取后实际完成如厕再洗手",
+          "Label": "实际完成如厕后洗手",
           "Tag": "WashBasin",
-          "LabelEn": "Complete a toilet-then-wash trial after accepting"
+          "LabelEn": "Complete an actual toilet-then-wash trial"
         }
       ],
       "Rewards": [
@@ -111,8 +111,8 @@
         "27:23 如厕后洗手与病菌传播",
         "28:14 用墙和门形成公共厕所"
       ],
-      "TitleEn": "Public Toilet",
-      "DescEn": "Create a game-recognized latrine and connect water collection, basin supply, toilet use and hand washing. All six checks are required.",
+      "TitleEn": "Basic sanitation",
+      "DescEn": "Plan the three living spaces and focus on sanitation first. Existing working facilities count. Check supplies, delivery, access, native room recognition and actual use.",
       "SegmentsEn": [
         "19:32 Main routes and population advice",
         "21:13 Room height and early planning",
@@ -138,13 +138,77 @@
       ]
     },
     {
-      "Id": "q02",
+      "Id": "q01_bedroom",
       "Phase": "early",
       "Order": 2,
+      "Title": "安顿宿舍",
+      "TitleEn": "Set up the bedroom",
+      "Description": "已建成可用的设施直接认可。设施可用与原版房间成立分别检查；需要研究时再按需解锁。",
+      "Requires": [
+        "q01"
+      ],
+      "Objectives": [
+        {
+          "Type": "livingRoom",
+          "Condition": "BedsUsable",
+          "Tag": "Cot",
+          "Count": 1,
+          "Label": "床铺可用且可达",
+          "LabelEn": "Usable reachable beds"
+        },
+        {
+          "Type": "livingRoom",
+          "Condition": "Barracks",
+          "Tag": "Cot",
+          "Count": 1,
+          "Label": "原版识别为宿舍",
+          "LabelEn": "Native barracks recognized"
+        }
+      ],
+      "Rewards": [],
+      "DescEn": "Existing working facilities count. Usability and native room recognition are separate checks.",
+      "Segments": []
+    },
+    {
+      "Id": "q01_dining",
+      "Phase": "early",
+      "Order": 3,
+      "Title": "完善餐厅",
+      "TitleEn": "Set up the dining room",
+      "Description": "已建成可用的设施直接认可。设施可用与原版房间成立分别检查；需要研究时再按需解锁。",
+      "Requires": [
+        "q01_bedroom"
+      ],
+      "Objectives": [
+        {
+          "Type": "livingRoom",
+          "Condition": "TablesUsable",
+          "Tag": "MessTable",
+          "Count": 1,
+          "Label": "用餐设施可用且可达",
+          "LabelEn": "Usable reachable dining facilities"
+        },
+        {
+          "Type": "livingRoom",
+          "Condition": "MessHall",
+          "Tag": "MessTable",
+          "Count": 1,
+          "Label": "原版识别为餐厅",
+          "LabelEn": "Native mess hall recognized"
+        }
+      ],
+      "Rewards": [],
+      "DescEn": "Existing working facilities count. Usability and native room recognition are separate checks.",
+      "Segments": []
+    },
+    {
+      "Id": "q02",
+      "Phase": "early",
+      "Order": 4,
       "Title": "入坑必学，贯穿游戏前后的基础操作与机制",
       "Description": "熟悉游戏界面、操作与基础机制",
       "Requires": [
-        "q01"
+        "q01_dining"
       ],
       "Objectives": [],
       "Rewards": [],
@@ -179,7 +243,7 @@
     {
       "Id": "q03",
       "Phase": "early",
-      "Order": 3,
+      "Order": 5,
       "Title": "前期氧气扩散与二氧化碳治理",
       "Description": "建造氧气扩散器，稳定前期氧气",
       "Requires": [
@@ -237,7 +301,7 @@
     {
       "Id": "q04",
       "Phase": "early",
-      "Order": 4,
+      "Order": 6,
       "Title": "二级科研开始 管道与电路的初步了解",
       "Description": "开启二级科研，了解管道与电路",
       "Requires": [
@@ -290,7 +354,7 @@
     {
       "Id": "q05",
       "Phase": "early",
-      "Order": 5,
+      "Order": 7,
       "Title": "轻松搞定巨简单的卫生间循环",
       "Description": "建造冲水厕所，组成卫生间循环",
       "Requires": [
@@ -354,7 +418,7 @@
     {
       "Id": "q06",
       "Phase": "early",
-      "Order": 6,
+      "Order": 8,
       "Title": "种植区选址",
       "Description": "放下第一批种植箱，选定种植区",
       "Requires": [
@@ -412,7 +476,7 @@
     {
       "Id": "q07",
       "Phase": "early",
-      "Order": 7,
+      "Order": 9,
       "Title": "学会电路分组 永不过载",
       "Description": "用变压器给电路分组，永不过载",
       "Requires": [
@@ -476,7 +540,7 @@
     {
       "Id": "q08",
       "Phase": "early",
-      "Order": 8,
+      "Order": 10,
       "Title": "种植顶针芦苇并学会食物过渡",
       "Description": "用农场砖种植顶针芦苇",
       "Requires": [
@@ -540,7 +604,7 @@
     {
       "Id": "q09",
       "Phase": "early",
-      "Order": 9,
+      "Order": 11,
       "Title": "高压制氧从建造到启动 稳定防崩必学",
       "Description": "建造电解水制氧模块（高压）",
       "Requires": [
@@ -600,7 +664,7 @@
     {
       "Id": "q10",
       "Phase": "early",
-      "Order": 10,
+      "Order": 12,
       "Title": "普通制氧也不赖 崩了随意修",
       "Description": "建造常规制氧：电解器配套气泵",
       "Requires": [
@@ -660,7 +724,7 @@
     {
       "Id": "q11",
       "Phase": "early",
-      "Order": 11,
+      "Order": 13,
       "Title": "金属精炼",
       "Description": "建造金属精炼厂，开始精炼金属",
       "Requires": [
@@ -718,7 +782,7 @@
     {
       "Id": "q12",
       "Phase": "early",
-      "Order": 12,
+      "Order": 14,
       "Title": "辐射杀菌与食物保鲜",
       "Description": "建储物箱处理物资，学会食物保鲜",
       "Requires": [
@@ -782,7 +846,7 @@
     {
       "Id": "q13",
       "Phase": "early",
-      "Order": 13,
+      "Order": 15,
       "Title": "天然气发电 树鼠种植",
       "Description": "建造天然气发电机，开发新能源",
       "Requires": [
@@ -840,7 +904,7 @@
     {
       "Id": "q14",
       "Phase": "early",
-      "Order": 14,
+      "Order": 16,
       "Title": "游戏前期总结 基地围挡",
       "Description": "用瓷砖把基地围挡起来（至少 20 块）",
       "Requires": [
@@ -902,7 +966,7 @@
     {
       "Id": "q15",
       "Phase": "mid",
-      "Order": 15,
+      "Order": 17,
       "Title": "三级科研 炼钢准备",
       "Description": "开启三级科研，为炼钢做准备",
       "Requires": [
@@ -957,7 +1021,7 @@
     {
       "Id": "q16",
       "Phase": "mid",
-      "Order": 16,
+      "Order": 18,
       "Title": "跨过这道坎 野外炼钢和冷却模块",
       "Description": "野外炼钢：搭起冷却模块（液温调节器）",
       "Requires": [
@@ -1015,7 +1079,7 @@
     {
       "Id": "q17",
       "Phase": "mid",
-      "Order": 17,
+      "Order": 19,
       "Title": "原油精炼 强制相变",
       "Description": "建造原油精炼厂，学会强制相变",
       "Requires": [
@@ -1079,7 +1143,7 @@
     {
       "Id": "q18",
       "Phase": "mid",
-      "Order": 18,
+      "Order": 20,
       "Title": "超详细炼钢模块建造过程",
       "Description": "建成炼钢模块：蒸汽机回收废热",
       "Requires": [
@@ -1121,7 +1185,7 @@
     {
       "Id": "q19",
       "Phase": "mid",
-      "Order": 19,
+      "Order": 21,
       "Title": "炼油控温 整合种植区",
       "Description": "炼油控温，整合种植区",
       "Requires": [
@@ -1166,7 +1230,7 @@
     {
       "Id": "q20",
       "Phase": "mid",
-      "Order": 20,
+      "Order": 22,
       "Title": "吃什么永生？有水先上刺花",
       "Description": "吃什么永生？有水先上刺花",
       "Requires": [
@@ -1211,7 +1275,7 @@
     {
       "Id": "q21",
       "Phase": "mid",
-      "Order": 21,
+      "Order": 23,
       "Title": "中期必做的事 士气升档",
       "Description": "士气升档：建造食堂餐桌",
       "Requires": [
@@ -1273,7 +1337,7 @@
     {
       "Id": "q22",
       "Phase": "mid",
-      "Order": 22,
+      "Order": 24,
       "Title": "自然保护区与基地冷却",
       "Description": "规划自然保护区，给基地降温",
       "Requires": [
@@ -1314,7 +1378,7 @@
     {
       "Id": "q23",
       "Phase": "mid",
-      "Order": 23,
+      "Order": 25,
       "Title": "储油石快速开发",
       "Description": "储油石快速开发",
       "Requires": [
@@ -1351,7 +1415,7 @@
     {
       "Id": "q24",
       "Phase": "late",
-      "Order": 24,
+      "Order": 26,
       "Title": "壁虎养殖",
       "Description": "壁虎养殖：建剪毛站",
       "Requires": [
@@ -1397,7 +1461,7 @@
     {
       "Id": "q25",
       "Phase": "late",
-      "Order": 25,
+      "Order": 27,
       "Title": "开水泉 存氧气",
       "Description": "开水泉，建储气库存氧气",
       "Requires": [
@@ -1453,7 +1517,7 @@
     {
       "Id": "q26",
       "Phase": "late",
-      "Order": 26,
+      "Order": 28,
       "Title": "典型金属火山开发",
       "Description": "金属火山开发：放自动挖掘机",
       "Requires": [
@@ -1503,7 +1567,7 @@
     {
       "Id": "q27",
       "Phase": "late",
-      "Order": 27,
+      "Order": 29,
       "Title": "第一类火箭 数据磁盘",
       "Description": "建造第一类火箭：从火箭平台起步",
       "Requires": [
@@ -1563,7 +1627,7 @@
     {
       "Id": "q28",
       "Phase": "late",
-      "Order": 28,
+      "Order": 30,
       "Title": "探图火箭 光虫养殖",
       "Description": "探图火箭与光虫养殖",
       "Requires": [
@@ -1600,7 +1664,7 @@
     {
       "Id": "q29",
       "Phase": "late",
-      "Order": 29,
+      "Order": 31,
       "Title": "什么？你不吃浆果糕？",
       "Description": "做浆果糕：建造燃气灶",
       "Requires": [
@@ -1660,7 +1724,7 @@
     {
       "Id": "q30",
       "Phase": "late",
-      "Order": 30,
+      "Order": 32,
       "Title": "还不会打流星？且看过来",
       "Description": "打流星：铺防爆门保护地表",
       "Requires": [
@@ -1714,7 +1778,7 @@
     {
       "Id": "q31",
       "Phase": "space",
-      "Order": 31,
+      "Order": 33,
       "Title": "开拓型火箭的建造",
       "Description": "建造开拓型火箭",
       "Requires": [
@@ -1753,7 +1817,7 @@
     {
       "Id": "q32",
       "Phase": "space",
-      "Order": 32,
+      "Order": 34,
       "Title": "火箭着陆与星球开拓",
       "Description": "火箭着陆与星球开拓",
       "Requires": [
@@ -1792,7 +1856,7 @@
     {
       "Id": "q33",
       "Phase": "space",
-      "Order": 33,
+      "Order": 35,
       "Title": "观赏鱼入池 基地里种树",
       "Description": "观赏鱼入池，基地里种树",
       "Requires": [
@@ -1829,7 +1893,7 @@
     {
       "Id": "q34",
       "Phase": "space",
-      "Order": 34,
+      "Order": 36,
       "Title": "最终的干货，完结",
       "Description": "最终干货：毕业！",
       "Requires": [

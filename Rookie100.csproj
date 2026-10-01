@@ -71,6 +71,7 @@
   <ItemGroup>
     <!-- 版本快照目录不参与编译 -->
     <Compile Remove="_releases\**\*.cs" />
+    <Compile Remove="Tests\**\*.cs" />
     <None Remove="_releases\**\*" />
   </ItemGroup>
 

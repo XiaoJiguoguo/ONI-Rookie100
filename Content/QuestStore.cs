@@ -28,12 +28,13 @@ namespace Rookie100.Content
             // Physical rewards survive a learning-progress reset.
             public List<string> Rewarded { get; set; } = new List<string>();
             public List<int> SanitationTrials { get; set; } = new List<int>();
+            public List<string> Learned { get; set; } = new List<string>();
         }
 
         /// <summary>quest_progress.json 顶层结构（v3：多档案注册表）。</summary>
         private class ProgressRegistry
         {
-            public int Version { get; set; } = 4;
+            public int Version { get; set; } = 5;
             public string Active { get; set; }
             public Dictionary<string, ColonyProgress> Profiles { get; set; } = new Dictionary<string, ColonyProgress>();
         }
@@ -199,8 +200,11 @@ namespace Rookie100.Content
             }
             else
             {
-                ModLogger.Log($"任务进度档案: 载入存档 {colonyKey}（已领取 {profile.Claimed.Count}）");
+                ModLogger.Log($"任务进度档案: 载入存档 {colonyKey}（已领取 {profile.Claimed?.Count ?? 0}）");
             }
+
+            profile.Claimed = profile.Claimed ?? new List<string>();
+            profile.Accepted = profile.Accepted ?? new List<string>();
 
             // 旧版共享进度迁移：仅归并给第一个激活的存档档案
             if (pendingLegacyMigration != null)
@@ -209,7 +213,7 @@ namespace Rookie100.Content
                 {
                     profile.Claimed.AddRange(pendingLegacyMigration.Claimed);
                     profile.Accepted.AddRange(pendingLegacyMigration.Accepted);
-                    ModLogger.Log($"旧版进度已迁移至存档 {colonyKey}: 已领取 {profile.Claimed.Count}");
+                    ModLogger.Log($"旧版进度已迁移至存档 {colonyKey}: 已领取 {profile.Claimed?.Count ?? 0}");
                 }
 
                 pendingLegacyMigration = null;
@@ -222,7 +226,11 @@ namespace Rookie100.Content
             {
                 if (!profile.Rewarded.Contains(id)) profile.Rewarded.Add(id);
             }
-            registry.Version = 4;
+            profile.Claimed = profile.Claimed ?? new List<string>();
+            profile.Accepted = profile.Accepted ?? new List<string>();
+            profile.Learned = profile.Learned ?? new List<string>();
+            foreach (string id in profile.Claimed) if (!profile.Learned.Contains(id)) profile.Learned.Add(id);
+            registry.Version = 5;
             SaveProgress();
         }
 
@@ -261,6 +269,8 @@ namespace Rookie100.Content
             }
 
             active.Claimed.Add(questId);
+            if (active.Learned == null) active.Learned = new List<string>();
+            if (!active.Learned.Contains(questId)) active.Learned.Add(questId);
             SaveProgress();
         }
 
@@ -306,6 +316,7 @@ namespace Rookie100.Content
             var profile = EnsureActive();
             profile.Claimed.Clear();
             profile.Accepted.Clear();
+            profile.Learned = new List<string>();
             profile.SanitationTrials = new List<int>();
             Rookie100.SanitationWitness.Clear();
             SaveProgress();
@@ -358,6 +369,8 @@ namespace Rookie100.Content
                 return QuestStatus.Available;
             }
 
+            if (IsLearned(quest.Id)) return QuestStatus.Completed;
+
             counts = counts ?? Rookie100.QuestScanner.CountAllBuildings();
             int met = 0;
             int total = quest.Objectives.Count;
@@ -383,11 +396,33 @@ namespace Rookie100.Content
             return met > 0 ? QuestStatus.InProgress : QuestStatus.Accepted;
         }
 
+        public static bool IsLearned(string questId) => IsClaimed(questId) || active?.Learned?.Contains(questId) == true;
+
+        public static bool AreCurrentObjectivesMet(QuestDef quest, Dictionary<string, int> counts)
+        {
+            return quest != null && counts != null && quest.Objectives.All(o => IsObjectiveMet(o, counts));
+        }
+
+        public static void RecordLearning(Dictionary<string, int> counts)
+        {
+            if (active == null || string.IsNullOrEmpty(activeKey) || counts == null) return;
+            if (active.Learned == null) active.Learned = new List<string>();
+            bool changed = false;
+            foreach (var quest in content.Quests)
+            {
+                // The three living-space quests credit existing facilities before acceptance.
+                if (!active.Learned.Contains(quest.Id) &&
+                    (quest.Id == "q01" || quest.Id == "q01_bedroom" || quest.Id == "q01_dining") && AreCurrentObjectivesMet(quest, counts))
+                { active.Learned.Add(quest.Id); changed = true; }
+            }
+            if (changed) SaveProgress();
+        }
+
         public static bool HasSanitationTrial(int world) => active?.SanitationTrials?.Contains(world) == true;
 
         public static void MarkSanitationTrial(int world)
         {
-            if (active == null || string.IsNullOrEmpty(activeKey) || !IsAccepted("q01") || IsClaimed("q01")) return;
+            if (active == null || string.IsNullOrEmpty(activeKey) || IsClaimed("q01")) return;
             if (active.SanitationTrials == null) active.SanitationTrials = new List<int>();
             if (active.SanitationTrials.Contains(world)) return;
             active.SanitationTrials.Add(world);
@@ -401,6 +436,9 @@ namespace Rookie100.Content
                 case "sanitation":
                     counts.TryGetValue("sanitation:" + objective.Condition, out int satisfied);
                     return satisfied >= objective.Count;
+                case "livingRoom":
+                    counts.TryGetValue("livingRoom:" + objective.Condition, out int roomCount);
+                    return roomCount >= objective.Count;
                 case "buildingBuilt":
                     counts.TryGetValue(objective.Tag, out int count);
                     return count >= objective.Count;
@@ -412,7 +450,9 @@ namespace Rookie100.Content
         /// <summary>目标进度文本，如 "户外厕所 1/1"。</summary>
         public static string GetObjectiveStatusText(QuestObjectiveDef objective, Dictionary<string, int> counts)
         {
-            counts.TryGetValue(objective.Tag, out int count);
+            string key = objective.Type == "sanitation" ? "sanitation:" + objective.Condition :
+                objective.Type == "livingRoom" ? "livingRoom:" + objective.Condition : objective.Tag;
+            counts.TryGetValue(key, out int count);
             string label = string.IsNullOrEmpty(objective.LabelDisp) ? objective.Tag : objective.LabelDisp;
             return $"{label} {Math.Min(count, objective.Count)}/{objective.Count}";
         }

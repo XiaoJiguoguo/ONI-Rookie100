@@ -15,7 +15,7 @@ namespace Rookie100
         public static void Used(Workable toilet, WorkerBase worker)
         {
             if (worker == null || toilet.GetComponent<KPrefabID>()?.PrefabTag.Name != "Outhouse" ||
-                !QuestStore.IsAccepted("q01") || QuestStore.IsClaimed("q01")) return;
+                string.IsNullOrEmpty(QuestStore.ActiveColonyKey) || QuestStore.IsClaimed("q01")) return;
             visits[worker] = new Visit { World = toilet.GetMyWorldId(), Time = Time.time, Colony = QuestStore.ActiveColonyKey, Toilet = toilet };
         }
         public static void Washed(Workable basin, WorkerBase worker)

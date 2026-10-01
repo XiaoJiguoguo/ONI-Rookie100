@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Rookie100.Content;
 using UnityEngine;
 
@@ -14,7 +16,7 @@ namespace Rookie100
         public static Dictionary<string, int> CountAllBuildings()
         {
             var counts = new Dictionary<string, int>();
-            BuildingComplete[] buildings = Object.FindObjectsByType<BuildingComplete>(
+            BuildingComplete[] buildings = UnityEngine.Object.FindObjectsByType<BuildingComplete>(
                 FindObjectsInactive.Exclude, FindObjectsSortMode.None);
             foreach (var building in buildings)
             {
@@ -35,13 +37,46 @@ namespace Rookie100
             }
 
             int world = ClusterManager.Instance?.activeWorld?.id ?? -1;
+            var living = new List<LivingRoomRules.Facility>();
+            // Accessible inventory is a native observation. A failed read remains unknown.
+            try
+            {
+                var inventory = ClusterManager.Instance?.activeWorld?.worldInventory?.GetAccessibleAmounts();
+                if (inventory != null)
+                {
+                    counts["sanitation:DirtKnown"] = 1;
+                    counts["sanitation:DirtAccessible"] = inventory.TryGetValue(new Tag("Dirt"), out float dirt) && dirt > 0f ? 1 : 0;
+                }
+            }
+            catch (Exception e) { ModLogger.Warn("读取引导库存失败: " + e.Message); }
             var facilities = new List<SanitationRules.Facility>();
             var roomIds = new Dictionary<Room, int>();
-            var minions = Object.FindObjectsByType<MinionIdentity>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+            var minions = UnityEngine.Object.FindObjectsByType<MinionIdentity>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
             foreach (var building in buildings)
             {
                 if (building == null || building.GetMyWorldId() != world) continue;
                 string kind = building.GetComponent<KPrefabID>()?.PrefabTag.Name;
+                if (kind == "Cot" || kind == "MessTable")
+                {
+                    var nativeRoom = Game.Instance?.roomProber?.GetRoomOfGameObject(building.gameObject);
+                    var work = building.GetComponent<Workable>();
+                    bool reachable = false;
+                    if (work != null)
+                        foreach (var minion in minions)
+                            if (minion != null && minion.GetMyWorldId() == world &&
+                                minion.GetComponent<Navigator>()?.CanReach(work.GetCell(), work.GetOffsets()) == true)
+                                reachable = true;
+                    // Native RoomTypes members differ between game versions. Read the native
+                    // object, fail closed if unavailable; never reproduce room-size thresholds.
+                    var roomTypes = Db.Get().RoomTypes;
+                    string member = kind == "Cot" ? "Barracks" : "MessHall";
+                    var type = roomTypes.GetType();
+                    object expected = type.GetField(member)?.GetValue(roomTypes) ?? type.GetProperty(member)?.GetValue(roomTypes, null);
+                    living.Add(new LivingRoomRules.Facility { Kind = kind, World = world,
+                        Usable = building.GetComponent<Operational>()?.IsOperational == true,
+                        Reachable = reachable,
+                        Recognized = expected != null && nativeRoom != null && object.ReferenceEquals(nativeRoom.roomType, expected) });
+                }
                 if (kind != "Outhouse" && kind != "WashBasin" && kind != "LiquidPumpingStation") continue;
                 var facility = new SanitationRules.Facility { Kind = kind, World = world };
                 var room = Game.Instance?.roomProber?.GetRoomOfGameObject(building.gameObject);
@@ -67,7 +102,7 @@ namespace Rookie100
                     // actual intake cells and unobstructed depth, with a >1 kg cutoff.
                     facility.Ready = enabled && building.GetComponent<LiquidPumpingStation>() != null &&
                         (building.GetComponent<Storage>()?.GetMassAvailable(SimHashes.Water) ?? 0f) > 1f;
-                if (facility.Ready)
+                // Reachability is useful even before supplies arrive.
                 {
                     Workable work = kind == "Outhouse" ? (Workable)building.GetComponent<ToiletWorkableUse>() :
                         kind == "WashBasin" ? building.GetComponent<HandSanitizer.Work>() :
@@ -86,6 +121,11 @@ namespace Rookie100
             }
             foreach (var pair in SanitationRules.Evaluate(facilities, world, QuestStore.HasSanitationTrial(world)))
                 counts[pair.Key] = pair.Value;
+            foreach (var pair in LivingRoomRules.Evaluate(living, world)) counts[pair.Key] = pair.Value;
+            counts["sanitation:OuthouseBuilt"] = facilities.Any(f => f.Kind == "Outhouse") ? 1 : 0;
+            counts["sanitation:WashBasinBuilt"] = facilities.Any(f => f.Kind == "WashBasin") ? 1 : 0;
+            counts["sanitation:PumpBuilt"] = facilities.Any(f => f.Kind == "LiquidPumpingStation") ? 1 : 0;
+            counts["sanitation:PumpReachable"] = facilities.Any(f => f.Kind == "LiquidPumpingStation" && f.Workers.Count > 0) ? 1 : 0;
             return counts;
         }
     }

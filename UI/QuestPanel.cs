@@ -851,6 +851,28 @@ namespace Rookie100.UI
             // 任务说明
             CreateSectionTitle(StatusIcons.Brief, Lang.T("任务说明"), HeadingText);
             CreateBodyText(quest.DescDisp, BodyTextC);
+            var hint = BeginnerGuidance.Get(quest.Id, currentCounts, QuestStore.IsLearned(quest.Id));
+            if (hint != null)
+            {
+                CreateSectionTitle(StatusIcons.Brief, Lang.English ? "Current guidance" : "当前引导", HeadingText);
+                string prefix = hint.NeedsRepair ? (Lang.English ? "Repair needed: " : "需要修复：") : "";
+                CreateBodyText(prefix + (Lang.English ? hint.English : hint.Chinese), hint.NeedsRepair ? WarningText : BlueText);
+                if (QuestStore.IsLearned(quest.Id))
+                    CreateBodyText(Lang.English ? "Learning completed. Current facility checks remain live." : "教学已完成并保存；当前设施条件仍会实时检查。", PositiveText);
+                if (quest.Id == "q01")
+                {
+                    var focus = MakeThinButton("CurrentStepDemo", detailContent,
+                        Lang.English ? "Show this step" : "查看当前步骤示范", () =>
+                        {
+                            if (currentDemo != null) { currentDemo.Pause(); currentDemo = null; }
+                            demoPlayback = new DemoPlayback { Seconds = hint.DemoSeconds, Playing = false };
+                            demoExpanded = true;
+                            RefreshDetail();
+                        }, BlueBtn, BlueBtnHover, 12);
+                    focus.AddComponent<LayoutElement>().preferredHeight = 28f;
+                }
+            }
+
             if (quest.Id == "q01")
             {
                 var demoToggle = MakeThinButton("DemoToggle", detailContent,
@@ -860,7 +882,7 @@ namespace Rookie100.UI
                 demoToggle.GetComponentInChildren<TextMeshProUGUI>().color = WhiteText;
                 demoToggle.AddComponent<LayoutElement>().preferredHeight = 30f;
                 if (demoParent != null) CreateToiletDemo(demoParent);
-                CreateBodyText(Lang.English ? "Checks use the current asteroid. Trial: after accepting, one duplicant must finish using an outhouse and then wash in the same latrine within 120 game seconds. The trial is saved; other checks stay live." : "检查当前星球。接取后，让同一复制人在同一公共厕所如厕，再于 120 游戏秒内洗手。试运行会保存；其余条件实时检查。请检查出口路线和洗手方向。", MutedText);
+                CreateBodyText(Lang.English ? "Checks use the current asteroid. Trial: one duplicant must finish using an outhouse and then wash in the same latrine within 120 game seconds. The trial and learning history are saved; facility checks stay live." : "检查当前星球。让同一复制人在同一公共厕所如厕，再于 120 游戏秒内洗手；已发生的实际试运行直接认可。试运行会保存；其余条件实时检查。请检查出口路线和洗手方向。", MutedText);
             }
 
             // 目标进度
@@ -874,7 +896,7 @@ namespace Rookie100.UI
                         QuestStore.GetObjectiveStatusText(objective, currentCounts),
                         met ? PositiveText : BlueText,
                         met ? StatusIcons.ObjectiveDone : StatusIcons.ObjectiveTodo);
-                    row.AddComponent<LayoutElement>().preferredHeight = objective.Type == "sanitation" ? 38f : 26f;
+                    row.AddComponent<LayoutElement>().preferredHeight = (objective.Type == "sanitation" || objective.Type == "livingRoom") ? 38f : 26f;
 
                     // 建筑引导按钮：查看大图标与解锁所需的前置科技
                     QuestObjectiveDef guideObjective = objective;
@@ -907,7 +929,7 @@ namespace Rookie100.UI
             else foreach (var reward in quest.Rewards)
             {
                 GameObject row = CreateIconRow(reward.Element, reward.LabelDisp, WarningText, null);
-                row.AddComponent<LayoutElement>().preferredHeight = objective.Type == "sanitation" ? 38f : 26f;
+                row.AddComponent<LayoutElement>().preferredHeight = 26f;
             }
 
             CreateSpacer(4f);
@@ -944,7 +966,8 @@ namespace Rookie100.UI
                     CreateIconTextLine(StatusIcons.InProgress, Lang.T("任务进行中，继续完成剩余目标"), BlueText);
                     break;
                 case QuestStatus.Completed:
-                    CreateClaimButton(quest);
+                    if (QuestStore.AreCurrentObjectivesMet(quest, currentCounts)) CreateClaimButton(quest);
+                    else CreateBodyText(Lang.English ? "Learning recorded; repair the current facilities before claiming." : "教学记录已保留；当前设施需修复后再领取。", WarningText);
                     break;
                 case QuestStatus.Claimed:
                     CreateIconTextLine(StatusIcons.Claimed, Lang.T("任务已完成，继续下一个任务！"), PositiveText);
@@ -1261,7 +1284,7 @@ namespace Rookie100.UI
 
         private void BuildSidebar(QuestDef quest)
         {
-            bool hasMaterials = quest.Objectives.Any(o => (o.Type == "buildingBuilt" || o.Type == "sanitation") && !string.IsNullOrEmpty(o.Tag));
+            bool hasMaterials = quest.Objectives.Any(o => (o.Type == "buildingBuilt" || o.Type == "sanitation" || o.Type == "livingRoom") && !string.IsNullOrEmpty(o.Tag));
 
             // 知识任务（无建造目标）：整栏隐藏，详情区恢复全宽
             if (sidebarPanel != null)
@@ -1313,7 +1336,7 @@ namespace Rookie100.UI
 
             foreach (var objective in quest.Objectives)
             {
-                if (string.IsNullOrEmpty(objective.Tag) || (objective.Type != "buildingBuilt" && objective.Type != "sanitation"))
+                if (string.IsNullOrEmpty(objective.Tag) || (objective.Type != "buildingBuilt" && objective.Type != "sanitation" && objective.Type != "livingRoom"))
                 {
                     continue;
                 }
@@ -1341,7 +1364,7 @@ namespace Rookie100.UI
         private void BuildMaterialBlock(QuestObjectiveDef objective)
         {
             // 分组标题条：与"展开章节"相同的 RowBg 头条样式
-            string buildingName = objective.Type == "sanitation" ? (Assets.GetBuildingDef(objective.Tag)?.Name ?? objective.Tag) :
+            string buildingName = (objective.Type == "sanitation" || objective.Type == "livingRoom") ? (Assets.GetBuildingDef(objective.Tag)?.Name ?? objective.Tag) :
                 (string.IsNullOrEmpty(objective.LabelDisp) ? objective.Tag : objective.LabelDisp);
             GameObject headRow = MakeFoldoutHeader("MaterialHead", sidebarContent,
                 $"▪ {buildingName}", () => { }, RowBg, RowHover, 12, FontStyles.Bold, false);
@@ -1707,7 +1730,7 @@ namespace Rookie100.UI
                 icon.enabled = false;
             }
 
-            string buildingName = objective.Type == "sanitation" ? (Assets.GetBuildingDef(objective.Tag)?.Name ?? objective.Tag) :
+            string buildingName = (objective.Type == "sanitation" || objective.Type == "livingRoom") ? (Assets.GetBuildingDef(objective.Tag)?.Name ?? objective.Tag) :
                 (string.IsNullOrEmpty(objective.LabelDisp) ? objective.Tag : objective.LabelDisp);
             string nameLine = string.Equals(buildingName, objective.Tag, StringComparison.Ordinal)
                 ? buildingName

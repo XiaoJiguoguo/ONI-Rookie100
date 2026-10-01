@@ -835,6 +835,7 @@ namespace Rookie100
         private void CheckQuests()
         {
             var counts = QuestScanner.CountAllBuildings();
+            QuestStore.RecordLearning(counts);
             foreach (var quest in QuestStore.OrderedQuests)
             {
                 if (QuestStore.IsClaimed(quest.Id) || notifiedCompleted.Contains(quest.Id))
