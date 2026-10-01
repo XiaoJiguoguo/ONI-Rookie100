@@ -79,6 +79,7 @@
     <None Include="mod.yaml" CopyToOutputDirectory="PreserveNewest" />
     <None Include="mod_info.yaml" CopyToOutputDirectory="PreserveNewest" />
     <None Include="quests.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Curriculum\catalog.v1.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>

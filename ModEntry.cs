@@ -23,6 +23,7 @@ namespace Rookie100
                 UI.LayoutStore.SetContentPath(mod.ContentPath);
                 UI.Lang.Load();
                 Content.QuestStore.Load();
+                Curriculum.CurriculumCatalog.Initialize(mod.ContentPath);
 
                 // 应用所有 [HarmonyPatch] 注解补丁
                 harmony.PatchAll(typeof(ModEntry).Assembly);

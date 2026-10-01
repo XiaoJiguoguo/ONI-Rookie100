@@ -124,3 +124,7 @@ RewardsService → CarePackageInfo.Deliver（打印舱补给包）→ MarkClaime
 - UI 布局与配色风格参考社区模组 **StorageNetwork（作者 pether-pg）**（[GitHub 镜像 ChiYuKe/ONI-Mods](https://github.com/ChiYuKe/ONI-Mods/tree/master/StorageNetwork)），未使用其素材与代码
 - 感谢 Harmony 与缺氧 modding 社区的公开教程
 - 代码采用 [MIT License](LICENSE)；本模组与 Klei Entertainment 及 B 站 UP 主无隶属关系
+
+## 六章框架草稿
+
+详见 [任务、中文诊断和字段契约](Curriculum/FRAMEWORK.md) 与 [可机读目录](Curriculum/catalog.v1.json)。六章覆盖原有 36 任务，新增 9 项补缺主题；保持现有运行任务和奖励不变。调试快照新增 `curriculum`、`facts`、`countsWorld`，仅输出已观测的字段，缺失字段表示未知。尚需游戏 DLL 编译及实测。

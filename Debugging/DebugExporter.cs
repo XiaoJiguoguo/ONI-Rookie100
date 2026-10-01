@@ -17,10 +17,11 @@ namespace Rookie100.Debugging
         private static long sequence;
         private static Dictionary<string, int> counts;
         private static DateTime? objectivesCapturedAt;
+        private static int countsWorld = -1;
         private static bool warned;
         public static void BeginSession()
         {
-            session = Guid.NewGuid().ToString("N"); sequence = 0; counts = null; objectivesCapturedAt = null; warned = false;
+            session = Guid.NewGuid().ToString("N"); sequence = 0; counts = null; objectivesCapturedAt = null; countsWorld = -1; warned = false;
             Write("loaded");
         }
         public static void ObserveObjectives(Dictionary<string, int> observed)
@@ -28,6 +29,7 @@ namespace Rookie100.Debugging
             if (string.IsNullOrWhiteSpace(Output)) return;
             counts = observed == null ? null : new Dictionary<string, int>(observed);
             objectivesCapturedAt = DateTime.UtcNow;
+            countsWorld = ClusterManager.Instance?.activeWorld?.id ?? -1;
         }
         public static void Write(string state = "loaded")
         {
@@ -50,6 +52,10 @@ namespace Rookie100.Debugging
                     sessionId = session, sequence = ++sequence, capturedAt = DateTime.UtcNow.ToString("o"), state,
                     colonyKey = QuestStore.ActiveColonyKey ?? "", world = monitor?.State.World ?? -1,
                     objectivesCapturedAt = objectivesCapturedAt?.ToString("o"),
+                    countsWorld,
+                    curriculum = Curriculum.CurriculumCatalog.Summary,
+                    facts = state == "disconnected" ? new Newtonsoft.Json.Linq.JObject() :
+                        Curriculum.CurriculumCatalog.ObserveFacts(counts, countsWorld, monitor?.State.World ?? -1, objectivesCapturedAt, DateTime.UtcNow),
                     tasks = state == "disconnected" ? tasks.Take(0).ToArray() : tasks,
                     duplicants = (state == "disconnected" ? Enumerable.Empty<DuplicantReading>() : readings ?? Enumerable.Empty<DuplicantReading>()).Select(d => new {
                         id = d.Id, name = d.Name ?? "未知", world = d.World,

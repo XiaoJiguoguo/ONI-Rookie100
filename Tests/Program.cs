@@ -71,6 +71,19 @@ class Program
         Check(!link.CanOpen("B",id=>true),"old colony notification cannot jump into another save");
         Check(!link.CanOpen("A",id=>false)&&!new QuestNoticeLink(null,"A").CanOpen("A",id=>true),"removed or missing notification task is rejected");
         Check(!new QuestNoticeLink("q01",null).CanOpen(null,id=>true),"notification without active colony is rejected");
+        var catalogPath = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(args[0])), "Curriculum", "catalog.v1.json");
+        var catalog = Newtonsoft.Json.Linq.JObject.Parse(File.ReadAllText(catalogPath));
+        Rookie100.Curriculum.CurriculumCatalog.Validate(catalog);
+        Check(catalog["tasks"].Count()==45 && catalog["chapters"].Count()==6,"six chapters and 45 tasks validate");
+        var cyclic=(Newtonsoft.Json.Linq.JObject)catalog.DeepClone();cyclic["tasks"][0]["prerequisites"]=new Newtonsoft.Json.Linq.JArray("q01");
+        bool rejects=false;try{Rookie100.Curriculum.CurriculumCatalog.Validate(cyclic);}catch(InvalidDataException){rejects=true;}
+        Check(rejects,"curriculum rejects circular prerequisites");
+        Rookie100.Curriculum.CurriculumCatalog.Initialize(Path.GetDirectoryName(Path.GetFullPath(args[0])));
+        var curriculumCounts=new Dictionary<string,int>{{"sanitation:Room",0}};
+        var observed=Rookie100.Curriculum.CurriculumCatalog.ObserveFacts(curriculumCounts,1,1,DateTime.UtcNow,DateTime.UtcNow);
+        Check((int)observed["sanitation.Room"]["value"]==0 && observed["livingRoom.BedsUsable"]==null,"zero is observed but missing rooms remain unknown");
+        Check(Rookie100.Curriculum.CurriculumCatalog.ObserveFacts(curriculumCounts,1,2,DateTime.UtcNow,DateTime.UtcNow)["sanitation.Room"]==null,"curriculum rejects readings from previous asteroid");
+        Check(Rookie100.Curriculum.CurriculumCatalog.ObserveFacts(null,1,1,null,DateTime.UtcNow)["sanitation.Room"]==null,"curriculum does not invent measurements before scanning");
         Console.WriteLine(checks+" checks passed. Game adapter and Unity UI require game DLL validation.");
     }
 }
