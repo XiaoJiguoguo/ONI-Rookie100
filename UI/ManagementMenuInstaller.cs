@@ -112,7 +112,7 @@ namespace Rookie100.UI
                 toggleState?.SetInactive();
                 KMonoBehaviour.PlaySound(GlobalAssets.GetSound("HUD_Click", false));
                 ModLogger.Log("管理菜单按钮被点击");
-                QuestPanel.Show();
+                QuestPanel.Toggle();
             };
 
             // 插到星图按钮之前

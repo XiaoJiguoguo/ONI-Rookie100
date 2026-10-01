@@ -23,6 +23,7 @@ namespace Rookie100.UI
 
         private readonly HashSet<string> expandedPhases = new HashSet<string>();
         private string selectedQuestId;
+        private bool monitorExpanded = true;
         private bool videoExpanded;
         private bool sidebarExpanded;
         private bool demoExpanded;
@@ -153,6 +154,50 @@ namespace Rookie100.UI
             }
 
             instance.RefreshAll();
+        }
+
+        public static void Toggle() { if (IsOpen()) instance.Close(); else Show(); }
+
+        public static bool ShowQuest(string questId)
+        {
+            if (Game.Instance == null || QuestStore.GetQuest(questId) == null) return false;
+            Show();
+            if (instance == null) return false;
+            if (instance.guideModal != null) instance.CloseGuideModal();
+            instance.SelectQuest(questId);
+            instance.ScrollDetailToTop();
+            return true;
+        }
+
+        public static void ShowMonitor()
+        {
+            Show();
+            if (instance != null)
+            {
+                if (instance.guideModal != null) instance.CloseGuideModal();
+                instance.monitorExpanded = true; instance.RefreshDetail(); instance.ScrollDetailToTop();
+            }
+        }
+
+        private void ScrollDetailToTop()
+        {
+            Canvas.ForceUpdateCanvases();
+            var scroll = detailContent != null ? detailContent.GetComponentInParent<ScrollRect>() : null;
+            if (scroll != null) scroll.verticalNormalizedPosition = 1f;
+        }
+
+        public static void Release()
+        {
+            if (instance == null) return;
+            var old = instance; instance = null; old.Close(); Destroy(old.gameObject);
+        }
+
+        protected override void OnCleanUp()
+        {
+            QuestTracker.QuestCompleted -= OnQuestEvent;
+            QuestTracker.QuestClaimed -= OnQuestEvent;
+            if (instance == this) instance = null;
+            base.OnCleanUp();
         }
 
         private static QuestPanel Create()
@@ -822,6 +867,13 @@ namespace Rookie100.UI
             var status = QuestStore.GetStatus(quest, currentCounts);
             var style = StyleOf(status);
             var phase = QuestStore.Phases.FirstOrDefault(p => p.Id == quest.Phase);
+
+            var monitorToggle = MakeThinButton("MonitorToggle", detailContent,
+                Lang.English ? (monitorExpanded ? "Hide duplicant monitor" : "Show duplicant monitor") :
+                    (monitorExpanded ? "收起复制人监测" : "展开复制人监测"),
+                () => { monitorExpanded = !monitorExpanded; RefreshDetail(); }, BlueBtn, BlueBtnHover);
+            monitorToggle.AddComponent<LayoutElement>().preferredHeight = 26f;
+            if (monitorExpanded) DuplicantMonitorView.CreateDetail(detailContent, Monitoring.DuplicantMonitor.Instance);
 
             // 标题区（大图标 + 标题/阶段）
             CreateDetailHeader(quest, style, phase);

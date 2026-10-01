@@ -45,6 +45,7 @@ namespace Rookie100
                 Instance = null;
             }
 
+            QuestPanel.Release();
             base.OnCleanUp();
         }
 
@@ -884,7 +885,7 @@ namespace Rookie100
                 {
                     notifiedCompleted.Add(quest.Id);
                     ModLogger.Log($"任务目标达成: #{quest.Order:d2} {quest.Title}");
-                    ShowNotification(Lang.T("任务完成：「") + quest.TitleDisp + Lang.T("」——到打印舱面板领取奖励！"), NotificationType.Good);
+                    ShowNotification(Lang.T("任务完成：「") + quest.TitleDisp + Lang.T("」——点击查看并领取奖励！"), NotificationType.Good, quest.Id);
                     QuestCompleted?.Invoke(quest);
                 }
             }
@@ -925,7 +926,7 @@ namespace Rookie100
             ModLogger.Log($"任务奖励已领取: #{quest.Order:d2} {quest.Title}");
             ShowNotification(hasNewMaterials
                 ? Lang.T("已领取「") + quest.TitleDisp + Lang.T("」奖励！下一任务已解锁。")
-                : Lang.T("任务已完成：「") + quest.TitleDisp + Lang.T("」——下一任务已解锁。"), NotificationType.Good);
+                : Lang.T("任务已完成：「") + quest.TitleDisp + Lang.T("」——下一任务已解锁。"), NotificationType.Good, quest.Id);
             QuestClaimed?.Invoke(quest);
             return true;
         }
@@ -939,25 +940,32 @@ namespace Rookie100
             }
         }
 
-        private void ShowNotification(string message, NotificationType type)
+        private void ShowNotification(string message, NotificationType type, string questId = null)
         {
             try
             {
                 GameObject owner = Game.Instance != null ? Game.Instance.gameObject : gameObject;
+                var link = new Monitoring.QuestNoticeLink(questId, QuestStore.ActiveColonyKey);
+                Notification.ClickCallback click = _ =>
+                {
+                    if (Game.Instance == null) return;
+                    if (questId == null) QuestPanel.Show();
+                    else if (link.CanOpen(QuestStore.ActiveColonyKey, id => QuestStore.GetQuest(id) != null)) QuestPanel.ShowQuest(link.QuestId);
+                };
                 var notification = new Notification(
                     message,
                     type,
                     (notifications, data) => message + notifications.ReduceMessages(false),
                     null,
-                    true,
+                    false,
                     0f,
-                    null,
+                    click,
                     null,
                     null,
                     true,
                     false,
                     false);
-                owner.AddOrGet<Notifier>().Add(notification, string.Empty);
+                owner.AddOrGet<Notifier>().Add(notification, "Rookie100:" + (questId ?? "general"));
             }
             catch (Exception e)
             {
