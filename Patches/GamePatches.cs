@@ -21,6 +21,8 @@ namespace Rookie100.Patches
 
                 string colonyKey = ResolveColonyKey();
                 Content.QuestStore.ActivateColony(colonyKey);
+                __instance.gameObject.AddOrGet<Monitoring.DuplicantMonitor>();
+                Debugging.DebugExporter.BeginSession();
                 ModLogger.Log($"殖民地已生成，任务追踪器就位 (已领取 {Content.QuestStore.ClaimedCount}/{Content.QuestStore.Quests.Count})");
             }
         }
@@ -35,7 +37,17 @@ namespace Rookie100.Patches
         {
             try
             {
-                // 1) 定位 SaveLoader 类型（编译期已知类型，找不到时按名反射兜底）
+                string nativeFolder = SaveLoader.GetActiveSaveColonyFolder();
+                if (!string.IsNullOrEmpty(nativeFolder))
+                {
+                    string key = System.IO.Path.GetFileName(nativeFolder.TrimEnd('\\', '/'));
+                    if (!string.IsNullOrEmpty(key))
+                    {
+                        ModLogger.Log($"存档 key 解析: SaveLoader.GetActiveSaveColonyFolder = '{key}'");
+                        return key;
+                    }
+                }
+                // Legacy fallback for older game versions.
                 Type slType = typeof(SaveLoader);
                 if (slType == null)
                 {
@@ -121,4 +133,3 @@ namespace Rookie100.Patches
         }
     }
 }
-

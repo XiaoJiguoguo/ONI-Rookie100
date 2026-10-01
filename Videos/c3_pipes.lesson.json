@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "id": "c3_pipes",
+  "file": "c3_pipes.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "标出来源和去向",
+      "en": "Identify source..."
+    },
+    {
+      "start": 6,
+      "zh": "接输出到输入",
+      "en": "Connect output ..."
+    },
+    {
+      "start": 12,
+      "zh": "检查桥方向",
+      "en": "Check bridge di..."
+    },
+    {
+      "start": 18,
+      "zh": "试运行",
+      "en": "Start a trial"
+    },
+    {
+      "start": 24,
+      "zh": "观察堵塞",
+      "en": "Observe blockages"
+    },
+    {
+      "start": 30,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "标出来源和去向。",
+      "en": "Identify source and destination."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "接输出到输入。",
+      "en": "Connect output to input."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "检查桥方向。",
+      "en": "Check bridge direction."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "试运行。",
+      "en": "Start a trial."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "观察堵塞。",
+      "en": "Observe blockages."
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "pipes",
+  "nativeProps": [
+    "LiquidPump",
+    "LiquidReservoir",
+    "GasPump"
+  ]
+}

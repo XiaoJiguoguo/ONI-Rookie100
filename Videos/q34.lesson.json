@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "id": "q34",
+  "file": "q34.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "巡查氧食水",
+      "en": "Inspect oxygen,..."
+    },
+    {
+      "start": 6,
+      "zh": "核对电网与热量",
+      "en": "Check power and..."
+    },
+    {
+      "start": 12,
+      "zh": "检查关键耗材",
+      "en": "Inspect essenti..."
+    },
+    {
+      "start": 18,
+      "zh": "安排备份与维护",
+      "en": "Arrange backups..."
+    },
+    {
+      "start": 24,
+      "zh": "选择下一个目标",
+      "en": "Choose the next..."
+    },
+    {
+      "start": 30,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "巡查氧食水。",
+      "en": "Inspect oxygen, food and water."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "核对电网与热量。",
+      "en": "Check power and heat."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "检查关键耗材。",
+      "en": "Inspect essential consumables."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "安排备份与维护。",
+      "en": "Arrange backups and maintenance."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "选择下一个目标。",
+      "en": "Choose the next goal."
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "budget",
+  "nativeProps": [
+    "MineralDeoxidizer",
+    "RationBox",
+    "LiquidReservoir"
+  ]
+}

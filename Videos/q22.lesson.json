@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "id": "q22",
+  "file": "q22.mp4",
+  "duration": 30,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "保留自然植物",
+      "en": "Preserve natura..."
+    },
+    {
+      "start": 6,
+      "zh": "规划通勤路径",
+      "en": "Plan the commut..."
+    },
+    {
+      "start": 12,
+      "zh": "按房间叠层确认…",
+      "en": "Verify the natu..."
+    },
+    {
+      "start": 18,
+      "zh": "隔离生产热源",
+      "en": "Isolate product..."
+    },
+    {
+      "start": 24,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "保留自然植物。",
+      "en": "Preserve natural plants."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "规划通勤路径。",
+      "en": "Plan the commute route."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "按房间叠层确认保护区。",
+      "en": "Verify the nature reserve in the overlay."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "隔离生产热源。",
+      "en": "Isolate production heat."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "nature",
+  "nativeProps": [
+    "ParkSign",
+    "InsulationTile"
+  ]
+}

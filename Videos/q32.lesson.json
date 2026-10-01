@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "id": "q32",
+  "file": "q32.mp4",
+  "duration": 30,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "检查落地位置",
+      "en": "Check the landi..."
+    },
+    {
+      "start": 6,
+      "zh": "建卫生睡眠与供氧",
+      "en": "Prepare sanitat..."
+    },
+    {
+      "start": 12,
+      "zh": "安排食物电力",
+      "en": "Arrange food an..."
+    },
+    {
+      "start": 18,
+      "zh": "准备运输与返航",
+      "en": "Prepare transpo..."
+    },
+    {
+      "start": 24,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "检查落地位置。",
+      "en": "Check the landing area."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "建卫生睡眠与供氧。",
+      "en": "Prepare sanitation, sleep and oxygen."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "安排食物电力。",
+      "en": "Arrange food and power."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "准备运输与返航。",
+      "en": "Prepare transport and a return route."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "settlement",
+  "nativeProps": [
+    "MineralDeoxidizer",
+    "Bed",
+    "Outhouse"
+  ]
+}

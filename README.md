@@ -4,7 +4,8 @@
 
 ## 功能特性
 
-- **6 阶段 34 任务主线**：活下来 → 工业化 → 深度开发 → 太空拓展，线性任务链，前一任务领取奖励后解锁下一任务
+- **六章成长指南**：36 个运行任务覆盖安顿生活、稳定生存、基础设施、探索控温、持续发展与太空；完整教学目录包含 45 项。
+- **全任务教程短片**：每个运行任务均有独立场景视频、分步跳转和随游戏语言切换的字幕；45 份影片总计约 24.6 MB。工业与太空模块目前为流程示意，详见 [制作与验证说明](Videos/ALL_TASK_FILMS.md)。
 - **任务状态机**：锁定 → 可接取 → 已接取 → 进行中 → 可领取 → 已领取，状态徽章全部使用**游戏原生精灵**（无字体豆腐块）
 - **实时建造检测**：每 2 秒扫描殖民地建筑，目标达成自动通知；面板打开时签名门控实时刷新徽章与迷你进度条
 - **打印舱奖励**：奖励以游戏原生补给包机制（`CarePackageInfo.Deliver`）投放，不修改游戏平衡
@@ -24,7 +25,8 @@
 ## 构建与开发
 
 ```powershell
-.\build.ps1      # Release 编译并直接部署到 mods\Dev\Rookie100
+.\build.ps1      # Release 编译到项目 bin\Release
+.\install-local.ps1 # 关闭游戏后安装 DLL、任务内容及完整 Videos 目录
 .\watch-log.ps1  # 实时跟踪 Player.log 中的 [Rookie100] 日志
 ```
 
@@ -124,3 +126,9 @@ RewardsService → CarePackageInfo.Deliver（打印舱补给包）→ MarkClaime
 - UI 布局与配色风格参考社区模组 **StorageNetwork（作者 pether-pg）**（[GitHub 镜像 ChiYuKe/ONI-Mods](https://github.com/ChiYuKe/ONI-Mods/tree/master/StorageNetwork)），未使用其素材与代码
 - 感谢 Harmony 与缺氧 modding 社区的公开教程
 - 代码采用 [MIT License](LICENSE)；本模组与 Klei Entertainment 及 B 站 UP 主无隶属关系
+
+## 六章框架草稿
+
+详见 [任务、中文诊断和字段契约](Curriculum/FRAMEWORK.md) 与 [可机读目录](Curriculum/catalog.v1.json)。六章覆盖原有 36 任务，新增 9 项补缺主题；保持现有运行任务和奖励不变。调试快照新增 `curriculum`、`facts`、`countsWorld`，仅输出已观测的字段，缺失字段表示未知。尚需游戏 DLL 编译及实测。
+
+本机编译、local 安装和调试台使用见 [DEBUG_BRIDGE.md](DEBUG_BRIDGE.md)。

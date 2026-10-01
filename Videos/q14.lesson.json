@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "id": "q14",
+  "file": "q14.mp4",
+  "duration": 30,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "暂停查看气体和…",
+      "en": "Pause and inspe..."
+    },
+    {
+      "start": 6,
+      "zh": "标记水池与危险区",
+      "en": "Mark reservoirs..."
+    },
+    {
+      "start": 12,
+      "zh": "分段开挖",
+      "en": "Dig in sections"
+    },
+    {
+      "start": 18,
+      "zh": "围挡与留通道",
+      "en": "Keep barriers a..."
+    },
+    {
+      "start": 24,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "暂停查看气体和温度。",
+      "en": "Pause and inspect gas and temperature."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "标记水池与危险区。",
+      "en": "Mark reservoirs and dangerous areas."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "分段开挖。",
+      "en": "Dig in sections."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "围挡与留通道。",
+      "en": "Keep barriers and access routes."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "explore",
+  "nativeProps": [
+    "Tile",
+    "Ladder",
+    "LiquidPumpingStation"
+  ]
+}

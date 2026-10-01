@@ -1,0 +1,4346 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": 2,
+  "modId": "ONI-Rookie100",
+  "kind": "curriculum.catalog",
+  "title": "缺氧新手百天 · 六章成长指南",
+  "policy": {
+    "chaptersBy": "capability",
+    "cycleDeadline": null,
+    "optionalTasksRequiredForGraduation": false,
+    "unknownIsNotFalse": true,
+    "nativeRoomsAuthoritative": true,
+    "historySeparateFromCurrent": true,
+    "doesNotGrantRewards": true
+  },
+  "chapters": [
+    {
+      "id": "settle",
+      "order": 1,
+      "title": "安顿生活",
+      "outcome": "让复制人有可用的卫生间、床铺和用餐空间。",
+      "backgroundBrief": "暖沙色生活区，墙砖围合三间房，床铺与餐桌作为视觉中心",
+      "backgroundStatus": "implementedNativeScene",
+      "mainTaskIds": [
+        "q01",
+        "q01_bedroom",
+        "q01_dining"
+      ],
+      "optionalTaskIds": [
+        "q02"
+      ],
+      "backgroundColor": "#EEE4CF",
+      "backgroundIcons": [
+        "Outhouse",
+        "Bed",
+        "DiningTable"
+      ]
+    },
+    {
+      "id": "survive",
+      "order": 2,
+      "title": "稳定生存",
+      "outcome": "让氧气、食物与清水持续可用，而不是只建好建筑。",
+      "backgroundBrief": "浅绿种植区与蓝色水源，氧气扩散器串联食物与呼吸主题",
+      "backgroundStatus": "implementedNativeScene",
+      "mainTaskIds": [
+        "q03",
+        "c2_water",
+        "q06",
+        "c2_food_budget"
+      ],
+      "optionalTaskIds": [
+        "q08",
+        "q12",
+        "q20"
+      ],
+      "backgroundColor": "#DDEBDC",
+      "backgroundIcons": [
+        "MineralDeoxidizer",
+        "PlanterBox",
+        "LiquidPumpingStation"
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "order": 3,
+      "title": "基础设施",
+      "outcome": "理解电力分组、液体和气体管道及废物处理。",
+      "backgroundBrief": "浅蓝工程网格，电力、研究与管线形成基础设施主题",
+      "backgroundStatus": "implementedNativeScene",
+      "mainTaskIds": [
+        "c3_power",
+        "q04",
+        "q07",
+        "c3_pipes",
+        "c3_waste"
+      ],
+      "optionalTaskIds": [
+        "q05"
+      ],
+      "backgroundColor": "#DCE5F0",
+      "backgroundIcons": [
+        "ResearchCenter",
+        "PowerTransformer",
+        "LiquidPump"
+      ]
+    },
+    {
+      "id": "explore",
+      "order": 4,
+      "title": "探索与控温",
+      "outcome": "安全挖掘和进入生态，并让生活区与设备保持合适温度。",
+      "backgroundBrief": "淡赭色生态分层，梯子和隔热设施强调探索与温度边界",
+      "backgroundStatus": "implementedNativeScene",
+      "mainTaskIds": [
+        "q14",
+        "c4_biomes",
+        "c4_temperature"
+      ],
+      "optionalTaskIds": [
+        "q22"
+      ],
+      "backgroundColor": "#EADFD6",
+      "backgroundIcons": [
+        "Ladder",
+        "InsulationTile",
+        "LiquidConditioner"
+      ]
+    },
+    {
+      "id": "sustain",
+      "order": 5,
+      "title": "持续发展",
+      "outcome": "建立可持续供应、生产和自动化，按需要选择工业路线。",
+      "backgroundBrief": "浅紫工业模块，精炼、排热与缓冲体现资源循环",
+      "backgroundStatus": "implementedNativeScene",
+      "mainTaskIds": [
+        "q11",
+        "q15",
+        "c5_resources",
+        "c5_automation"
+      ],
+      "optionalTaskIds": [
+        "q09",
+        "q10",
+        "q13",
+        "q16",
+        "q17",
+        "q18",
+        "q19",
+        "q21",
+        "q23",
+        "q24",
+        "q25",
+        "q26",
+        "q29",
+        "q33"
+      ],
+      "backgroundColor": "#E5E0ED",
+      "backgroundIcons": [
+        "MetalRefinery",
+        "SteamTurbine",
+        "GasReservoir"
+      ]
+    },
+    {
+      "id": "space",
+      "order": 6,
+      "title": "走向太空",
+      "outcome": "按存档实际启用的内容选择火箭、探索与拓殖路线。",
+      "backgroundBrief": "浅靛色星图网格，发射设施和燃料模块指向探索路线",
+      "backgroundStatus": "implementedNativeScene",
+      "mainTaskIds": [
+        "q27",
+        "q28",
+        "q34"
+      ],
+      "optionalTaskIds": [
+        "q31",
+        "q32",
+        "q30"
+      ],
+      "backgroundColor": "#DFE2F1",
+      "backgroundIcons": [
+        "LaunchPad",
+        "GasReservoir",
+        "BunkerDoor"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "context.dlcOwned",
+      "label": "账户拥有的 DLC",
+      "type": "stringArray",
+      "unit": null,
+      "scope": "account",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "拥有与存档启用分开；出生与当前星体分开；未知值不代表未购买、不支持或不适用。"
+    },
+    {
+      "id": "context.dlcEnabled",
+      "label": "当前存档启用的 DLC",
+      "type": "stringArray",
+      "unit": null,
+      "scope": "colony",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "拥有与存档启用分开；出生与当前星体分开；未知值不代表未购买、不支持或不适用。"
+    },
+    {
+      "id": "context.startWorldId",
+      "label": "出生星体 ID",
+      "type": "number",
+      "unit": null,
+      "scope": "colony",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "拥有与存档启用分开；出生与当前星体分开；未知值不代表未购买、不支持或不适用。"
+    },
+    {
+      "id": "context.activeWorldId",
+      "label": "当前所在星体 ID",
+      "type": "number",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "adapterDraft",
+      "bridgeKey": null,
+      "meaning": "拥有与存档启用分开；出生与当前星体分开；未知值不代表未购买、不支持或不适用。"
+    },
+    {
+      "id": "context.startTemplate",
+      "label": "开局模板",
+      "type": "string",
+      "unit": null,
+      "scope": "colony",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "拥有与存档启用分开；出生与当前星体分开；未知值不代表未购买、不支持或不适用。"
+    },
+    {
+      "id": "context.meteorsRelevant",
+      "label": "当前路线是否需要流星防护",
+      "type": "boolean",
+      "unit": null,
+      "scope": "colony",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "拥有与存档启用分开；出生与当前星体分开；未知值不代表未购买、不支持或不适用。"
+    },
+    {
+      "id": "context.worldTravelEnabled",
+      "label": "当前存档是否支持星体拓殖路线",
+      "type": "boolean",
+      "unit": null,
+      "scope": "colony",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "拥有与存档启用分开；出生与当前星体分开；未知值不代表未购买、不支持或不适用。"
+    },
+    {
+      "id": "sanitation.LiquidPumpingStation",
+      "label": "手压泵可取到清水",
+      "type": "number",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "adapterDraft",
+      "bridgeKey": "sanitation:LiquidPumpingStation",
+      "meaning": "读取原版结果，缺失时保持 null。"
+    },
+    {
+      "id": "sanitation.WashBasin",
+      "label": "洗手盆已补水且可用",
+      "type": "number",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "adapterDraft",
+      "bridgeKey": "sanitation:WashBasin",
+      "meaning": "读取原版结果，缺失时保持 null。"
+    },
+    {
+      "id": "sanitation.Outhouse",
+      "label": "茅房已补泥土且可用",
+      "type": "number",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "adapterDraft",
+      "bridgeKey": "sanitation:Outhouse",
+      "meaning": "读取原版结果，缺失时保持 null。"
+    },
+    {
+      "id": "sanitation.Room",
+      "label": "原版识别为公共厕所",
+      "type": "number",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "adapterDraft",
+      "bridgeKey": "sanitation:Room",
+      "meaning": "读取原版结果，缺失时保持 null。"
+    },
+    {
+      "id": "sanitation.Connected",
+      "label": "同一复制人可达整套设施",
+      "type": "number",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "adapterDraft",
+      "bridgeKey": "sanitation:Connected",
+      "meaning": "读取原版结果，缺失时保持 null。"
+    },
+    {
+      "id": "sanitation.Trial",
+      "label": "实际如厕后洗手试运行已观察到",
+      "type": "number",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "adapterDraft",
+      "bridgeKey": "sanitation:Trial",
+      "meaning": "读取原版结果，缺失时保持 null。"
+    },
+    {
+      "id": "livingRoom.BedsUsable",
+      "label": "床铺可用且可达",
+      "type": "number",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "adapterDraft",
+      "bridgeKey": "livingRoom:BedsUsable",
+      "meaning": "读取原版结果，缺失时保持 null。"
+    },
+    {
+      "id": "livingRoom.Barracks",
+      "label": "原版识别为宿舍",
+      "type": "number",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "adapterDraft",
+      "bridgeKey": "livingRoom:Barracks",
+      "meaning": "读取原版结果，缺失时保持 null。"
+    },
+    {
+      "id": "livingRoom.TablesUsable",
+      "label": "用餐设施可用且可达",
+      "type": "number",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "adapterDraft",
+      "bridgeKey": "livingRoom:TablesUsable",
+      "meaning": "读取原版结果，缺失时保持 null。"
+    },
+    {
+      "id": "livingRoom.MessHall",
+      "label": "原版识别为餐厅",
+      "type": "number",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "adapterDraft",
+      "bridgeKey": "livingRoom:MessHall",
+      "meaning": "读取原版结果，缺失时保持 null。"
+    },
+    {
+      "id": "learning.basicControlsConfirmed",
+      "label": "玩家已确认基础操作教学",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "oxygen.supplyObserved",
+      "label": "生活区供氧效果已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "oxygen.inputsSustainable",
+      "label": "供氧资源和供电满足当前需求",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "oxygen.co2Handled",
+      "label": "二氧化碳处理或避让方案有效",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "water.sourceUsable",
+      "label": "清水来源可用于当前用途",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "water.accessSafe",
+      "label": "取水与搬运路线安全可达",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "water.supplyObserved",
+      "label": "实际取水或补水已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "food.plantsViable",
+      "label": "选择植物的温度、气氛与资源条件满足",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "food.farmReachable",
+      "label": "种植设施可达且可工作",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "food.growthObserved",
+      "label": "真实生长或收获已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "food.accessibleCalories",
+      "label": "当前食物可供复制人食用",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "food.balanceObserved",
+      "label": "食物供需满足当前人口",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "food.bufferConfirmed",
+      "label": "缓冲目标按当前人口和设置已确认",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "food.transitionViable",
+      "label": "所选食物过渡路线可运行",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "materials.reedSupplyObserved",
+      "label": "需要的芦苇供应已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "food.storagePreserves",
+      "label": "食物保存条件已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "hygiene.selectedTreatmentObserved",
+      "label": "所选污染处理路线有效",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "food.advancedRecipeViable",
+      "label": "所选食谱的资源与烹饪条件满足",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "food.advancedMealObserved",
+      "label": "所选食物实际供应已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "power.basicNetworkOperational",
+      "label": "基础电网实际运行",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "power.generationMatchesDemand",
+      "label": "发电与需求匹配",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "power.storageUsable",
+      "label": "储能方案可用或已明确不需要",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "research.requiredBasicsUnlocked",
+      "label": "当前路线所需基础研究已完成",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "learning.pipePrinciplesConfirmed",
+      "label": "玩家已确认管线基础",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "power.circuitsRated",
+      "label": "所用电路与线缆额定负载匹配",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "power.transformersOperational",
+      "label": "需要的变压链可运行",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "power.overloadHandled",
+      "label": "已观察到过载问题被处理",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "pipes.connectionsCorrect",
+      "label": "当前管线接口与方向正确",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "pipes.mediaCompatible",
+      "label": "介质与用途匹配",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "pipes.flowObserved",
+      "label": "真实输送或通风已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "waste.outputsReachDestination",
+      "label": "废物输出可到达指定去向",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "waste.processingObserved",
+      "label": "所选清理或处理方式已运行",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "waste.noImmediateBlockage",
+      "label": "观察期内没有未处理的输出堵塞",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "sanitation.plumbedFixturesUsable",
+      "label": "抽水卫生设施可使用",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "sanitation.loopFlowObserved",
+      "label": "厕所循环实际运行",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "sanitation.excessHandled",
+      "label": "多余液体有可用去向",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "exploration.excavationSafe",
+      "label": "当前挖掘与围挡方案安全",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "exploration.returnRouteReachable",
+      "label": "复制人能安全返回基地",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "exploration.biomeKnown",
+      "label": "当前目标生态已被识别",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "exploration.protectionSuitable",
+      "label": "防护与当前风险匹配",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "exploration.accessObserved",
+      "label": "实际安全通行已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "temperature.livingAreaSuitable",
+      "label": "生活区温度适合当前用途",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "temperature.equipmentWithinRange",
+      "label": "当前关键设备在可工作温度范围",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "temperature.controlObserved",
+      "label": "热源管理或控温效果已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "rooms.natureReserveRecognized",
+      "label": "原版识别自然保护区",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "temperature.baseCoolingObserved",
+      "label": "所需基地冷却效果已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "industry.refineryOperational",
+      "label": "金属精炼所需供应链可运行",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "industry.refiningObserved",
+      "label": "实际金属精炼已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "industry.refineryHeatHandled",
+      "label": "精炼产生的热量得到管理",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "research.industrialRouteUnlocked",
+      "label": "所选工业路线研究已满足",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "research.advancedDataAvailable",
+      "label": "所需科研材料或数据可供使用",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "resources.selectedRoutesSustainable",
+      "label": "选定资源路线能够持续供应",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "resources.productionConsumptionObserved",
+      "label": "资源生产和消耗已在观察期内核对",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "automation.signalConfigured",
+      "label": "所需传感器与控制信号已配置",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "automation.responseObserved",
+      "label": "实际设施响应已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "oxygen.electrolyzerRouteOperational",
+      "label": "所选电解制氧链可运行",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "oxygen.pressureHandled",
+      "label": "所选方案的压力问题已处理",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "oxygen.advancedSupplyObserved",
+      "label": "进阶供氧效果已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "oxygen.maintainableRouteOperational",
+      "label": "所选常规制氧链可运行",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "learning.oxygenRepairConfirmed",
+      "label": "玩家已确认供氧排障过程",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "power.naturalGasSupplyUsable",
+      "label": "天然气供应可用",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "power.naturalGasGenerationObserved",
+      "label": "天然气发电实际运行",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "industry.refiningCoolingOperational",
+      "label": "所选精炼冷却链可运行",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "industry.coolingEffectObserved",
+      "label": "实际散热效果已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "industry.oilRouteOperational",
+      "label": "所选油料加工链可运行",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "industry.oilOutputObserved",
+      "label": "实际加工输出已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "industry.steamCoolingObserved",
+      "label": "所需蒸汽散热效果已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "industry.steelProductionObserved",
+      "label": "实际炼钢产出已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "industry.heatIsolationEffective",
+      "label": "生产区热量隔离有效",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "food.integratedFarmViable",
+      "label": "整合后的种植区仍满足条件",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "morale.matchesSkillNeeds",
+      "label": "当前士气与技能负担匹配",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "morale.improvementObserved",
+      "label": "生活设施改善效果已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "industry.oilExtractionOperational",
+      "label": "所选采油链可运行",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "industry.oilExtractionObserved",
+      "label": "实际采油输出已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "ranching.selectedCrittersViable",
+      "label": "所选养殖动物的需求满足",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "ranching.fiberOutputObserved",
+      "label": "真实纤维产出已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "resources.selectedSourceAnalyzed",
+      "label": "当前所选资源来源已分析",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "resources.bufferRouteOperational",
+      "label": "所需储存和缓冲链可运行",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "resources.metalSourceKnown",
+      "label": "所选金属资源已被发现与识别",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "resources.volcanoHeatHandled",
+      "label": "所需高温防护与散热成立",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "resources.metalCollectionObserved",
+      "label": "真实金属收集已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "food.gourmetRouteViable",
+      "label": "所选高阶食谱可持续运行",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "food.gourmetSupplyObserved",
+      "label": "真实高阶食物供应已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "learning.ecologyPlanConfirmed",
+      "label": "玩家已确认适合当前基地的生态规划",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "morale.decorImprovementObserved",
+      "label": "所选舒适度改善已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "space.selectedRocketRouteReady",
+      "label": "当前所选火箭路线具备发射条件",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "space.crewSuppliesReady",
+      "label": "乘员与所需补给已准备",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "space.launchObserved",
+      "label": "真实火箭发射已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "space.scoutingObserved",
+      "label": "当前路线的实际探索已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "space.returnOrSupplyPlanValid",
+      "label": "返回或持续补给计划成立",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "space.researchDataObserved",
+      "label": "所需太空科研数据已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "space.meteorProtectionReady",
+      "label": "当前风险所需防护已就绪",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "space.meteorHandlingObserved",
+      "label": "真实防护效果已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "space.colonizationRocketReady",
+      "label": "所选拓殖火箭条件满足",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "space.longTripSuppliesReady",
+      "label": "所需长期补给与生活条件成立",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "space.landingObserved",
+      "label": "真实着陆已观察到",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "space.newBaseBasicsUsable",
+      "label": "新星体的基础生活设施可用",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "learning.graduationReviewConfirmed",
+      "label": "玩家已确认能力回顾",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    },
+    {
+      "id": "learning.nextGoalSelected",
+      "label": "玩家已选择下一阶段目标",
+      "type": "boolean",
+      "unit": null,
+      "scope": "activeWorld",
+      "adapterStatus": "pending",
+      "bridgeKey": null,
+      "meaning": "需适配器提供真实观察结果；不能用建筑数量替代使用效果。"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "q01",
+      "chapterId": "settle",
+      "title": "基础卫生间",
+      "track": "main",
+      "outcome": "把取水、补给、如厕和洗手串成可用流程。",
+      "prerequisites": [],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": true,
+      "legacyTitle": "基础卫生间",
+      "legacyObjectives": [
+        {
+          "Type": "sanitation",
+          "Condition": "LiquidPumpingStation",
+          "Count": 1,
+          "Label": "手压泵可取到水",
+          "Tag": "LiquidPumpingStation",
+          "LabelEn": "Pitcher pump has accessible water"
+        },
+        {
+          "Type": "sanitation",
+          "Condition": "WashBasin",
+          "Count": 1,
+          "Label": "洗手盆已补水且可用",
+          "Tag": "WashBasin",
+          "LabelEn": "Wash basin supplied and ready"
+        },
+        {
+          "Type": "sanitation",
+          "Condition": "Outhouse",
+          "Count": 1,
+          "Label": "厕所已补泥土且可用",
+          "Tag": "Outhouse",
+          "LabelEn": "Outhouse supplied and usable"
+        },
+        {
+          "Type": "sanitation",
+          "Condition": "Room",
+          "Count": 1,
+          "Label": "原版识别为公共厕所房间",
+          "Tag": "Outhouse",
+          "LabelEn": "Recognized latrine room"
+        },
+        {
+          "Type": "sanitation",
+          "Condition": "Connected",
+          "Count": 1,
+          "Label": "同一复制人能到达整套设施",
+          "Tag": "LiquidPumpingStation",
+          "LabelEn": "One duplicant can reach the full chain"
+        },
+        {
+          "Type": "sanitation",
+          "Condition": "Trial",
+          "Count": 1,
+          "Label": "实际完成如厕后洗手",
+          "Tag": "WashBasin",
+          "LabelEn": "Complete an actual toilet-then-wash trial"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "sanitation.LiquidPumpingStation",
+          "operator": "gte",
+          "expected": 1,
+          "label": "手压泵可取到清水",
+          "passText": "手压泵可取到清水：当前检查满足",
+          "unmetText": "手压泵可取到清水：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "手压泵可取到清水：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "sanitation.WashBasin",
+          "operator": "gte",
+          "expected": 1,
+          "label": "洗手盆已补水且可用",
+          "passText": "洗手盆已补水且可用：当前检查满足",
+          "unmetText": "洗手盆已补水且可用：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "洗手盆已补水且可用：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "sanitation.Outhouse",
+          "operator": "gte",
+          "expected": 1,
+          "label": "茅房已补泥土且可用",
+          "passText": "茅房已补泥土且可用：当前检查满足",
+          "unmetText": "茅房已补泥土且可用：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "茅房已补泥土且可用：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "sanitation.Room",
+          "operator": "gte",
+          "expected": 1,
+          "label": "原版识别为公共厕所",
+          "passText": "原版识别为公共厕所：当前检查满足",
+          "unmetText": "原版识别为公共厕所：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "原版识别为公共厕所：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "sanitation.Connected",
+          "operator": "gte",
+          "expected": 1,
+          "label": "同一复制人可达整套设施",
+          "passText": "同一复制人可达整套设施：当前检查满足",
+          "unmetText": "同一复制人可达整套设施：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "同一复制人可达整套设施：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "sanitation.Trial",
+          "operator": "gte",
+          "expected": 1,
+          "label": "实际如厕后洗手试运行已观察到",
+          "passText": "实际如厕后洗手试运行已观察到：当前检查满足",
+          "unmetText": "实际如厕后洗手试运行已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "实际如厕后洗手试运行已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "下一项主线：安顿宿舍",
+      "notes": "实际试运行不要求接取后重做；教学动画不构成完成证据。现有源码已提供六项读数草稿，待 DLL 与实机验证。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "切断如厕到进食之间的病菌传播",
+        "preparation": "泥土、可取清水、可达施工位置",
+        "steps": [
+          "规划出口",
+          "茅房补泥土",
+          "洗手盆补水",
+          "围合公共厕所",
+          "观察如厕后洗手"
+        ],
+        "runningChecks": "检查搬运与清理；同一复制人在同一厕所完成真实试运行",
+        "commonFailures": "洗手方向错误、绕过洗手盆、污水未清理",
+        "completion": "自动检查：手压泵可取到水；洗手盆已补水且可用；厕所已补泥土且可用；原版识别为公共厕所房间；同一复制人能到达整套设施；实际完成如厕后洗手。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：安顿宿舍"
+      }
+    },
+    {
+      "id": "q01_bedroom",
+      "chapterId": "settle",
+      "title": "安顿宿舍",
+      "track": "main",
+      "outcome": "让床铺可用、可达，并读取原版宿舍识别。",
+      "prerequisites": [
+        "q01"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": true,
+      "legacyTitle": "安顿宿舍",
+      "legacyObjectives": [
+        {
+          "Type": "livingRoom",
+          "Condition": "BedsUsable",
+          "Tag": "Bed",
+          "Count": 1,
+          "Label": "床铺可用且可达",
+          "LabelEn": "Usable reachable beds"
+        },
+        {
+          "Type": "livingRoom",
+          "Condition": "Barracks",
+          "Tag": "Bed",
+          "Count": 1,
+          "Label": "原版识别为宿舍",
+          "LabelEn": "Native barracks recognized"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "livingRoom.BedsUsable",
+          "operator": "gte",
+          "expected": 1,
+          "label": "床铺可用且可达",
+          "passText": "床铺可用且可达：当前检查满足",
+          "unmetText": "床铺可用且可达：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "床铺可用且可达：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "livingRoom.Barracks",
+          "operator": "gte",
+          "expected": 1,
+          "label": "原版识别为宿舍",
+          "passText": "原版识别为宿舍：当前检查满足",
+          "unmetText": "原版识别为宿舍：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "原版识别为宿舍：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "下一项主线：完善餐厅",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "提供稳定休息位置",
+        "preparation": "床铺材料、围合空间与可达通道",
+        "steps": [
+          "建床",
+          "检查床铺可用",
+          "围合",
+          "用房间叠层确认宿舍"
+        ],
+        "runningChecks": "检查分配和睡眠时段；已建床铺直接计入",
+        "commonFailures": "门墙有缺口、面积不符、工业设备破坏房间",
+        "completion": "自动检查：床铺可用且可达；原版识别为宿舍。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：完善餐厅"
+      }
+    },
+    {
+      "id": "q01_dining",
+      "chapterId": "settle",
+      "title": "完善餐厅",
+      "track": "main",
+      "outcome": "按当前缺口完成研究台、供电与食物制备研究，再建造可用且可达的餐桌，并读取原版餐厅识别；已完成的研究与设施直接认可。",
+      "prerequisites": [
+        "q01_bedroom"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": true,
+      "legacyTitle": "完善餐厅",
+      "legacyObjectives": [
+        {
+          "Type": "livingRoom",
+          "Condition": "TablesUsable",
+          "Tag": "DiningTable",
+          "Count": 1,
+          "Label": "用餐设施可用且可达",
+          "LabelEn": "Usable reachable dining facilities"
+        },
+        {
+          "Type": "livingRoom",
+          "Condition": "MessHall",
+          "Tag": "DiningTable",
+          "Count": 1,
+          "Label": "原版识别为餐厅",
+          "LabelEn": "Native mess hall recognized"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "livingRoom.TablesUsable",
+          "operator": "gte",
+          "expected": 1,
+          "label": "用餐设施可用且可达",
+          "passText": "用餐设施可用且可达：当前检查满足",
+          "unmetText": "用餐设施可用且可达：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "用餐设施可用且可达：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "livingRoom.MessHall",
+          "operator": "gte",
+          "expected": 1,
+          "label": "原版识别为餐厅",
+          "passText": "原版识别为餐厅：当前检查满足",
+          "unmetText": "原版识别为餐厅：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "原版识别为餐厅：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "核对本章能力后进入下一章；选做路线按需查阅。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "让复制人在餐桌用餐并获得房间收益",
+        "preparation": "研究台、电源、泥土；食物制备解锁餐桌",
+        "steps": [
+          "准备研究台",
+          "完成食物制备",
+          "建餐桌",
+          "围合",
+          "确认餐厅"
+        ],
+        "runningChecks": "检查餐桌可用、可达和分配；高档餐厅是可选升级",
+        "commonFailures": "尚未研究、使用位置被挡、房间包含不允许的设备",
+        "completion": "自动检查：用餐设施可用且可达；原版识别为餐厅。",
+        "requiredOrOptional": "本章主线",
+        "next": "核对本章能力后进入下一章；选做路线按需查阅。"
+      }
+    },
+    {
+      "id": "q02",
+      "chapterId": "settle",
+      "title": "基础操作工具箱",
+      "track": "optional",
+      "outcome": "认识暂停、优先级、挖掘、搬运和原版叠层。",
+      "prerequisites": [],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "入坑必学，贯穿游戏前后的基础操作与机制",
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "learning.basicControlsConfirmed",
+          "operator": "eq",
+          "expected": true,
+          "label": "玩家已确认基础操作教学",
+          "passText": "玩家已确认基础操作教学：当前检查满足",
+          "unmetText": "玩家已确认基础操作教学：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "玩家已确认基础操作教学：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "知识项由明确的玩家确认记录完成；打开页面或观看动画不自动完成。可随时查阅，不作为所有任务的硬前置。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "学会读叠层、日程、优先级和工作权限",
+        "preparation": "已有安全生活区；可以暂停查看界面",
+        "steps": [
+          "查看房间/电力/氧气叠层",
+          "调整日程",
+          "检查工作权限",
+          "尝试施工优先级"
+        ],
+        "runningChecks": "核对通路、材料和工作权限，先找停工原因再提高优先级",
+        "commonFailures": "把高优先级当成能解决无材料或不可达",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q03",
+      "chapterId": "survive",
+      "title": "供氧与二氧化碳治理",
+      "track": "main",
+      "outcome": "生活区获得可持续供氧，并为二氧化碳安排安全空间。",
+      "prerequisites": [
+        "q01_dining"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "前期氧气扩散与二氧化碳治理",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "MineralDeoxidizer",
+          "Count": 1,
+          "Label": "氧气扩散器",
+          "LabelEn": "Oxygen Diffuser"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "oxygen.supplyObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "生活区供氧效果已观察到",
+          "passText": "生活区供氧效果已观察到：当前检查满足",
+          "unmetText": "生活区供氧效果已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "生活区供氧效果已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "oxygen.inputsSustainable",
+          "operator": "eq",
+          "expected": true,
+          "label": "供氧资源和供电满足当前需求",
+          "passText": "供氧资源和供电满足当前需求：当前检查满足",
+          "unmetText": "供氧资源和供电满足当前需求：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "供氧资源和供电满足当前需求：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "oxygen.co2Handled",
+          "operator": "eq",
+          "expected": true,
+          "label": "二氧化碳处理或避让方案有效",
+          "passText": "二氧化碳处理或避让方案有效：当前检查满足",
+          "unmetText": "二氧化碳处理或避让方案有效：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "二氧化碳处理或避让方案有效：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "下一项主线：可靠清水来源",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "保障初期呼吸环境",
+        "preparation": "藻类、电源、氧气扩散器施工材料",
+        "steps": [
+          "建氧气扩散器",
+          "接电",
+          "补藻类",
+          "查看气压与氧气分布",
+          "留出气体通道"
+        ],
+        "runningChecks": "持续关注藻类消耗、停机原因及低处二氧化碳",
+        "commonFailures": "缺电、藻类耗尽、气压过高、密闭区域没有供氧",
+        "completion": "自动检查：氧气扩散器。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：可靠清水来源"
+      }
+    },
+    {
+      "id": "c2_water",
+      "chapterId": "survive",
+      "title": "可靠清水来源",
+      "track": "main",
+      "outcome": "找到安全、可达且适合当前用途的清水来源。",
+      "prerequisites": [
+        "q01_dining"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "planned",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": null,
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "water.sourceUsable",
+          "operator": "eq",
+          "expected": true,
+          "label": "清水来源可用于当前用途",
+          "passText": "清水来源可用于当前用途：当前检查满足",
+          "unmetText": "清水来源可用于当前用途：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "清水来源可用于当前用途：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "water.accessSafe",
+          "operator": "eq",
+          "expected": true,
+          "label": "取水与搬运路线安全可达",
+          "passText": "取水与搬运路线安全可达：当前检查满足",
+          "unmetText": "取水与搬运路线安全可达：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "取水与搬运路线安全可达：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "water.supplyObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "实际取水或补水已观察到",
+          "passText": "实际取水或补水已观察到：当前检查满足",
+          "unmetText": "实际取水或补水已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "实际取水或补水已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "下一项主线：种植区与基础食物",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "建立能持续取用的清水来源",
+        "preparation": "清水水池、取水路线、储备空间",
+        "steps": [
+          "辨认液体",
+          "保留挡水边界",
+          "建可达取水设施",
+          "规划补水或净化来源"
+        ],
+        "runningChecks": "观察消耗与补充；取到一次水不证明长期供应",
+        "commonFailures": "挖穿水池、误用污染水、只有库存没有补充",
+        "completion": "教学目录项：当前未接入独立自动任务判定，可按步骤自查；不自动发奖。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：种植区与基础食物"
+      }
+    },
+    {
+      "id": "q06",
+      "chapterId": "survive",
+      "title": "种植区与基础食物",
+      "track": "main",
+      "outcome": "按植物的实际条件布置种植区并观察生长。",
+      "prerequisites": [
+        "c2_water"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "种植区选址",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "PlanterBox",
+          "Count": 1,
+          "Label": "种植箱",
+          "LabelEn": "Planter Box"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "food.plantsViable",
+          "operator": "eq",
+          "expected": true,
+          "label": "选择植物的温度、气氛与资源条件满足",
+          "passText": "选择植物的温度、气氛与资源条件满足：当前检查满足",
+          "unmetText": "选择植物的温度、气氛与资源条件满足：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "选择植物的温度、气氛与资源条件满足：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "food.farmReachable",
+          "operator": "eq",
+          "expected": true,
+          "label": "种植设施可达且可工作",
+          "passText": "种植设施可达且可工作：当前检查满足",
+          "unmetText": "种植设施可达且可工作：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "种植设施可达且可工作：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "food.growthObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "真实生长或收获已观察到",
+          "passText": "真实生长或收获已观察到：当前检查满足",
+          "unmetText": "真实生长或收获已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "真实生长或收获已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "下一项主线：食物缓冲与供需",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "让基础食物种植持续生长",
+        "preparation": "种子、种植设施材料、适合温度与气体",
+        "steps": [
+          "查看植物信息",
+          "选择作物",
+          "选址",
+          "建种植设施",
+          "供给植物要求的资源"
+        ],
+        "runningChecks": "逐株查看温度、气压、气体和施肥灌溉状态",
+        "commonFailures": "按房间外观选址却忽略植物需求",
+        "completion": "自动检查：种植箱。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：食物缓冲与供需"
+      }
+    },
+    {
+      "id": "c2_food_budget",
+      "chapterId": "survive",
+      "title": "食物缓冲与供需",
+      "track": "main",
+      "outcome": "食物可食用、可访问，供应与消耗在观察期内相符。",
+      "prerequisites": [
+        "q06"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "planned",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": null,
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "food.accessibleCalories",
+          "operator": "eq",
+          "expected": true,
+          "label": "当前食物可供复制人食用",
+          "passText": "当前食物可供复制人食用：当前检查满足",
+          "unmetText": "当前食物可供复制人食用：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "当前食物可供复制人食用：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "food.balanceObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "食物供需满足当前人口",
+          "passText": "食物供需满足当前人口：当前检查满足",
+          "unmetText": "食物供需满足当前人口：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "食物供需满足当前人口：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "food.bufferConfirmed",
+          "operator": "eq",
+          "expected": true,
+          "label": "缓冲目标按当前人口和设置已确认",
+          "passText": "缓冲目标按当前人口和设置已确认：当前检查满足",
+          "unmetText": "缓冲目标按当前人口和设置已确认：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "缓冲目标按当前人口和设置已确认：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "核对本章能力后进入下一章；选做路线按需查阅。",
+      "notes": "适配器输出可食用热量、消耗估计、观察窗口和配置的缓冲目标；框架不硬编码必须囤积多少天。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "让食物产出覆盖人口消耗",
+        "preparation": "人口、每日消耗、库存与收获周期",
+        "steps": [
+          "统计可食热量",
+          "比较产出与消耗",
+          "留收获间隔缓冲",
+          "调整种植或食谱"
+        ],
+        "runningChecks": "连续多个收获周期观察净变化，人口增长后重新计算",
+        "commonFailures": "只看储存总量，忽略腐败和收获间隔",
+        "completion": "教学目录项：当前未接入独立自动任务判定，可按步骤自查；不自动发奖。",
+        "requiredOrOptional": "本章主线",
+        "next": "核对本章能力后进入下一章；选做路线按需查阅。"
+      }
+    },
+    {
+      "id": "q08",
+      "chapterId": "survive",
+      "title": "食物过渡与芦苇",
+      "track": "optional",
+      "outcome": "按已有资源选择食物过渡，并了解芦苇用途。",
+      "prerequisites": [
+        "q06"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "种植顶针芦苇并学会食物过渡",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "FarmTile",
+          "Count": 1,
+          "Label": "农场砖",
+          "LabelEn": "Farm Tile"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "food.transitionViable",
+          "operator": "eq",
+          "expected": true,
+          "label": "所选食物过渡路线可运行",
+          "passText": "所选食物过渡路线可运行：当前检查满足",
+          "unmetText": "所选食物过渡路线可运行：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所选食物过渡路线可运行：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "materials.reedSupplyObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "需要的芦苇供应已观察到",
+          "passText": "需要的芦苇供应已观察到：当前检查满足",
+          "unmetText": "需要的芦苇供应已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "需要的芦苇供应已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "按需要建立纤维与食物过渡路线",
+        "preparation": "种子、植物所需液体与温度；农业研究",
+        "steps": [
+          "分别查看食用作物与芦苇需求",
+          "准备种植区",
+          "接灌溉",
+          "观察首轮生长"
+        ],
+        "runningChecks": "芦苇用于纤维，不替代食物；核对长期液体消耗",
+        "commonFailures": "把两种植物的环境条件混用",
+        "completion": "自动检查：农场砖。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q12",
+      "chapterId": "survive",
+      "title": "污染控制与食物保鲜",
+      "track": "optional",
+      "outcome": "按污染来源和食物需求选择处理及保存方式。",
+      "prerequisites": [
+        "c2_food_budget"
+      ],
+      "applicability": [],
+      "choiceGroup": "sanitationTreatment",
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "辐射杀菌与食物保鲜",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "StorageLocker",
+          "Count": 1,
+          "Label": "储物箱",
+          "LabelEn": "Storage Bin"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "food.storagePreserves",
+          "operator": "eq",
+          "expected": true,
+          "label": "食物保存条件已观察到",
+          "passText": "食物保存条件已观察到：当前检查满足",
+          "unmetText": "食物保存条件已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "食物保存条件已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "hygiene.selectedTreatmentObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "所选污染处理路线有效",
+          "passText": "所选污染处理路线有效：当前检查满足",
+          "unmetText": "所选污染处理路线有效：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所选污染处理路线有效：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "辐射只是可能的处理路线，不能仅凭拥有某 DLC 强制使用；读取当前存档可用能力后选择办法。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "减少污染传播与食物腐败",
+        "preparation": "储存空间、食物来源；杀菌路线按存档内容选择",
+        "steps": [
+          "区分病菌与腐败",
+          "规划食物储存",
+          "减少污染搬运",
+          "核对温度与储存气体"
+        ],
+        "runningChecks": "查看原版新鲜度与腐败原因；储物箱建成不代表保鲜成功",
+        "commonFailures": "把封箱当成冷藏，或将辐射杀菌视为所有存档必需",
+        "completion": "自动检查：储物箱。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q20",
+      "chapterId": "survive",
+      "title": "更稳定的食谱",
+      "track": "optional",
+      "outcome": "根据水、种植和烹饪资源选择更稳定食物。",
+      "prerequisites": [
+        "c2_water"
+      ],
+      "applicability": [],
+      "choiceGroup": "foodRoute",
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "吃什么永生？有水先上刺花",
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "food.advancedRecipeViable",
+          "operator": "eq",
+          "expected": true,
+          "label": "所选食谱的资源与烹饪条件满足",
+          "passText": "所选食谱的资源与烹饪条件满足：当前检查满足",
+          "unmetText": "所选食谱的资源与烹饪条件满足：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所选食谱的资源与烹饪条件满足：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "food.advancedMealObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "所选食物实际供应已观察到",
+          "passText": "所选食物实际供应已观察到：当前检查满足",
+          "unmetText": "所选食物实际供应已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所选食物实际供应已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "选择当前资源能支撑的食谱",
+        "preparation": "种子、水源、光照与食物加工条件",
+        "steps": [
+          "查看作物需求",
+          "核对水预算",
+          "准备光照和种植",
+          "观察收获",
+          "选择加工方式"
+        ],
+        "runningChecks": "按实际产出、消耗和士气需求比较食谱",
+        "commonFailures": "为了升级食物耗尽生活用水",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "c3_power",
+      "chapterId": "infrastructure",
+      "title": "基础电力与负载",
+      "track": "main",
+      "outcome": "发电、储能和负载形成可工作的基础电网。",
+      "prerequisites": [
+        "q03"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "planned",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": null,
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "power.basicNetworkOperational",
+          "operator": "eq",
+          "expected": true,
+          "label": "基础电网实际运行",
+          "passText": "基础电网实际运行：当前检查满足",
+          "unmetText": "基础电网实际运行：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "基础电网实际运行：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "power.generationMatchesDemand",
+          "operator": "eq",
+          "expected": true,
+          "label": "发电与需求匹配",
+          "passText": "发电与需求匹配：当前检查满足",
+          "unmetText": "发电与需求匹配：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "发电与需求匹配：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "power.storageUsable",
+          "operator": "eq",
+          "expected": true,
+          "label": "储能方案可用或已明确不需要",
+          "passText": "储能方案可用或已明确不需要：当前检查满足",
+          "unmetText": "储能方案可用或已明确不需要：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "储能方案可用或已明确不需要：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "下一项主线：研究与管线基础",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "建立可读懂的基础电网",
+        "preparation": "发电设施、电线材料、储能空间",
+        "steps": [
+          "发电",
+          "接线",
+          "连接必要负载",
+          "查看电力叠层",
+          "比较负载与电线容量"
+        ],
+        "runningChecks": "观察发电、储能和实际用电，不靠堆电池解决过载",
+        "commonFailures": "断线、发电不足、用电超过线路承载",
+        "completion": "教学目录项：当前未接入独立自动任务判定，可按步骤自查；不自动发奖。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：研究与管线基础"
+      }
+    },
+    {
+      "id": "q04",
+      "chapterId": "infrastructure",
+      "title": "研究与管线基础",
+      "track": "main",
+      "outcome": "按当前任务需求研究并理解液体与气体管线。",
+      "prerequisites": [
+        "c3_power"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "二级科研开始 管道与电路的初步了解",
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "research.requiredBasicsUnlocked",
+          "operator": "eq",
+          "expected": true,
+          "label": "当前路线所需基础研究已完成",
+          "passText": "当前路线所需基础研究已完成：当前检查满足",
+          "unmetText": "当前路线所需基础研究已完成：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "当前路线所需基础研究已完成：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "learning.pipePrinciplesConfirmed",
+          "operator": "eq",
+          "expected": true,
+          "label": "玩家已确认管线基础",
+          "passText": "玩家已确认管线基础：当前检查满足",
+          "unmetText": "玩家已确认管线基础：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "玩家已确认管线基础：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "下一项主线：电路分组与过载",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "理解不同研究站与管线的用途",
+        "preparation": "研究台、电力、泥土与水；按目标科技检查研究站",
+        "steps": [
+          "选目标建筑",
+          "读前置科技链",
+          "建所需研究站",
+          "补材料",
+          "分别查看液体/气体/电力叠层"
+        ],
+        "runningChecks": "逐段确认流向、端口和研究停工原因",
+        "commonFailures": "研究站缺水缺电，或把不同管线的连接规则混淆",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：电路分组与过载"
+      }
+    },
+    {
+      "id": "q07",
+      "chapterId": "infrastructure",
+      "title": "电路分组与过载",
+      "track": "main",
+      "outcome": "让电线、变压与负载匹配，并观察供电效果。",
+      "prerequisites": [
+        "q04"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "学会电路分组 永不过载",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "PowerTransformer",
+          "Count": 1,
+          "Label": "变压器",
+          "LabelEn": "Power Transformer"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "power.circuitsRated",
+          "operator": "eq",
+          "expected": true,
+          "label": "所用电路与线缆额定负载匹配",
+          "passText": "所用电路与线缆额定负载匹配：当前检查满足",
+          "unmetText": "所用电路与线缆额定负载匹配：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所用电路与线缆额定负载匹配：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "power.transformersOperational",
+          "operator": "eq",
+          "expected": true,
+          "label": "需要的变压链可运行",
+          "passText": "需要的变压链可运行：当前检查满足",
+          "unmetText": "需要的变压链可运行：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "需要的变压链可运行：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "power.overloadHandled",
+          "operator": "eq",
+          "expected": true,
+          "label": "已观察到过载问题被处理",
+          "passText": "已观察到过载问题被处理：当前检查满足",
+          "unmetText": "已观察到过载问题被处理：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "已观察到过载问题被处理：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "下一项主线：管道与通风",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "用变压器分隔供电与用电网络",
+        "preparation": "目标线路容量、变压器研究与材料",
+        "steps": [
+          "统计负载",
+          "划分支路",
+          "接变压器输入与输出",
+          "查看叠层",
+          "试运行"
+        ],
+        "runningChecks": "确保输出支路负载符合线材容量；检查是否有跨接绕过变压器",
+        "commonFailures": "接反端口、桥接错误、支路仍超容量",
+        "completion": "自动检查：变压器。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：管道与通风"
+      }
+    },
+    {
+      "id": "c3_pipes",
+      "chapterId": "infrastructure",
+      "title": "管道与通风",
+      "track": "main",
+      "outcome": "把输入、输出、方向和介质连成可工作的管线。",
+      "prerequisites": [
+        "q04"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "planned",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": null,
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "pipes.connectionsCorrect",
+          "operator": "eq",
+          "expected": true,
+          "label": "当前管线接口与方向正确",
+          "passText": "当前管线接口与方向正确：当前检查满足",
+          "unmetText": "当前管线接口与方向正确：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "当前管线接口与方向正确：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "pipes.mediaCompatible",
+          "operator": "eq",
+          "expected": true,
+          "label": "介质与用途匹配",
+          "passText": "介质与用途匹配：当前检查满足",
+          "unmetText": "介质与用途匹配：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "介质与用途匹配：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "pipes.flowObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "真实输送或通风已观察到",
+          "passText": "真实输送或通风已观察到：当前检查满足",
+          "unmetText": "真实输送或通风已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "真实输送或通风已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "下一项主线：废物与污水去向",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "建立方向明确的液体与气体运输",
+        "preparation": "对应泵、电源、管线与合法输出位置",
+        "steps": [
+          "标出来源和去向",
+          "接输出到输入",
+          "检查桥方向",
+          "试运行",
+          "观察堵塞"
+        ],
+        "runningChecks": "用对应叠层追踪介质、流向、温度和去向",
+        "commonFailures": "液气管混淆、输入输出接错、末端堵塞",
+        "completion": "教学目录项：当前未接入独立自动任务判定，可按步骤自查；不自动发奖。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：废物与污水去向"
+      }
+    },
+    {
+      "id": "c3_waste",
+      "chapterId": "infrastructure",
+      "title": "废物与污水去向",
+      "track": "main",
+      "outcome": "为污水和固体副产物安排可运行的去向。",
+      "prerequisites": [
+        "c3_pipes"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "planned",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": null,
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "waste.outputsReachDestination",
+          "operator": "eq",
+          "expected": true,
+          "label": "废物输出可到达指定去向",
+          "passText": "废物输出可到达指定去向：当前检查满足",
+          "unmetText": "废物输出可到达指定去向：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "废物输出可到达指定去向：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "waste.processingObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "所选清理或处理方式已运行",
+          "passText": "所选清理或处理方式已运行：当前检查满足",
+          "unmetText": "所选清理或处理方式已运行：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所选清理或处理方式已运行：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "waste.noImmediateBlockage",
+          "operator": "eq",
+          "expected": true,
+          "label": "观察期内没有未处理的输出堵塞",
+          "passText": "观察期内没有未处理的输出堵塞：当前检查满足",
+          "unmetText": "观察期内没有未处理的输出堵塞：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "观察期内没有未处理的输出堵塞：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "核对本章能力后进入下一章；选做路线按需查阅。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "给污水、固体废物安排明确去向",
+        "preparation": "储存空间、搬运通路、处理设备供给",
+        "steps": [
+          "统计废物来源",
+          "分开收集",
+          "规划储存或处理",
+          "检查处理产物去向"
+        ],
+        "runningChecks": "持续观察是否积压、泄漏或污染生活区",
+        "commonFailures": "只接入处理设备却未安排输出",
+        "completion": "教学目录项：当前未接入独立自动任务判定，可按步骤自查；不自动发奖。",
+        "requiredOrOptional": "本章主线",
+        "next": "核对本章能力后进入下一章；选做路线按需查阅。"
+      }
+    },
+    {
+      "id": "q05",
+      "chapterId": "infrastructure",
+      "title": "抽水厕所循环",
+      "track": "optional",
+      "outcome": "升级生活卫生设施并观察污水与清水流动。",
+      "prerequisites": [
+        "c3_waste"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "轻松搞定巨简单的卫生间循环",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "FlushToilet",
+          "Count": 1,
+          "Label": "冲水厕所",
+          "LabelEn": "Flush Toilet"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "sanitation.plumbedFixturesUsable",
+          "operator": "eq",
+          "expected": true,
+          "label": "抽水卫生设施可使用",
+          "passText": "抽水卫生设施可使用：当前检查满足",
+          "unmetText": "抽水卫生设施可使用：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "抽水卫生设施可使用：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "sanitation.loopFlowObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "厕所循环实际运行",
+          "passText": "厕所循环实际运行：当前检查满足",
+          "unmetText": "厕所循环实际运行：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "厕所循环实际运行：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "sanitation.excessHandled",
+          "operator": "eq",
+          "expected": true,
+          "label": "多余液体有可用去向",
+          "passText": "多余液体有可用去向：当前检查满足",
+          "unmetText": "多余液体有可用去向：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "多余液体有可用去向：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "建立卫生设施的给排水循环",
+        "preparation": "抽水厕所研究、清水、污水管线和处理资源",
+        "steps": [
+          "接厕所进水",
+          "接污水输出",
+          "准备处理设施",
+          "补启动水",
+          "安排多余液体去向"
+        ],
+        "runningChecks": "核对污水处理耗材与额外水量；必要时设置排出或储存",
+        "commonFailures": "无启动水、处理耗材不足、循环逐渐堵满",
+        "completion": "自动检查：冲水厕所。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q14",
+      "chapterId": "explore",
+      "title": "安全挖掘与基地边界",
+      "track": "main",
+      "outcome": "规划扩展时保留液体边界，控制危险气体和路线。",
+      "prerequisites": [
+        "c2_water"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "游戏前期总结 基地围挡",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "Tile",
+          "Count": 20,
+          "Label": "瓷砖墙",
+          "LabelEn": "Tile"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "exploration.excavationSafe",
+          "operator": "eq",
+          "expected": true,
+          "label": "当前挖掘与围挡方案安全",
+          "passText": "当前挖掘与围挡方案安全：当前检查满足",
+          "unmetText": "当前挖掘与围挡方案安全：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "当前挖掘与围挡方案安全：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "exploration.returnRouteReachable",
+          "operator": "eq",
+          "expected": true,
+          "label": "复制人能安全返回基地",
+          "passText": "复制人能安全返回基地：当前检查满足",
+          "unmetText": "复制人能安全返回基地：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "复制人能安全返回基地：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "下一项主线：进入不同生态",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "安全扩展基地并保留环境边界",
+        "preparation": "已稳定的生活区、挖掘通道与逃生路线",
+        "steps": [
+          "暂停查看气体和温度",
+          "标记水池与危险区",
+          "分段开挖",
+          "围挡与留通道"
+        ],
+        "runningChecks": "每次扩展后复查温度、压力和复制人通路",
+        "commonFailures": "挖穿水池或直接打开高压、高温区域",
+        "completion": "自动检查：瓷砖墙。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：进入不同生态"
+      }
+    },
+    {
+      "id": "c4_biomes",
+      "chapterId": "explore",
+      "title": "进入不同生态",
+      "track": "main",
+      "outcome": "根据实际探索到的生态检查温度、气体与通行防护。",
+      "prerequisites": [
+        "q14"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "planned",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": null,
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "exploration.biomeKnown",
+          "operator": "eq",
+          "expected": true,
+          "label": "当前目标生态已被识别",
+          "passText": "当前目标生态已被识别：当前检查满足",
+          "unmetText": "当前目标生态已被识别：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "当前目标生态已被识别：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "exploration.protectionSuitable",
+          "operator": "eq",
+          "expected": true,
+          "label": "防护与当前风险匹配",
+          "passText": "防护与当前风险匹配：当前检查满足",
+          "unmetText": "防护与当前风险匹配：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "防护与当前风险匹配：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "exploration.accessObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "实际安全通行已观察到",
+          "passText": "实际安全通行已观察到：当前检查满足",
+          "unmetText": "实际安全通行已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "实际安全通行已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "下一项主线：理解与控制温度",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "按环境风险进入新生态",
+        "preparation": "呼吸与撤退路径；按风险准备防护",
+        "steps": [
+          "查看温度/气体/病菌",
+          "建立安全入口",
+          "小范围探索",
+          "运回需要的资源"
+        ],
+        "runningChecks": "核对复制人呼吸和受伤；缺条件时撤回并完善入口",
+        "commonFailures": "把未知区域当成与初始生态相同",
+        "completion": "教学目录项：当前未接入独立自动任务判定，可按步骤自查；不自动发奖。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：理解与控制温度"
+      }
+    },
+    {
+      "id": "c4_temperature",
+      "chapterId": "explore",
+      "title": "理解与控制温度",
+      "track": "main",
+      "outcome": "读取原版温度与设施工作范围，处理生活区热风险。",
+      "prerequisites": [
+        "c4_biomes"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "planned",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": null,
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "temperature.livingAreaSuitable",
+          "operator": "eq",
+          "expected": true,
+          "label": "生活区温度适合当前用途",
+          "passText": "生活区温度适合当前用途：当前检查满足",
+          "unmetText": "生活区温度适合当前用途：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "生活区温度适合当前用途：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "temperature.equipmentWithinRange",
+          "operator": "eq",
+          "expected": true,
+          "label": "当前关键设备在可工作温度范围",
+          "passText": "当前关键设备在可工作温度范围：当前检查满足",
+          "unmetText": "当前关键设备在可工作温度范围：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "当前关键设备在可工作温度范围：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "temperature.controlObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "热源管理或控温效果已观察到",
+          "passText": "热源管理或控温效果已观察到：当前检查满足",
+          "unmetText": "热源管理或控温效果已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "热源管理或控温效果已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "核对本章能力后进入下一章；选做路线按需查阅。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "区分隔热、搬热与真正排热",
+        "preparation": "温度叠层、热源清单、可持续冷源",
+        "steps": [
+          "定位热源",
+          "隔离生活区",
+          "设计搬热回路",
+          "确定最终热量去向",
+          "观察变化"
+        ],
+        "runningChecks": "比较多个周期的温度趋势，确认没有把热量仅转移到别处",
+        "commonFailures": "把隔热砖当成主动冷却、冷源耗尽",
+        "completion": "教学目录项：当前未接入独立自动任务判定，可按步骤自查；不自动发奖。",
+        "requiredOrOptional": "本章主线",
+        "next": "核对本章能力后进入下一章；选做路线按需查阅。"
+      }
+    },
+    {
+      "id": "q22",
+      "chapterId": "explore",
+      "title": "基地冷却与自然保护区",
+      "track": "optional",
+      "outcome": "按原版识别保护区，按需要扩展基地冷却。",
+      "prerequisites": [
+        "c4_temperature"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "自然保护区与基地冷却",
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "rooms.natureReserveRecognized",
+          "operator": "eq",
+          "expected": true,
+          "label": "原版识别自然保护区",
+          "passText": "原版识别自然保护区：当前检查满足",
+          "unmetText": "原版识别自然保护区：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "原版识别自然保护区：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "temperature.baseCoolingObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "所需基地冷却效果已观察到",
+          "passText": "所需基地冷却效果已观察到：当前检查满足",
+          "unmetText": "所需基地冷却效果已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所需基地冷却效果已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "兼顾生活区控温和通勤士气",
+        "preparation": "安全路径、可保留的自然植物、温度控制方案",
+        "steps": [
+          "保留自然植物",
+          "规划通勤路径",
+          "按房间叠层确认保护区",
+          "隔离生产热源"
+        ],
+        "runningChecks": "让复制人实际经过；观察基地温度而非只统计设备",
+        "commonFailures": "植物被挖掉、路线绕行、冷却只搬热不排热",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q11",
+      "chapterId": "sustain",
+      "title": "金属精炼基础",
+      "track": "main",
+      "outcome": "精炼设施实际加工，并管理供电、原料和热量。",
+      "prerequisites": [
+        "q07",
+        "c4_temperature"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "金属精炼",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "MetalRefinery",
+          "Count": 1,
+          "Label": "金属精炼厂",
+          "LabelEn": "Metal Refinery"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "industry.refineryOperational",
+          "operator": "eq",
+          "expected": true,
+          "label": "金属精炼所需供应链可运行",
+          "passText": "金属精炼所需供应链可运行：当前检查满足",
+          "unmetText": "金属精炼所需供应链可运行：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "金属精炼所需供应链可运行：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "industry.refiningObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "实际金属精炼已观察到",
+          "passText": "实际金属精炼已观察到：当前检查满足",
+          "unmetText": "实际金属精炼已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "实际金属精炼已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "industry.refineryHeatHandled",
+          "operator": "eq",
+          "expected": true,
+          "label": "精炼产生的热量得到管理",
+          "passText": "精炼产生的热量得到管理：当前检查满足",
+          "unmetText": "精炼产生的热量得到管理：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "精炼产生的热量得到管理：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "下一项主线：按路线推进科研",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "生产精炼金属并安排热量去向",
+        "preparation": "金属精炼研究、电源、矿石、足够冷却液",
+        "steps": [
+          "核对配方",
+          "接输入输出",
+          "准备冷却液回路",
+          "少量生产",
+          "查看液体温度"
+        ],
+        "runningChecks": "检查冷却液是否会相变和回路是否通畅",
+        "commonFailures": "冷却液沸腾爆管、输出堵塞、电力不足",
+        "completion": "自动检查：金属精炼厂。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：按路线推进科研"
+      }
+    },
+    {
+      "id": "q15",
+      "chapterId": "sustain",
+      "title": "按路线推进科研",
+      "track": "main",
+      "outcome": "根据所选生产和太空路线补齐研究条件。",
+      "prerequisites": [
+        "q11"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "三级科研 炼钢准备",
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "research.industrialRouteUnlocked",
+          "operator": "eq",
+          "expected": true,
+          "label": "所选工业路线研究已满足",
+          "passText": "所选工业路线研究已满足：当前检查满足",
+          "unmetText": "所选工业路线研究已满足：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所选工业路线研究已满足：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "research.advancedDataAvailable",
+          "operator": "eq",
+          "expected": true,
+          "label": "所需科研材料或数据可供使用",
+          "passText": "所需科研材料或数据可供使用：当前检查满足",
+          "unmetText": "所需科研材料或数据可供使用：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所需科研材料或数据可供使用：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "下一项主线：持续资源供应",
+      "notes": "研究站数量不代表研究完成；基础版与启用 DLC 的研究路线分别映射，不把购买状态当成存档能力。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "为所选工业路线准备科研",
+        "preparation": "目标建筑科技链；按存档所需研究类型备站与资源",
+        "steps": [
+          "先选需要的建筑",
+          "查看科技链",
+          "准备各研究站",
+          "安排研究人员",
+          "逐项研究"
+        ],
+        "runningChecks": "核对各研究点类型；不同存档可能采用不同科研路线",
+        "commonFailures": "只建高级研究站却缺前置科技或研究材料",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：持续资源供应"
+      }
+    },
+    {
+      "id": "c5_resources",
+      "chapterId": "sustain",
+      "title": "持续资源供应",
+      "track": "main",
+      "outcome": "让主要耗材来源、循环或替代路线覆盖持续需求。",
+      "prerequisites": [
+        "c2_food_budget",
+        "c3_waste"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "planned",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": null,
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "resources.selectedRoutesSustainable",
+          "operator": "eq",
+          "expected": true,
+          "label": "选定资源路线能够持续供应",
+          "passText": "选定资源路线能够持续供应：当前检查满足",
+          "unmetText": "选定资源路线能够持续供应：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "选定资源路线能够持续供应：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "resources.productionConsumptionObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "资源生产和消耗已在观察期内核对",
+          "passText": "资源生产和消耗已在观察期内核对：当前检查满足",
+          "unmetText": "资源生产和消耗已在观察期内核对：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "资源生产和消耗已在观察期内核对：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "下一项主线：基础自动化",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "让关键资源有持续来源",
+        "preparation": "库存、消耗速率、资源补充路线",
+        "steps": [
+          "列出水/氧气/食物/燃料/材料",
+          "测消耗",
+          "选可持续来源",
+          "设置缓冲与维护"
+        ],
+        "runningChecks": "连续观察库存趋势并记录停机维护所需耗材",
+        "commonFailures": "将一次性矿藏库存当成无限供应",
+        "completion": "教学目录项：当前未接入独立自动任务判定，可按步骤自查；不自动发奖。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：基础自动化"
+      }
+    },
+    {
+      "id": "c5_automation",
+      "chapterId": "sustain",
+      "title": "基础自动化",
+      "track": "main",
+      "outcome": "理解传感器、控制信号和设施响应。",
+      "prerequisites": [
+        "q04"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "planned",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": null,
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "automation.signalConfigured",
+          "operator": "eq",
+          "expected": true,
+          "label": "所需传感器与控制信号已配置",
+          "passText": "所需传感器与控制信号已配置：当前检查满足",
+          "unmetText": "所需传感器与控制信号已配置：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所需传感器与控制信号已配置：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "automation.responseObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "实际设施响应已观察到",
+          "passText": "实际设施响应已观察到：当前检查满足",
+          "unmetText": "实际设施响应已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "实际设施响应已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "核对本章能力后进入下一章；选做路线按需查阅。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "用状态控制设备运行",
+        "preparation": "自动化研究、传感器、信号线与可控设备",
+        "steps": [
+          "明确启停条件",
+          "选传感器",
+          "接信号",
+          "设置阈值",
+          "测试高低两种状态"
+        ],
+        "runningChecks": "确认断电、缺料和阈值边界时行为符合预期",
+        "commonFailures": "信号极性相反、阈值不合理、信号线未接通",
+        "completion": "教学目录项：当前未接入独立自动任务判定，可按步骤自查；不自动发奖。",
+        "requiredOrOptional": "本章主线",
+        "next": "核对本章能力后进入下一章；选做路线按需查阅。"
+      }
+    },
+    {
+      "id": "q09",
+      "chapterId": "sustain",
+      "title": "电解制氧进阶路线",
+      "track": "optional",
+      "outcome": "理解电解制氧、分气、供水供电与压力管理。",
+      "prerequisites": [
+        "c3_pipes"
+      ],
+      "applicability": [],
+      "choiceGroup": "advancedOxygen",
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "高压制氧从建造到启动 稳定防崩必学",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "Electrolyzer",
+          "Count": 1,
+          "Label": "电解器",
+          "LabelEn": "Electrolyzer"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "oxygen.electrolyzerRouteOperational",
+          "operator": "eq",
+          "expected": true,
+          "label": "所选电解制氧链可运行",
+          "passText": "所选电解制氧链可运行：当前检查满足",
+          "unmetText": "所选电解制氧链可运行：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所选电解制氧链可运行：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "oxygen.pressureHandled",
+          "operator": "eq",
+          "expected": true,
+          "label": "所选方案的压力问题已处理",
+          "passText": "所选方案的压力问题已处理：当前检查满足",
+          "unmetText": "所选方案的压力问题已处理：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所选方案的压力问题已处理：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "oxygen.advancedSupplyObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "进阶供氧效果已观察到",
+          "passText": "进阶供氧效果已观察到：当前检查满足",
+          "unmetText": "进阶供氧效果已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "进阶供氧效果已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "建立可持续且便于维护的电解供氧",
+        "preparation": "电解器研究、水源、电力、氢气与氧气去向",
+        "steps": [
+          "先确认气体分离",
+          "建供水与电网",
+          "安排氢氧输出",
+          "逐段启动",
+          "观察稳定状态"
+        ],
+        "runningChecks": "核对高压方案的原版行为和维护入口；可先采用普通方案",
+        "commonFailures": "未分离气体、输出堵塞、供水断续、热量积累",
+        "completion": "自动检查：电解器。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q10",
+      "chapterId": "sustain",
+      "title": "常规制氧与可维护性",
+      "track": "optional",
+      "outcome": "选择便于维护的供氧布局，并理解故障修复。",
+      "prerequisites": [
+        "c3_pipes"
+      ],
+      "applicability": [],
+      "choiceGroup": "advancedOxygen",
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "普通制氧也不赖 崩了随意修",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "GasPump",
+          "Count": 1,
+          "Label": "气泵",
+          "LabelEn": "Gas Pump"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "oxygen.maintainableRouteOperational",
+          "operator": "eq",
+          "expected": true,
+          "label": "所选常规制氧链可运行",
+          "passText": "所选常规制氧链可运行：当前检查满足",
+          "unmetText": "所选常规制氧链可运行：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所选常规制氧链可运行：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "learning.oxygenRepairConfirmed",
+          "operator": "eq",
+          "expected": true,
+          "label": "玩家已确认供氧排障过程",
+          "passText": "玩家已确认供氧排障过程：当前检查满足",
+          "unmetText": "玩家已确认供氧排障过程：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "玩家已确认供氧排障过程：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "掌握普通供氧设施的维护",
+        "preparation": "泵、电源、气体过滤或分流方案",
+        "steps": [
+          "划分氢氧区域",
+          "接泵与输出",
+          "逐台启动",
+          "检测输出介质",
+          "留检修空间"
+        ],
+        "runningChecks": "检查气压、气体类型和实际耗电",
+        "commonFailures": "泵抽到混合气体、出口超压或堵塞",
+        "completion": "自动检查：气泵。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q13",
+      "chapterId": "sustain",
+      "title": "天然气能源路线",
+      "track": "optional",
+      "outcome": "在实际资源允许时建立天然气供应和发电。",
+      "prerequisites": [
+        "q07"
+      ],
+      "applicability": [],
+      "choiceGroup": "energyRoute",
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "天然气发电 树鼠种植",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "MethaneGenerator",
+          "Count": 1,
+          "Label": "天然气发电机",
+          "LabelEn": "Natural Gas Generator"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "power.naturalGasSupplyUsable",
+          "operator": "eq",
+          "expected": true,
+          "label": "天然气供应可用",
+          "passText": "天然气供应可用：当前检查满足",
+          "unmetText": "天然气供应可用：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "天然气供应可用：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "power.naturalGasGenerationObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "天然气发电实际运行",
+          "passText": "天然气发电实际运行：当前检查满足",
+          "unmetText": "天然气发电实际运行：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "天然气发电实际运行：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "按资源来源建立天然气能源",
+        "preparation": "天然气来源、发电科技、电网与废物出口",
+        "steps": [
+          "储气",
+          "接气",
+          "连接发电机",
+          "处理污水与二氧化碳",
+          "观察燃料变化"
+        ],
+        "runningChecks": "区分间歇气源与持续负载；树鼠相关种植路线按需选用",
+        "commonFailures": "没有气源缓冲或未安排副产物出口",
+        "completion": "自动检查：天然气发电机。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q16",
+      "chapterId": "sustain",
+      "title": "精炼冷却模块",
+      "track": "optional",
+      "outcome": "为精炼选择可工作的冷却和散热方案。",
+      "prerequisites": [
+        "q15"
+      ],
+      "applicability": [],
+      "choiceGroup": "industrialCooling",
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "跨过这道坎 野外炼钢和冷却模块",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "LiquidConditioner",
+          "Count": 1,
+          "Label": "液温调节器",
+          "LabelEn": "Thermo Regulator"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "industry.refiningCoolingOperational",
+          "operator": "eq",
+          "expected": true,
+          "label": "所选精炼冷却链可运行",
+          "passText": "所选精炼冷却链可运行：当前检查满足",
+          "unmetText": "所选精炼冷却链可运行：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所选精炼冷却链可运行：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "industry.coolingEffectObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "实际散热效果已观察到",
+          "passText": "实际散热效果已观察到：当前检查满足",
+          "unmetText": "实际散热效果已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "实际散热效果已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "用冷却回路控制工业热量",
+        "preparation": "液温调节器科技、电源、适合工作温区的冷却液与排热方案",
+        "steps": [
+          "设计闭环",
+          "检查介质相变温度",
+          "设旁路与传感器",
+          "确定排热去向",
+          "逐段启动"
+        ],
+        "runningChecks": "检查调节器本体散热、爆管风险和回路持续流动",
+        "commonFailures": "过冷相变、回路堵塞、设备本体过热",
+        "completion": "自动检查：液温调节器。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q17",
+      "chapterId": "sustain",
+      "title": "原油精炼与相变",
+      "track": "optional",
+      "outcome": "理解所选油料精炼或相变路线，管理热量与输出。",
+      "prerequisites": [
+        "q15"
+      ],
+      "applicability": [],
+      "choiceGroup": "oilRoute",
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "原油精炼 强制相变",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "OilRefinery",
+          "Count": 1,
+          "Label": "原油精炼厂",
+          "LabelEn": "Oil Refinery"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "industry.oilRouteOperational",
+          "operator": "eq",
+          "expected": true,
+          "label": "所选油料加工链可运行",
+          "passText": "所选油料加工链可运行：当前检查满足",
+          "unmetText": "所选油料加工链可运行：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所选油料加工链可运行：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "industry.oilOutputObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "实际加工输出已观察到",
+          "passText": "实际加工输出已观察到：当前检查满足",
+          "unmetText": "实际加工输出已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "实际加工输出已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "安全加工原油并理解相变",
+        "preparation": "原油来源、加工设备、电力与高温区域隔离",
+        "steps": [
+          "核对配方与副产物",
+          "接原油",
+          "安排产物去向",
+          "隔离热区",
+          "小批量试产"
+        ],
+        "runningChecks": "区分设备精炼与高温相变路线，按当前材料和温区选择",
+        "commonFailures": "把普通管线用于会发生相变的介质",
+        "completion": "自动检查：原油精炼厂。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q18",
+      "chapterId": "sustain",
+      "title": "蒸汽散热与炼钢进阶",
+      "track": "optional",
+      "outcome": "理解蒸汽散热方案并观察所选炼钢生产。",
+      "prerequisites": [
+        "q16"
+      ],
+      "applicability": [],
+      "choiceGroup": "industrialCooling",
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "超详细炼钢模块建造过程",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "SteamTurbine",
+          "Count": 1,
+          "Label": "蒸汽机",
+          "LabelEn": "Steam Turbine"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "industry.steamCoolingObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "所需蒸汽散热效果已观察到",
+          "passText": "所需蒸汽散热效果已观察到：当前检查满足",
+          "unmetText": "所需蒸汽散热效果已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所需蒸汽散热效果已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "industry.steelProductionObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "实际炼钢产出已观察到",
+          "passText": "实际炼钢产出已观察到：当前检查满足",
+          "unmetText": "实际炼钢产出已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "实际炼钢产出已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "让炼钢模块持续排热",
+        "preparation": "精炼金属与钢配方材料、蒸汽机研究、稳定电力与蒸汽条件",
+        "steps": [
+          "备齐炼钢配方",
+          "准备冷却回路",
+          "建立蒸汽排热",
+          "小批量炼钢",
+          "观察运行"
+        ],
+        "runningChecks": "蒸汽机自身也需要散热；核对蒸汽温度和排水路线",
+        "commonFailures": "只建蒸汽机却没有正确蒸汽环境或本体冷却",
+        "completion": "自动检查：蒸汽机。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q19",
+      "chapterId": "sustain",
+      "title": "生产区控温与整合",
+      "track": "optional",
+      "outcome": "隔离工业热量，并让邻近种植区满足作物条件。",
+      "prerequisites": [
+        "q17"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "炼油控温 整合种植区",
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "industry.heatIsolationEffective",
+          "operator": "eq",
+          "expected": true,
+          "label": "生产区热量隔离有效",
+          "passText": "生产区热量隔离有效：当前检查满足",
+          "unmetText": "生产区热量隔离有效：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "生产区热量隔离有效：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "food.integratedFarmViable",
+          "operator": "eq",
+          "expected": true,
+          "label": "整合后的种植区仍满足条件",
+          "passText": "整合后的种植区仍满足条件：当前检查满足",
+          "unmetText": "整合后的种植区仍满足条件：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "整合后的种植区仍满足条件：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "避免生产热量侵入种植区",
+        "preparation": "生产热源清单、植物温区与独立回路",
+        "steps": [
+          "测温",
+          "隔离生产区",
+          "给种植区独立控温",
+          "检查供给",
+          "逐段整合"
+        ],
+        "runningChecks": "连续观察种植生长与设备温度",
+        "commonFailures": "共享回路导致植物过热或过冷",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q21",
+      "chapterId": "sustain",
+      "title": "士气与设施升级",
+      "track": "optional",
+      "outcome": "根据技能负担改善生活设施，并观察士气。",
+      "prerequisites": [
+        "q01_dining"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "中期必做的事 士气升档",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "DiningTable",
+          "Count": 1,
+          "Label": "餐桌",
+          "LabelEn": "Mess Table"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "morale.matchesSkillNeeds",
+          "operator": "eq",
+          "expected": true,
+          "label": "当前士气与技能负担匹配",
+          "passText": "当前士气与技能负担匹配：当前检查满足",
+          "unmetText": "当前士气与技能负担匹配：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "当前士气与技能负担匹配：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "morale.improvementObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "生活设施改善效果已观察到",
+          "passText": "生活设施改善效果已观察到：当前检查满足",
+          "unmetText": "生活设施改善效果已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "生活设施改善效果已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "让士气收益匹配技能负担",
+        "preparation": "士气和技能需求、已可用的生活设施",
+        "steps": [
+          "查看士气来源",
+          "优先改善餐厅与作息",
+          "安排合适食物",
+          "按士气分配技能"
+        ],
+        "runningChecks": "核对复制人实际获得收益，餐桌建成不等于士气达标",
+        "commonFailures": "一次性学习过多技能、设施没有被使用",
+        "completion": "自动检查：餐桌。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q23",
+      "chapterId": "sustain",
+      "title": "储油与油井路线",
+      "track": "optional",
+      "outcome": "在有实际油料条件时核对压力、补给与加工去向。",
+      "prerequisites": [
+        "q17"
+      ],
+      "applicability": [],
+      "choiceGroup": "oilRoute",
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "储油石快速开发",
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "industry.oilExtractionOperational",
+          "operator": "eq",
+          "expected": true,
+          "label": "所选采油链可运行",
+          "passText": "所选采油链可运行：当前检查满足",
+          "unmetText": "所选采油链可运行：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所选采油链可运行：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "industry.oilExtractionObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "实际采油输出已观察到",
+          "passText": "实际采油输出已观察到：当前检查满足",
+          "unmetText": "实际采油输出已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "实际采油输出已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "准备油井用水与油料出口",
+        "preparation": "存档存在储油石、油井研究、水源、电力与泄压通路",
+        "steps": [
+          "探明储油石",
+          "准备安全入口",
+          "接水与电",
+          "安排产油和气体",
+          "观察泄压维护"
+        ],
+        "runningChecks": "检查用水预算、气体压力及复制人维护通路",
+        "commonFailures": "缺水、过压、维护人员不可达",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q24",
+      "chapterId": "sustain",
+      "title": "养殖与纤维来源",
+      "track": "optional",
+      "outcome": "满足动物需求并观察所需纤维产出。",
+      "prerequisites": [
+        "c5_resources"
+      ],
+      "applicability": [],
+      "choiceGroup": "fiberRoute",
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "壁虎养殖",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "ShearingStation",
+          "Count": 1,
+          "Label": "剪毛站",
+          "LabelEn": "Shearing Station"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "ranching.selectedCrittersViable",
+          "operator": "eq",
+          "expected": true,
+          "label": "所选养殖动物的需求满足",
+          "passText": "所选养殖动物的需求满足：当前检查满足",
+          "unmetText": "所选养殖动物的需求满足：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所选养殖动物的需求满足：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "ranching.fiberOutputObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "真实纤维产出已观察到",
+          "passText": "真实纤维产出已观察到：当前检查满足",
+          "unmetText": "真实纤维产出已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "真实纤维产出已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "按需求建立壁虎养殖与剪毛",
+        "preparation": "壁虎、饲料植物、养殖及剪毛科技、环境气体",
+        "steps": [
+          "安排饲料",
+          "围合饲养区",
+          "设置饲养与剪毛",
+          "安排人员",
+          "观察生长和产物"
+        ],
+        "runningChecks": "核对具体品种的食物、鳞片生长环境和人口控制",
+        "commonFailures": "有剪毛站却缺饲养人员、环境或饲料",
+        "completion": "自动检查：剪毛站。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q25",
+      "chapterId": "sustain",
+      "title": "泉与气体缓冲",
+      "track": "optional",
+      "outcome": "分析实际泉或水源条件，按需设置储存和缓冲。",
+      "prerequisites": [
+        "c5_resources"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "开水泉 存氧气",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "GasReservoir",
+          "Count": 1,
+          "Label": "储气库",
+          "LabelEn": "Gas Reservoir"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "resources.selectedSourceAnalyzed",
+          "operator": "eq",
+          "expected": true,
+          "label": "当前所选资源来源已分析",
+          "passText": "当前所选资源来源已分析：当前检查满足",
+          "unmetText": "当前所选资源来源已分析：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "当前所选资源来源已分析：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "resources.bufferRouteOperational",
+          "operator": "eq",
+          "expected": true,
+          "label": "所需储存和缓冲链可运行",
+          "passText": "所需储存和缓冲链可运行：当前检查满足",
+          "unmetText": "所需储存和缓冲链可运行：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所需储存和缓冲链可运行：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "用缓冲应对间歇泉与气源",
+        "preparation": "已探明泉、分析与温压数据、储存设备研究",
+        "steps": [
+          "分析活动周期",
+          "估算平均产出",
+          "准备缓冲",
+          "隔离温度",
+          "接输出"
+        ],
+        "runningChecks": "覆盖休眠期消耗；气罐建成不证明储量足够",
+        "commonFailures": "按喷发瞬时产出配置长期负载",
+        "completion": "自动检查：储气库。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q26",
+      "chapterId": "sustain",
+      "title": "金属火山开发",
+      "track": "optional",
+      "outcome": "在实际发现资源后准备防护、控温与收集。",
+      "prerequisites": [
+        "c4_temperature"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "典型金属火山开发",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "AutoMiner",
+          "Count": 1,
+          "Label": "自动挖掘机",
+          "LabelEn": "Auto-Miner"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "resources.metalSourceKnown",
+          "operator": "eq",
+          "expected": true,
+          "label": "所选金属资源已被发现与识别",
+          "passText": "所选金属资源已被发现与识别：当前检查满足",
+          "unmetText": "所选金属资源已被发现与识别：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所选金属资源已被发现与识别：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "resources.volcanoHeatHandled",
+          "operator": "eq",
+          "expected": true,
+          "label": "所需高温防护与散热成立",
+          "passText": "所需高温防护与散热成立：当前检查满足",
+          "unmetText": "所需高温防护与散热成立：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所需高温防护与散热成立：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "resources.metalCollectionObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "真实金属收集已观察到",
+          "passText": "真实金属收集已观察到：当前检查满足",
+          "unmetText": "真实金属收集已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "真实金属收集已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "安全回收金属火山产物",
+        "preparation": "已探明火山、耐温材料、隔热及排热设施",
+        "steps": [
+          "分析喷发",
+          "隔离热区",
+          "设计排热",
+          "设置收集路径",
+          "在可控条件下试运行"
+        ],
+        "runningChecks": "确认喷口未被阻塞，产物降温后再进入生活区",
+        "commonFailures": "喷口被建筑堵住、收集设备过热、热金属送回基地",
+        "completion": "自动检查：自动挖掘机。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q29",
+      "chapterId": "sustain",
+      "title": "高阶食物选择",
+      "track": "optional",
+      "outcome": "结合资源和士气需求选择并供应高阶食物。",
+      "prerequisites": [
+        "q20"
+      ],
+      "applicability": [],
+      "choiceGroup": "foodRoute",
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "什么？你不吃浆果糕？",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "GourmetCookingStation",
+          "Count": 1,
+          "Label": "燃气灶",
+          "LabelEn": "Gas Range"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "food.gourmetRouteViable",
+          "operator": "eq",
+          "expected": true,
+          "label": "所选高阶食谱可持续运行",
+          "passText": "所选高阶食谱可持续运行：当前检查满足",
+          "unmetText": "所选高阶食谱可持续运行：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所选高阶食谱可持续运行：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "food.gourmetSupplyObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "真实高阶食物供应已观察到",
+          "passText": "真实高阶食物供应已观察到：当前检查满足",
+          "unmetText": "真实高阶食物供应已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "真实高阶食物供应已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "选择供应链能维持的高阶食物",
+        "preparation": "高级烹饪科技、配方原料、燃料与保鲜条件",
+        "steps": [
+          "查看配方",
+          "核对原料年产出",
+          "准备燃料与人员",
+          "小批量烹饪",
+          "安排储存"
+        ],
+        "runningChecks": "按士气收益和长期成本选择，不要求所有存档统一食谱",
+        "commonFailures": "只建厨具却没有可持续配料或燃料",
+        "completion": "自动检查：燃气灶。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q33",
+      "chapterId": "sustain",
+      "title": "生态与生活美化",
+      "track": "optional",
+      "outcome": "按需要发展生态、装饰与舒适生活空间。",
+      "prerequisites": [
+        "q21"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "观赏鱼入池 基地里种树",
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "learning.ecologyPlanConfirmed",
+          "operator": "eq",
+          "expected": true,
+          "label": "玩家已确认适合当前基地的生态规划",
+          "passText": "玩家已确认适合当前基地的生态规划：当前检查满足",
+          "unmetText": "玩家已确认适合当前基地的生态规划：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "玩家已确认适合当前基地的生态规划：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "morale.decorImprovementObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "所选舒适度改善已观察到",
+          "passText": "所选舒适度改善已观察到：当前检查满足",
+          "unmetText": "所选舒适度改善已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所选舒适度改善已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "按生态需求美化生活区",
+        "preparation": "目标动物与植物的原版生存条件",
+        "steps": [
+          "查看物种需求",
+          "安排液体或气体",
+          "留活动空间",
+          "种植或引入",
+          "观察存活"
+        ],
+        "runningChecks": "区分装饰、生态和生产目标；优先保障生活设施",
+        "commonFailures": "为美化破坏通路、温区或原有资源预算",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q27",
+      "chapterId": "space",
+      "title": "第一艘火箭与太空条件",
+      "track": "main",
+      "outcome": "按当前启用内容准备火箭、燃料、人员与科研路线。",
+      "prerequisites": [
+        "q15"
+      ],
+      "applicability": [],
+      "choiceGroup": "spaceRoute",
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "第一类火箭 数据磁盘",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "LaunchPad",
+          "Count": 1,
+          "Label": "火箭平台",
+          "LabelEn": "Rocket Platform"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "space.selectedRocketRouteReady",
+          "operator": "eq",
+          "expected": true,
+          "label": "当前所选火箭路线具备发射条件",
+          "passText": "当前所选火箭路线具备发射条件：当前检查满足",
+          "unmetText": "当前所选火箭路线具备发射条件：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "当前所选火箭路线具备发射条件：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "space.crewSuppliesReady",
+          "operator": "eq",
+          "expected": true,
+          "label": "乘员与所需补给已准备",
+          "passText": "乘员与所需补给已准备：当前检查满足",
+          "unmetText": "乘员与所需补给已准备：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "乘员与所需补给已准备：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "space.launchObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "真实火箭发射已观察到",
+          "passText": "真实火箭发射已观察到：当前检查满足",
+          "unmetText": "真实火箭发射已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "真实火箭发射已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "下一项主线：太空探索与数据",
+      "notes": "依据实际启用内容选择基础版或 DLC 路线；火箭平台已建成不代表火箭可发射。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "完成与存档内容匹配的首次太空活动",
+        "preparation": "当前存档火箭路线、科技、燃料、乘员与生存资源",
+        "steps": [
+          "确认路线",
+          "建发射设施与对应模块",
+          "备燃料氧气食物",
+          "检查清单",
+          "短程试飞"
+        ],
+        "runningChecks": "原版与眼冒金星路线分别处理；发射台不代表火箭可飞",
+        "commonFailures": "缺模块、燃料、乘员或返航资源",
+        "completion": "自动检查：火箭平台。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：太空探索与数据"
+      }
+    },
+    {
+      "id": "q28",
+      "chapterId": "space",
+      "title": "太空探索与数据",
+      "track": "main",
+      "outcome": "观察探索、返回与所需数据获取。",
+      "prerequisites": [
+        "q27"
+      ],
+      "applicability": [],
+      "choiceGroup": "spaceRoute",
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "探图火箭 光虫养殖",
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "space.scoutingObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "当前路线的实际探索已观察到",
+          "passText": "当前路线的实际探索已观察到：当前检查满足",
+          "unmetText": "当前路线的实际探索已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "当前路线的实际探索已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "space.returnOrSupplyPlanValid",
+          "operator": "eq",
+          "expected": true,
+          "label": "返回或持续补给计划成立",
+          "passText": "返回或持续补给计划成立：当前检查满足",
+          "unmetText": "返回或持续补给计划成立：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "返回或持续补给计划成立：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "space.researchDataObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "所需太空科研数据已观察到",
+          "passText": "所需太空科研数据已观察到：当前检查满足",
+          "unmetText": "所需太空科研数据已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所需太空科研数据已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "下一项主线：新手毕业与下一步",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "让探索产生可用数据",
+        "preparation": "可运行火箭、探索或研究模块与乘员供给",
+        "steps": [
+          "选目的地",
+          "核对模块",
+          "准备航程资源",
+          "探索",
+          "回收并使用数据"
+        ],
+        "runningChecks": "核对存档的数据来源；光虫养殖作为独立可选路线",
+        "commonFailures": "探索完成却缺数据处理方式或无法返航",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：新手毕业与下一步"
+      }
+    },
+    {
+      "id": "q30",
+      "chapterId": "space",
+      "title": "按需要处理流星",
+      "track": "optional",
+      "outcome": "在实际有流星风险的路线中保护太空设施。",
+      "prerequisites": [
+        "q27"
+      ],
+      "applicability": [
+        {
+          "field": "context.meteorsRelevant",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "还不会打流星？且看过来",
+      "legacyObjectives": [
+        {
+          "Type": "buildingBuilt",
+          "Tag": "BunkerDoor",
+          "Count": 1,
+          "Label": "防爆门",
+          "LabelEn": "Bunker Door"
+        }
+      ],
+      "criteria": [
+        {
+          "field": "space.meteorProtectionReady",
+          "operator": "eq",
+          "expected": true,
+          "label": "当前风险所需防护已就绪",
+          "passText": "当前风险所需防护已就绪：当前检查满足",
+          "unmetText": "当前风险所需防护已就绪：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "当前风险所需防护已就绪：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "space.meteorHandlingObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "真实防护效果已观察到",
+          "passText": "真实防护效果已观察到：当前检查满足",
+          "unmetText": "真实防护效果已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "真实防护效果已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "只有可靠读数明确表明不适用才略过；未知星体或未知 DLC 状态不能当成无流星。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "按实际流星风险设计太空防护",
+        "preparation": "当前星体有相应风险；防护材料、电力与维护入口",
+        "steps": [
+          "确认风险",
+          "确定需保护设备",
+          "布置防护和控制",
+          "检查碎屑",
+          "观察一次事件"
+        ],
+        "runningChecks": "无对应风险时作为知识项；按需配置而非统一强制建造",
+        "commonFailures": "防护门长期关死、设备被碎屑埋住或线路损坏",
+        "completion": "自动检查：防爆门。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q31",
+      "chapterId": "space",
+      "title": "拓殖型火箭",
+      "track": "optional",
+      "outcome": "在支持拓殖的路线中准备生活与运输条件。",
+      "prerequisites": [
+        "q28"
+      ],
+      "applicability": [
+        {
+          "field": "context.worldTravelEnabled",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "choiceGroup": "colonization",
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "开拓型火箭的建造",
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "space.colonizationRocketReady",
+          "operator": "eq",
+          "expected": true,
+          "label": "所选拓殖火箭条件满足",
+          "passText": "所选拓殖火箭条件满足：当前检查满足",
+          "unmetText": "所选拓殖火箭条件满足：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所选拓殖火箭条件满足：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "space.longTripSuppliesReady",
+          "operator": "eq",
+          "expected": true,
+          "label": "所需长期补给与生活条件成立",
+          "passText": "所需长期补给与生活条件成立：当前检查满足",
+          "unmetText": "所需长期补给与生活条件成立：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "所需长期补给与生活条件成立：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "为拓殖准备乘员与落地物资",
+        "preparation": "存档支持拓殖、可运行火箭、生活资源与施工材料",
+        "steps": [
+          "选目的地",
+          "核对模块与航程",
+          "装载生存资源",
+          "准备初始基地材料",
+          "短程演练"
+        ],
+        "runningChecks": "保证返航或持续补给；按乘员数量计算航程储备",
+        "commonFailures": "只准备燃料，忽略氧气、食物和落地材料",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q32",
+      "chapterId": "space",
+      "title": "着陆与星体开拓",
+      "track": "optional",
+      "outcome": "在实际支持的路线中观察着陆，并安顿新基地。",
+      "prerequisites": [
+        "q31"
+      ],
+      "applicability": [
+        {
+          "field": "context.worldTravelEnabled",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "choiceGroup": "colonization",
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "火箭着陆与星球开拓",
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "space.landingObserved",
+          "operator": "eq",
+          "expected": true,
+          "label": "真实着陆已观察到",
+          "passText": "真实着陆已观察到：当前检查满足",
+          "unmetText": "真实着陆已观察到：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "真实着陆已观察到：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "space.newBaseBasicsUsable",
+          "operator": "eq",
+          "expected": true,
+          "label": "新星体的基础生活设施可用",
+          "passText": "新星体的基础生活设施可用：当前检查满足",
+          "unmetText": "新星体的基础生活设施可用：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "新星体的基础生活设施可用：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。",
+      "notes": "新标准是学习框架；旧任务的建筑计数或知识确认不能直接证明新标准通过。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "建立新星体的最小生存基地",
+        "preparation": "拓殖路线可用、落地手段与生存物资",
+        "steps": [
+          "检查落地位置",
+          "建卫生睡眠与供氧",
+          "安排食物电力",
+          "准备运输与返航"
+        ],
+        "runningChecks": "新星体独立检查资源和任务设施，不能借用母星计数",
+        "commonFailures": "落地后没有供氧、物资不足或没有撤退方式",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
+    },
+    {
+      "id": "q34",
+      "chapterId": "space",
+      "title": "新手毕业与下一步",
+      "track": "main",
+      "outcome": "回顾生存、基础设施、资源和太空路线，并自主选择下一目标。",
+      "prerequisites": [
+        "q28",
+        "c5_resources",
+        "c5_automation"
+      ],
+      "applicability": [],
+      "choiceGroup": null,
+      "implementation": "existingRuntime",
+      "runtimeCriteriaMatch": false,
+      "legacyTitle": "最终的干货，完结",
+      "legacyObjectives": [],
+      "criteria": [
+        {
+          "field": "learning.graduationReviewConfirmed",
+          "operator": "eq",
+          "expected": true,
+          "label": "玩家已确认能力回顾",
+          "passText": "玩家已确认能力回顾：当前检查满足",
+          "unmetText": "玩家已确认能力回顾：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "玩家已确认能力回顾：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        },
+        {
+          "field": "learning.nextGoalSelected",
+          "operator": "eq",
+          "expected": true,
+          "label": "玩家已选择下一阶段目标",
+          "passText": "玩家已选择下一阶段目标：当前检查满足",
+          "unmetText": "玩家已选择下一阶段目标：尚未通过；请核对相关设施、资源与使用过程。",
+          "unknownText": "玩家已选择下一阶段目标：尚无可靠读数，不能认定满足或失败。",
+          "repairText": "保留已学会记录，检查当前失效环节；不要求重复已掌握的教学。"
+        }
+      ],
+      "successNext": "核对本章能力后进入下一章；选做路线按需查阅。",
+      "notes": "毕业不是到达固定天数，也不是所有可选任务全做完。回顾由明确玩家确认完成，不以播放视频代替。",
+      "evidenceRequired": "真实字段值、所属存档/星体、采样时间与观察来源；有使用或稳定性条件时还需相应观察窗口。",
+      "teaching": {
+        "purpose": "核对基地能稳定运行并选择后续方向",
+        "preparation": "已掌握生活、生存、基础设施与风险管理",
+        "steps": [
+          "巡查氧食水",
+          "核对电网与热量",
+          "检查关键耗材",
+          "安排备份与维护",
+          "选择下一个目标"
+        ],
+        "runningChecks": "用连续运行与资源趋势评估，按当前存档筛选可选路线",
+        "commonFailures": "建筑数量很多但资源持续亏空或依赖无人维护的环节",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "本章主线",
+        "next": "核对本章能力后进入下一章；选做路线按需查阅。"
+      }
+    }
+  ]
+}

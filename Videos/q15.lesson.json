@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "id": "q15",
+  "file": "q15.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "先选需要的建筑",
+      "en": "Choose the need..."
+    },
+    {
+      "start": 6,
+      "zh": "查看科技链",
+      "en": "Read its techno..."
+    },
+    {
+      "start": 12,
+      "zh": "准备各研究站",
+      "en": "Prepare the req..."
+    },
+    {
+      "start": 18,
+      "zh": "安排研究人员",
+      "en": "Assign a resear..."
+    },
+    {
+      "start": 24,
+      "zh": "逐项研究",
+      "en": "Research one pr..."
+    },
+    {
+      "start": 30,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "先选需要的建筑。",
+      "en": "Choose the needed building first."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "查看科技链。",
+      "en": "Read its technology chain."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "准备各研究站。",
+      "en": "Prepare the required research stations."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "安排研究人员。",
+      "en": "Assign a researcher."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "逐项研究。",
+      "en": "Research one prerequisite at a time."
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "research",
+  "nativeProps": [
+    "ResearchCenter",
+    "AdvancedResearchCenter",
+    "NuclearResearchCenter"
+  ]
+}

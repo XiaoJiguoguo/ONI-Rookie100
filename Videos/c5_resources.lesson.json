@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "id": "c5_resources",
+  "file": "c5_resources.mp4",
+  "duration": 30,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "列出水/氧气/…",
+      "en": "List water, oxy..."
+    },
+    {
+      "start": 6,
+      "zh": "测消耗",
+      "en": "Measure consump..."
+    },
+    {
+      "start": 12,
+      "zh": "选可持续来源",
+      "en": "Choose replenis..."
+    },
+    {
+      "start": 18,
+      "zh": "设置缓冲与维护",
+      "en": "Set buffers and..."
+    },
+    {
+      "start": 24,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "列出水/氧气/食物/燃料/材料。",
+      "en": "List water, oxygen, food, fuel and materials."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "测消耗。",
+      "en": "Measure consumption."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "选可持续来源。",
+      "en": "Choose replenishable sources."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "设置缓冲与维护。",
+      "en": "Set buffers and maintenance."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "budget",
+  "nativeProps": [
+    "LiquidReservoir",
+    "GasReservoir",
+    "RationBox"
+  ]
+}

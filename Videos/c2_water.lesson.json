@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "id": "c2_water",
+  "file": "c2_water.mp4",
+  "duration": 30,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "辨认液体",
+      "en": "Identify the li..."
+    },
+    {
+      "start": 6,
+      "zh": "保留挡水边界",
+      "en": "Preserve the re..."
+    },
+    {
+      "start": 12,
+      "zh": "建可达取水设施",
+      "en": "Build reachable..."
+    },
+    {
+      "start": 18,
+      "zh": "规划补水或净化…",
+      "en": "Plan replenishm..."
+    },
+    {
+      "start": 24,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "辨认液体。",
+      "en": "Identify the liquid."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "保留挡水边界。",
+      "en": "Preserve the reservoir boundary."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "建可达取水设施。",
+      "en": "Build reachable water access."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "规划补水或净化来源。",
+      "en": "Plan replenishment or purification."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "water",
+  "nativeProps": [
+    "LiquidPumpingStation",
+    "LiquidPump",
+    "WaterPurifier"
+  ]
+}

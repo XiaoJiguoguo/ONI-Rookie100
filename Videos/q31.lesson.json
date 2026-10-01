@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "id": "q31",
+  "file": "q31.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "选目的地",
+      "en": "Choose a destin..."
+    },
+    {
+      "start": 6,
+      "zh": "核对模块与航程",
+      "en": "Check modules a..."
+    },
+    {
+      "start": 12,
+      "zh": "装载生存资源",
+      "en": "Load survival s..."
+    },
+    {
+      "start": 18,
+      "zh": "准备初始基地材料",
+      "en": "Pack initial ba..."
+    },
+    {
+      "start": 24,
+      "zh": "短程演练",
+      "en": "Rehearse a shor..."
+    },
+    {
+      "start": 30,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "选目的地。",
+      "en": "Choose a destination."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "核对模块与航程。",
+      "en": "Check modules and range."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "装载生存资源。",
+      "en": "Load survival supplies."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "准备初始基地材料。",
+      "en": "Pack initial base materials."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "短程演练。",
+      "en": "Rehearse a short trip."
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "rocket",
+  "nativeProps": [
+    "LaunchPad",
+    "CommandModule",
+    "RationBox"
+  ]
+}

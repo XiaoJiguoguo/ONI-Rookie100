@@ -14,6 +14,7 @@ namespace Rookie100.UI
     internal static class ManagementMenuInstaller
     {
         private const string ButtonName = "Rookie100ManagementButton";
+        internal static RectTransform TaskButtonRect { get; private set; }
 
         public static void Install(ManagementMenu menu)
         {
@@ -48,6 +49,7 @@ namespace Rookie100.UI
 
             GameObject buttonObject = Object.Instantiate(template.gameObject, parent, false);
             buttonObject.name = ButtonName;
+            TaskButtonRect = buttonObject.GetComponent<RectTransform>();
             buttonObject.SetActive(true);
 
             KToggle button = buttonObject.GetComponent<KToggle>();
@@ -112,7 +114,7 @@ namespace Rookie100.UI
                 toggleState?.SetInactive();
                 KMonoBehaviour.PlaySound(GlobalAssets.GetSound("HUD_Click", false));
                 ModLogger.Log("管理菜单按钮被点击");
-                QuestPanel.Show();
+                QuestPanel.Toggle();
             };
 
             // 插到星图按钮之前
@@ -200,4 +202,3 @@ namespace Rookie100.UI
         }
     }
 }
-

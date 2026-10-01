@@ -1,0 +1,282 @@
+{
+  "AdvancedResearchCenter": {
+    "anim": "research_center2",
+    "width": 3,
+    "height": 3
+  },
+  "AutoMiner": {
+    "anim": "auto_miner",
+    "width": 2,
+    "height": 2
+  },
+  "Battery": {
+    "anim": "batterysm",
+    "width": 1,
+    "height": 2
+  },
+  "BatterySmart": {
+    "anim": "smartbattery",
+    "width": 2,
+    "height": 2
+  },
+  "Bed": {
+    "anim": "bedlg",
+    "width": 2,
+    "height": 2
+  },
+  "BunkerDoor": {
+    "anim": "door_bunker",
+    "width": 4,
+    "height": 1
+  },
+  "BunkerTile": {
+    "anim": "floor_bunker",
+    "width": 1,
+    "height": 1
+  },
+  "CeilingLight": {
+    "anim": "ceilinglight",
+    "width": 1,
+    "height": 1
+  },
+  "CommandModule": {
+    "anim": "rocket_command_module",
+    "width": 5,
+    "height": 5
+  },
+  "CookingStation": {
+    "anim": "cookstation",
+    "width": 3,
+    "height": 2
+  },
+  "CreatureFeeder": {
+    "anim": "feeder",
+    "width": 1,
+    "height": 2
+  },
+  "DiningTable": {
+    "anim": "diningtable",
+    "width": 1,
+    "height": 1
+  },
+  "Electrolyzer": {
+    "anim": "electrolyzer",
+    "width": 2,
+    "height": 2
+  },
+  "FarmTile": {
+    "anim": "farmtilerotating",
+    "width": 1,
+    "height": 1
+  },
+  "FishFeeder": {
+    "anim": "fishfeeder",
+    "width": 1,
+    "height": 3
+  },
+  "FlushToilet": {
+    "anim": "toiletflush",
+    "width": 2,
+    "height": 3
+  },
+  "GasPump": {
+    "anim": "pumpgas",
+    "width": 2,
+    "height": 2
+  },
+  "GasReservoir": {
+    "anim": "gasstorage",
+    "width": 5,
+    "height": 3
+  },
+  "GourmetCookingStation": {
+    "anim": "cookstation_gourmet",
+    "width": 3,
+    "height": 3
+  },
+  "HydroponicFarm": {
+    "anim": "farmtilehydroponicrotating",
+    "width": 1,
+    "height": 1
+  },
+  "InsulationTile": {
+    "anim": "floor_insulated",
+    "width": 1,
+    "height": 1
+  },
+  "Ladder": {
+    "anim": "ladder",
+    "width": 1,
+    "height": 1
+  },
+  "LaunchPad": {
+    "anim": "rocket_launchpad",
+    "width": 7,
+    "height": 2
+  },
+  "LiquidConditioner": {
+    "anim": "liquidconditioner",
+    "width": 2,
+    "height": 2
+  },
+  "LiquidPump": {
+    "anim": "pumpliquid",
+    "width": 2,
+    "height": 2
+  },
+  "LiquidPumpingStation": {
+    "anim": "waterpump",
+    "width": 2,
+    "height": 4
+  },
+  "LiquidReservoir": {
+    "anim": "liquidreservoir",
+    "width": 2,
+    "height": 3
+  },
+  "ManualGenerator": {
+    "anim": "generatormanual",
+    "width": 2,
+    "height": 2
+  },
+  "ManualPressureDoor": {
+    "anim": "door_manual",
+    "width": 1,
+    "height": 2
+  },
+  "MetalRefinery": {
+    "anim": "metalrefinery",
+    "width": 3,
+    "height": 4
+  },
+  "MethaneGenerator": {
+    "anim": "generatormethane",
+    "width": 4,
+    "height": 3
+  },
+  "MicrobeMusher": {
+    "anim": "microbemusher",
+    "width": 2,
+    "height": 3
+  },
+  "MineralDeoxidizer": {
+    "anim": "mineraldeoxidizer",
+    "width": 1,
+    "height": 2
+  },
+  "NuclearResearchCenter": {
+    "anim": "material_research_centre",
+    "width": 5,
+    "height": 3
+  },
+  "OilRefinery": {
+    "anim": "oilrefinery",
+    "width": 4,
+    "height": 4
+  },
+  "OilWellCap": {
+    "anim": "geyser_oil_cap",
+    "width": 4,
+    "height": 4
+  },
+  "Outhouse": {
+    "anim": "outhouse",
+    "width": 2,
+    "height": 3
+  },
+  "ParkSign": {
+    "anim": "parksign",
+    "width": 1,
+    "height": 2
+  },
+  "PlanterBox": {
+    "anim": "planterbox",
+    "width": 1,
+    "height": 1
+  },
+  "PowerTransformer": {
+    "anim": "transformer",
+    "width": 3,
+    "height": 2
+  },
+  "RanchStation": {
+    "anim": "rancherstation",
+    "width": 2,
+    "height": 3
+  },
+  "RationBox": {
+    "anim": "rationbox",
+    "width": 2,
+    "height": 2
+  },
+  "Refrigerator": {
+    "anim": "fridge",
+    "width": 1,
+    "height": 2
+  },
+  "ResearchCenter": {
+    "anim": "research_center",
+    "width": 2,
+    "height": 2
+  },
+  "ResearchModule": {
+    "anim": "rocket_research_module",
+    "width": 5,
+    "height": 5
+  },
+  "ShearingStation": {
+    "anim": "shearing_station",
+    "width": 3,
+    "height": 3
+  },
+  "SolidConduitInbox": {
+    "anim": "conveyorin",
+    "width": 1,
+    "height": 2
+  },
+  "SteamEngineCluster": {
+    "anim": "rocket_cluster_steam_engine",
+    "width": 7,
+    "height": 5
+  },
+  "SteamTurbine": {
+    "anim": "steamturbine",
+    "width": 5,
+    "height": 4
+  },
+  "StorageLocker": {
+    "anim": "storagelocker",
+    "width": 1,
+    "height": 2
+  },
+  "SuitLocker": {
+    "anim": "changingarea",
+    "width": 1,
+    "height": 3
+  },
+  "SuitMarker": {
+    "anim": "changingarea_arrow",
+    "width": 1,
+    "height": 3
+  },
+  "Tile": {
+    "anim": "floor_basic",
+    "width": 1,
+    "height": 1
+  },
+  "WashBasin": {
+    "anim": "wash_basin",
+    "width": 2,
+    "height": 3
+  },
+  "WaterPurifier": {
+    "anim": "waterpurifier",
+    "width": 4,
+    "height": 3
+  },
+  "switchpower_kanim": {
+    "anim": "switchpower",
+    "width": 1,
+    "height": 1
+  }
+}

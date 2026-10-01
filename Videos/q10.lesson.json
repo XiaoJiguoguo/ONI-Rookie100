@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "id": "q10",
+  "file": "q10.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "划分氢氧区域",
+      "en": "Separate hydrog..."
+    },
+    {
+      "start": 6,
+      "zh": "接泵与输出",
+      "en": "Connect pumps a..."
+    },
+    {
+      "start": 12,
+      "zh": "逐台启动",
+      "en": "Start pumps sep..."
+    },
+    {
+      "start": 18,
+      "zh": "检测输出介质",
+      "en": "Inspect the exp..."
+    },
+    {
+      "start": 24,
+      "zh": "留检修空间",
+      "en": "Keep maintenanc..."
+    },
+    {
+      "start": 30,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "划分氢氧区域。",
+      "en": "Separate hydrogen and oxygen collection areas."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "接泵与输出。",
+      "en": "Connect pumps and outlets."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "逐台启动。",
+      "en": "Start pumps separately."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "检测输出介质。",
+      "en": "Inspect the exported gas."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "留检修空间。",
+      "en": "Keep maintenance access."
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "oxygen",
+  "nativeProps": [
+    "Electrolyzer",
+    "GasPump",
+    "GasReservoir"
+  ]
+}

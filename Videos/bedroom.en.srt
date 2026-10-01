@@ -1,0 +1,43 @@
+1
+00:00:00,000 --> 00:00:03,000
+The example interior is 14 cells wide and 3 high: 42 cells, excluding boundary tiles.
+
+2
+00:00:03,000 --> 00:00:06,000
+Each cot occupies 2 x 2 cells. The example height of 3 is not a fixed barracks requirement.
+
+3
+00:00:06,000 --> 00:00:07,000
+A duplicant picks up sandstone for the example cots.
+
+4
+00:00:07,000 --> 00:00:11,000
+Carry material to the blueprint. Delivery requires a reachable route.
+
+5
+00:00:11,000 --> 00:00:12,000
+Deliver the material and prepare to construct.
+
+6
+00:00:12,000 --> 00:00:17,000
+The duplicant constructs the cot. The completed blueprint becomes a cot.
+
+7
+00:00:17,000 --> 00:00:20,000
+Repeat for the remaining cots. Repeated construction is condensed here.
+
+8
+00:00:20,000 --> 00:00:25,000
+Enclose the barracks with tiles, leaving a doorway. Tile construction is condensed here.
+
+9
+00:00:25,000 --> 00:00:28,000
+A vertical manual airlock occupies 1 x 2 cells. Fill the tiles above it to enclose the room.
+
+10
+00:00:28,000 --> 00:00:32,000
+Check the room overlay: 12-64 interior cells, at least one bed, and no industrial machinery.
+
+11
+00:00:32,000 --> 00:00:36,000
+The 42-cell example fits the size limit. Check cot access, assignments and sleep schedules; tasks use your colony.

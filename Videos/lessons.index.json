@@ -1,0 +1,230 @@
+{
+  "version": 1,
+  "lessons": [
+    {
+      "id": "q01",
+      "definition": "q01.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q01_bedroom",
+      "definition": "bedroom.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q01_dining",
+      "definition": "q01_dining.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q02",
+      "definition": "q02.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q03",
+      "definition": "q03.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "c2_water",
+      "definition": "c2_water.lesson.json",
+      "runtime": false
+    },
+    {
+      "id": "q06",
+      "definition": "q06.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "c2_food_budget",
+      "definition": "c2_food_budget.lesson.json",
+      "runtime": false
+    },
+    {
+      "id": "q08",
+      "definition": "q08.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q12",
+      "definition": "q12.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q20",
+      "definition": "q20.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "c3_power",
+      "definition": "c3_power.lesson.json",
+      "runtime": false
+    },
+    {
+      "id": "q04",
+      "definition": "q04.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q07",
+      "definition": "q07.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "c3_pipes",
+      "definition": "c3_pipes.lesson.json",
+      "runtime": false
+    },
+    {
+      "id": "c3_waste",
+      "definition": "c3_waste.lesson.json",
+      "runtime": false
+    },
+    {
+      "id": "q05",
+      "definition": "q05.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q14",
+      "definition": "q14.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "c4_biomes",
+      "definition": "c4_biomes.lesson.json",
+      "runtime": false
+    },
+    {
+      "id": "c4_temperature",
+      "definition": "c4_temperature.lesson.json",
+      "runtime": false
+    },
+    {
+      "id": "q22",
+      "definition": "q22.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q11",
+      "definition": "q11.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q15",
+      "definition": "q15.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "c5_resources",
+      "definition": "c5_resources.lesson.json",
+      "runtime": false
+    },
+    {
+      "id": "c5_automation",
+      "definition": "c5_automation.lesson.json",
+      "runtime": false
+    },
+    {
+      "id": "q09",
+      "definition": "q09.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q10",
+      "definition": "q10.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q13",
+      "definition": "q13.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q16",
+      "definition": "q16.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q17",
+      "definition": "q17.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q18",
+      "definition": "q18.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q19",
+      "definition": "q19.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q21",
+      "definition": "q21.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q23",
+      "definition": "q23.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q24",
+      "definition": "q24.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q25",
+      "definition": "q25.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q26",
+      "definition": "q26.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q29",
+      "definition": "q29.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q33",
+      "definition": "q33.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q27",
+      "definition": "q27.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q28",
+      "definition": "q28.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q30",
+      "definition": "q30.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q31",
+      "definition": "q31.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q32",
+      "definition": "q32.lesson.json",
+      "runtime": true
+    },
+    {
+      "id": "q34",
+      "definition": "q34.lesson.json",
+      "runtime": true
+    }
+  ]
+}

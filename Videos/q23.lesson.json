@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "id": "q23",
+  "file": "q23.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "探明储油石",
+      "en": "Locate an oil r..."
+    },
+    {
+      "start": 6,
+      "zh": "准备安全入口",
+      "en": "Prepare a safe ..."
+    },
+    {
+      "start": 12,
+      "zh": "接水与电",
+      "en": "Connect water a..."
+    },
+    {
+      "start": 18,
+      "zh": "安排产油和气体",
+      "en": "Provide oil and..."
+    },
+    {
+      "start": 24,
+      "zh": "观察泄压维护",
+      "en": "Observe pressur..."
+    },
+    {
+      "start": 30,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "探明储油石。",
+      "en": "Locate an oil reservoir."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "准备安全入口。",
+      "en": "Prepare a safe entrance."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "接水与电。",
+      "en": "Connect water and power."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "安排产油和气体。",
+      "en": "Provide oil and gas outlets."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "观察泄压维护。",
+      "en": "Observe pressure release maintenance."
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "water",
+  "nativeProps": [
+    "OilWellCap",
+    "LiquidPump",
+    "LiquidReservoir"
+  ]
+}

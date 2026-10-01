@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "id": "q11",
+  "file": "q11.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "核对配方",
+      "en": "Check the recipe"
+    },
+    {
+      "start": 6,
+      "zh": "接输入输出",
+      "en": "Connect inputs ..."
+    },
+    {
+      "start": 12,
+      "zh": "准备冷却液回路",
+      "en": "Prepare a coola..."
+    },
+    {
+      "start": 18,
+      "zh": "少量生产",
+      "en": "Produce a small..."
+    },
+    {
+      "start": 24,
+      "zh": "查看液体温度",
+      "en": "Inspect coolant..."
+    },
+    {
+      "start": 30,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "核对配方。",
+      "en": "Check the recipe."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "接输入输出。",
+      "en": "Connect inputs and outputs."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "准备冷却液回路。",
+      "en": "Prepare a coolant loop."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "少量生产。",
+      "en": "Produce a small batch."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "查看液体温度。",
+      "en": "Inspect coolant temperature."
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "heat",
+  "nativeProps": [
+    "MetalRefinery",
+    "LiquidReservoir",
+    "SteamTurbine"
+  ]
+}

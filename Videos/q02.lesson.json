@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "id": "q02",
+  "file": "q02.mp4",
+  "duration": 30,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "查看房间/电力…",
+      "en": "Inspect room, p..."
+    },
+    {
+      "start": 6,
+      "zh": "调整日程",
+      "en": "Adjust schedules"
+    },
+    {
+      "start": 12,
+      "zh": "检查工作权限",
+      "en": "Check work perm..."
+    },
+    {
+      "start": 18,
+      "zh": "尝试施工优先级",
+      "en": "Set constructio..."
+    },
+    {
+      "start": 24,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "查看房间/电力/氧气叠层。",
+      "en": "Inspect room, power and oxygen overlays."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "调整日程。",
+      "en": "Adjust schedules."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "检查工作权限。",
+      "en": "Check work permissions."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "尝试施工优先级。",
+      "en": "Set construction priorities."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "tools",
+  "nativeProps": [
+    "Bed",
+    "ManualGenerator",
+    "MineralDeoxidizer"
+  ]
+}

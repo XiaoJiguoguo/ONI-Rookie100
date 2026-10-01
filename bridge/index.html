@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rookie100 游戏调试台</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<header><div><p class="eyebrow">ROOKIE100 · 本机诊断</p><h1>游戏任务调试台</h1><p class="muted">读取游戏快照，检查第一章任务与复制人状态。</p></div><label class="import">导入快照<input id="file" type="file" accept=".json,application/json"></label></header>
+<main>
+<section class="connection"><div><strong id="connection">等待游戏快照</strong><p id="detail">启用本地模组并载入存档后，这里会显示游戏读数。</p></div><button id="live">读取本机桥接</button></section>
+<div id="summary" class="summary"></div>
+<section><div class="section-head"><h2>第一章 · 安顿生活</h2><span>卫生间 → 宿舍 → 餐厅</span></div><div id="living" class="cards"><p class="empty">尚无游戏任务数据。</p></div></section>
+<section><div class="section-head"><h2>当前星体的复制人</h2><span>未知值显示为“未知”</span></div><div class="table-wrap"><table><thead><tr><th>姓名</th><th>生命</th><th>压力</th><th>呼吸</th><th>热量</th></tr></thead><tbody id="duplicants"><tr><td colspan="5">尚无游戏读数。</td></tr></tbody></table></div></section>
+<section><div class="section-head"><h2>原版上下文</h2><span>拥有的 DLC 与存档启用内容分别显示</span></div><div id="context" class="context"></div></section>
+<details><summary>其余任务条件</summary><div id="others" class="cards"></div></details>
+<details><summary>查看原始快照</summary><pre id="raw">尚未读取快照。</pre></details>
+<p class="footnote">快照超过 10 秒未更新会标记过期。退出存档后清空读数。此页面不接收游戏控制指令，也不发放任务奖励。</p>
+</main>
+</body></html>

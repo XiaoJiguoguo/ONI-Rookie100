@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "id": "c3_waste",
+  "file": "c3_waste.mp4",
+  "duration": 30,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "统计废物来源",
+      "en": "Count waste sou..."
+    },
+    {
+      "start": 6,
+      "zh": "分开收集",
+      "en": "Collect differe..."
+    },
+    {
+      "start": 12,
+      "zh": "规划储存或处理",
+      "en": "Plan storage or..."
+    },
+    {
+      "start": 18,
+      "zh": "检查处理产物去向",
+      "en": "Check treatment..."
+    },
+    {
+      "start": 24,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "统计废物来源。",
+      "en": "Count waste sources."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "分开收集。",
+      "en": "Collect different wastes separately."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "规划储存或处理。",
+      "en": "Plan storage or treatment."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "检查处理产物去向。",
+      "en": "Check treatment product destinations."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "waste",
+  "nativeProps": [
+    "FlushToilet",
+    "LiquidReservoir",
+    "WaterPurifier"
+  ]
+}

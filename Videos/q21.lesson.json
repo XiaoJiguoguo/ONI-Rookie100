@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "id": "q21",
+  "file": "q21.mp4",
+  "duration": 30,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "查看士气来源",
+      "en": "Inspect morale ..."
+    },
+    {
+      "start": 6,
+      "zh": "优先改善餐厅与…",
+      "en": "Improve dining ..."
+    },
+    {
+      "start": 12,
+      "zh": "安排合适食物",
+      "en": "Arrange suitabl..."
+    },
+    {
+      "start": 18,
+      "zh": "按士气分配技能",
+      "en": "Learn skills wi..."
+    },
+    {
+      "start": 24,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "查看士气来源。",
+      "en": "Inspect morale sources."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "优先改善餐厅与作息。",
+      "en": "Improve dining and schedules first."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "安排合适食物。",
+      "en": "Arrange suitable food."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "按士气分配技能。",
+      "en": "Learn skills within the morale budget."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "room",
+  "nativeProps": [
+    "DiningTable",
+    "CookingStation",
+    "Bed"
+  ]
+}

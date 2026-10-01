@@ -20,9 +20,11 @@ namespace Rookie100
             {
                 // 内容与 UI 初始化
                 Content.QuestStore.SetContentPath(mod.ContentPath);
+                Debugging.DebugExporter.Initialize(mod.ContentPath);
                 UI.LayoutStore.SetContentPath(mod.ContentPath);
                 UI.Lang.Load();
                 Content.QuestStore.Load();
+                Curriculum.CurriculumCatalog.Initialize(mod.ContentPath);
 
                 // 应用所有 [HarmonyPatch] 注解补丁
                 harmony.PatchAll(typeof(ModEntry).Assembly);
@@ -37,4 +39,3 @@ namespace Rookie100
         }
     }
 }
-

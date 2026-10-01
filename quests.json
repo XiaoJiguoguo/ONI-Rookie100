@@ -1,42 +1,56 @@
 {
-  "Version": 6,
+  "Version": 8,
   "Phases": [
     {
-      "Title": "阶段一 · 活下来",
-      "Id": "early",
-      "Desc": "厕所→氧气→电网→食物，先站稳脚跟",
-      "TitleEn": "Phase 1 - Survive",
-      "DescEn": "Toilet to oxygen to power grid to food - get a foothold first"
+      "Id": "settle",
+      "Title": "第1章 · 安顿生活",
+      "Desc": "让复制人有可用的卫生间、床铺和用餐空间。",
+      "TitleEn": "Chapter 1 - Settle in",
+      "DescEn": "让复制人有可用的卫生间、床铺和用餐空间。"
     },
     {
-      "Title": "阶段二 · 工业化",
-      "Id": "mid",
-      "Desc": "科研→炼钢→精炼→冷却→士气，工业起飞",
-      "TitleEn": "Phase 2 - Industrialize",
-      "DescEn": "Research, steel, refining, cooling, morale - industrial takeoff"
+      "Id": "survive",
+      "Title": "第2章 · 稳定生存",
+      "Desc": "让氧气、食物与清水持续可用，而不是只建好建筑。",
+      "TitleEn": "Chapter 2 - Stable survival",
+      "DescEn": "让氧气、食物与清水持续可用，而不是只建好建筑。"
     },
     {
-      "Title": "阶段三 · 深度开发",
-      "Id": "late",
-      "Desc": "养殖→泉→火山→火箭，点满科技树",
-      "TitleEn": "Phase 3 - Deep Development",
-      "DescEn": "Ranching, geysers, volcanos, rockets - finish the tech tree"
+      "Id": "infrastructure",
+      "Title": "第3章 · 基础设施",
+      "Desc": "理解电力分组、液体和气体管道及废物处理。",
+      "TitleEn": "Chapter 3 - Infrastructure",
+      "DescEn": "理解电力分组、液体和气体管道及废物处理。"
     },
     {
-      "Title": "阶段四 · 太空拓展",
+      "Id": "explore",
+      "Title": "第4章 · 探索与控温",
+      "Desc": "安全挖掘和进入生态，并让生活区与设备保持合适温度。",
+      "TitleEn": "Chapter 4 - Exploration and temperature",
+      "DescEn": "安全挖掘和进入生态，并让生活区与设备保持合适温度。"
+    },
+    {
+      "Id": "sustain",
+      "Title": "第5章 · 持续发展",
+      "Desc": "建立可持续供应、生产和自动化，按需要选择工业路线。",
+      "TitleEn": "Chapter 5 - Sustainable development",
+      "DescEn": "建立可持续供应、生产和自动化，按需要选择工业路线。"
+    },
+    {
       "Id": "space",
-      "Desc": "开拓星系，飞向太空，最终毕业",
-      "TitleEn": "Phase 4 - Space Expansion",
-      "DescEn": "Colonize other worlds, reach space, graduate"
+      "Title": "第6章 · 走向太空",
+      "Desc": "按存档实际启用的内容选择火箭、探索与拓殖路线。",
+      "TitleEn": "Chapter 6 - Space",
+      "DescEn": "按存档实际启用的内容选择火箭、探索与拓殖路线。"
     }
   ],
   "Quests": [
     {
       "Id": "q01",
-      "Phase": "early",
+      "Phase": "settle",
       "Order": 1,
-      "Title": "公共厕所",
-      "Description": "建成原版认可的公共厕所房间，并打通取水、补水、如厕和洗手流程。下方六项全部通过后才可领取奖励。",
+      "Title": "基础卫生间",
+      "Description": "先规划三个生活空间，当前优先解决卫生间。已有设施直接认可；按当前缺口检查泥土、供水、搬运、可达性、原版房间与真实试运行。",
       "Requires": [],
       "Objectives": [
         {
@@ -83,9 +97,9 @@
           "Type": "sanitation",
           "Condition": "Trial",
           "Count": 1,
-          "Label": "接取后实际完成如厕再洗手",
+          "Label": "实际完成如厕后洗手",
           "Tag": "WashBasin",
-          "LabelEn": "Complete a toilet-then-wash trial after accepting"
+          "LabelEn": "Complete an actual toilet-then-wash trial"
         }
       ],
       "Rewards": [
@@ -111,8 +125,8 @@
         "27:23 如厕后洗手与病菌传播",
         "28:14 用墙和门形成公共厕所"
       ],
-      "TitleEn": "Public Toilet",
-      "DescEn": "Create a game-recognized latrine and connect water collection, basin supply, toilet use and hand washing. All six checks are required.",
+      "TitleEn": "Basic sanitation",
+      "DescEn": "Plan the three living spaces and focus on sanitation first. Existing working facilities count. Check supplies, delivery, access, native room recognition and actual use.",
       "SegmentsEn": [
         "19:32 Main routes and population advice",
         "21:13 Room height and early planning",
@@ -135,17 +149,133 @@
         "试运行：接取任务后，让同一复制人在同一公共厕所如厕，随后在 120 游戏秒内完成洗手。",
         "试运行记录会保存；其余五项按当前星球实时检查。",
         "建议：按排班人数配置设施；一个厕所也可轮流使用。"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "切断如厕到进食之间的病菌传播",
+        "preparation": "泥土、可取清水、可达施工位置",
+        "steps": [
+          "规划出口",
+          "茅房补泥土",
+          "洗手盆补水",
+          "围合公共厕所",
+          "观察如厕后洗手"
+        ],
+        "runningChecks": "检查搬运与清理；同一复制人在同一厕所完成真实试运行",
+        "commonFailures": "洗手方向错误、绕过洗手盆、污水未清理",
+        "completion": "自动检查：手压泵可取到水；洗手盆已补水且可用；厕所已补泥土且可用；原版识别为公共厕所房间；同一复制人能到达整套设施；实际完成如厕后洗手。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：安顿宿舍"
+      }
     },
     {
-      "Id": "q02",
-      "Phase": "early",
+      "Id": "q01_bedroom",
+      "Phase": "settle",
       "Order": 2,
-      "Title": "入坑必学，贯穿游戏前后的基础操作与机制",
-      "Description": "熟悉游戏界面、操作与基础机制",
+      "Title": "安顿宿舍",
+      "TitleEn": "Set up the bedroom",
+      "Description": "已建成可用的设施直接认可。设施可用与原版房间成立分别检查；需要研究时再按需解锁。",
       "Requires": [
         "q01"
       ],
+      "Objectives": [
+        {
+          "Type": "livingRoom",
+          "Condition": "BedsUsable",
+          "Tag": "Bed",
+          "Count": 1,
+          "Label": "床铺可用且可达",
+          "LabelEn": "Usable reachable beds"
+        },
+        {
+          "Type": "livingRoom",
+          "Condition": "Barracks",
+          "Tag": "Bed",
+          "Count": 1,
+          "Label": "原版识别为宿舍",
+          "LabelEn": "Native barracks recognized"
+        }
+      ],
+      "Rewards": [],
+      "DescEn": "Existing working facilities count. Usability and native room recognition are separate checks.",
+      "Segments": [],
+      "Teaching": {
+        "purpose": "提供稳定休息位置",
+        "preparation": "床铺材料、围合空间与可达通道",
+        "steps": [
+          "建床",
+          "检查床铺可用",
+          "围合",
+          "用房间叠层确认宿舍"
+        ],
+        "runningChecks": "检查分配和睡眠时段；已建床铺直接计入",
+        "commonFailures": "门墙有缺口、面积不符、工业设备破坏房间",
+        "completion": "自动检查：床铺可用且可达；原版识别为宿舍。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：完善餐厅"
+      }
+    },
+    {
+      "Id": "q01_dining",
+      "Phase": "settle",
+      "Order": 3,
+      "Title": "完善餐厅",
+      "TitleEn": "Set up the dining room",
+      "Description": "先建研究台并接通电源，补齐泥土等研究材料，安排复制人研究「食物制备」，解锁餐桌后再建造餐厅。已有研究与可用餐桌直接认可；按当前缺口提示下一步。",
+      "Requires": [
+        "q01_bedroom"
+      ],
+      "Objectives": [
+        {
+          "Type": "livingRoom",
+          "Condition": "TablesUsable",
+          "Tag": "DiningTable",
+          "Count": 1,
+          "Label": "用餐设施可用且可达",
+          "LabelEn": "Usable reachable dining facilities"
+        },
+        {
+          "Type": "livingRoom",
+          "Condition": "MessHall",
+          "Tag": "DiningTable",
+          "Count": 1,
+          "Label": "原版识别为餐厅",
+          "LabelEn": "Native mess hall recognized"
+        }
+      ],
+      "Rewards": [],
+      "DescEn": "Build and power a research station, supply research materials and research Meal Preparation to unlock mess tables. Existing research and usable tables count. Check access and native room recognition separately.",
+      "Segments": [],
+      "Layout": [
+        "必须：未解锁餐桌时，先完成食物制备研究；任务上方会显示当前存档实际缺少的研究与研究站。",
+        "研究准备：建研究台，用电线连接供电设施，准备泥土，检查复制人研究工作权限与通路。",
+        "建造：解锁餐桌后准备原版建造菜单要求的材料，保证施工与使用位置可达。",
+        "房间：用墙和门围合，打开原版房间叠层，按餐厅提示补齐条件；无需先建高档餐厅。",
+        "建议：按人数安排餐桌与作息；已有可用设施和已完成研究无需重复。"
+      ],
+      "Teaching": {
+        "purpose": "让复制人在餐桌用餐并获得房间收益",
+        "preparation": "研究台、电源、泥土；食物制备解锁餐桌",
+        "steps": [
+          "准备研究台",
+          "完成食物制备",
+          "建餐桌",
+          "围合",
+          "确认餐厅"
+        ],
+        "runningChecks": "检查餐桌可用、可达和分配；高档餐厅是可选升级",
+        "commonFailures": "尚未研究、使用位置被挡、房间包含不允许的设备",
+        "completion": "自动检查：用餐设施可用且可达；原版识别为餐厅。",
+        "requiredOrOptional": "本章主线",
+        "next": "核对本章能力后进入下一章；选做路线按需查阅。"
+      }
+    },
+    {
+      "Id": "q02",
+      "Phase": "settle",
+      "Order": 4,
+      "Title": "入坑必学，贯穿游戏前后的基础操作与机制",
+      "Description": "熟悉游戏界面、操作与基础机制",
+      "Requires": [],
       "Objectives": [],
       "Rewards": [],
       "VideoUrl": "https://www.bilibili.com/video/BV1F4jR6wEDG",
@@ -174,16 +304,31 @@
         "15:32 Setting up wash basins",
         "16:31 Circuit connection issues",
         "18:49 Food poisoning issues"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "学会读叠层、日程、优先级和工作权限",
+        "preparation": "已有安全生活区；可以暂停查看界面",
+        "steps": [
+          "查看房间/电力/氧气叠层",
+          "调整日程",
+          "检查工作权限",
+          "尝试施工优先级"
+        ],
+        "runningChecks": "核对通路、材料和工作权限，先找停工原因再提高优先级",
+        "commonFailures": "把高优先级当成能解决无材料或不可达",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q03",
-      "Phase": "early",
-      "Order": 3,
+      "Phase": "survive",
+      "Order": 5,
       "Title": "前期氧气扩散与二氧化碳治理",
       "Description": "建造氧气扩散器，稳定前期氧气",
       "Requires": [
-        "q02"
+        "q01_dining"
       ],
       "Objectives": [
         {
@@ -232,12 +377,28 @@
         "14:15 Digging wild food early",
         "15:30 Dealing with slime",
         "16:50 Reserve width for main corridors"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "保障初期呼吸环境",
+        "preparation": "藻类、电源、氧气扩散器施工材料",
+        "steps": [
+          "建氧气扩散器",
+          "接电",
+          "补藻类",
+          "查看气压与氧气分布",
+          "留出气体通道"
+        ],
+        "runningChecks": "持续关注藻类消耗、停机原因及低处二氧化碳",
+        "commonFailures": "缺电、藻类耗尽、气压过高、密闭区域没有供氧",
+        "completion": "自动检查：氧气扩散器。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：可靠清水来源"
+      }
     },
     {
       "Id": "q04",
-      "Phase": "early",
-      "Order": 4,
+      "Phase": "infrastructure",
+      "Order": 13,
       "Title": "二级科研开始 管道与电路的初步了解",
       "Description": "开启二级科研，了解管道与电路",
       "Requires": [
@@ -285,12 +446,28 @@
         "21:05 Do you need a reserve area",
         "21:28 Do you need showers",
         "23:03 Adding schedule shifts"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "理解不同研究站与管线的用途",
+        "preparation": "研究台、电力、泥土与水；按目标科技检查研究站",
+        "steps": [
+          "选目标建筑",
+          "读前置科技链",
+          "建所需研究站",
+          "补材料",
+          "分别查看液体/气体/电力叠层"
+        ],
+        "runningChecks": "逐段确认流向、端口和研究停工原因",
+        "commonFailures": "研究站缺水缺电，或把不同管线的连接规则混淆",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：电路分组与过载"
+      }
     },
     {
       "Id": "q05",
-      "Phase": "early",
-      "Order": 5,
+      "Phase": "infrastructure",
+      "Order": 17,
       "Title": "轻松搞定巨简单的卫生间循环",
       "Description": "建造冲水厕所，组成卫生间循环",
       "Requires": [
@@ -349,16 +526,32 @@
         "       |污水        ^净水",
         "       v            |",
         "      [净水器]------+  (自循环,免供水)"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "建立卫生设施的给排水循环",
+        "preparation": "抽水厕所研究、清水、污水管线和处理资源",
+        "steps": [
+          "接厕所进水",
+          "接污水输出",
+          "准备处理设施",
+          "补启动水",
+          "安排多余液体去向"
+        ],
+        "runningChecks": "核对污水处理耗材与额外水量；必要时设置排出或储存",
+        "commonFailures": "无启动水、处理耗材不足、循环逐渐堵满",
+        "completion": "自动检查：冲水厕所。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q06",
-      "Phase": "early",
-      "Order": 6,
+      "Phase": "survive",
+      "Order": 7,
       "Title": "种植区选址",
       "Description": "放下第一批种植箱，选定种植区",
       "Requires": [
-        "q05"
+        "q01_dining"
       ],
       "Objectives": [
         {
@@ -407,16 +600,32 @@
         "10:31 Planter boxes and mealwood",
         "13:35 Unlocking notifications",
         "15:25 Using notifications"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "让基础食物种植持续生长",
+        "preparation": "种子、种植设施材料、适合温度与气体",
+        "steps": [
+          "查看植物信息",
+          "选择作物",
+          "选址",
+          "建种植设施",
+          "供给植物要求的资源"
+        ],
+        "runningChecks": "逐株查看温度、气压、气体和施肥灌溉状态",
+        "commonFailures": "按房间外观选址却忽略植物需求",
+        "completion": "自动检查：种植箱。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：食物缓冲与供需"
+      }
     },
     {
       "Id": "q07",
-      "Phase": "early",
-      "Order": 7,
+      "Phase": "infrastructure",
+      "Order": 14,
       "Title": "学会电路分组 永不过载",
       "Description": "用变压器给电路分组，永不过载",
       "Requires": [
-        "q06"
+        "q04"
       ],
       "Objectives": [
         {
@@ -471,16 +680,32 @@
         "17:15 Transformer cooling liquid",
         "19:58 Keep digging upward",
         "20:31 Build a fridge"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "用变压器分隔供电与用电网络",
+        "preparation": "目标线路容量、变压器研究与材料",
+        "steps": [
+          "统计负载",
+          "划分支路",
+          "接变压器输入与输出",
+          "查看叠层",
+          "试运行"
+        ],
+        "runningChecks": "确保输出支路负载符合线材容量；检查是否有跨接绕过变压器",
+        "commonFailures": "接反端口、桥接错误、支路仍超容量",
+        "completion": "自动检查：变压器。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：管道与通风"
+      }
     },
     {
       "Id": "q08",
-      "Phase": "early",
-      "Order": 8,
+      "Phase": "survive",
+      "Order": 9,
       "Title": "种植顶针芦苇并学会食物过渡",
       "Description": "用农场砖种植顶针芦苇",
       "Requires": [
-        "q07"
+        "q06"
       ],
       "Objectives": [
         {
@@ -535,16 +760,31 @@
         "15:40 Slime breaking locks",
         "17:09 Sweep-only containers",
         "18:30 Stopping container hauling"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "按需要建立纤维与食物过渡路线",
+        "preparation": "种子、植物所需液体与温度；农业研究",
+        "steps": [
+          "分别查看食用作物与芦苇需求",
+          "准备种植区",
+          "接灌溉",
+          "观察首轮生长"
+        ],
+        "runningChecks": "芦苇用于纤维，不替代食物；核对长期液体消耗",
+        "commonFailures": "把两种植物的环境条件混用",
+        "completion": "自动检查：农场砖。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q09",
-      "Phase": "early",
-      "Order": 9,
+      "Phase": "sustain",
+      "Order": 26,
       "Title": "高压制氧从建造到启动 稳定防崩必学",
       "Description": "建造电解水制氧模块（高压）",
       "Requires": [
-        "q08"
+        "q04"
       ],
       "Objectives": [
         {
@@ -595,16 +835,32 @@
         "上: [气泵]抽氢气 -> 氢气管道",
         "下: [气泵]抽氧气 -> 基地通风口",
         "要点: 气口不串联,三块关键砖"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "建立可持续且便于维护的电解供氧",
+        "preparation": "电解器研究、水源、电力、氢气与氧气去向",
+        "steps": [
+          "先确认气体分离",
+          "建供水与电网",
+          "安排氢氧输出",
+          "逐段启动",
+          "观察稳定状态"
+        ],
+        "runningChecks": "核对高压方案的原版行为和维护入口；可先采用普通方案",
+        "commonFailures": "未分离气体、输出堵塞、供水断续、热量积累",
+        "completion": "自动检查：电解器。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q10",
-      "Phase": "early",
-      "Order": 10,
+      "Phase": "sustain",
+      "Order": 27,
       "Title": "普通制氧也不赖 崩了随意修",
       "Description": "建造常规制氧：电解器配套气泵",
       "Requires": [
-        "q09"
+        "q04"
       ],
       "Objectives": [
         {
@@ -655,16 +911,33 @@
         "14:08 Suit refill and power",
         "16:14 Pipe clogs",
         "17:28 Digging uranium"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "掌握普通供氧设施的维护",
+        "preparation": "泵、电源、气体过滤或分流方案",
+        "steps": [
+          "划分氢氧区域",
+          "接泵与输出",
+          "逐台启动",
+          "检测输出介质",
+          "留检修空间"
+        ],
+        "runningChecks": "检查气压、气体类型和实际耗电",
+        "commonFailures": "泵抽到混合气体、出口超压或堵塞",
+        "completion": "自动检查：气泵。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q11",
-      "Phase": "early",
-      "Order": 11,
+      "Phase": "sustain",
+      "Order": 22,
       "Title": "金属精炼",
       "Description": "建造金属精炼厂，开始精炼金属",
       "Requires": [
-        "q10"
+        "q07",
+        "q14"
       ],
       "Objectives": [
         {
@@ -713,16 +986,32 @@
         "20:17 Printing pips",
         "21:35 Tidy polluted water",
         "21:49 Shearing wild dreckos"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "生产精炼金属并安排热量去向",
+        "preparation": "金属精炼研究、电源、矿石、足够冷却液",
+        "steps": [
+          "核对配方",
+          "接输入输出",
+          "准备冷却液回路",
+          "少量生产",
+          "查看液体温度"
+        ],
+        "runningChecks": "检查冷却液是否会相变和回路是否通畅",
+        "commonFailures": "冷却液沸腾爆管、输出堵塞、电力不足",
+        "completion": "自动检查：金属精炼厂。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：按路线推进科研"
+      }
     },
     {
       "Id": "q12",
-      "Phase": "early",
-      "Order": 12,
+      "Phase": "survive",
+      "Order": 10,
       "Title": "辐射杀菌与食物保鲜",
       "Description": "建储物箱处理物资，学会食物保鲜",
       "Requires": [
-        "q11"
+        "q06"
       ],
       "Objectives": [
         {
@@ -777,16 +1066,31 @@
         "17:00 Preservation automation",
         "19:40 Add sweepers everywhere",
         "21:33 Identifying buried geysers"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "减少污染传播与食物腐败",
+        "preparation": "储存空间、食物来源；杀菌路线按存档内容选择",
+        "steps": [
+          "区分病菌与腐败",
+          "规划食物储存",
+          "减少污染搬运",
+          "核对温度与储存气体"
+        ],
+        "runningChecks": "查看原版新鲜度与腐败原因；储物箱建成不代表保鲜成功",
+        "commonFailures": "把封箱当成冷藏，或将辐射杀菌视为所有存档必需",
+        "completion": "自动检查：储物箱。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q13",
-      "Phase": "early",
-      "Order": 13,
+      "Phase": "sustain",
+      "Order": 28,
       "Title": "天然气发电 树鼠种植",
       "Description": "建造天然气发电机，开发新能源",
       "Requires": [
-        "q12"
+        "q07"
       ],
       "Objectives": [
         {
@@ -835,16 +1139,32 @@
         "18:25 Pips plant reeds",
         "21:00 Finding cool slush geyser",
         "21:48 Wild reed yields and uses"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "按资源来源建立天然气能源",
+        "preparation": "天然气来源、发电科技、电网与废物出口",
+        "steps": [
+          "储气",
+          "接气",
+          "连接发电机",
+          "处理污水与二氧化碳",
+          "观察燃料变化"
+        ],
+        "runningChecks": "区分间歇气源与持续负载；树鼠相关种植路线按需选用",
+        "commonFailures": "没有气源缓冲或未安排副产物出口",
+        "completion": "自动检查：天然气发电机。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q14",
-      "Phase": "early",
-      "Order": 14,
+      "Phase": "explore",
+      "Order": 18,
       "Title": "游戏前期总结 基地围挡",
       "Description": "用瓷砖把基地围挡起来（至少 20 块）",
       "Requires": [
-        "q13"
+        "q01_dining"
       ],
       "Objectives": [
         {
@@ -897,16 +1217,31 @@
         "18:40 Two-cell liquid lock",
         "20:36 Sealing other exits",
         "21:28 Enable checkpoints"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "安全扩展基地并保留环境边界",
+        "preparation": "已稳定的生活区、挖掘通道与逃生路线",
+        "steps": [
+          "暂停查看气体和温度",
+          "标记水池与危险区",
+          "分段开挖",
+          "围挡与留通道"
+        ],
+        "runningChecks": "每次扩展后复查温度、压力和复制人通路",
+        "commonFailures": "挖穿水池或直接打开高压、高温区域",
+        "completion": "自动检查：瓷砖墙。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：进入不同生态"
+      }
     },
     {
       "Id": "q15",
-      "Phase": "mid",
-      "Order": 15,
+      "Phase": "sustain",
+      "Order": 23,
       "Title": "三级科研 炼钢准备",
       "Description": "开启三级科研，为炼钢做准备",
       "Requires": [
-        "q14"
+        "q11"
       ],
       "Objectives": [],
       "Rewards": [],
@@ -952,12 +1287,28 @@
         "19:05 Refined carbon tips",
         "19:38 Fossil to steel ratio",
         "20:09 Steelmaking heat"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "为所选工业路线准备科研",
+        "preparation": "目标建筑科技链；按存档所需研究类型备站与资源",
+        "steps": [
+          "先选需要的建筑",
+          "查看科技链",
+          "准备各研究站",
+          "安排研究人员",
+          "逐项研究"
+        ],
+        "runningChecks": "核对各研究点类型；不同存档可能采用不同科研路线",
+        "commonFailures": "只建高级研究站却缺前置科技或研究材料",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：持续资源供应"
+      }
     },
     {
       "Id": "q16",
-      "Phase": "mid",
-      "Order": 16,
+      "Phase": "sustain",
+      "Order": 29,
       "Title": "跨过这道坎 野外炼钢和冷却模块",
       "Description": "野外炼钢：搭起冷却模块（液温调节器）",
       "Requires": [
@@ -1010,16 +1361,32 @@
         "13:23 Storage tiles",
         "15:29 Cooling module theory",
         "16:18 Cooling module build and tips"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "用冷却回路控制工业热量",
+        "preparation": "液温调节器科技、电源、适合工作温区的冷却液与排热方案",
+        "steps": [
+          "设计闭环",
+          "检查介质相变温度",
+          "设旁路与传感器",
+          "确定排热去向",
+          "逐段启动"
+        ],
+        "runningChecks": "检查调节器本体散热、爆管风险和回路持续流动",
+        "commonFailures": "过冷相变、回路堵塞、设备本体过热",
+        "completion": "自动检查：液温调节器。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q17",
-      "Phase": "mid",
-      "Order": 17,
+      "Phase": "sustain",
+      "Order": 30,
       "Title": "原油精炼 强制相变",
       "Description": "建造原油精炼厂，学会强制相变",
       "Requires": [
-        "q16"
+        "q15"
       ],
       "Objectives": [
         {
@@ -1074,16 +1441,32 @@
         "17:51 Pipe priority review",
         "18:40 Protect power supply",
         "20:05 Forced state change refining"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "安全加工原油并理解相变",
+        "preparation": "原油来源、加工设备、电力与高温区域隔离",
+        "steps": [
+          "核对配方与副产物",
+          "接原油",
+          "安排产物去向",
+          "隔离热区",
+          "小批量试产"
+        ],
+        "runningChecks": "区分设备精炼与高温相变路线，按当前材料和温区选择",
+        "commonFailures": "把普通管线用于会发生相变的介质",
+        "completion": "自动检查：原油精炼厂。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q18",
-      "Phase": "mid",
-      "Order": 18,
+      "Phase": "sustain",
+      "Order": 31,
       "Title": "超详细炼钢模块建造过程",
       "Description": "建成炼钢模块：蒸汽机回收废热",
       "Requires": [
-        "q17"
+        "q16"
       ],
       "Objectives": [
         {
@@ -1116,16 +1499,32 @@
         "1:40 Follow the docs, not the video",
         "2:31 Building the steel module",
         "18:45 Start steelmaking"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "让炼钢模块持续排热",
+        "preparation": "精炼金属与钢配方材料、蒸汽机研究、稳定电力与蒸汽条件",
+        "steps": [
+          "备齐炼钢配方",
+          "准备冷却回路",
+          "建立蒸汽排热",
+          "小批量炼钢",
+          "观察运行"
+        ],
+        "runningChecks": "蒸汽机自身也需要散热；核对蒸汽温度和排水路线",
+        "commonFailures": "只建蒸汽机却没有正确蒸汽环境或本体冷却",
+        "completion": "自动检查：蒸汽机。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q19",
-      "Phase": "mid",
-      "Order": 19,
+      "Phase": "sustain",
+      "Order": 32,
       "Title": "炼油控温 整合种植区",
       "Description": "炼油控温，整合种植区",
       "Requires": [
-        "q18"
+        "q17"
       ],
       "Objectives": [],
       "Rewards": [],
@@ -1161,16 +1560,32 @@
         "13:44 Naphtha lock",
         "14:39 Tap more wild water",
         "15:11 Mushroom farm integrated"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "避免生产热量侵入种植区",
+        "preparation": "生产热源清单、植物温区与独立回路",
+        "steps": [
+          "测温",
+          "隔离生产区",
+          "给种植区独立控温",
+          "检查供给",
+          "逐段整合"
+        ],
+        "runningChecks": "连续观察种植生长与设备温度",
+        "commonFailures": "共享回路导致植物过热或过冷",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q20",
-      "Phase": "mid",
-      "Order": 20,
+      "Phase": "survive",
+      "Order": 11,
       "Title": "吃什么永生？有水先上刺花",
       "Description": "吃什么永生？有水先上刺花",
       "Requires": [
-        "q19"
+        "q01_dining"
       ],
       "Objectives": [],
       "Rewards": [],
@@ -1206,16 +1621,32 @@
         "18:56 Bristle needs light",
         "20:00 Remove mealwood farm",
         "21:35 Handle accidents"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "选择当前资源能支撑的食谱",
+        "preparation": "种子、水源、光照与食物加工条件",
+        "steps": [
+          "查看作物需求",
+          "核对水预算",
+          "准备光照和种植",
+          "观察收获",
+          "选择加工方式"
+        ],
+        "runningChecks": "按实际产出、消耗和士气需求比较食谱",
+        "commonFailures": "为了升级食物耗尽生活用水",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q21",
-      "Phase": "mid",
-      "Order": 21,
+      "Phase": "sustain",
+      "Order": 33,
       "Title": "中期必做的事 士气升档",
       "Description": "士气升档：建造食堂餐桌",
       "Requires": [
-        "q20"
+        "q01_dining"
       ],
       "Objectives": [
         {
@@ -1268,16 +1699,31 @@
         "16:20 Checkpoint oxygen bottles",
         "17:19 Redo natural gas power",
         "17:54 Open cool slush pool"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "让士气收益匹配技能负担",
+        "preparation": "士气和技能需求、已可用的生活设施",
+        "steps": [
+          "查看士气来源",
+          "优先改善餐厅与作息",
+          "安排合适食物",
+          "按士气分配技能"
+        ],
+        "runningChecks": "核对复制人实际获得收益，餐桌建成不等于士气达标",
+        "commonFailures": "一次性学习过多技能、设施没有被使用",
+        "completion": "自动检查：餐桌。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q22",
-      "Phase": "mid",
-      "Order": 22,
+      "Phase": "explore",
+      "Order": 21,
       "Title": "自然保护区与基地冷却",
       "Description": "规划自然保护区，给基地降温",
       "Requires": [
-        "q21"
+        "q14"
       ],
       "Objectives": [],
       "Rewards": [],
@@ -1309,16 +1755,31 @@
         "17:31 Circuit grouping",
         "18:41 Start temperature control",
         "19:07 Water source notifications"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "兼顾生活区控温和通勤士气",
+        "preparation": "安全路径、可保留的自然植物、温度控制方案",
+        "steps": [
+          "保留自然植物",
+          "规划通勤路径",
+          "按房间叠层确认保护区",
+          "隔离生产热源"
+        ],
+        "runningChecks": "让复制人实际经过；观察基地温度而非只统计设备",
+        "commonFailures": "植物被挖掉、路线绕行、冷却只搬热不排热",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q23",
-      "Phase": "mid",
-      "Order": 23,
+      "Phase": "sustain",
+      "Order": 34,
       "Title": "储油石快速开发",
       "Description": "储油石快速开发",
       "Requires": [
-        "q22"
+        "q17"
       ],
       "Objectives": [],
       "Rewards": [],
@@ -1346,16 +1807,33 @@
         "5:20 Reduce bristle blossom",
         "6:18 Oil reservoir development",
         "9:45 Run water and oil pipes"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "准备油井用水与油料出口",
+        "preparation": "存档存在储油石、油井研究、水源、电力与泄压通路",
+        "steps": [
+          "探明储油石",
+          "准备安全入口",
+          "接水与电",
+          "安排产油和气体",
+          "观察泄压维护"
+        ],
+        "runningChecks": "检查用水预算、气体压力及复制人维护通路",
+        "commonFailures": "缺水、过压、维护人员不可达",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q24",
-      "Phase": "late",
-      "Order": 24,
+      "Phase": "sustain",
+      "Order": 35,
       "Title": "壁虎养殖",
       "Description": "壁虎养殖：建剪毛站",
       "Requires": [
-        "q23"
+        "q06",
+        "q04"
       ],
       "Objectives": [
         {
@@ -1392,16 +1870,33 @@
         "5:02 Build drecko ranch",
         "13:58 Tune cool polluted water",
         "14:48 Hatch drecko eggs"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "按需求建立壁虎养殖与剪毛",
+        "preparation": "壁虎、饲料植物、养殖及剪毛科技、环境气体",
+        "steps": [
+          "安排饲料",
+          "围合饲养区",
+          "设置饲养与剪毛",
+          "安排人员",
+          "观察生长和产物"
+        ],
+        "runningChecks": "核对具体品种的食物、鳞片生长环境和人口控制",
+        "commonFailures": "有剪毛站却缺饲养人员、环境或饲料",
+        "completion": "自动检查：剪毛站。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q25",
-      "Phase": "late",
-      "Order": 25,
+      "Phase": "sustain",
+      "Order": 36,
       "Title": "开水泉 存氧气",
       "Description": "开水泉，建储气库存氧气",
       "Requires": [
-        "q24"
+        "q06",
+        "q04"
       ],
       "Objectives": [
         {
@@ -1448,16 +1943,32 @@
         "8:40 Bottle hydrogen",
         "11:20 Place pixel pack",
         "12:30 Home asteroid mapped"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "用缓冲应对间歇泉与气源",
+        "preparation": "已探明泉、分析与温压数据、储存设备研究",
+        "steps": [
+          "分析活动周期",
+          "估算平均产出",
+          "准备缓冲",
+          "隔离温度",
+          "接输出"
+        ],
+        "runningChecks": "覆盖休眠期消耗；气罐建成不证明储量足够",
+        "commonFailures": "按喷发瞬时产出配置长期负载",
+        "completion": "自动检查：储气库。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q26",
-      "Phase": "late",
-      "Order": 26,
+      "Phase": "sustain",
+      "Order": 37,
       "Title": "典型金属火山开发",
       "Description": "金属火山开发：放自动挖掘机",
       "Requires": [
-        "q25"
+        "q14"
       ],
       "Objectives": [
         {
@@ -1498,16 +2009,32 @@
         "9:07 Reach the surface",
         "10:23 Straight to the top",
         "10:45 Clear regolith"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "安全回收金属火山产物",
+        "preparation": "已探明火山、耐温材料、隔热及排热设施",
+        "steps": [
+          "分析喷发",
+          "隔离热区",
+          "设计排热",
+          "设置收集路径",
+          "在可控条件下试运行"
+        ],
+        "runningChecks": "确认喷口未被阻塞，产物降温后再进入生活区",
+        "commonFailures": "喷口被建筑堵住、收集设备过热、热金属送回基地",
+        "completion": "自动检查：自动挖掘机。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q27",
-      "Phase": "late",
-      "Order": 27,
+      "Phase": "space",
+      "Order": 40,
       "Title": "第一类火箭 数据磁盘",
       "Description": "建造第一类火箭：从火箭平台起步",
       "Requires": [
-        "q26"
+        "q15"
       ],
       "Objectives": [
         {
@@ -1558,12 +2085,28 @@
         "12:20 Pre-launch checklist",
         "13:56 Post-launch moves",
         "15:13 Adjust priorities"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "完成与存档内容匹配的首次太空活动",
+        "preparation": "当前存档火箭路线、科技、燃料、乘员与生存资源",
+        "steps": [
+          "确认路线",
+          "建发射设施与对应模块",
+          "备燃料氧气食物",
+          "检查清单",
+          "短程试飞"
+        ],
+        "runningChecks": "原版与眼冒金星路线分别处理；发射台不代表火箭可飞",
+        "commonFailures": "缺模块、燃料、乘员或返航资源",
+        "completion": "自动检查：火箭平台。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：太空探索与数据"
+      }
     },
     {
       "Id": "q28",
-      "Phase": "late",
-      "Order": 28,
+      "Phase": "space",
+      "Order": 41,
       "Title": "探图火箭 光虫养殖",
       "Description": "探图火箭与光虫养殖",
       "Requires": [
@@ -1595,16 +2138,32 @@
         "11:05 Prepare food",
         "13:10 Launch scouting",
         "13:33 Shine bug ranch module"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "让探索产生可用数据",
+        "preparation": "可运行火箭、探索或研究模块与乘员供给",
+        "steps": [
+          "选目的地",
+          "核对模块",
+          "准备航程资源",
+          "探索",
+          "回收并使用数据"
+        ],
+        "runningChecks": "核对存档的数据来源；光虫养殖作为独立可选路线",
+        "commonFailures": "探索完成却缺数据处理方式或无法返航",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "本章主线",
+        "next": "下一项主线：新手毕业与下一步"
+      }
     },
     {
       "Id": "q29",
-      "Phase": "late",
-      "Order": 29,
+      "Phase": "sustain",
+      "Order": 38,
       "Title": "什么？你不吃浆果糕？",
       "Description": "做浆果糕：建造燃气灶",
       "Requires": [
-        "q28"
+        "q20"
       ],
       "Objectives": [
         {
@@ -1655,16 +2214,32 @@
         "10:22 Hatch shine bug eggs",
         "11:14 Oxylite refinery",
         "12:50 Monitor rocket fuel"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "选择供应链能维持的高阶食物",
+        "preparation": "高级烹饪科技、配方原料、燃料与保鲜条件",
+        "steps": [
+          "查看配方",
+          "核对原料年产出",
+          "准备燃料与人员",
+          "小批量烹饪",
+          "安排储存"
+        ],
+        "runningChecks": "按士气收益和长期成本选择，不要求所有存档统一食谱",
+        "commonFailures": "只建厨具却没有可持续配料或燃料",
+        "completion": "自动检查：燃气灶。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q30",
-      "Phase": "late",
-      "Order": 30,
+      "Phase": "space",
+      "Order": 42,
       "Title": "还不会打流星？且看过来",
       "Description": "打流星：铺防爆门保护地表",
       "Requires": [
-        "q29"
+        "q27"
       ],
       "Objectives": [
         {
@@ -1709,16 +2284,32 @@
         "15:26 Scout rocket returns",
         "17:40 Great hall",
         "19:53 Alert automation"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "按实际流星风险设计太空防护",
+        "preparation": "当前星体有相应风险；防护材料、电力与维护入口",
+        "steps": [
+          "确认风险",
+          "确定需保护设备",
+          "布置防护和控制",
+          "检查碎屑",
+          "观察一次事件"
+        ],
+        "runningChecks": "无对应风险时作为知识项；按需配置而非统一强制建造",
+        "commonFailures": "防护门长期关死、设备被碎屑埋住或线路损坏",
+        "completion": "自动检查：防爆门。当前自动判定只统计建成数量；运行效果需按下列步骤自行核对。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q31",
       "Phase": "space",
-      "Order": 31,
+      "Order": 43,
       "Title": "开拓型火箭的建造",
       "Description": "建造开拓型火箭",
       "Requires": [
-        "q30"
+        "q28"
       ],
       "Objectives": [],
       "Rewards": [],
@@ -1748,12 +2339,28 @@
         "10:03 Check exterior",
         "10:31 Three-person split",
         "11:36 Crew priorities"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "为拓殖准备乘员与落地物资",
+        "preparation": "存档支持拓殖、可运行火箭、生活资源与施工材料",
+        "steps": [
+          "选目的地",
+          "核对模块与航程",
+          "装载生存资源",
+          "准备初始基地材料",
+          "短程演练"
+        ],
+        "runningChecks": "保证返航或持续补给；按乘员数量计算航程储备",
+        "commonFailures": "只准备燃料，忽略氧气、食物和落地材料",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q32",
       "Phase": "space",
-      "Order": 32,
+      "Order": 44,
       "Title": "火箭着陆与星球开拓",
       "Description": "火箭着陆与星球开拓",
       "Requires": [
@@ -1787,16 +2394,31 @@
         "11:53 Gulp fish pond",
         "13:28 Scout for salt water",
         "14:17 Pump salt water to pond"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "建立新星体的最小生存基地",
+        "preparation": "拓殖路线可用、落地手段与生存物资",
+        "steps": [
+          "检查落地位置",
+          "建卫生睡眠与供氧",
+          "安排食物电力",
+          "准备运输与返航"
+        ],
+        "runningChecks": "新星体独立检查资源和任务设施，不能借用母星计数",
+        "commonFailures": "落地后没有供氧、物资不足或没有撤退方式",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q33",
-      "Phase": "space",
-      "Order": 33,
+      "Phase": "sustain",
+      "Order": 39,
       "Title": "观赏鱼入池 基地里种树",
       "Description": "观赏鱼入池，基地里种树",
       "Requires": [
-        "q32"
+        "q21"
       ],
       "Objectives": [],
       "Rewards": [],
@@ -1824,16 +2446,34 @@
         "10:55 Gulp fish in pond",
         "11:35 Make latex",
         "13:10 Craft swimsuits"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "按生态需求美化生活区",
+        "preparation": "目标动物与植物的原版生存条件",
+        "steps": [
+          "查看物种需求",
+          "安排液体或气体",
+          "留活动空间",
+          "种植或引入",
+          "观察存活"
+        ],
+        "runningChecks": "区分装饰、生态和生产目标；优先保障生活设施",
+        "commonFailures": "为美化破坏通路、温区或原有资源预算",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "按资源与存档路线选做",
+        "next": "回到本章主线；此路线按资源和当前存档内容选择，不作为毕业必做条件。"
+      }
     },
     {
       "Id": "q34",
       "Phase": "space",
-      "Order": 34,
+      "Order": 45,
       "Title": "最终的干货，完结",
       "Description": "最终干货：毕业！",
       "Requires": [
-        "q33"
+        "q28",
+        "q06",
+        "q04"
       ],
       "Objectives": [],
       "Rewards": [],
@@ -1853,7 +2493,23 @@
         "12:20 Pip ranch module",
         "16:47 Multi-generation automation demo",
         "23:02 How to make waterfalls"
-      ]
+      ],
+      "Teaching": {
+        "purpose": "核对基地能稳定运行并选择后续方向",
+        "preparation": "已掌握生活、生存、基础设施与风险管理",
+        "steps": [
+          "巡查氧食水",
+          "核对电网与热量",
+          "检查关键耗材",
+          "安排备份与维护",
+          "选择下一个目标"
+        ],
+        "runningChecks": "用连续运行与资源趋势评估，按当前存档筛选可选路线",
+        "commonFailures": "建筑数量很多但资源持续亏空或依赖无人维护的环节",
+        "completion": "知识任务：接取后由玩家确认；阅读页面不自动证明设备运行成功。",
+        "requiredOrOptional": "本章主线",
+        "next": "核对本章能力后进入下一章；选做路线按需查阅。"
+      }
     }
   ]
 }

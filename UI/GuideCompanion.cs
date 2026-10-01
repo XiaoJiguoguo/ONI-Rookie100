@@ -53,7 +53,7 @@ namespace Rookie100.UI
                     {
                         stream.CopyTo(bytes);
                         atlas = new Texture2D(2, 2, TextureFormat.RGBA32, false);
-                        if (!ImageConversion.LoadImage(atlas, bytes.ToArray(), true))
+                        if (!TextureLoader.LoadImage(atlas, bytes.ToArray(), true))
                             throw new InvalidDataException("Guide animation PNG could not be decoded");
                     }
                 }

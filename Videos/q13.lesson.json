@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "id": "q13",
+  "file": "q13.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "储气",
+      "en": "Buffer the natu..."
+    },
+    {
+      "start": 6,
+      "zh": "接气",
+      "en": "Connect the gas..."
+    },
+    {
+      "start": 12,
+      "zh": "连接发电机",
+      "en": "Connect the gen..."
+    },
+    {
+      "start": 18,
+      "zh": "处理污水与二氧…",
+      "en": "Provide pollute..."
+    },
+    {
+      "start": 24,
+      "zh": "观察燃料变化",
+      "en": "Observe the fue..."
+    },
+    {
+      "start": 30,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "储气。",
+      "en": "Buffer the natural gas."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "接气。",
+      "en": "Connect the gas supply."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "连接发电机。",
+      "en": "Connect the generator."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "处理污水与二氧化碳。",
+      "en": "Provide polluted water and carbon dioxide outlets."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "观察燃料变化。",
+      "en": "Observe the fuel balance."
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "power",
+  "nativeProps": [
+    "GasReservoir",
+    "MethaneGenerator",
+    "LiquidReservoir"
+  ]
+}

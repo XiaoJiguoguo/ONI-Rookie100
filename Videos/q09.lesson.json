@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "id": "q09",
+  "file": "q09.mp4",
+  "duration": 36,
+  "width": 960,
+  "height": 540,
+  "steps": [
+    {
+      "start": 0,
+      "zh": "先确认气体分离",
+      "en": "Plan gas separa..."
+    },
+    {
+      "start": 6,
+      "zh": "建供水与电网",
+      "en": "Prepare water a..."
+    },
+    {
+      "start": 12,
+      "zh": "安排氢氧输出",
+      "en": "Provide hydroge..."
+    },
+    {
+      "start": 18,
+      "zh": "逐段启动",
+      "en": "Start one secti..."
+    },
+    {
+      "start": 24,
+      "zh": "观察稳定状态",
+      "en": "Observe stable ..."
+    },
+    {
+      "start": 30,
+      "zh": "运行核对",
+      "en": "Check operation"
+    }
+  ],
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 6,
+      "zh": "先确认气体分离。",
+      "en": "Plan gas separation first."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "zh": "建供水与电网。",
+      "en": "Prepare water and power."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "zh": "安排氢氧输出。",
+      "en": "Provide hydrogen and oxygen outlets."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "zh": "逐段启动。",
+      "en": "Start one section at a time."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "zh": "观察稳定状态。",
+      "en": "Observe stable operation."
+    },
+    {
+      "start": 30,
+      "end": 36,
+      "zh": "核对真实运行与资源供应；短片为示意，任务以存档检查或知识确认为准。",
+      "en": "Verify real operation and supplies. This is an illustration; completion uses colony checks or learning confirmation."
+    }
+  ],
+  "visualTheme": "oxygen",
+  "nativeProps": [
+    "LiquidPump",
+    "Electrolyzer",
+    "GasPump"
+  ]
+}
